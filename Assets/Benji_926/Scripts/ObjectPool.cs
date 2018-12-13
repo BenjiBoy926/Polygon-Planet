@@ -23,7 +23,7 @@ public class ObjectPool<T> where T : Component
     private List<T> pool = new List<T>();   // List of components attached to game objects intantiated
 
     // Constructor instances multiple clones of the given prefab and stores components from each
-    public ObjectPool (GameObject customPrefab, int instances, string parentName = "Object Pool")
+    public ObjectPool (PoolData data, string parentName = "Object Pool")
     {
         // List of game objects to be returned
         GameObject instance;    // Reference to instance of newly instantiated prefab
@@ -33,9 +33,9 @@ public class ObjectPool<T> where T : Component
         parentTrans = new GameObject(parentName).transform;
 
         // Loop from 1 up to "instances", instantiating prefabs and putting instances into the local list
-        for (int count = 1; count <= instances; count++)
+        for (int count = 1; count <= data.instances; count++)
         {
-            instance = Object.Instantiate(customPrefab, parentTrans);
+            instance = Object.Instantiate(data.prefab, parentTrans);
             instance.name += ("_" + count);
             pool.Add(instance.GetComponent<T>());
         } // END for

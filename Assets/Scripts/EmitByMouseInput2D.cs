@@ -13,14 +13,14 @@ public class EmitByMouseInput2D : Emitter2D
 {
     [SerializeField]
     private string emitButtonName;  // Name of the button in the input manager that the user presses to emit an object
-    private Vector3 mousePosition;  // Position of the mouse in world space
+    private Vector2 mousePosition;  // Position of the mouse in world space
 
     private void Update()
     {
-        if(!emitted && Input.GetButton(emitButtonName))
+        if(!primaryState && Input.GetButton(emitButtonName))
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Emit(mousePosition);
+            Emit(mousePosition - (Vector2)transform.position);
         }
     }
 }

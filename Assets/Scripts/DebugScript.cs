@@ -9,6 +9,6 @@ public class DebugScript : MonoBehaviour
 
     private void Start()
     {
-        mover.Blowback(Vector2.left, 10f);
+        mover.Blowback(Vector2.left, 1f);
     }
 }

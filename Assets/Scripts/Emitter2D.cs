@@ -13,26 +13,24 @@ using UnityEngine;
  * -------------------------------
  */ 
 
-public class Emitter2D : MonoBehaviour
+public class Emitter2D : MonoBehaviour, ISingleStateObject
 {
     [SerializeField]
-    private GameObject poolPrefab;  // Multiple instances of this object are instanitated in the object pool
-    [SerializeField]
-    private int poolSize;   // Size of the object pool for this emitter
+    private PoolData emittedObjectPoolData;
     [SerializeField]
     private ObjectPool<Mover2D> pool;   // Emitter2D's object pool
     [SerializeField]
     private float objectVelocity;   // Speed at which objects travel
     [SerializeField]
-    private State _emitted;    // State returns true if the emitter emitted within #duration seconds the current moment
+    private State emitted;    // State returns true if the emitter emitted within #duration seconds the current moment
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
 
-    public State emitted { get { return _emitted; } }
+    public State primaryState { get { return emitted; } }
 
     private void Start()
     {
-        pool = new ObjectPool<Mover2D>(poolPrefab, poolSize, gameObject.name + "'s Pool");
+        pool = new ObjectPool<Mover2D>(emittedObjectPoolData, gameObject.name + "'s Pool");
         pool.SetPoolActive(false);
     }
 
@@ -53,6 +51,6 @@ public class Emitter2D : MonoBehaviour
             pool.getReadyObject.MoveFromPoint(rotatedOrigin + (Vector2)transform.position, rotatedDirection, objectVelocity);
         }
 
-        _emitted.Activate();
+        emitted.Activate();
     }
 }

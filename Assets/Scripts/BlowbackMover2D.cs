@@ -9,10 +9,12 @@ using System.Collections;
  * ---------------------
  */ 
 
-public class BlowbackMover2D : Mover2D
+public class BlowbackMover2D : Mover2D, ISingleStateObject
 {
     const float blowBackTime = 0.2f;    // Time for which blowback movers are blown back
-    private State blownBack;    // State is true if the mover was recently blownback
+    private State blownBack = new State(blowBackTime);    // State is true if the mover was recently blownback
+
+    public State primaryState { get { return blownBack; } }
 
     // Move in the direction specified with the speed specified, and set the blownback state
     public void Blowback(Vector2 direction, float strength)
