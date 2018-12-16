@@ -58,4 +58,21 @@ public class BlowbackMover2D : Mover2D, ISingleStateObject
             base.MoveFromPoint(origin, direction, speed);
         }
     }
+
+    // "Force" methods allow client code to force the object to move regardless of whether or not it is being blown back right now
+    public void ForceMoveTowards(Vector2 direction, float speed)
+    {
+        blownBack.Deactivate();
+        base.MoveTowards(direction, speed);
+    }
+    public void ForceMoveToPoint(Vector2 point, float time)
+    {
+        blownBack.Deactivate();
+        base.MoveToPoint(point, time);
+    }
+    public void ForceMoveFromPoint(Vector2 origin, Vector2 direction, float speed)
+    {
+        blownBack.Deactivate();
+        base.MoveFromPoint(origin, direction, speed);
+    }
 }

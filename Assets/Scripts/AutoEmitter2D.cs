@@ -35,7 +35,7 @@ public class AutoEmitter2D : Emitter2D
         {
             delay = Random.Range(minTime, maxTime);
             yield return new WaitForSeconds(delay);
-            Emit(coordinates());
+            ForceEmit(coordinates());
         }
     }
 }

@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 178571444}
   - component: {fileID: 178571443}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Rapid Fire Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,6 +444,56 @@ MonoBehaviour:
   _hitBox: {fileID: 1005336269}
   invincible:
     _duration: 0
+--- !u!1 &1209125041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209125043}
+  - component: {fileID: 1209125042}
+  m_Layer: 0
+  m_Name: Charge Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1209125042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1209125041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bc04facbe73fe458a06b7b2b1384cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emittedObjectPoolData:
+    _prefab: {fileID: 2134147386}
+    _instances: 2
+  objectVelocity: 10
+  emitted:
+    _duration: 3
+  objectAnchors:
+  - origin: {x: 0, y: 0}
+    direction: {x: 1, y: 0}
+  emitButtonName: Fire1
+--- !u!4 &1209125043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1209125041}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2120919281}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2120919277
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +607,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 178571444}
+  - {fileID: 1209125043}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -598,9 +649,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7a3d851fbd0d04fbb645b61cec882f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pairs:
-  - _sender: {fileID: 2120919279}
-    _receiver: {fileID: 178571443}
+  connections:
+  - pair:
+      _sender: {fileID: 178571443}
+      _receiver: {fileID: 1209125042}
+    useSenderDuration: 0
+  - pair:
+      _sender: {fileID: 2120919279}
+      _receiver: {fileID: 178571443}
+    useSenderDuration: 1
 --- !u!1 &2134147386
 GameObject:
   m_ObjectHideFlags: 0
