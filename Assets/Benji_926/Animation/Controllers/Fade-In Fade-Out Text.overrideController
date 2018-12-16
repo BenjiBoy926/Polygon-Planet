@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Fade-In Fade-Out Text
+  m_Controller: {fileID: 9100000, guid: 10ea6452f16318943aaaa3ef318e29ea, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f32201b2be1d45144aa9fb0dfdd688df, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 17ce90d02a97ff840abcbc674b526aab, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bd6544df3b978f54f99c7ae25a2ceb29, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 434a975eb70435344a99f774c7fc3f82, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6c76c84978edd9e41a43372e15c6bfa0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 95c6dd0bd07067b46b4b2e795a90870d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 95c79eadbade3994e933529f4caa4437, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d519970ab79daf340a58ee371e704698, type: 2}

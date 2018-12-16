@@ -38,3 +38,11 @@ sysinfo.txt
 
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
+
+# Additional ignores
+GlobalSuppressions.cs
+Packages/
+Assets/Benji_926/Audio/
+
+# TEMP: dunno how important it is to at the meta files
+*.meta
