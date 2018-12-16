@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class DebugScript : MonoBehaviour
 {
-    [SerializeField]
-    private BlowbackMover2D mover;
+    private State state = new State(10f);
 
     private void Start()
     {
-        mover.Blowback(Vector2.left, 1f);
+        StartCoroutine("TestStateThreading");
+    }
+
+    IEnumerator TestStateThreading()
+    {
+        state.Activate(10f);
+
+        yield return new WaitForSeconds(5f);
+
+        state.Deactivate();
+
+        yield return new WaitForSeconds(1f);
+
+        state.Activate(10f);
     }
 }

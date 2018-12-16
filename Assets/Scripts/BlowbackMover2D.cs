@@ -9,31 +9,38 @@ using System.Collections;
  * ---------------------
  */ 
 
-public class BlowbackMover2D : Mover2D, ISingleStateObject
+public class BlowbackMover2D : Mover2D
 {
-    const float blowBackTime = 0.2f;    // Time for which blowback movers are blown back
+    const float blowBackTime = 0.2f;    // Time for which all blowback movers are blown back
     private State blownBack = new State(blowBackTime);    // State is true if the mover was recently blownback
 
     public State primaryState { get { return blownBack; } }
 
-    // Move in the direction specified with the speed specified, and set the blownback state
-    public void Blowback(Vector2 direction, float strength)
+    // Blowback for the constant time locally specified
+    public void Blowback(Vector2 direction, float speed)
     {
-        // Disable the blownback state and move according to the blowback method
-        // This allows blowbacks to be chained one after the other
-        blownBack.Deactivate();
-        MoveTowards(direction, strength);
+        Blowback(direction, speed, blowBackTime);
+    }
+
+    // Move in the direction, speed, and for the time specifed
+    // Additional functionality locks movement of the mover until blowback is finished
+    public void Blowback(Vector2 direction, float speed, float time)
+    {
+        // Disable the blownback state and move according to the move towards method
+        Stop();
+        MoveTowards(direction, speed);
 
         // Activate the blowback state and schedule the object to stop moving when finished
         blownBack.Activate(blowBackTime);
-        Invoke("StopBlowback", blowBackTime);
+        Invoke("Stop", time);
     }
 
     // Stop being blown back, and stop movement
-    private void StopBlowback()
+    public override void Stop()
     {
+        CancelInvoke();
         blownBack.Deactivate();
-        Stop();
+        base.Stop();
     }
 
     // Overrides of the base class methods prevent client code from moving this object if it is currently being blown back
@@ -59,7 +66,7 @@ public class BlowbackMover2D : Mover2D, ISingleStateObject
         }
     }
 
-    // "Force" methods allow client code to force the object to move regardless of whether or not it is being blown back right now
+    // "Force" methods allow client code the option to force the object to move regardless of whether or not it is being blown back right now
     public void ForceMoveTowards(Vector2 direction, float speed)
     {
         blownBack.Deactivate();

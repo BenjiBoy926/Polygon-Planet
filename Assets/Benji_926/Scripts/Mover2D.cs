@@ -69,7 +69,7 @@ public class Mover2D : MonoBehaviour
 	}
 
 	// Stop coroutines and object motion
-	public void Stop ()
+	public virtual void Stop ()
 	{
 		StopAllCoroutines ();
 		rb2D.velocity = Vector2.zero;
