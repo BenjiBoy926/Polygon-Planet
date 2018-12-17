@@ -15,13 +15,13 @@ public class Bullet2D : Hazard2D
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable2D target = collision.GetComponent<IDamageable2D>();
+        base.OnTriggerEnter2D(collision);
 
-        if (target != null)
+        // If an object was recently damaged by the on trigger enter...
+        if (recentlyDamaged != null)
         {
-            target.TakeDamage(_info, _type);
+            //...set active depending on if bullet pierces multiple damageables
             gameObject.SetActive(piercing);
-            Debug.Log(gameObject.name + " deals its damage to " + collision.gameObject.name);
         }
     }
 }

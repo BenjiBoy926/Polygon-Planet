@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114393270963629602}
   - component: {fileID: 50048597196232170}
   - component: {fileID: 58401074372040790}
-  - component: {fileID: 114667033984937432}
+  - component: {fileID: 114308670773457458}
   m_Layer: 9
   m_Name: Player small bullet
   m_TagString: Untagged
@@ -79,6 +79,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
+--- !u!114 &114308670773457458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308790301459356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e16b07c262533846bd47db45d39fb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _info:
+    _strength: 1
+    _hitBox: {fileID: 58401074372040790}
+  piercing: 0
+  rb2D: {fileID: 50048597196232170}
+  autoAimRadiusTag: AutoAimRadius
 --- !u!114 &114393270963629602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,22 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 50048597196232170}
---- !u!114 &114667033984937432
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308790301459356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f872b7c97a37e2848811d07c4b5acfe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 0
-  _info:
-    _strength: 1
-    _hitBox: {fileID: 58401074372040790}
-  piercing: 0
 --- !u!212 &212365882574081906
 SpriteRenderer:
   m_ObjectHideFlags: 1

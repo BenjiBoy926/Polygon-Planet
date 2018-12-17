@@ -15,17 +15,18 @@ public class Hazard2D : MonoBehaviour
     protected DamageType _type;
     [SerializeField]
     protected ProjectileInfo _info;
+    protected IDamageable2D recentlyDamaged; // Script recently damaged by the hazard
 
     public ProjectileInfo info { get { return _info; } }
     public DamageType type { get { return _type; } }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable2D target = collision.GetComponent<IDamageable2D>();
+        recentlyDamaged = collision.GetComponent<IDamageable2D>();
 
-        if (target != null)
+        if (recentlyDamaged != null)
         {
-            target.TakeDamage(_info, _type);
+            recentlyDamaged.TakeDamage(_info, _type);
         }
     }
 }

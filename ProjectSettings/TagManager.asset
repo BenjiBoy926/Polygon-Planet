@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AutoAimRadius
   layers:
   - Default
   - TransparentFX
@@ -15,10 +16,10 @@ TagManager:
   - 
   - PlayerBody
   - PlayerHazard
+  - PlayerAutoAimRadius
   - EnemyBody
   - EnemyHazard
-  - 
-  - 
+  - EnemyAutoAimRadius
   - 
   - 
   - 

@@ -14,7 +14,7 @@ using System.Collections;
 public class PolyPlanetPlayer : MonoBehaviour
 {
     [SerializeField]
-    private FreeMoveByInput2D mover;
+    private MoveByInput2D mover;
     [SerializeField]
     private EmitByMouseInput2D rapidFireGun;
     [SerializeField]
@@ -56,6 +56,7 @@ public class PolyPlanetPlayer : MonoBehaviour
     private void OnChargeGunReady()
     {
         rapidFireGun.emitted.Lock(true);
+        Debug.Log("Charge gun ready!");
     }
     // When charge shot is fired, blowback away from the aim
     // Activate state on the rapid fire gun to prevent it shooting simultaneously
