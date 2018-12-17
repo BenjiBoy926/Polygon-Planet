@@ -8,10 +8,10 @@ using UnityEngine;
  * Keeps track of time.  In this project, it pauses and resumes the game
  * ----------------
  */ 
-public class Timekeeper : MonoBehaviour
+public static class Timekeeper
 {
-	private static bool paused = false;	// True if the game is currently paused
-	public static bool Paused { get { return paused; } }
+	private static bool _paused = false;	// True if the game is currently paused
+	public static bool paused { get { return _paused; } }
 
 	// Pause the game by setting the timescale to zero,
 	// or unpause by setting it back to normal
@@ -25,6 +25,6 @@ public class Timekeeper : MonoBehaviour
 		}
 
 		// Set local variable
-		paused = isPausing;
+		_paused = isPausing;
 	}
 }

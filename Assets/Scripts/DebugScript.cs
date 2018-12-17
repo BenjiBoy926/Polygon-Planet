@@ -14,13 +14,16 @@ public class DebugScript : MonoBehaviour
     IEnumerator TestStateThreading()
     {
         state.Activate(10f);
+        Debug.Log("Iterator starts at realtime " + Time.unscaledTime);
 
         yield return new WaitForSeconds(5f);
 
-        state.Deactivate();
+        Timekeeper.PauseGame(true);
+        Debug.Log("The game pauses at realtime " + Time.unscaledTime);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(10f);
 
-        state.Activate(10f);
+        Timekeeper.PauseGame(false);
+        Debug.Log("The game resumes at realtime " + Time.unscaledTime);
     }
 }

@@ -21,6 +21,7 @@ public delegate void StateActivatedEvent(float duration);
 public class State
 {
     public const float LOCKED_ACTIVATION_DURATION = -1f;    // This floating-point value is sent to the activated event if the state is locked into the activated state
+    private const int THREAD_SLEEP_INTERVAL = 10;   // Interval in milliseconds that the disable thread sleeps
 
     [SerializeField]
     private float _duration; // Default duration the state lasts when activated
@@ -89,6 +90,8 @@ public class State
     // Disable the state by setting the timer to an invalid number
     public void Deactivate()
     {
+        Debug.Log("State disabled");
+
         if(!isLocked)
         {
             timer = -1f;
@@ -170,7 +173,21 @@ public class State
     // Cause the current thread to sleep for the amount of time specified, then deactivate the state
     private void DeactivateThread(object time)
     {
-        Thread.Sleep((int)((float)time * 1000f));
+        float totalTime = (float)time;
+        float activeTime = 0f;
+
+        // Loop until the thread has been active for the total amount of time
+        while(activeTime < totalTime)
+        {
+            Thread.Sleep(THREAD_SLEEP_INTERVAL);
+            
+            // Accumulate active time only if the game is not currently paused
+            if(!Timekeeper.paused)
+            {
+                activeTime += THREAD_SLEEP_INTERVAL * 0.001f;
+            }
+        }
+
         Deactivate();
     }
 }
