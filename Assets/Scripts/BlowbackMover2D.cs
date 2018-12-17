@@ -11,15 +11,15 @@ using System.Collections;
 
 public class BlowbackMover2D : Mover2D
 {
-    const float blowBackTime = 0.2f;    // Time for which all blowback movers are blown back
-    private State blownBack = new State(blowBackTime);    // State is true if the mover was recently blownback
+    const float defaultBlowbackTime = 0.2f;    // Time for which all blowback movers are blown back
+    private State _blownBack = new State(defaultBlowbackTime);    // State is true if the mover was recently blownback
 
-    public State primaryState { get { return blownBack; } }
+    public State blownBack { get { return _blownBack; } }
 
     // Blowback for the constant time locally specified
     public void Blowback(Vector2 direction, float speed)
     {
-        Blowback(direction, speed, blowBackTime);
+        Blowback(direction, speed, defaultBlowbackTime);
     }
 
     // Move in the direction, speed, and for the time specifed
@@ -31,7 +31,7 @@ public class BlowbackMover2D : Mover2D
         MoveTowards(direction, speed);
 
         // Activate the blowback state and schedule the object to stop moving when finished
-        blownBack.Activate(blowBackTime);
+        _blownBack.Activate(defaultBlowbackTime);
         Invoke("Stop", time);
     }
 
@@ -39,28 +39,28 @@ public class BlowbackMover2D : Mover2D
     public override void Stop()
     {
         CancelInvoke();
-        blownBack.Deactivate();
+        _blownBack.Deactivate();
         base.Stop();
     }
 
     // Overrides of the base class methods prevent client code from moving this object if it is currently being blown back
     public override void MoveTowards(Vector2 direction, float speed)
     {
-        if(!blownBack)
+        if(!_blownBack)
         {
             base.MoveTowards(direction, speed);
         }
     }
     public override void MoveToPoint(Vector2 point, float time)
     {
-        if(!blownBack)
+        if(!_blownBack)
         {
             base.MoveToPoint(point, time);
         }
     }
     public override void MoveFromPoint(Vector2 origin, Vector2 direction, float speed)
     {
-        if(!blownBack)
+        if(!_blownBack)
         {
             base.MoveFromPoint(origin, direction, speed);
         }
@@ -69,17 +69,17 @@ public class BlowbackMover2D : Mover2D
     // "Force" methods allow client code the option to force the object to move regardless of whether or not it is being blown back right now
     public void ForceMoveTowards(Vector2 direction, float speed)
     {
-        blownBack.Deactivate();
+        _blownBack.Deactivate();
         base.MoveTowards(direction, speed);
     }
     public void ForceMoveToPoint(Vector2 point, float time)
     {
-        blownBack.Deactivate();
+        _blownBack.Deactivate();
         base.MoveToPoint(point, time);
     }
     public void ForceMoveFromPoint(Vector2 origin, Vector2 direction, float speed)
     {
-        blownBack.Deactivate();
+        _blownBack.Deactivate();
         base.MoveFromPoint(origin, direction, speed);
     }
 }

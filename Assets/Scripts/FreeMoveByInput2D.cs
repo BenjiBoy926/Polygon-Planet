@@ -12,18 +12,20 @@ using System.Collections;
 public class FreeMoveByInput2D : BlowbackMover2D
 {
     [SerializeField]
-    protected float speed;  // Speed at which the object will move
+    protected float _speed;  // Speed at which the object will move
     [SerializeField]
     private string horizontalButtonName;    // Name of the button in the input manager used to move sideways
     [SerializeField]
     private string verticalButtonName;  // Name of the button in the input manager used to move vertically
     private Vector2 moveVector = new Vector2(); // Vector used to move the object
 
+    public float speed { set { _speed = value; } }
+
     // Update is called once per frame
     void Update()
     {
         moveVector.x = Input.GetAxisRaw(horizontalButtonName);
         moveVector.y = Input.GetAxisRaw(verticalButtonName);
-        MoveTowards(moveVector, speed);
+        MoveTowards(moveVector, _speed);
     }
 }

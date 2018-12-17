@@ -23,16 +23,16 @@ public class Emitter2D : MonoBehaviour
     [SerializeField]
     private ObjectPool<Mover2D> pool;   // Emitter2D's object pool
     [SerializeField]
-    private float objectVelocity;   // Speed at which objects travel
+    private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
-    private State emitted;    // State returns true if the emitter emitted within #duration seconds of the current moment
+    private State _emitted;    // State returns true if the emitter emitted within #duration seconds of the current moment
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
     private EmittedEvent onEmittedEvent;    // Event called whenever the the emitter emits
 
-    public State primaryState { get { return emitted; } }
+    public State emitted { get { return _emitted; } }
 
-    private void Start()
+    protected virtual void Start()
     {
         pool = new ObjectPool<Mover2D>(emittedObjectPoolData, gameObject.name + "'s Pool");
         pool.SetPoolActive(false);
@@ -43,7 +43,7 @@ public class Emitter2D : MonoBehaviour
     // Emits only if there has not been a recent emission
     public void Emit (Vector2 aimVector)
     {
-        if(!emitted)
+        if(!_emitted)
         {
             ForceEmit(aimVector);
         }
@@ -62,10 +62,10 @@ public class Emitter2D : MonoBehaviour
         {
             rotatedOrigin = anchor.origin.RotatedVector(tiltAngle);
             rotatedDirection = anchor.direction.RotatedVector(tiltAngle);
-            pool.getReadyObject.MoveFromPoint(rotatedOrigin + (Vector2)transform.position, rotatedDirection, objectVelocity);
+            pool.getReadyObject.MoveFromPoint(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
         }
 
-        emitted.Activate();
+        _emitted.Activate();
 
         // Call emitted event
         if(onEmittedEvent != null)

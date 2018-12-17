@@ -28,8 +28,8 @@ public class AutoEmitter2D : Emitter2D
         float delay;    // Delay between each shot of the enemy's gun
 
         // Store min-max times for how long it takes the gun to fire
-        float minTime = primaryState.duration - fireRateDifference;
-        float maxTime = primaryState.duration + fireRateDifference;
+        float minTime = emitted.duration - fireRateDifference;
+        float maxTime = emitted.duration + fireRateDifference;
 
         while (true)
         {
