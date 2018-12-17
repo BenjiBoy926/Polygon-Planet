@@ -52,10 +52,9 @@ public class PolyPlanetPlayer : MonoBehaviour
         chargeGun.emitted.Activate();
         mover.speed = firingMoveSpeed;
     }
-    // Log a message when the gun is fully charged
+    // Lock the rapid fire gun when the charge gun is at full charge
     private void OnChargeGunReady()
     {
-        Debug.Log("Charge gun ready!");
         rapidFireGun.emitted.Lock(true);
     }
     // When charge shot is fired, blowback away from the aim
@@ -65,6 +64,5 @@ public class PolyPlanetPlayer : MonoBehaviour
         mover.Blowback(-shotAim, chargeGunRecoil);
         rapidFireGun.emitted.Unlock();
         rapidFireGun.emitted.Activate();
-        Debug.ClearDeveloperConsole();
     }
 }

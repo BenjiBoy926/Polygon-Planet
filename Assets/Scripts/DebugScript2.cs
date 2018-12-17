@@ -8,7 +8,7 @@ public class DebugScript2 : MonoBehaviour
 
     private void Start()
     {
-        emitter.AutoShoot(Right);
+        emitter.StartAutoEmitting(Right);
     }
 
     private Vector2 Right()

@@ -42,7 +42,6 @@ public class ShieldedHealth2D : InvincibleHealth2D
             base.TakeDamage(info, type);
         }
         damaged.Activate();
-        Debug.Log(gameObject.name + " health: " + health + "  " + gameObject.name + " shields: " + shield);
     }
 
     private void Update()
@@ -54,13 +53,11 @@ public class ShieldedHealth2D : InvincibleHealth2D
             if(fullHeal && health < maxHealth)
             {
                 health++;
-                Debug.Log(gameObject.name + " health: " + health + "  " + gameObject.name + " shields: " + shield);
             }
             // Otherwise, if shields aren't yet full, increase them
             else if (shield < maxShield)
             {
                 shield++;
-                Debug.Log(gameObject.name + " health: " + health + "  " + gameObject.name + " shields: " + shield);
             }
 
             // Set recently regenerated to active

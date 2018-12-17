@@ -33,7 +33,13 @@ public class HealthComplex2D : MonoBehaviour
         if(scheduledDamage.Count == 1)
         {
             TakeDamage(scheduledDamage[0].strength);
-            MuteCollider(scheduledDamage[0].hitBox);
+
+            // If the hazard persists, prevent it from hitting this object again until it is deactivated
+            if(scheduledDamage[0].hitBox.gameObject.activeInHierarchy)
+            {
+                MuteCollider(scheduledDamage[0].hitBox);
+            }
+
             scheduledDamage.RemoveAt(0);
         }
         else if(scheduledDamage.Count > 1)
@@ -74,7 +80,13 @@ public class HealthComplex2D : MonoBehaviour
         foreach (ProjectileInfo damage in scheduledDamage)
         {
             TakeDamage(damage.strength);
-            MuteCollider(damage.hitBox);
+
+            // If the projectile's hitbox is still enabled, make sure it
+            // is not allowed to go on and damage anything else on this complex
+            if(damage.hitBox.gameObject.activeInHierarchy)
+            {
+                MuteCollider(damage.hitBox);
+            }
         }
 
         // Clear all damage scheduled

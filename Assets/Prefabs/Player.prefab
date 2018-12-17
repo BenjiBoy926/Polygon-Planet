@@ -24,7 +24,8 @@ GameObject:
   - component: {fileID: 50493814499053754}
   - component: {fileID: 58769192320476478}
   - component: {fileID: 114749743716291358}
-  m_Layer: 0
+  - component: {fileID: 114472624488299512}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4639065809076250}
   - component: {fileID: 114209994166579524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Charge Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4959220887939834}
   - component: {fileID: 114017475213854282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rapid Fire Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +74,7 @@ GameObject:
   - component: {fileID: 4402598434879770}
   - component: {fileID: 20609601458271758}
   - component: {fileID: 81057088227596578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -274,6 +275,25 @@ MonoBehaviour:
   _speed: 0
   horizontalButtonName: Horizontal
   verticalButtonName: Vertical
+--- !u!114 &114472624488299512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052630230981314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847fcea455f303a4e9b267f97106b7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 14
+  _hitBox: {fileID: 58769192320476478}
+  maxShield: 7
+  fullHeal: 0
+  regenerated:
+    _duration: 0.5
+  damaged:
+    _duration: 2
 --- !u!114 &114749743716291358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,7 +347,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 42a99c1a8aa200c4b895854701bd531c, type: 3}
-  m_Color: {r: 0, g: 0.5019608, b: 1, a: 1}
+  m_Color: {r: 0.13363297, g: 0.49748304, b: 0.8584906, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

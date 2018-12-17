@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50356459677033120}
   - component: {fileID: 58385716215178116}
   - component: {fileID: 114254442908486498}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player big bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _info:
-    _strength: 60
+    _strength: 6
     _hitBox: {fileID: 58385716215178116}
   piercing: 0
 --- !u!114 &114377013506709070

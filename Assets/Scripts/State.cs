@@ -37,6 +37,10 @@ public class State
 
     public float duration { get { return _duration; } }
 
+    public State()
+    {
+        _duration = 1f;
+    }
     public State (float d)
     {
         _duration = d;

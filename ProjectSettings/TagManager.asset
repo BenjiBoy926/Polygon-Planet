@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerBody
+  - PlayerHazard
+  - EnemyBody
+  - EnemyHazard
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: EnemyWeakness
+    uniqueID: 525287981
+    locked: 0
+  - name: EnemyBody
+    uniqueID: 3944783911
     locked: 0

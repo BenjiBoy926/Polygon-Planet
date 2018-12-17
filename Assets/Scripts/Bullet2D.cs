@@ -21,6 +21,7 @@ public class Bullet2D : Hazard2D
         {
             target.TakeDamage(_info, _type);
             gameObject.SetActive(piercing);
+            Debug.Log(gameObject.name + " deals its damage to " + collision.gameObject.name);
         }
     }
 }

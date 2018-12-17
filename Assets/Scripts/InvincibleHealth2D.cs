@@ -10,26 +10,15 @@ using System.Collections;
 
 public class InvincibleHealth2D : SimpleHealth2D
 {
-    [SerializeField]
-    private State invincible;   // Specifies the duration for which the health object is invincible
+    private State _invincible = new State();   // Specifies the duration for which the health object is invincible
+    public State invincible { get { return _invincible; } }
 
     // Only take damage if not invincible
     public override void TakeDamage(ProjectileInfo info, DamageType type)
     {
-        if(!invincible)
+        if(!_invincible)
         {
             base.TakeDamage(info, type);
         }
-    }
-
-    // Activate invincibility for the preset amount of time
-    public void ActivateInvincibility()
-    {
-        invincible.Activate();
-    }
-    // Activate invincibility for a custom amount of time
-    public void ActivateInvincibility(float customTime)
-    {
-        invincible.Activate(customTime);
     }
 }

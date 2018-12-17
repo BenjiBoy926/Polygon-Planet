@@ -17,17 +17,36 @@ public class AutoEmitter2D : Emitter2D
 {
     [SerializeField]
     private float fireRateDifference;
+    private Director2D aimGenerator;    // Function used to get the aim vector of the auto-emitter
 
-    public void AutoShoot (Director2D coordinates)
+    public void StartAutoEmitting (Director2D coordinates)
     {
-        StartCoroutine("AutoShootIterator", coordinates);
+        aimGenerator = coordinates;
+        StopAllCoroutines();
+        StartCoroutine("AutoEmitIterator", coordinates);
+    }
+    public void ResumeAutoEmitting ()
+    {
+        if(aimGenerator != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine("AutoEmitIterator", aimGenerator);
+        }
+        else
+        {
+            Debug.LogError("Cannot resume auto emitter on " + gameObject.name + ": have you called StartAutoEmitting yet?");
+        }
+    }
+    public void StopAutoEmitting ()
+    {
+        StopAllCoroutines();
     }
 
-    IEnumerator AutoShootIterator (Director2D coordinates)
+    IEnumerator AutoEmitIterator (Director2D coordinates)
     {
-        float delay;    // Delay between each shot of the enemy's gun
+        float delay;    // Delay between each emission
 
-        // Store min-max times for how long it takes the gun to fire
+        // Store min-max times for how long it takes the emitter to emit
         float minTime = emitted.duration - fireRateDifference;
         float maxTime = emitted.duration + fireRateDifference;
 
