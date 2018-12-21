@@ -13,15 +13,30 @@ public static class Timekeeper
 	private static bool _paused = false;	// True if the game is currently paused
 	public static bool paused { get { return _paused; } }
 
+    // Member variable gives threads other than the main thread access to the current time scale
+    // as long as any modifications of the time scale go through this property
+    public static float timeScale
+    {
+        get
+        {
+            return timeScale;
+        }
+        set
+        {
+            timeScale = value;
+            Time.timeScale = value;
+        }
+    }
+
 	// Pause the game by setting the timescale to zero,
 	// or unpause by setting it back to normal
 	public static void PauseGame (bool isPausing)
 	{
 		// Set timescale to zero or one, depending on whether we're pausing
 		if (isPausing) {
-			Time.timeScale = 0f;
+			timeScale = 0f;
 		} else {
-			Time.timeScale = 1f;
+			timeScale = 1f;
 		}
 
 		// Set local variable

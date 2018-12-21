@@ -90,8 +90,6 @@ public class State
     // Disable the state by setting the timer to an invalid number
     public void Deactivate()
     {
-        Debug.Log("State disabled");
-
         if(!isLocked)
         {
             timer = -1f;
@@ -180,12 +178,7 @@ public class State
         while(activeTime < totalTime)
         {
             Thread.Sleep(THREAD_SLEEP_INTERVAL);
-            
-            // Accumulate active time only if the game is not currently paused
-            if(!Timekeeper.paused)
-            {
-                activeTime += THREAD_SLEEP_INTERVAL * 0.001f;
-            }
+            activeTime += THREAD_SLEEP_INTERVAL * 0.001f * Timekeeper.timeScale;
         }
 
         Deactivate();
