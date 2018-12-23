@@ -11,28 +11,31 @@ using System.Collections;
 
 public class BlowbackMover2D : Mover2D
 {
-    const float defaultBlowbackTime = 0.2f;    // Time for which all blowback movers are blown back
-    private State _blownBack = new State(defaultBlowbackTime);    // State is true if the mover was recently blownback
+    const float DEFAULT_BLOWBACK_TIME = 0.2f;    // Time for which all blowback movers are blown back
+    private State _blownBack = new State(DEFAULT_BLOWBACK_TIME);    // State is true if the mover was recently blownback
+    private Vector2 fromPointToHere = new Vector2();    // Points from the point of blowback to the position of this mover
 
     public State blownBack { get { return _blownBack; } }
 
-    // Blowback for the constant time locally specified
-    public void Blowback(Vector2 direction, float speed)
-    {
-        Blowback(direction, speed, defaultBlowbackTime);
-    }
-
     // Move in the direction, speed, and for the time specifed
     // Additional functionality locks movement of the mover until blowback is finished
-    public void Blowback(Vector2 direction, float speed, float time)
+    public void Blowback(Vector2 direction, float speed, float time = DEFAULT_BLOWBACK_TIME)
     {
         // Disable the blownback state and move according to the move towards method
         Stop();
         MoveTowards(direction, speed);
 
         // Activate the blowback state and schedule the object to stop moving when finished
-        _blownBack.Activate(defaultBlowbackTime);
+        _blownBack.Activate(time);
+        CancelInvoke();
         Invoke("Stop", time);
+    }
+
+    // Blowback methods blowback the mover from the specified point in world space, rather than with the specific direction
+    public void BlowbackFromPoint(Vector2 point, float speed, float time = DEFAULT_BLOWBACK_TIME)
+    {
+        fromPointToHere = (Vector2)transform.position - point;
+        Blowback(fromPointToHere, speed, time);
     }
 
     // Stop being blown back, and stop movement

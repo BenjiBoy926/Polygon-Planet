@@ -4,13 +4,12 @@ using System.Collections.Generic;
 /*
  * CLASS AimAssistBullet2D
  * -----------------------
- * A type of bullet that assists aiming by using an algorithm
- * to nudge its trajectory towards the location of any auto-aim
- * radii that it is inside of
+ * Automatically adjusts the trajectory of the rigidbody given 
+ * to nudge a little bit closer to the optimal target in range
  * -----------------------
  */ 
 
-public class AimAssistBullet2D : Bullet2D
+public class AimAssist : MonoBehaviour
 {
     private const float ASSIST_STRENGTH = 1 / 16f;  // A number between 0 and 1, where zero means no assistance and one means perfect aim
     private const float MAX_VIABLE_TARGET = 90f;    // If the trajectory angle is greater than or equal to this number, the bullet will not auto-assist towards it
@@ -21,10 +20,8 @@ public class AimAssistBullet2D : Bullet2D
     [SerializeField]
     private string autoAimRadiusTag;    // Any object with a trigger that functions as an auto-aim radius is expected to be named with this tag
 
-    public override void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-
         // If the target is unset, and this collider is an auto aim trigger...
         if(collision.CompareTag(autoAimRadiusTag))
         {

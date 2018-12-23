@@ -11,7 +11,7 @@ using System.Collections;
 public class Bullet2D : Hazard2D
 {
     [SerializeField]
-    private bool piercing;  // True if the bullet can pierce through multiple damageable objects
+    protected bool piercing;  // True if the bullet can pierce through multiple damageable objects
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
