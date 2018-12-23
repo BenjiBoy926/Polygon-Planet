@@ -14,14 +14,15 @@ using UnityEngine;
 public class Mover2D : MonoBehaviour
 {
 	[SerializeField]
-	private Rigidbody2D rb2D;
+	private Rigidbody2D _rb2D;
+    public Rigidbody2D rb2D { get { return _rb2D; } }
 
 	// Set the velocity of the object in the direction specified with the speed specified
 	public virtual void MoveTowards (Vector2 direction, float speed)
 	{
 		Vector2 velocity;
 		velocity = direction.ScaledVector (speed);
-		rb2D.velocity = velocity;
+		_rb2D.velocity = velocity;
 	}
 
     // Put the object at a position and set it off in a direction with a particular speed
@@ -72,7 +73,7 @@ public class Mover2D : MonoBehaviour
 	public virtual void Stop ()
 	{
 		StopAllCoroutines ();
-		rb2D.velocity = Vector2.zero;
+		_rb2D.velocity = Vector2.zero;
 	}
 }
 
