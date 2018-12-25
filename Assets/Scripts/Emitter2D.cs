@@ -59,7 +59,7 @@ public class Emitter2D : MonoBehaviour
         {
             rotatedOrigin = anchor.origin.RotatedVector(tiltAngle);
             rotatedDirection = anchor.direction.RotatedVector(tiltAngle);
-            pool.getReadyObject.MoveFromPoint(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
+            pool.getOne.MoveFromPoint(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
         }
 
         _emitted.Activate();

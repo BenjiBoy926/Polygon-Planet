@@ -17,10 +17,10 @@ using UnityEngine;
  * -------------------
  */ 
 
-[System.Serializable]
 public class ObjectPool<T> where T : Component
 {
     private List<T> pool = new List<T>();   // List of components attached to game objects intantiated
+    private int index = 0;  // Internal index used to get the next available object in the pool
 
     // Constructor instances multiple clones of the given prefab and stores components from each
     public ObjectPool (PoolData data, string parentName = "Object Pool")
@@ -58,23 +58,15 @@ public class ObjectPool<T> where T : Component
         } // END foreach
     } // END method
 
-    // Finds and returns an object that is ready to be used
-    // If none are available, give the first in the pool and log a warning to the console
-    public T getReadyObject
+    // Quick property is efficient but won't check any conditions about the object returned
+    public T getOne
     {
         get
         {
-            T readyObject = pool.Find(ObjectInactive);
-
-            if (readyObject != null)
-            {
-                return readyObject;
-            }
-            else
-            {
-                Debug.LogWarning("No ready objects found in the object pool");
-                return pool[0];
-            }
+            // Update current index
+            ++index;
+            index %= pool.Count;
+            return pool[index];
         }
     }
 
@@ -85,11 +77,5 @@ public class ObjectPool<T> where T : Component
         {
             component.gameObject.SetActive(active);
         }
-    }
-
-    // Return true if the component's game object is inactive in the heirarchy
-    private bool ObjectInactive (T item)
-    {
-        return !(item.gameObject.activeInHierarchy);
     }
 }
