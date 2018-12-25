@@ -1,9 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Defines a delegate type for functions that require no parameters to generate an x-y coordinate
-public delegate Vector2 Director2D();
 
 /*
  * CLASS AutoEmitter2D : Emitter2D
@@ -17,20 +15,22 @@ public class AutoEmitter2D : Emitter2D
 {
     [SerializeField]
     private float fireRateDifference;
-    private Director2D aimGenerator;    // Function used to get the aim vector of the auto-emitter
+    private WaitUntil autoEmitWait;
+    private Func<Vector2> aimGenerator;    // Function used to get the aim vector of the auto-emitter
 
-    public void StartAutoEmitting (Director2D coordinates)
+    public void StartAutoEmitting (Func<Vector2> coordinates)
     {
         aimGenerator = coordinates;
+        autoEmitWait = new WaitUntil(ReadyEmitNext);
         StopAllCoroutines();
-        StartCoroutine("AutoEmitIterator", coordinates);
+        StartCoroutine("AutoEmitIterator");
     }
     public void ResumeAutoEmitting ()
     {
         if(aimGenerator != null)
         {
             StopAllCoroutines();
-            StartCoroutine("AutoEmitIterator", aimGenerator);
+            StartCoroutine("AutoEmitIterator");
         }
         else
         {
@@ -42,7 +42,7 @@ public class AutoEmitter2D : Emitter2D
         StopAllCoroutines();
     }
 
-    IEnumerator AutoEmitIterator (Director2D coordinates)
+    IEnumerator AutoEmitIterator ()
     {
         float delay;    // Delay between each emission
 
@@ -52,9 +52,15 @@ public class AutoEmitter2D : Emitter2D
 
         while (true)
         {
-            delay = Random.Range(minTime, maxTime);
-            yield return new WaitForSeconds(delay);
-            ForceEmit(coordinates());
+            delay = UnityEngine.Random.Range(minTime, maxTime);
+            emitted.Activate(delay);
+            yield return autoEmitWait;
+            ForceEmit(aimGenerator());
         }
+    }
+
+    private bool ReadyEmitNext()
+    {
+        return !emitted;
     }
 }

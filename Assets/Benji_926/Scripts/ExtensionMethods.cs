@@ -70,4 +70,13 @@ public static class ExtensionMethods
 		trans.rotation = Quaternion.Euler (Vector3.zero);
 		trans.localScale = Vector3.one;
 	}
+
+    // Given a direction and the forward-facing vector of the transform,
+    // rotate the transform to look at the direction specified
+    // Function assumes 2D playing field is in the x-y plane
+    public static void LookInDirection2D(this Transform trans, Vector2 direction, Vector2 forward)
+    {
+        float angle = Vector2.SignedAngle(forward, direction);
+        trans.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
 }

@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Delegate returns void and takes as an argument the duration for which the state is set
-public delegate void StateActivatedEvent(float duration);
-
 /*
  * CLASS State
  * -----------
@@ -32,7 +29,7 @@ public class State
 
     // Event handling: class has an activated and deactivated event
     // Uses threading to call the deactivate event
-    private StateActivatedEvent onStateActivated;   // Multicast function pointer is called whenever the state activates
+    private UnityAction<float> onStateActivated;   // Multicast function pointer is called whenever the state activates
     private UnityAction onStateDeactivated; // Multicast funciton pointer is called as soon as the state is deactivated
     private Thread deactivateThread;    // Thread used to execute the disable method as soon as the state deactivates
 
@@ -137,11 +134,11 @@ public class State
     }
 
     // Add/remove the method specified to the activation event
-    public void AddActivatedEvent(StateActivatedEvent method)
+    public void AddActivatedEvent(UnityAction<float> method)
     {
         onStateActivated += method;
     }
-    public void RemoveActivatedEvent(StateActivatedEvent method)
+    public void RemoveActivatedEvent(UnityAction<float> method)
     {
         onStateActivated -= method;
     }

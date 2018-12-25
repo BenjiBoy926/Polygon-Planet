@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Public delegate type returns void and takes a v2 as a parameter
-public delegate void EmittedEvent(Vector2 direction);
-
 /*
  * CLASS Emitter2D : MonoBehaviour
  * -------------------------------
@@ -28,7 +25,7 @@ public class Emitter2D : MonoBehaviour
     private State _emitted;    // State returns true if the emitter emitted within #duration seconds of the current moment
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
-    private EmittedEvent onEmittedEvent;    // Event called whenever the the emitter emits
+    private UnityAction<Vector2> onEmittedEvent;    // Event called whenever the the emitter emits
 
     public State emitted { get { return _emitted; } }
 
@@ -75,11 +72,11 @@ public class Emitter2D : MonoBehaviour
     }
 
     // Add or remove an event from the emitted event
-    public void AddEmittedEvent(EmittedEvent method)
+    public void AddEmittedEvent(UnityAction<Vector2> method)
     {
         onEmittedEvent += method;
     }
-    public void RemoveEmittedEvent(EmittedEvent method)
+    public void RemoveEmittedEvent(UnityAction<Vector2> method)
     {
         onEmittedEvent -= method;
     }
