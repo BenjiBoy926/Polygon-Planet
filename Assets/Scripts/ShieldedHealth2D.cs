@@ -28,7 +28,7 @@ public class ShieldedHealth2D : InvincibleHealth2D
     }
 
     // If shields are up, deplete them. Otherwise, take direct damage to health
-    public override void TakeDamage(ProjectileInfo info, DamageType type)
+    public override void TakeDamage(DamageInfo info, DamageType type)
     {
         if (shield > 0)
         {

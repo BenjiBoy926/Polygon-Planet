@@ -298,7 +298,7 @@ MonoBehaviour:
   emittedObjectPoolData:
     _prefab: {fileID: 1535318268074498, guid: f0249c8474e1fb044862dbd3c5f7b243, type: 2}
     _instances: 2
-  _objectVelocity: 10
+  _objectVelocity: 5
   _emitted:
     _duration: 2
   objectAnchors:

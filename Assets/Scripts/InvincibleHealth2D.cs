@@ -14,7 +14,7 @@ public class InvincibleHealth2D : SimpleHealth2D
     public State invincible { get { return _invincible; } }
 
     // Only take damage if not invincible
-    public override void TakeDamage(ProjectileInfo info, DamageType type)
+    public override void TakeDamage(DamageInfo info, DamageType type)
     {
         if(!_invincible)
         {

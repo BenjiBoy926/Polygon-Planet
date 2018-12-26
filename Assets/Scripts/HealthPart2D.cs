@@ -27,13 +27,13 @@ public class HealthPart2D : MonoBehaviour, IDamageable2D
     }
 
     // Increases damage using local weakness constant, if damage is precise
-    public void TakeDamage (ProjectileInfo info, DamageType type)
+    public void TakeDamage (DamageInfo info, DamageType type)
     {
         int newDamage = info.strength;
         if (type == DamageType.Precision)
         {
             newDamage *= weakness;
         }
-        complex.ScheduleDamage(new ProjectileInfo(newDamage, info.hitBox));
+        complex.ScheduleDamage(new DamageInfo(newDamage, info.hitBox));
     }
 }

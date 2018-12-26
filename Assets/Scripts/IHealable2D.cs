@@ -3,5 +3,5 @@ using System.Collections;
 
 public interface IHealable2D
 {
-    void Heal(ProjectileInfo info);
+    void Heal(DamageInfo info);
 }

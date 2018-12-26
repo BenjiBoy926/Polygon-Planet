@@ -20,7 +20,7 @@ public class HealthComplex2D : MonoBehaviour
     private int maxHealth;
     private UnityAction deathEvent; // Multi-cast delegate to functions that call when health is depleted
     private List<IDamageable2D> damageables = new List<IDamageable2D>();    
-    private List<ProjectileInfo> scheduledDamage = new List<ProjectileInfo>();   // List of damage info scheduled to be taken by the health complex when the next frame is resolved
+    private List<DamageInfo> scheduledDamage = new List<DamageInfo>();   // List of damage info scheduled to be taken by the health complex when the next frame is resolved
 
     private void Start()
     {
@@ -58,7 +58,7 @@ public class HealthComplex2D : MonoBehaviour
     }
 
     // Add given damage info to the schedule
-    public void ScheduleDamage(ProjectileInfo info)
+    public void ScheduleDamage(DamageInfo info)
     {
         scheduledDamage.Add(info);
     }
@@ -77,7 +77,7 @@ public class HealthComplex2D : MonoBehaviour
         }
 
         // Once cleaned, take all the damage scheduled
-        foreach (ProjectileInfo damage in scheduledDamage)
+        foreach (DamageInfo damage in scheduledDamage)
         {
             TakeDamage(damage.strength);
 
@@ -97,9 +97,9 @@ public class HealthComplex2D : MonoBehaviour
     private void CleanSchedule (Collider2D search)
     {
         // Predicate returns true if local collider matches the one on the current damage info
-        Predicate<ProjectileInfo> MatchColliders = x => x.hitBox == search;
+        Predicate<DamageInfo> MatchColliders = x => x.hitBox == search;
         // Find all scheduled damage instances that have a reference to the same collider passed in as a parameter
-        List<ProjectileInfo> matches = scheduledDamage.FindAll(MatchColliders);
+        List<DamageInfo> matches = scheduledDamage.FindAll(MatchColliders);
 
         // Enter selection if multiple damages have the same collider
         // (i.e. if multiple damages were scheduled by the same hazardous object on multiple damageable parts)
@@ -110,7 +110,7 @@ public class HealthComplex2D : MonoBehaviour
             matches.RemoveAt(0);
 
             // Remove all but the highest damage info from scheduled damage
-            foreach(ProjectileInfo info in matches)
+            foreach(DamageInfo info in matches)
             {
                 scheduledDamage.Remove(info);
             }

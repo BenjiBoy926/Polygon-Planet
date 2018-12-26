@@ -11,7 +11,7 @@ using UnityEngine;
  */ 
 
 [Serializable]
-public class ProjectileInfo : IComparable<ProjectileInfo>
+public class DamageInfo : IComparable<DamageInfo>
 {
     [SerializeField]
     private int _strength;
@@ -21,14 +21,14 @@ public class ProjectileInfo : IComparable<ProjectileInfo>
     public int strength { get { return _strength; } }
     public Collider2D hitBox { get { return _hitBox; } }
 
-    public ProjectileInfo (int str, Collider2D col)
+    public DamageInfo (int str, Collider2D col)
     {
         _strength = str;
         _hitBox = col;
     }
 
     // Comparison method organizes info from most to least damaging
-    public int CompareTo (ProjectileInfo other)
+    public int CompareTo (DamageInfo other)
     {
         if (other == this)
         {

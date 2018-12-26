@@ -120,7 +120,9 @@ MonoBehaviour:
   _info:
     _strength: 1
     _hitBox: {fileID: 58401074372040790}
-  piercing: 0
+  maxPersistence: 1
+  projectileCancelImmune: 0
+  damageableCancelImmune: 0
 --- !u!212 &212365882574081906
 SpriteRenderer:
   m_ObjectHideFlags: 1

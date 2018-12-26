@@ -27,7 +27,7 @@ public class SimpleHealth2D : MonoBehaviour, IDamageable2D
     }
 
     // Deplete health by the strength of the damage info specified
-    public virtual void TakeDamage (ProjectileInfo info, DamageType type)
+    public virtual void TakeDamage (DamageInfo info, DamageType type)
     {
         health -= info.strength;
         if (health <= 0 && deathEvent != null)

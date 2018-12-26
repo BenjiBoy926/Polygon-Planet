@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 61528674061632766}
   - component: {fileID: 50738228064284008}
   - component: {fileID: 114692500771480926}
-  - component: {fileID: 114555525700516524}
   - component: {fileID: 114306607867790362}
+  - component: {fileID: 114132876451828812}
   m_Layer: 12
   m_Name: Enemy vertical wall shot
   m_TagString: Untagged
@@ -90,6 +90,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114132876451828812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883150535444874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382e476155c30c241a03fa73eb6471a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _info:
+    _strength: 1
+    _hitBox: {fileID: 61528674061632766}
 --- !u!114 &114306607867790362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,22 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blowbackStrength: 20
---- !u!114 &114555525700516524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883150535444874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f872b7c97a37e2848811d07c4b5acfe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 0
-  _info:
-    _strength: 1
-    _hitBox: {fileID: 61528674061632766}
-  piercing: 1
 --- !u!114 &114692500771480926
 MonoBehaviour:
   m_ObjectHideFlags: 1

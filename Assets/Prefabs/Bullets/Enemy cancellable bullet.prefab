@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58137053840818034}
   - component: {fileID: 114801104974862658}
   m_Layer: 12
-  m_Name: Enemy small bullet
+  m_Name: Enemy cancellable bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1965972268629976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -106,7 +106,9 @@ MonoBehaviour:
   _info:
     _strength: 1
     _hitBox: {fileID: 58137053840818034}
-  piercing: 0
+  maxPersistence: 1
+  projectileCancelImmune: 0
+  damageableCancelImmune: 0
 --- !u!212 &212649099745035352
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -143,7 +145,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 42a99c1a8aa200c4b895854701bd531c, type: 3}
-  m_Color: {r: 0.8301887, g: 0.491433, b: 0.17621933, a: 1}
+  m_Color: {r: 0.7264151, g: 0.20901564, b: 0.44973302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -14,10 +14,10 @@ public class Hazard2D : MonoBehaviour
     [SerializeField]
     protected DamageType _type;
     [SerializeField]
-    protected ProjectileInfo _info;
+    protected DamageInfo _info;
     protected IDamageable2D recentlyDamaged; // Script recently damaged by the hazard
 
-    public ProjectileInfo info { get { return _info; } }
+    public DamageInfo info { get { return _info; } }
     public DamageType type { get { return _type; } }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)

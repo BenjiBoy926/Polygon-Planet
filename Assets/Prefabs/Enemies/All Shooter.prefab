@@ -141,13 +141,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4439760875352000}
   - component: {fileID: 50337146444489374}
-  - component: {fileID: 66147108979399390}
   - component: {fileID: 114811659095296818}
   - component: {fileID: 114856657149034310}
   - component: {fileID: 114038726581020316}
   - component: {fileID: 114114479337010074}
   - component: {fileID: 114151590261485998}
-  m_Layer: 0
+  - component: {fileID: 66338611167775460}
+  - component: {fileID: 114686890527878970}
+  m_Layer: 11
   m_Name: All Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +995,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!66 &66147108979399390
+--- !u!66 &66338611167775460
 CompositeCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1193,6 +1194,20 @@ MonoBehaviour:
   complex: {fileID: 114811659095296818}
   _hitBox: {fileID: 61833060492809898}
   weakness: 4
+--- !u!114 &114686890527878970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465043801766708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complex: {fileID: 114811659095296818}
+  _hitBox: {fileID: 66338611167775460}
+  weakness: 1
 --- !u!114 &114715325033912468
 MonoBehaviour:
   m_ObjectHideFlags: 1
