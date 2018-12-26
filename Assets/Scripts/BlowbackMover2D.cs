@@ -9,7 +9,7 @@ using System.Collections;
  * ---------------------
  */ 
 
-public class BlowbackMover2D : Mover2D
+public class BlowbackMover2D : KinematicMover2D
 {
     const float DEFAULT_BLOWBACK_TIME = 0.2f;    // Time for which all blowback movers are blown back
     private State _blownBack = new State(DEFAULT_BLOWBACK_TIME);    // State is true if the mover was recently blownback
@@ -61,11 +61,11 @@ public class BlowbackMover2D : Mover2D
             base.MoveToPoint(point, time);
         }
     }
-    public override void MoveFromPoint(Vector2 origin, Vector2 direction, float speed)
+    public override void Launch(Vector2 origin, Vector2 direction, float speed)
     {
         if(!_blownBack)
         {
-            base.MoveFromPoint(origin, direction, speed);
+            base.Launch(origin, direction, speed);
         }
     }
 
@@ -83,6 +83,6 @@ public class BlowbackMover2D : Mover2D
     public void ForceMoveFromPoint(Vector2 origin, Vector2 direction, float speed)
     {
         _blownBack.Deactivate();
-        base.MoveFromPoint(origin, direction, speed);
+        base.Launch(origin, direction, speed);
     }
 }

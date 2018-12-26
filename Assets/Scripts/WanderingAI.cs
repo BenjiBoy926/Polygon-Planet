@@ -13,7 +13,7 @@ using System.Collections.Generic;
 public class WanderingAI : MonoBehaviour
 {
     [SerializeField]
-    private Mover2D agent;  // Script that moves the agent around
+    private KinematicMover2D agent;  // Script that moves the agent around
     [SerializeField]
     private float speed; // Speed the ai moves in
     [SerializeField]

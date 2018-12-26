@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * CLASS Mover2D : MonoBehaviour
- * -----------------------------
- * Enables an object with a kinematic 2D rigidbody to move within
+ * CLASS KinematicMover2D
+ * ----------------------
+ * Enables an object with a 2D rigidbody to move within
  * the x-y plane by setting its velocity
- * -----------------------------
- */ 
+ * ----------------------
+ */
 
-public class Mover2D : MonoBehaviour
+public class KinematicMover2D : MonoBehaviour
 {
 	[SerializeField]
 	private Rigidbody2D _rb2D;
@@ -26,7 +26,7 @@ public class Mover2D : MonoBehaviour
 	}
 
     // Put the object at a position and set it off in a direction with a particular speed
-    public virtual void MoveFromPoint(Vector2 origin, Vector2 direction, float speed)
+    public virtual void Launch(Vector2 origin, Vector2 direction, float speed)
     {
         gameObject.SetActive(true);
         transform.localPosition = new Vector3(origin.x, origin.y, transform.localPosition.z);
@@ -54,6 +54,7 @@ public class Mover2D : MonoBehaviour
 	private IEnumerator SmoothMove (Waypoint point)
 	{
 		Func<bool> IsSufficientlyClose;	// Delegate returns true when the object is sufficiently close to the target
+        WaitUntil waitUntil;    // Wait command used in the coroutine
 
 		// Set velocity towards the direction
 		MoveTowards (point.point - (Vector2)transform.localPosition, point.speed);
@@ -64,8 +65,9 @@ public class Mover2D : MonoBehaviour
 			return (point.point - (Vector2)transform.localPosition).sqrMagnitude < 0.001f;
 		};
 
-		// Wait till object is close to the point, then stop moving
-		yield return new WaitUntil (IsSufficientlyClose);
+        // Wait till object is close to the point, then stop moving
+        waitUntil = new WaitUntil(IsSufficientlyClose);
+		yield return waitUntil;
 		Stop ();
 	}
 

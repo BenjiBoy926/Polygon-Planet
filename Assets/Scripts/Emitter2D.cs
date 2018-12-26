@@ -18,7 +18,7 @@ public class Emitter2D : MonoBehaviour
     [SerializeField]
     private PoolData emittedObjectPoolData;
     [SerializeField]
-    private ObjectPool<Mover2D> pool;   // Emitter2D's object pool
+    private ObjectPool<KinematicMover2D> pool;   // Emitter2D's object pool
     [SerializeField]
     private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
@@ -31,7 +31,7 @@ public class Emitter2D : MonoBehaviour
 
     protected virtual void Start()
     {
-        pool = new ObjectPool<Mover2D>(emittedObjectPoolData, gameObject.name + "'s Pool");
+        pool = new ObjectPool<KinematicMover2D>(emittedObjectPoolData, gameObject.name + "'s Pool");
         pool.SetPoolActive(false);
     }
 
@@ -59,7 +59,7 @@ public class Emitter2D : MonoBehaviour
         {
             rotatedOrigin = anchor.origin.RotatedVector(tiltAngle);
             rotatedDirection = anchor.direction.RotatedVector(tiltAngle);
-            pool.getOne.MoveFromPoint(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
+            pool.getOne.Launch(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
         }
 
         _emitted.Activate();
