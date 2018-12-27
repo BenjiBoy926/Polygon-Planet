@@ -90,6 +90,9 @@ GameObject:
   - component: {fileID: 4402598434879770}
   - component: {fileID: 20609601458271758}
   - component: {fileID: 81057088227596578}
+  - component: {fileID: 114270936075244406}
+  - component: {fileID: 114413197101983646}
+  - component: {fileID: 114759811907151160}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -305,6 +308,18 @@ MonoBehaviour:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
   emitButtonName: Fire1
+--- !u!114 &114270936075244406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423658231465066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f4d78aa40be1644b04ab0784a73db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 114413197101983646}
 --- !u!114 &114351791894561636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +335,18 @@ MonoBehaviour:
   _speed: 10
   horizontalButtonName: Horizontal
   verticalButtonName: Vertical
+--- !u!114 &114413197101983646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423658231465066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4296bc722bf807142839d70deb2af62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trans: {fileID: 4402598434879770}
 --- !u!114 &114472624488299512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,6 +383,20 @@ MonoBehaviour:
   chargeGunRecoil: 20
   defaultMoveSpeed: 10
   firingMoveSpeed: 7
+--- !u!114 &114759811907151160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423658231465066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393a8ecb7b174644e9144754467c3284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 114413197101983646}
+  point: {x: 0, y: 8}
+  time: 1
 --- !u!212 &212247376287285516
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,6 +9,6 @@ public class DebugScript : MonoBehaviour
 
     private void Start()
     {
-        shaker.Shake(time: 10f);
+        shaker.Shake(5f, 10f);
     }
 }

@@ -4,15 +4,14 @@ using System.Collections;
 public class DebugScript2 : MonoBehaviour
 {
     [SerializeField]
-    private AutoEmitter2D emitter;
+    private TransformMover mover;
+    [SerializeField]
+    private Vector2 point;
+    [SerializeField]
+    private float time;
 
     private void Start()
     {
-        emitter.StartAutoEmitting(Right);
-    }
-
-    private Vector2 Right()
-    {
-        return Vector2.right;
+        mover.MoveToPoint2D(point, time, Space.World);
     }
 }
