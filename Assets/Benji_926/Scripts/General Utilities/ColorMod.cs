@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // CLASS ColorMod
-// Enabled an image to smoothly transition between an
+// Enables an image to smoothly transition between an
 // "enabled" and "disabled" color
 public class ColorMod : MonoBehaviour
 {
