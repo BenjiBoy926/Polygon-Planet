@@ -9,9 +9,11 @@ public class DebugScript2 : MonoBehaviour
     private Vector2 point;
     [SerializeField]
     private float time;
+    [SerializeField]
+    private Space space;
 
     private void Start()
     {
-        mover.MoveToPoint2D(point, time, Space.World);
+        mover.MoveToPoint2D(point, time, space);
     }
 }

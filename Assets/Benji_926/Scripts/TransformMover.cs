@@ -13,51 +13,57 @@ using UnityEngine;
 public class TransformMover : MonoBehaviour
 {
     [SerializeField]
-    private Transform trans;
-    private Vector3 step;   // Vector that translates the transform each frame
-    private int totalSteps; // Total number of steps the transform will take to get to its destination
-    private int currentStep;    // Current step of that the transform is taking towards the destination
-    private Space spaceOfMove;  // Space that the point the mover moves towards is interpreted in
-    private bool isMoving;  // True if the mover is still moving to a point
+    private new Transform transform;
+    private Vector3 toTarget;   // Vector with its tip at the target and its tail at the starting position
+    private Vector3 stepVector; // Vector that translates the transform each frame
+    private bool isMoving;  // True if the transform is currently moving
+
+    private float totalDistance;    // Total distance from current to target position
+    private float distanceLeft; // Distance remaining for the transform to move
+    private float inverseTime;  // INverse of the time it takes for the transform to move to its position
+
+    private float currentStepDistance;  // Distance that the current step will take the transform component
+    private Space currentMoveSpace; // Space that the current motion is being processed in
 
     private void Update()
     {
         if(isMoving)
         {
-            // Translate the transform out by one step
-            trans.Translate(step, spaceOfMove);
+            // Calculate the current step distance, but make sure it does not exceed the distance left to travel
+            currentStepDistance = totalDistance * Time.deltaTime * inverseTime;
+            currentStepDistance = Mathf.Clamp(currentStepDistance, 0, distanceLeft);
 
-            // Update current step. Keep moving if there are more steps to take
-            ++currentStep;
-            isMoving = currentStep <= totalSteps;
+            // Get the step vector and translate the transform with it
+            stepVector = toTarget.ScaledVector(currentStepDistance);
+            transform.Translate(stepVector, currentMoveSpace);
+
+            // Decrease distance left by current step distance
+            distanceLeft -= currentStepDistance;
+            isMoving = distanceLeft > float.Epsilon;
         }
     }
 
     // Prepare the mover to move slightly each frame in the Update method
     public void MoveToPoint2D(Vector2 point, float time, Space space = Space.Self)
     {
-        Vector2 toTarget;   // Vector with its tip at the target and its tail at this object's position
-        float stepMagnitude;    // The magnitude of one step is the magnitude of the whole path divided by the number of frames it'll take to get there
-
         // Calculate to target with local or global transform position
         if (space == Space.Self)
         {
-            toTarget = point - (Vector2)trans.localPosition;
+            toTarget = new Vector3(point.x, point.y, transform.localPosition.z) - transform.localPosition;
         }
         else
         {
-            toTarget = point - (Vector2)trans.position;
+            toTarget = new Vector3(point.x, point.y, transform.position.z) - transform.position;
         }
 
-        // Calculate local variables and get the step vector that moves the transform
-        totalSteps = Mathf.RoundToInt(time / Time.deltaTime);
-        totalSteps = Mathf.Clamp(totalSteps, 1, 1000);
-        stepMagnitude = toTarget.magnitude / totalSteps;
-        step = toTarget.ScaledVector(stepMagnitude);
-
+        // Set local variables to prepare the movement
         isMoving = true;
-        spaceOfMove = space;
-        currentStep = 1;
+
+        totalDistance = toTarget.magnitude;
+        distanceLeft = totalDistance;
+        inverseTime = 1f / time;
+
+        currentMoveSpace = space;        
     }
 
     // Stop any current motion

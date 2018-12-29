@@ -8,12 +8,8 @@ public static class ExtensionMethods
 	// as baseVector but with the specified magnitude
 	public static Vector2 ScaledVector (this Vector2 baseVector, float magnitude)
 	{
-		float newX;	// X-component of vector to be returned
-		float newY;	// Y-component of vector to be returned
-
-		// Start by setting components to return to zero
-		newX = 0;
-		newY = 0;
+		float newX, newY;	// X/Y-component of vector to be returned
+        newX = newY = 0;    // Start by setting components to zero
 
 		// Check if base vector is negligibly small to prevent divide by zero error
 		if (baseVector.sqrMagnitude > Mathf.Epsilon) {
@@ -21,12 +17,33 @@ public static class ExtensionMethods
 			float inverseBaseMagnitude = 1f / baseVector.magnitude;
 			// Calculate the components to be returned using ratio of corresponding parts
 			// (given vector and desired vector form similar triangles, remember?)
-			newX = (magnitude * baseVector.x) * inverseBaseMagnitude;
-			newY = (magnitude * baseVector.y) * inverseBaseMagnitude;
+			newX = magnitude * baseVector.x * inverseBaseMagnitude;
+			newY = magnitude * baseVector.y * inverseBaseMagnitude;
 		} // END if
 
-		return new Vector2 (newX, newY);
+		return new Vector2(newX, newY);
 	} // END method
+
+    public static Vector3 ScaledVector (this Vector3 baseVector, float magnitude)
+    {
+        // Declare x/y/z of new vector and set them to zero
+        float newX, newY, newZ;
+        newX = newY = newZ = 0;
+
+        // Check to make sure base vector is not too small - prevent divide by zero
+        if (baseVector.sqrMagnitude > Mathf.Epsilon)
+        {
+            // Store invers of magnitude for efficiency
+            float inverseBaseMagnitude = 1f / baseVector.magnitude;
+
+            // Calculate components using ratio of corresponding parts
+            newX = magnitude * baseVector.x * inverseBaseMagnitude;
+            newY = magnitude * baseVector.y * inverseBaseMagnitude;
+            newZ = magnitude * baseVector.z * inverseBaseMagnitude;
+        }
+
+        return new Vector3(newX, newY, newZ);
+    }
 
     // Return a version of the vector passed in, rotated theta DEGREES counter-clockwise
     public static Vector2 RotatedVector (this Vector2 v, float theta)
