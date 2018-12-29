@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -8,16 +7,16 @@ using UnityEngine;
  * Keeps track of time.  In this project, it pauses and resumes the game
  * ----------------
  */ 
-public static class Timekeeper
+public class Timekeeper : MonoSingleton<Timekeeper>
 {
-	private static bool _paused = false;	// True if the game is currently paused
-	public static bool paused { get { return _paused; } }
+	private bool _paused = false;	// True if the game is currently paused
+	public bool paused { get { return _paused; } }
 
-    private static float _timeScale;
+    private float _timeScale;
 
     // Member variable gives threads other than the main thread access to the current time scale
     // as long as any modifications of the time scale go through this property
-    public static float timeScale
+    public float timeScale
     {
         get
         {
@@ -30,9 +29,17 @@ public static class Timekeeper
         }
     }
 
+    // Restores the normal timescale
+    // Additionally stops any coroutines or invokes
+    public void RestoreNormalTimescale()
+    {
+        StopAllCoroutines();
+        timeScale = 1f;
+    }
+
     // Pause the game by setting the timescale to zero,
     // or unpause by setting it back to normal
-    public static void PauseGame (bool isPausing)
+    public void PauseGame (bool isPausing)
 	{
 		// Set timescale to zero or one, depending on whether we're pausing
 		if (isPausing) {
@@ -44,4 +51,19 @@ public static class Timekeeper
 		// Set local variable
 		_paused = isPausing;
 	}
+
+    // Causes the game to run at the given timescale for the given amount of time in realtime
+    public void ScaledMoment(float realtime, float newScale)
+    {
+        timeScale = newScale;
+        StopAllCoroutines();
+        StartCoroutine("RestoreTimescaleAfterRealtime", realtime);
+    }
+
+    // Waits the given time in realtime, then restores the normal timescale
+    private IEnumerator RestoreTimescaleAfterRealtime(float realtime)
+    {
+        yield return new WaitForSecondsRealtime(realtime);
+        RestoreNormalTimescale();
+    }
 }

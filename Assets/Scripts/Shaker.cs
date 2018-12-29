@@ -11,22 +11,35 @@ using System.Collections;
 
 public class Shaker : MonoBehaviour
 {
-    private const float DEFAULT_SHAKE_MAGNITUDE = 1f;
-    private const float DEFAULT_SHAKE_TIME = 1f;
-    private const float SHAKE_INTERVAL = 0.1f; // Seconds between each position change when the object is shaking
-
     [SerializeField]
     private TransformMover mover;   // Used to move the object that will shake around
+
+    // Default parameters used if the calling method does not want to specify
+    [SerializeField]
+    private float defaultShakeTime;
+    [SerializeField]
+    private float defaultShakeMagnitude;
+    [SerializeField]
+    private float defaultShakeInterval;
+
     private float shakeTime;    // Time for which the object will shake
     private float shakeMagnitude;   // Distance of the shaking of the object
+    private float shakeInterval;    // Interval between shakes - smaller intervals makes mor violent shakes
+
     private Vector2 shakePos;   // Local position the object will be moved to when shaking
-    private WaitForSeconds shakeWait = new WaitForSeconds(SHAKE_INTERVAL);   // Used to make the local coroutine wait the correct amount of time
+
+    // Use default parameters
+    public void Shake2D()
+    {
+        Shake2D(defaultShakeMagnitude, defaultShakeTime, defaultShakeInterval);
+    }
 
     // Cause the object to shake around the local position with the desired strength for the desired time
-    public void Shake(float magnitude = DEFAULT_SHAKE_MAGNITUDE, float time = DEFAULT_SHAKE_TIME)
+    public void Shake2D(float magnitude, float time, float interval)
     {
         shakeMagnitude = magnitude;
         shakeTime = time;
+        shakeInterval = interval;
 
         // Start the coroutine
         StopAllCoroutines();
@@ -35,6 +48,7 @@ public class Shaker : MonoBehaviour
 
     private IEnumerator ShakeIterator()
     {
+        WaitForSeconds shakeWait = new WaitForSeconds(shakeInterval);
         float activeTime = 0f;
 
         Random.InitState(0);
@@ -43,14 +57,15 @@ public class Shaker : MonoBehaviour
         {
             // Get a random position and scale it up by the magnitude
             shakePos = Random.insideUnitCircle * shakeMagnitude;
-            mover.MoveToPoint2D(shakePos, DEFAULT_SHAKE_TIME);
+            mover.MoveToPoint2D(shakePos, shakeTime);
 
             // Wait util this shake is finished
             yield return shakeWait;
-            activeTime += SHAKE_INTERVAL;
+            activeTime += shakeInterval;
         }
 
         // Reset the local position of the object after shaking it around
-        transform.localPosition = Vector3.zero;
+        mover.Stop();
+        transform.localPosition = new Vector3(0, 0, transform.localPosition.z);
     }
 }

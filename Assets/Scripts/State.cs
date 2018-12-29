@@ -175,7 +175,7 @@ public class State
         while(activeTime < totalTime)
         {
             Thread.Sleep(THREAD_SLEEP_INTERVAL);
-            activeTime += THREAD_SLEEP_INTERVAL * 0.001f * Timekeeper.timeScale;
+            activeTime += THREAD_SLEEP_INTERVAL * 0.001f * Timekeeper.instance.timeScale;
         }
 
         Deactivate();
