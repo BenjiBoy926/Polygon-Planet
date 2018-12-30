@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class IntConstraint
+public struct IntConstraint
 {
     public int min;
     public int max;

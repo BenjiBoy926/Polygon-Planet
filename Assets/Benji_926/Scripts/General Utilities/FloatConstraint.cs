@@ -10,7 +10,7 @@ using UnityEngine;
  */ 
 
 [System.Serializable]
-public class FloatConstraint 
+public struct FloatConstraint 
 {
 	public float min;
 	public float max;
