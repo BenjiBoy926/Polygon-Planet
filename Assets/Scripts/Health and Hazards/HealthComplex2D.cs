@@ -13,7 +13,7 @@ using System;
  * -------------------------------------
  */ 
 
-public class HealthComplex2D : MonoBehaviour
+public class HealthComplex2D : MonoBehaviour, IDeathHandler
 {
     protected int health;   // Current health
     [SerializeField]
@@ -23,6 +23,11 @@ public class HealthComplex2D : MonoBehaviour
     private List<DamageInfo> scheduledDamage = new List<DamageInfo>();   // List of damage info scheduled to be taken by the health complex when the next frame is resolved
 
     private void Start()
+    {
+        health = maxHealth;
+    }
+    // Health complexes automatically reset health if they are manually re-enabled
+    private void OnEnable()
     {
         health = maxHealth;
     }
@@ -47,11 +52,23 @@ public class HealthComplex2D : MonoBehaviour
             ResolveDamage();
         }
     }
+
     // Deplete health. Invoke death event if health is depleted
     protected void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0 && deathEvent != null)
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    // Disable the object and call the death event
+    public void Die()
+    {
+        gameObject.SetActive(false);
+
+        if(deathEvent != null)
         {
             deathEvent();
         }
@@ -130,6 +147,10 @@ public class HealthComplex2D : MonoBehaviour
     public void AddDeathEvent (UnityAction action)
     {
         deathEvent += action;
+    }
+    public void RemoveDeathEvent(UnityAction action)
+    {
+        deathEvent -= action;
     }
     // Add given damageable to list
     public void RegisterDamageable (IDamageable2D register)

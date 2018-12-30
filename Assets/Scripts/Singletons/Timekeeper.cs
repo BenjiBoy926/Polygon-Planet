@@ -29,6 +29,11 @@ public class Timekeeper : MonoSingleton<Timekeeper>
         }
     }
 
+    private void Start()
+    {
+        timeScale = 1f;
+    }
+
     // Restores the normal timescale
     // Additionally stops any coroutines or invokes
     public void RestoreNormalTimescale()

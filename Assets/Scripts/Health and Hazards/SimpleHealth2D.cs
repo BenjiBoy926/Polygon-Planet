@@ -10,7 +10,7 @@ using System.Collections;
  * ------------------------------------
  */ 
 
-public class SimpleHealth2D : MonoBehaviour, IDamageable2D
+public class SimpleHealth2D : MonoBehaviour, IDamageable2D, IDeathHandler
 {
     protected int health; // Current health
     [SerializeField]
@@ -25,12 +25,26 @@ public class SimpleHealth2D : MonoBehaviour, IDamageable2D
     {
         health = maxHealth;
     }
+    protected virtual void OnEnable()
+    {
+        health = maxHealth;
+    }
 
     // Deplete health by the strength of the damage info specified
     public virtual void TakeDamage (DamageInfo info, DamageType type)
     {
         health -= info.strength;
-        if (health <= 0 && deathEvent != null)
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
+
+        if(deathEvent != null)
         {
             deathEvent();
         }
@@ -40,5 +54,9 @@ public class SimpleHealth2D : MonoBehaviour, IDamageable2D
     public void AddDeathEvent (UnityAction action)
     {
         deathEvent += action;
+    }
+    public void RemoveDeathEvent(UnityAction action)
+    {
+        deathEvent -= action;
     }
 }

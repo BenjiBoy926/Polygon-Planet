@@ -10,10 +10,18 @@ using UnityEngine;
  * ------------------------------
  */ 
 
-public class Boundary : MonoBehaviour 
+public class Boundary : MonoSingleton<Boundary> 
 {
-	// Disables any object exiting its trigger
-	private void OnTriggerExit2D (Collider2D other)
+    private Bounds _bounds;
+    public Bounds bounds { get { return _bounds; } }
+
+    private void Start()
+    {
+        _bounds = GetComponent<Collider2D>().bounds;
+    }
+
+    // Disables any object exiting its trigger
+    private void OnTriggerExit2D (Collider2D other)
 	{
         other.gameObject.SetActive(false);
 	} // END method

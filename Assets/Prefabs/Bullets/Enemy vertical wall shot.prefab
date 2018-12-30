@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212974960511120038}
   - component: {fileID: 61528674061632766}
   - component: {fileID: 50738228064284008}
-  - component: {fileID: 114692500771480926}
   - component: {fileID: 114306607867790362}
-  - component: {fileID: 114132876451828812}
+  - component: {fileID: 114466650181105646}
+  - component: {fileID: 114784556792292612}
   m_Layer: 12
   m_Name: Enemy vertical wall shot
   m_TagString: Untagged
@@ -90,21 +90,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114132876451828812
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883150535444874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382e476155c30c241a03fa73eb6471a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 0
-  _info:
-    _strength: 1
-    _hitBox: {fileID: 61528674061632766}
 --- !u!114 &114306607867790362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blowbackStrength: 20
---- !u!114 &114692500771480926
+--- !u!114 &114466650181105646
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,10 +110,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883150535444874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db9687c33767f040b61793de731742b, type: 3}
+  m_Script: {fileID: 11500000, guid: b2beadfad5f954f4db831d1346c9d54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50738228064284008}
+--- !u!114 &114784556792292612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883150535444874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a73eeb40fa86d14d87fcf7eb105dfbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _info:
+    _strength: 1
+    _hitBox: {fileID: 61528674061632766}
 --- !u!212 &212974960511120038
 SpriteRenderer:
   m_ObjectHideFlags: 1

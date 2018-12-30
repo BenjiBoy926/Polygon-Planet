@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4472173809942062}
-  - component: {fileID: 114995636147644802}
   - component: {fileID: 212133135615975816}
   - component: {fileID: 58070667141967072}
-  - component: {fileID: 114831988387849868}
+  - component: {fileID: 114723093365630002}
+  - component: {fileID: 114756665449053522}
   m_Layer: 9
   m_Name: Player charge shot explosion
   m_TagString: Untagged
@@ -58,7 +58,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
---- !u!114 &114831988387849868
+--- !u!114 &114723093365630002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,25 +66,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727765572833218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382e476155c30c241a03fa73eb6471a3, type: 3}
+  m_Script: {fileID: 11500000, guid: e2bf85e2feb7bde4b9c162fa6bfc17ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
+  blowbackStrength: 20
+--- !u!114 &114756665449053522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1727765572833218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a73eeb40fa86d14d87fcf7eb105dfbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
   _info:
     _strength: 2
     _hitBox: {fileID: 58070667141967072}
---- !u!114 &114995636147644802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1727765572833218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06daffdb8ac03bf48ac26b0fe720211d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blowbackStrength: 10
 --- !u!212 &212133135615975816
 SpriteRenderer:
   m_ObjectHideFlags: 1

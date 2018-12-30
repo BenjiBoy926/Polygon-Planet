@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4067150231415860}
   - component: {fileID: 212649099745035352}
-  - component: {fileID: 114586819803618058}
   - component: {fileID: 50763411664971730}
   - component: {fileID: 58137053840818034}
   - component: {fileID: 114801104974862658}
+  - component: {fileID: 114101308550417152}
   m_Layer: 12
   m_Name: Enemy cancellable bullet
   m_TagString: Untagged
@@ -79,7 +79,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
---- !u!114 &114586819803618058
+--- !u!114 &114101308550417152
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1965972268629976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db9687c33767f040b61793de731742b, type: 3}
+  m_Script: {fileID: 11500000, guid: b2beadfad5f954f4db831d1346c9d54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50763411664971730}

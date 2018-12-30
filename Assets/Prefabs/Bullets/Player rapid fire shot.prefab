@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4114905415882948}
   - component: {fileID: 212365882574081906}
-  - component: {fileID: 114393270963629602}
   - component: {fileID: 50048597196232170}
   - component: {fileID: 58401074372040790}
-  - component: {fileID: 114308670773457458}
   - component: {fileID: 114483119085332974}
+  - component: {fileID: 114742198564360810}
+  - component: {fileID: 114958938399812998}
   m_Layer: 9
   m_Name: Player rapid fire shot
   m_TagString: Untagged
@@ -80,31 +80,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
---- !u!114 &114308670773457458
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308790301459356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e16b07c262533846bd47db45d39fb47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb2D: {fileID: 50048597196232170}
-  autoAimRadiusTag: AutoAimRadius
---- !u!114 &114393270963629602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308790301459356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db9687c33767f040b61793de731742b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb2D: {fileID: 50048597196232170}
 --- !u!114 &114483119085332974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +98,31 @@ MonoBehaviour:
   maxPersistence: 1
   projectileCancelImmune: 0
   damageableCancelImmune: 0
+--- !u!114 &114742198564360810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308790301459356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2beadfad5f954f4db831d1346c9d54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 50048597196232170}
+--- !u!114 &114958938399812998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308790301459356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d905e45bd82fd4d88577c02b6b411c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2D: {fileID: 50048597196232170}
+  autoAimRadiusTag: AutoAimRadius
 --- !u!212 &212365882574081906
 SpriteRenderer:
   m_ObjectHideFlags: 1

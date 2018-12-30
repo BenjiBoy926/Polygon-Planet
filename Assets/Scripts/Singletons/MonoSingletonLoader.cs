@@ -13,8 +13,12 @@ using System.Collections;
 
 public class MonoSingletonLoader : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject boundaryObjectPrefab;  // Prefab of the object that creates the boundary of the scene
+
     private void Awake()
     {
         Timekeeper.CreateInstance(gameObject);
+        Boundary.CreateInstance(Instantiate(boundaryObjectPrefab));
     }
 }

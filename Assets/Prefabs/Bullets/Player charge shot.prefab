@@ -37,11 +37,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4565338305870850}
   - component: {fileID: 212893131523663932}
-  - component: {fileID: 114377013506709070}
   - component: {fileID: 50356459677033120}
   - component: {fileID: 58385716215178116}
-  - component: {fileID: 114148223007221542}
   - component: {fileID: 114362831467615816}
+  - component: {fileID: 114098103071817496}
+  - component: {fileID: 114227925188290738}
   m_Layer: 9
   m_Name: Player charge shot
   m_TagString: Untagged
@@ -126,7 +126,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
---- !u!114 &114148223007221542
+--- !u!114 &114098103071817496
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1535318268074498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e16b07c262533846bd47db45d39fb47, type: 3}
+  m_Script: {fileID: 11500000, guid: b2beadfad5f954f4db831d1346c9d54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 50356459677033120}
+--- !u!114 &114227925188290738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535318268074498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d905e45bd82fd4d88577c02b6b411c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 50356459677033120}
@@ -152,23 +164,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _info:
-    _strength: 10
+    _strength: 1
     _hitBox: {fileID: 58385716215178116}
   maxPersistence: 1
   projectileCancelImmune: 1
   damageableCancelImmune: 1
---- !u!114 &114377013506709070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535318268074498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db9687c33767f040b61793de731742b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb2D: {fileID: 50356459677033120}
 --- !u!114 &114518911702533720
 MonoBehaviour:
   m_ObjectHideFlags: 1

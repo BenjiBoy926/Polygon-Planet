@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4524041190420090}
   - component: {fileID: 212757044869923962}
   - component: {fileID: 61317030480112134}
-  - component: {fileID: 114495277203821290}
+  - component: {fileID: 114979819694205314}
   m_Layer: 11
   m_Name: Bottom Right Weakness
   m_TagString: Untagged
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4718090989411690}
   - component: {fileID: 212345503140055836}
   - component: {fileID: 61463029955362082}
-  - component: {fileID: 114427599818197236}
+  - component: {fileID: 114040377689483052}
   m_Layer: 11
   m_Name: Top Left Weakness
   m_TagString: Untagged
@@ -120,14 +120,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4831381659286772}
   - component: {fileID: 212558133689068640}
-  - component: {fileID: 114356847487398844}
-  - component: {fileID: 114414218970423718}
   - component: {fileID: 61251189946040276}
   - component: {fileID: 50053414092095140}
-  - component: {fileID: 114405497067276934}
   - component: {fileID: 114499329602381502}
-  - component: {fileID: 114205269351762788}
-  - component: {fileID: 114654012606841676}
+  - component: {fileID: 114578004933046424}
+  - component: {fileID: 114561677209390386}
+  - component: {fileID: 114263976845820632}
+  - component: {fileID: 114136739460161152}
+  - component: {fileID: 114827386778736358}
   m_Layer: 11
   m_Name: Diagonal Shooter
   m_TagString: Untagged
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 4113461109707278}
   - component: {fileID: 212211738936467638}
   - component: {fileID: 61669755326278432}
-  - component: {fileID: 114529941036523722}
+  - component: {fileID: 114239196476437248}
   m_Layer: 11
   m_Name: Bottom Left Weakness
   m_TagString: Untagged
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4094266113010680}
   - component: {fileID: 212772837161259512}
   - component: {fileID: 61431591043599662}
-  - component: {fileID: 114944212382239510}
+  - component: {fileID: 114788698524719126}
   m_Layer: 11
   m_Name: Top Right Weakness
   m_TagString: Untagged
@@ -501,73 +501,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114205269351762788
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746602901297474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10ca612ace5f87409060ff7ca1a774d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb2D: {fileID: 50053414092095140}
---- !u!114 &114356847487398844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746602901297474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0639fc90e2360429498fd4132e108f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emittedObjectPoolData:
-    _prefab: {fileID: 1965972268629976, guid: df8cd86aee956044bb6c2b01de24f8a6, type: 2}
-    _instances: 20
-  _objectVelocity: 3
-  _emitted:
-    _duration: 3
-  objectAnchors:
-  - origin: {x: 0, y: 0}
-    direction: {x: 1, y: 0}
-  - origin: {x: 0, y: 0}
-    direction: {x: -1, y: 0}
-  - origin: {x: 0, y: 0}
-    direction: {x: 0, y: 1}
-  - origin: {x: 0, y: 0}
-    direction: {x: 0, y: -1}
-  fireRateDifference: 2
-  aimVector: {x: 1, y: 1}
---- !u!114 &114405497067276934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746602901297474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a298d4ea91dc414e960936ba402b72b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
---- !u!114 &114414218970423718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746602901297474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  complex: {fileID: 114405497067276934}
-  _hitBox: {fileID: 61251189946040276}
-  weakness: 1
---- !u!114 &114427599818197236
+--- !u!114 &114040377689483052
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -575,26 +509,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043455442141682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  complex: {fileID: 114405497067276934}
+  complex: {fileID: 114578004933046424}
   _hitBox: {fileID: 61463029955362082}
   weakness: 4
---- !u!114 &114495277203821290
+--- !u!114 &114136739460161152
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1038620758389314}
+  m_GameObject: {fileID: 1746602901297474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  complex: {fileID: 114405497067276934}
-  _hitBox: {fileID: 61317030480112134}
+  complex: {fileID: 114578004933046424}
+  _hitBox: {fileID: 61251189946040276}
+  weakness: 1
+--- !u!114 &114239196476437248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756393229647528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complex: {fileID: 114578004933046424}
+  _hitBox: {fileID: 61669755326278432}
   weakness: 4
+--- !u!114 &114263976845820632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746602901297474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf94efbed667874f954850bfa61a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 50053414092095140}
 --- !u!114 &114499329602381502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -611,21 +571,7 @@ MonoBehaviour:
   - {fileID: 1043455442141682}
   - {fileID: 1756393229647528}
   - {fileID: 1038620758389314}
---- !u!114 &114529941036523722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1756393229647528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  complex: {fileID: 114405497067276934}
-  _hitBox: {fileID: 61669755326278432}
-  weakness: 4
---- !u!114 &114654012606841676
+--- !u!114 &114561677209390386
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -636,13 +582,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b738b5bf45b5cb54dbdaa3a9a0226002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 114205269351762788}
+  agent: {fileID: 114263976845820632}
   speed: 1
   directions: 0
   wanderTimes:
     min: 1
     max: 6
---- !u!114 &114944212382239510
+--- !u!114 &114578004933046424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746602901297474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28dbf936cde44c4f8e8a82d7f37171c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+--- !u!114 &114788698524719126
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -650,11 +608,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920251527914034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  complex: {fileID: 114405497067276934}
+  complex: {fileID: 114578004933046424}
   _hitBox: {fileID: 61431591043599662}
+  weakness: 4
+--- !u!114 &114827386778736358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746602901297474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b569bd2c228a241b8fc64b6236db3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emittedObjectPoolData:
+    _prefab: {fileID: 1965972268629976, guid: df8cd86aee956044bb6c2b01de24f8a6, type: 2}
+    _instances: 20
+  _objectVelocity: 3
+  _emitted:
+    _duration: 5
+  objectAnchors:
+  - origin: {x: 0, y: 0}
+    direction: {x: 1, y: 1}
+  - origin: {x: 0, y: 0}
+    direction: {x: 1, y: -1}
+  - origin: {x: 0, y: 0}
+    direction: {x: -1, y: 1}
+  - origin: {x: 0, y: 0}
+    direction: {x: -1, y: -1}
+  fireRateDifference: 4
+  aimVector: {x: 1, y: 0}
+--- !u!114 &114979819694205314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038620758389314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complex: {fileID: 114578004933046424}
+  _hitBox: {fileID: 61317030480112134}
   weakness: 4
 --- !u!212 &212211738936467638
 SpriteRenderer:

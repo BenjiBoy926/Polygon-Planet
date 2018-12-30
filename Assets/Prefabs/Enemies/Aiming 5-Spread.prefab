@@ -20,14 +20,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4010548952277810}
   - component: {fileID: 212415621759737958}
-  - component: {fileID: 114501680087960086}
   - component: {fileID: 61415744618902336}
   - component: {fileID: 50491917671872048}
-  - component: {fileID: 114793991920009630}
-  - component: {fileID: 114722308984203688}
   - component: {fileID: 114722794040513404}
   - component: {fileID: 114051968297441512}
   - component: {fileID: 114403468472861966}
+  - component: {fileID: 114776853830958916}
+  - component: {fileID: 114973724443954086}
+  - component: {fileID: 114774644297187622}
   m_Layer: 11
   m_Name: Aiming 5-Spread
   m_TagString: Untagged
@@ -60,8 +60,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4233370515696784}
   - component: {fileID: 212254566027554220}
-  - component: {fileID: 114680745725659110}
   - component: {fileID: 58854714551733570}
+  - component: {fileID: 114628111403192630}
   m_Layer: 11
   m_Name: Weak Spot
   m_TagString: Untagged
@@ -76,7 +76,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106880116995546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: -2, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4233370515696784}
@@ -206,13 +206,13 @@ MonoBehaviour:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
   - origin: {x: 0, y: 0}
-    direction: {x: 1, y: 0.7}
+    direction: {x: 1, y: 1.7}
   - origin: {x: 0, y: 0}
-    direction: {x: 1, y: 1.4}
+    direction: {x: 1.7, y: 1}
   - origin: {x: 0, y: 0}
-    direction: {x: 1, y: -0.7}
+    direction: {x: 1, y: -1.7}
   - origin: {x: 0, y: 0}
-    direction: {x: 1, y: -1.4}
+    direction: {x: 1.7, y: -1}
   fireRateDifference: 2
   targetTag: Player
 --- !u!114 &114403468472861966
@@ -228,21 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitter: {fileID: 114051968297441512}
   objectForward: {x: 0, y: 1}
---- !u!114 &114501680087960086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106880116995546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  complex: {fileID: 114793991920009630}
-  _hitBox: {fileID: 61415744618902336}
-  weakness: 1
---- !u!114 &114680745725659110
+--- !u!114 &114628111403192630
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,24 +236,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1461839866115510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf38a175fe3f094ebe3186a9c19b0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  complex: {fileID: 114793991920009630}
+  complex: {fileID: 114776853830958916}
   _hitBox: {fileID: 58854714551733570}
   weakness: 4
---- !u!114 &114722308984203688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106880116995546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10ca612ace5f87409060ff7ca1a774d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb2D: {fileID: 50491917671872048}
 --- !u!114 &114722794040513404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,13 +253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b738b5bf45b5cb54dbdaa3a9a0226002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 114722308984203688}
+  agent: {fileID: 114774644297187622}
   speed: 1
   directions: 0
   wanderTimes:
     min: 1
     max: 6
---- !u!114 &114793991920009630
+--- !u!114 &114774644297187622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,10 +267,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1106880116995546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a298d4ea91dc414e960936ba402b72b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bf94efbed667874f954850bfa61a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 50491917671872048}
+--- !u!114 &114776853830958916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106880116995546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28dbf936cde44c4f8e8a82d7f37171c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+--- !u!114 &114973724443954086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106880116995546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26adcbcd4cd2d1d4c8300fad1cca90f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complex: {fileID: 114776853830958916}
+  _hitBox: {fileID: 61415744618902336}
+  weakness: 1
 --- !u!212 &212254566027554220
 SpriteRenderer:
   m_ObjectHideFlags: 1
