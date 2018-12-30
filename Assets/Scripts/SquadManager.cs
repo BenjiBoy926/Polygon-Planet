@@ -29,21 +29,21 @@ public class SquadManager : MonoBehaviour
 
         foreach(SquadMember member in squad)
         {
-            memberPos = GenerateSquadMemberPosition(member);
-            Instantiate(member.prefab, memberPos, member.prefab.transform.rotation);
+            memberPos = GenerateSquadMemberPosition(member.positionType);
+            member.InstantiateSelf(memberPos);
         }
     }
 
-    private Vector3 GenerateSquadMemberPosition(SquadMember member)
+    private Vector3 GenerateSquadMemberPosition(PositionInstantiationType positionType)
     {
         Vector3 memberPos = new Vector3();
 
-        if (member.positionType == PositionInstantiationType.OnCeiling || 
-            member.positionType == PositionInstantiationType.OnFloor)
+        if (positionType == PositionInstantiationType.OnCeiling || 
+            positionType == PositionInstantiationType.OnFloor)
         {
             memberPos.x = Random.Range(boundingBox.min.x + SIDE_BUFF, boundingBox.max.x - SIDE_BUFF);
 
-            if(member.positionType == PositionInstantiationType.OnCeiling)
+            if(positionType == PositionInstantiationType.OnCeiling)
             {
                 memberPos.y = boundingBox.max.y - SIDE_BUFF;
             }
@@ -52,12 +52,12 @@ public class SquadManager : MonoBehaviour
                 memberPos.y = boundingBox.min.y + SIDE_BUFF;
             }
         }
-        else if (member.positionType == PositionInstantiationType.OnLeftWall || 
-            member.positionType == PositionInstantiationType.OnRightWall)
+        else if (positionType == PositionInstantiationType.OnLeftWall || 
+            positionType == PositionInstantiationType.OnRightWall)
         {
             memberPos.y = Random.Range(boundingBox.min.y + SIDE_BUFF, boundingBox.max.y - SIDE_BUFF);
 
-            if (member.positionType == PositionInstantiationType.OnLeftWall)
+            if (positionType == PositionInstantiationType.OnLeftWall)
             {
                 memberPos.x = boundingBox.min.x + SIDE_BUFF;
             }

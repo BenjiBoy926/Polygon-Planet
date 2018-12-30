@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4218169339852444, guid: 7ed6346d84b92734a8bfd8372803b6c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218169339852444, guid: 7ed6346d84b92734a8bfd8372803b6c0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20609601458271758, guid: 7ed6346d84b92734a8bfd8372803b6c0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed6346d84b92734a8bfd8372803b6c0, type: 2}
   m_IsPrefabAsset: 0
@@ -165,6 +170,7 @@ GameObject:
   - component: {fileID: 1553721266}
   - component: {fileID: 1553721265}
   - component: {fileID: 1553721267}
+  - component: {fileID: 1553721268}
   m_Layer: 0
   m_Name: Scene Loader
   m_TagString: Untagged
@@ -218,3 +224,21 @@ MonoBehaviour:
     _positionType: 1
   - _prefab: {fileID: 1463547813824066, guid: 497a7d460c8744c459e101f3e97b8622, type: 2}
     _positionType: 4
+--- !u!114 &1553721268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553721264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58692596527b8cd42b554eae720f4717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewCamera: {fileID: 20499685680458448, guid: c87c2636470cc4b408c0b57ca4f188c9,
+    type: 2}
+  previewTime: 3
+  inputButtons:
+  - Horizontal
+  - Vertical
+  - Fire1

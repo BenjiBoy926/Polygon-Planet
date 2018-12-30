@@ -17,6 +17,11 @@ public class SquadMember
 
     public GameObject prefab { get { return _prefab; } }
     public PositionInstantiationType positionType { get { return _positionType; } }
+
+    public void InstantiateSelf(Vector3 pos)
+    {
+        Object.Instantiate(_prefab, pos, _prefab.transform.rotation);
+    }
 }
 
 public enum PositionInstantiationType
