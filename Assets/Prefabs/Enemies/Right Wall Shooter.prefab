@@ -344,9 +344,9 @@ MonoBehaviour:
     _duration: 5
   objectAnchors:
   - origin: {x: -1, y: 0}
-    direction: {x: 1, y: 0}
+    direction: {x: -1, y: 0}
   fireRateDifference: 4
-  aimVector: {x: -1, y: 0}
+  aimVector: {x: 1, y: 0}
 --- !u!114 &114461031298616060
 MonoBehaviour:
   m_ObjectHideFlags: 1

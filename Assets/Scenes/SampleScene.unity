@@ -216,3 +216,5 @@ MonoBehaviour:
     _positionType: 2
   - _prefab: {fileID: 1210807102909816, guid: 158f1bae5e717a544b1f5d22e578879a, type: 2}
     _positionType: 1
+  - _prefab: {fileID: 1463547813824066, guid: 497a7d460c8744c459e101f3e97b8622, type: 2}
+    _positionType: 4
