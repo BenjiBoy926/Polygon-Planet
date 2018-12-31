@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 public class SquadManager : MonoBehaviour
 {
-    private const float SIDE_BUFF = 0.7f;   // When instantiating a squad member next to one side of the stage, this space is left between the member and the side
+    private const float SIDE_BUFF = 0.7f;   // This space is left between squad members and sides of the bounds
 
     [SerializeField]
     private string mainBoundaryTag; // Tag of the object with the main boundary on it

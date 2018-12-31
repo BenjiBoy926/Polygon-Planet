@@ -16,9 +16,7 @@ public class Previewer : MonoBehaviour
     {
         previewCamera = Instantiate(previewCamera);
         mainCamera = Camera.main;
-
-        StopAllCoroutines();
-        StartCoroutine("PreviewScene");
+        StartPreview();
     }
 
     public void StartPreview()

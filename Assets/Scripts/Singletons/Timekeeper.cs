@@ -6,7 +6,7 @@ using UnityEngine;
  * ----------------
  * Keeps track of time.  In this project, it pauses and resumes the game
  * ----------------
- */ 
+ */
 public class Timekeeper : MonoSingleton<Timekeeper>
 {
 	private bool _paused = false;	// True if the game is currently paused
@@ -38,7 +38,7 @@ public class Timekeeper : MonoSingleton<Timekeeper>
 
     private void Start()
     {
-        timeScale = 1f;
+        _timeScale = Time.timeScale;
     }
 
     // Restores the normal timescale

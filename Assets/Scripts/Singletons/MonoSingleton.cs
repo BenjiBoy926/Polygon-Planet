@@ -5,8 +5,11 @@ using System.Collections;
  * CLASS MonoSingleton
  * -------------------
  * A type of singleton class that inherits from monobehaviour
- * Because of the MonoBehavior inheritance, the class is limited
- */ 
+ * Classes inheriting from this class should have a function
+ * call this function with the [RuntimeInitializeOnLoadMethod]
+ * attribute applied to it
+ * -------------------
+ */
 
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
