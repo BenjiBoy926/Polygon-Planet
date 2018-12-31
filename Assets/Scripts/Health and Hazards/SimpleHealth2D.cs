@@ -10,7 +10,7 @@ using System.Collections;
  * ------------------------------------
  */ 
 
-public class SimpleHealth2D : MonoBehaviour, IDamageable2D, IDeathHandler
+public class SimpleHealth2D : MonoBehaviour, IDamageable2D, IDeathHandler, IHealable2D
 {
     protected int health; // Current health
     [SerializeField]
@@ -20,12 +20,9 @@ public class SimpleHealth2D : MonoBehaviour, IDamageable2D, IDeathHandler
     private Collider2D _hitBox; // Hit box on this health object
 
     public Collider2D hitBox { get { return _hitBox; } }
+    public bool isDead { get { return health <= 0; } }
 
     protected virtual void Start()
-    {
-        health = maxHealth;
-    }
-    protected virtual void OnEnable()
     {
         health = maxHealth;
     }
@@ -48,6 +45,12 @@ public class SimpleHealth2D : MonoBehaviour, IDamageable2D, IDeathHandler
         {
             deathEvent();
         }
+    }
+
+    public virtual void FullRestore()
+    {
+        health = maxHealth;
+        gameObject.SetActive(true);
     }
 
     // Add the specified function to the death event

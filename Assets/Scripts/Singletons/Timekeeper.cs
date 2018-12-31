@@ -29,6 +29,13 @@ public class Timekeeper : MonoSingleton<Timekeeper>
         }
     }
 
+    // Create an instance of the singleton as soon as the program starts running
+    [RuntimeInitializeOnLoadMethod]
+    private static void CreateInstance()
+    {
+        BaseCreateInstance();
+    }
+
     private void Start()
     {
         timeScale = 1f;

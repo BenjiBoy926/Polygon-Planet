@@ -10,7 +10,7 @@ using UnityEngine;
  * ------------------------------
  */ 
 
-public class Boundary : MonoSingleton<Boundary> 
+public class Boundary : MonoBehaviour 
 {
     private Bounds _bounds;
     public Bounds bounds { get { return _bounds; } }

@@ -8,22 +8,18 @@ using System.Collections;
  * Because of the MonoBehavior inheritance, the class is limited
  */ 
 
-public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
     public static T instance { get { return _instance; } }
 
-    public static void CreateInstance()
-    {
-        GameObject parentObj = new GameObject("MonoSingleton");
-        CreateInstance(parentObj);
-    }
-
-    public static void CreateInstance(GameObject parentObj)
+    protected static void BaseCreateInstance()
     {
         if (_instance == null)
         {
+            GameObject parentObj = new GameObject("MonoSingleton");
             _instance = parentObj.AddComponent<T>();
+            DontDestroyOnLoad(parentObj);
         }
     }
 }

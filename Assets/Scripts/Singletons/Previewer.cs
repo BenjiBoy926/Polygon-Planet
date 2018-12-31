@@ -21,13 +21,29 @@ public class Previewer : MonoBehaviour
         StartCoroutine("PreviewScene");
     }
 
-    private IEnumerator PreviewScene()
+    public void StartPreview()
     {
         // Set the preview camera
         mainCamera.enabled = false;
         previewCamera.enabled = true;
         Timekeeper.instance.PauseGame(true);
 
+        StopAllCoroutines();
+        StartCoroutine("PreviewScene");
+    }
+
+    public void StopPreview()
+    {
+        StopAllCoroutines();
+
+        // Unpause the game and enable the main camera
+        mainCamera.enabled = true;
+        previewCamera.enabled = false;
+        Timekeeper.instance.PauseGame(false);
+    }
+
+    private IEnumerator PreviewScene()
+    {
         yield return new WaitForSecondsRealtime(previewTime);
 
         // Probably bring up some kind of prompt that the Player is free to move now
@@ -35,10 +51,8 @@ public class Previewer : MonoBehaviour
 
         yield return new WaitUntil(InputButtonPressed);
 
-        // Unpause the game and enable the main camera
-        mainCamera.enabled = true;
-        previewCamera.enabled = false;
-        Timekeeper.instance.PauseGame(false);
+        // Stop the preview once an input button is pressed
+        StopPreview();
     }
 
     private bool InputButtonPressed()

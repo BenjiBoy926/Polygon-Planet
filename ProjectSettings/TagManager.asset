@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AutoAimRadius
   - PreviewCamera
+  - MainBoundary
   layers:
   - Default
   - TransparentFX

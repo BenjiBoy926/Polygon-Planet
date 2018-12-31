@@ -6,6 +6,9 @@ using System.Collections.Generic;
  * ------------------
  * A squad manager defines an aggregation of squad members 
  * that are automatically instantiated into the scene from the start
+ * The SquadManager has the additional ability to partially
+ * heal members of the squad and even adjust the difficulty 
+ * of the members in the squad
  * ------------------
  */ 
 
@@ -14,12 +17,19 @@ public class SquadManager : MonoBehaviour
     private const float SIDE_BUFF = 0.7f;   // When instantiating a squad member next to one side of the stage, this space is left between the member and the side
 
     [SerializeField]
-    private List<SquadMember> squad;    // The list of squad members to instantiate on loading up
+    private string mainBoundaryTag; // Tag of the object with the main boundary on it
+    [SerializeField]
+    private List<SquadMember> objectList;    // The list of squad members to instantiate on loading up
     private Bounds boundingBox; // Valid area within which squad members can be instantiated
 
     private void Start()
     {
-        boundingBox = Boundary.instance.bounds;
+        // Get the bounding box of the area
+        GameObject boundaryObject = GameObject.FindGameObjectWithTag(mainBoundaryTag);
+        Boundary boundary = boundaryObject.GetComponent<Boundary>();
+        boundingBox = boundary.bounds;
+
+        // Instantiate the squad
         InstantiateSquad();
     }
 
@@ -27,23 +37,29 @@ public class SquadManager : MonoBehaviour
     {
         Vector3 memberPos;  // The position of the next squad member to instantiate
 
-        foreach(SquadMember member in squad)
+        foreach(SquadMember member in objectList)
         {
-            memberPos = GenerateSquadMemberPosition(member.positionType);
+            memberPos = GenerateSquadMemberPosition(member);
             member.InstantiateSelf(memberPos);
         }
     }
 
-    private Vector3 GenerateSquadMemberPosition(PositionInstantiationType positionType)
+    private Vector3 GenerateSquadMemberPosition(SquadMember member)
     {
         Vector3 memberPos = new Vector3();
 
-        if (positionType == PositionInstantiationType.OnCeiling || 
-            positionType == PositionInstantiationType.OnFloor)
+        // If the member has a fixed position to be placed at
+        if(member.positionType == PositionInstantiationType.Fixed)
+        {
+            memberPos = member.fixedPos;
+        }
+        // If the member is on the floor or ceiling, fix y position and randomize x position
+        else if (member.positionType == PositionInstantiationType.OnCeiling ||
+            member.positionType == PositionInstantiationType.OnFloor)
         {
             memberPos.x = Random.Range(boundingBox.min.x + SIDE_BUFF, boundingBox.max.x - SIDE_BUFF);
 
-            if(positionType == PositionInstantiationType.OnCeiling)
+            if(member.positionType == PositionInstantiationType.OnCeiling)
             {
                 memberPos.y = boundingBox.max.y - SIDE_BUFF;
             }
@@ -52,12 +68,13 @@ public class SquadManager : MonoBehaviour
                 memberPos.y = boundingBox.min.y + SIDE_BUFF;
             }
         }
-        else if (positionType == PositionInstantiationType.OnLeftWall || 
-            positionType == PositionInstantiationType.OnRightWall)
+        // If the member is on either wall, fix x position and randomize y position
+        else if (member.positionType == PositionInstantiationType.OnLeftWall ||
+            member.positionType == PositionInstantiationType.OnRightWall)
         {
             memberPos.y = Random.Range(boundingBox.min.y + SIDE_BUFF, boundingBox.max.y - SIDE_BUFF);
 
-            if (positionType == PositionInstantiationType.OnLeftWall)
+            if (member.positionType == PositionInstantiationType.OnLeftWall)
             {
                 memberPos.x = boundingBox.min.x + SIDE_BUFF;
             }
@@ -66,6 +83,7 @@ public class SquadManager : MonoBehaviour
                 memberPos.x = boundingBox.max.x - SIDE_BUFF;
             }
         }
+        // If member can be placed randomly, generate random position within bounds
         else
         {
             memberPos.x = Random.Range(boundingBox.min.x + SIDE_BUFF, boundingBox.max.x - SIDE_BUFF);
