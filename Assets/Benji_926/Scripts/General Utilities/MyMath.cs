@@ -59,6 +59,27 @@ public static class MyMath
 
 		return globalVertices;
 	} // END method
+
+    // Given two floating point values, returns the one that is closes to zero
+    public static float ClosestToZero(float a, float b)
+    {
+        // Store guaranteed positives of a and b
+        float positiveA = Mathf.Abs(a);
+        float positiveB = Mathf.Abs(b);
+
+        // Find the smaller of the two
+        float minMagnitude = Mathf.Min(positiveA, positiveB);
+
+        // Make sure the original values are returned, not positive versions
+        if (minMagnitude == positiveA)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+    }
 }
 
 public enum CircleDir

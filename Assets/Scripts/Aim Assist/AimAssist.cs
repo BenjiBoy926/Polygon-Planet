@@ -11,86 +11,50 @@ using System.Collections.Generic;
 
 public class AimAssist : MonoBehaviour
 {
-    private const float ASSIST_STRENGTH = 1 / 36f;  // A number between 0 and 1, where zero means no assistance and one means perfect aim
+    private const float ASSIST_STRENGTH = 20f;  // A number between 0 and 1, where zero means no assistance and one means perfect aim
     private const float MAX_VIABLE_TARGET = 90f;    // If the trajectory angle is greater than or equal to this number, the bullet will not auto-assist towards it
 
-    private List<TargetingData> targetData = new List<TargetingData>();    // List of targets the bullet may try to assist aiming towards
+    //private List<TargetingData> targetData = new List<TargetingData>();    // List of targets the bullet may try to assist aiming towards
     [SerializeField]
     private Rigidbody2D rb2D;   // Rigidbody on this object
     [SerializeField]
     private string autoAimRadiusTag;    // Any object with a trigger that functions as an auto-aim radius is expected to be named with this tag
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // If the target is unset, and this collider is an auto aim trigger...
+        // If this is an auto aim radius, aim assist towards it
         if(collision.CompareTag(autoAimRadiusTag))
         {
-            //...set this collider to the target
-            targetData.Add(new TargetingData(collision.transform));
+            NudgeToTarget(collision.transform);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void NudgeToTarget(Transform target)
     {
-        // See if the collision exited exists in the list of targeting data
-        TargetingData toRemove = targetData.Find(x => x.target == collision.transform);
+        Vector2 toTarget;   // Vector with the tip at the target and the tail at this object
+        float trajectoryAngle;  // Angle between the trajectory of this object and the toTarget vector
 
-        // If a piece of targetting data matches the transform on this collider, remove it from the list
-        if(toRemove != null)
+        // Calculate vector to target and angle between it and the trajectory
+        toTarget = target.position - transform.position;
+        trajectoryAngle = Vector2.SignedAngle(rb2D.velocity, toTarget);
+
+        // If the target is not too far off, nudge towards it
+        if (trajectoryAngle <= MAX_VIABLE_TARGET)
         {
-            targetData.Remove(toRemove);
-        }
-    }
+            float trajectoryNudge;  // Angle by which trajectory is nudged
 
-    // Nudge the trajectory towards the target each frame 
-    private void Update()
-    {
-        // If there is one target, nudge to it
-        if(targetData.Count == 1)
-        {
-            targetData[0].CalculateTrajectoryAngle(rb2D);
-
-            // If single target is no longer viable, remove it from the list
-            if(TargetNotViable(targetData[0]))
+            // Makes sure the assist strength matches the sign of the trajectory angle
+            if (trajectoryAngle < 0f)
             {
-                targetData.RemoveAt(0);
+                trajectoryNudge = MyMath.ClosestToZero(trajectoryAngle, -ASSIST_STRENGTH);
             }
-            // Otherwise, nudge towards it
             else
             {
-                targetData[0].NudgeToTarget(rb2D, ASSIST_STRENGTH);
+                trajectoryNudge = MyMath.ClosestToZero(trajectoryAngle, ASSIST_STRENGTH);
             }
-        }
-        // If there are multiple targets, use algorithm to decide which one to nudge towards
-        else if(targetData.Count > 1)
-        {
-            ChooseTarget();
+
+            // Rotate the velocity by the nudge
+            rb2D.velocity = rb2D.velocity.RotatedVector(trajectoryNudge);
         }
     }
-
-    // Function causes the bullet to choose a target out of all the targets in the list to nudge itself towards
-    private void ChooseTarget ()
-    {
-        // Update trajectory angles
-        foreach(TargetingData data in targetData)
-        {
-            data.CalculateTrajectoryAngle(rb2D);
-        }
-
-        // Remove non-viable targets from the list
-        targetData.RemoveAll(TargetNotViable);
-
-        // If there are still viable targets, sort the list and nudge towards the one with the smallest trajectory angle
-        if(targetData.Count > 0)
-        {
-            targetData.Sort();
-            targetData[0].NudgeToTarget(rb2D, ASSIST_STRENGTH);
-        }
-    }
-
-    // Method returns true if the target passed in is not viable
-    private bool TargetNotViable(TargetingData data)
-    {
-        return Mathf.Abs(data.trajectoryAngle) >= MAX_VIABLE_TARGET;   
-    } 
 }

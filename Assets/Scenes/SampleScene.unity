@@ -216,17 +216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainBoundaryTag: MainBoundary
   objectList:
-  - _prefab: {fileID: 1463547813824066, guid: 497a7d460c8744c459e101f3e97b8622, type: 2}
-    _positionType: 5
-    _fixedPos: {x: 0, y: 0}
-  - _prefab: {fileID: 1641920901920272, guid: bf822e83019516e4980d8f64f2713560, type: 2}
-    _positionType: 4
-    _fixedPos: {x: 0, y: 0}
-  - _prefab: {fileID: 1972560961854408, guid: edb6e5b9fb54b564a9871e01d32dfcd0, type: 2}
-    _positionType: 3
-    _fixedPos: {x: 0, y: 0}
-  - _prefab: {fileID: 1210807102909816, guid: 158f1bae5e717a544b1f5d22e578879a, type: 2}
-    _positionType: 2
+  - _prefab: {fileID: 1465043801766708, guid: 8e473366cb0f80249ab79d76f029347d, type: 2}
+    _positionType: 1
     _fixedPos: {x: 0, y: 0}
 --- !u!1001 &1866915613
 Prefab:
