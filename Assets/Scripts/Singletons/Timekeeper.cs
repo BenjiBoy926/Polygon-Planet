@@ -33,7 +33,7 @@ public class Timekeeper : MonoSingleton<Timekeeper>
     [RuntimeInitializeOnLoadMethod]
     private static void CreateInstance()
     {
-        BaseCreateInstance();
+        BaseCreateInstance("Timekeeper");
     }
 
     private void Start()

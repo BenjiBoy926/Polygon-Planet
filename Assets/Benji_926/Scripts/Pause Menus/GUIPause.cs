@@ -23,7 +23,7 @@ public class GUIPause : MonoBehaviour
 	{
 		pausePanel.SetActive (activate);
 		Timekeeper.instance.PauseGame (activate);
-		SoundPlayer.Instance.PlaySoundEffect (quickClip);
+		SoundPlayer.instance.PlaySoundEffect (quickClip);
 
 		// If panel is activating, make the sorting order of the canvas arbitrarily large
 		if (activate) {

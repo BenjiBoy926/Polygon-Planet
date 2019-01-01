@@ -19,21 +19,21 @@ public class Options : GUIPause
 	// Enable/disable music/sound effects by toggling the mute parameter
 	public void EnableMusic (bool enabled)
 	{
-		SoundPlayer.Instance.PlaySoundEffect (clickClip);
-		SoundPlayer.Instance.ToggleSoundType (enabled, SoundType.Music);
+		SoundPlayer.instance.PlaySoundEffect (clickClip);
+		SoundPlayer.instance.ToggleSoundType (enabled, SoundType.Music);
 	}
 	public void EnableEffects (bool enabled)
 	{
-		SoundPlayer.Instance.PlaySoundEffect (clickClip);
-		SoundPlayer.Instance.ToggleSoundType (enabled, SoundType.Effects);
+		SoundPlayer.instance.PlaySoundEffect (clickClip);
+		SoundPlayer.instance.ToggleSoundType (enabled, SoundType.Effects);
 	}
 	// Adjust volume for music/sound effects
 	public void AdjustMusicVolume (float newVolume)
 	{
-		SoundPlayer.Instance.AdjustVolumeOnSoundType (newVolume, SoundType.Music);
+		SoundPlayer.instance.AdjustVolumeOnSoundType (newVolume, SoundType.Music);
 	}
 	public void AdjustEffectsVolume (float newVolume)
 	{
-		SoundPlayer.Instance.AdjustVolumeOnSoundType (newVolume, SoundType.Effects);
+		SoundPlayer.instance.AdjustVolumeOnSoundType (newVolume, SoundType.Effects);
 	}
 }

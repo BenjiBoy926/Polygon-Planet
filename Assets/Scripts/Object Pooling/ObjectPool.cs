@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,40 +22,27 @@ public class ObjectPool<T> where T : Component
     private List<T> pool = new List<T>();   // List of components attached to game objects intantiated
     private int index = 0;  // Internal index used to get the next available object in the pool
 
-    // Constructor instances multiple clones of the given prefab and stores components from each
+    // Constructor instantes all prefabs in the pool as children of the given game object
+    public ObjectPool (PoolData data, GameObject parent)
+    {
+        Transform parentTrans = parent.transform;   // Transform of the parent specifed
+        InstantiatePool(data, parentTrans);
+    }
+
+    // Constructor instantiates multiple clones of the given prefab and stores components from each
     public ObjectPool (PoolData data, string parentName = "Object Pool")
     {
-        // List of game objects to be returned
-        GameObject instance;    // Reference to instance of newly instantiated prefab
-        Transform parentTrans;  // Transform component containing the object pool
-
-        // Create parent transform with the specified name
-        parentTrans = new GameObject(parentName).transform;
-
-        // Loop from 1 up to "instances", instantiating prefabs and putting instances into the local list
-        for (int count = 1; count <= data.instances; count++)
-        {
-            instance = Object.Instantiate(data.prefab, parentTrans);
-            instance.name += ("_" + count);
-            pool.Add(instance.GetComponent<T>());
-        } // END for
+        Transform parentTrans = new GameObject(parentName).transform;  // Transform component containing the object pool
+        InstantiatePool(data, parentTrans);
     }
 
     // Override of the method above that instantiates each object in a list,
     // rather than multiple of the same object
     public ObjectPool (List<GameObject> prefabPool, string newParentName = "Object Pool")
     {
-        GameObject instance;    // Instance of the game object being instantiated
-
         // Make a parent transform by creating a new game object
         Transform parentTrans = new GameObject(newParentName).transform;
-
-        // Instantiate a copy of every prefab in the list
-        foreach (GameObject prefab in prefabPool)
-        {
-            instance = Object.Instantiate(prefab, parentTrans);
-            pool.Add(instance.GetComponent<T>());
-        } // END foreach
+        InstantiatePool(prefabPool, parentTrans);
     } // END method
 
     // Quick property is efficient but won't check any conditions about the object returned
@@ -70,6 +57,29 @@ public class ObjectPool<T> where T : Component
         }
     }
 
+    // Indexer allows calling method to grab a specific object in the pool
+    public T this[int index]
+    {
+        get { return pool[index]; }
+    }
+
+    public int Count { get { return pool.Count; } }
+
+    // Allows calling method to get an object that satisfies a condition
+    public T GetOne(Predicate<T> predicate)
+    {
+        // Try to find an object with the given boolean
+        T objectGotten = pool.Find(predicate);
+
+        // Log a warning if no object is found
+        if (objectGotten == null)
+        {
+            Debug.LogWarning("Could not find an object that satisfies the predicate");
+        }
+
+        return objectGotten;
+    }
+
     // Enable/disable all objects in the pool
     public void SetPoolActive (bool active)
     {
@@ -77,5 +87,32 @@ public class ObjectPool<T> where T : Component
         {
             component.gameObject.SetActive(active);
         }
+    }
+
+    // Helper function makes writing unique constructors easier
+    private void InstantiatePool(PoolData data, Transform parentTrans)
+    {
+        GameObject instance;
+
+        // Loop from 1 up to "instances", instantiating prefabs and putting instances into the local list
+        for (int count = 1; count <= data.instances; count++)
+        {
+            instance = UnityEngine.Object.Instantiate(data.prefab, parentTrans);
+            instance.name += ("_" + count);
+            pool.Add(instance.GetComponent<T>());
+        } // END for
+    }
+
+    // Helper function for instantiating each object in the list of prefabs
+    private void InstantiatePool(List<GameObject> prefabPool, Transform parentTrans)
+    {
+        GameObject instance;    // Instance of the game object being instantiated
+
+        // Instantiate a copy of every prefab in the list
+        foreach (GameObject prefab in prefabPool)
+        {
+            instance = UnityEngine.Object.Instantiate(prefab, parentTrans);
+            pool.Add(instance.GetComponent<T>());
+        } // END foreach
     }
 }

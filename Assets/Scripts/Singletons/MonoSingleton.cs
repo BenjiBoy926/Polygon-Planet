@@ -18,9 +18,14 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected static void BaseCreateInstance()
     {
-        if (_instance == null)
+        BaseCreateInstance("MonoSingleton");
+    }
+
+    protected static void BaseCreateInstance(string objName)
+    {
+        if(instance == null)
         {
-            GameObject parentObj = new GameObject("MonoSingleton");
+            GameObject parentObj = new GameObject(objName);
             _instance = parentObj.AddComponent<T>();
             DontDestroyOnLoad(parentObj);
         }

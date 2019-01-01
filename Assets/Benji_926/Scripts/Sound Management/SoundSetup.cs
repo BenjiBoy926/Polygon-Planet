@@ -25,16 +25,16 @@ public class SoundSetup : MonoBehaviour
 	{
 		// If SoundPlayer doesn't have a reference to itself yet,
 		// we know we need to instantiate a copy of it 
-		if (SoundPlayer.Instance == null) {
+		if (SoundPlayer.instance == null) {
 			sound = Instantiate (soundPrefab).GetComponent <SoundPlayer> ();
-			sound.Initialize ();
+			//sound.Initialize ();
 		}
 
         // If themes are different or not currently assigned, cause this theme to be played
-        if ((SoundPlayer.Instance.Theme == MusicTheme.Unassigned || SoundPlayer.Instance.Theme != theme) && 
+        if ((SoundPlayer.instance.theme == MusicTheme.Unassigned || SoundPlayer.instance.theme != theme) && 
             musicClips.Count > 0 && theme != MusicTheme.Unassigned)
         {
-            SoundPlayer.Instance.PlayMusicOfTheme(theme, musicClips);
+            SoundPlayer.instance.PlayMusicOfTheme(theme, musicClips);
         }
 	}
 }

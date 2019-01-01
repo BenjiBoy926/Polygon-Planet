@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /*
  * CLASS SoundPlayer : MonoBehaviour
@@ -11,91 +12,70 @@ using UnityEngine;
  * ---------------------------------
  */ 
 
-public class SoundPlayer : MonoBehaviour 
+public class SoundPlayer : MonoSingleton<SoundPlayer> 
 {
-	private static SoundPlayer instance;	// Reference to the single sound player active in every scene
+    // Constants determine the number of audio sources for each
+    const int NUM_MUSIC_SOURCES = 2;
+    const int NUM_SFX_SOURCES = 20;
 
-	[SerializeField]
-	private List<AudioSource> musicChannels;	// Audio sources that play continuous looping music
-	[SerializeField]
-	private List<AudioSource> sfxChannels;	// List of audio source channels that all play sound effects
-	private MusicTheme theme;	// Music theme currently being played by the sound player
+    // Mixer groups that the sfx and music outputs to
+    [SerializeField]
+    private AudioMixerGroup musicMixer;
+    [SerializeField]
+    private AudioMixerGroup sfxMixer;
+
+    private ObjectPool<AudioSource> musicSources;   // Pool of audio sources that play music
+    private ObjectPool<AudioSource> sfxSources; // Pool of audio sources that play sound effects
+
+	private MusicTheme _theme;	// Music theme currently being played by the sound player
     private int internalIndex = 0;  // Index used to cycle through the SFX channels
 
-	public static SoundPlayer Instance { get { return instance; } }
-	public MusicTheme Theme { get { return theme; } }
+	public MusicTheme theme { get { return _theme; } }
 
-	// Initialize the player by setting the singleton instance and
-	// setting current music theme to unassigned
-	public void Initialize ()
-	{
-		// If no sound object has yet been assigned, make this
-		// the sound object and make sure it isn't destroyed on load
-		if (instance == null) {
-			DontDestroyOnLoad (gameObject);
-			instance = this;
-		}
-		// Otherwise, if sound already exists but this isn't it, self-destruct
-		else if (instance != this) {
-			Destroy (gameObject);
-		}
+    [RuntimeInitializeOnLoadMethod]
+	private static void InitializeSoundPlayer()
+    {
+        // Create the instance of the music player
+        BaseCreateInstance("SoundPlayer");
 
-		// Initialize music theme to not yet assigned
-		theme = MusicTheme.Unassigned;
-	}
+        // Setup the two audio sources
+        instance.musicSources = instance.SetupAudioPool(SoundType.Music);
+        instance.sfxSources = instance.SetupAudioPool(SoundType.Effects);
+    }
 
 	// Plays the given music clip of the specified theme
 	public void PlayMusicOfTheme (MusicTheme newTheme, List<AudioClip> newMusic)
 	{
-		theme = newTheme;
+        AudioSource currentMusicSource;  // Current music source having the clip set
 
-		// Go through the list of music channels and play the list of new music clips on each one
-		for (int index = 0; index < musicChannels.Count; index++) {
-			musicChannels [index].Stop ();
+		_theme = newTheme;
 
-			if (index < newMusic.Count) {
-				musicChannels [index].clip = newMusic [index];
-				musicChannels [index].Play ();
-			}
-		}
+        // Loop through each music clip and get a music source to play it
+		foreach(AudioClip clip in newMusic)
+        {
+            currentMusicSource = musicSources.getOne;
+            PlayAudioClip(clip, currentMusicSource);
+        }
 
 		// Log a warning if you specified too many new music audio clips
-		if (newMusic.Count > musicChannels.Count) {
-			Debug.LogWarning ("You specified too many music clips for the sound player to play");
+		if (newMusic.Count > musicSources.Count) {
+			Debug.LogWarning ("You specified " + newMusic.Count + " music clips but the sound player can only play " + musicSources.Count);
 		}
 	}
 
-	// Play the audio clip specified on an audio channel local to the player
+	// Play the audio clip specified on an audio channel local to the sound player
 	public void PlaySoundEffect (AudioClip effect)
 	{
-        // Assign the current audio source channel into local var
-        AudioSource source = sfxChannels[internalIndex];
+        AudioSource source = sfxSources.getOne;
 
-        // If this source is already playing,
-        // log a warning - we've run out of audio channels
-        if (source.isPlaying)
+        // If the source is still playing, log a warning
+        if(source.isPlaying)
         {
-            Debug.LogWarning("You ran out of channels to play sound effects on");
+            Debug.LogWarning("The sound player ran out of sound effects sources to play effect " + effect.name);
         }
 
-        // Play the clip specified on the next source
-        source.clip = effect;
-        source.Play();
-        internalIndex++;
-
-        // If the index is at or past total channels, reset it to zero
-        if (internalIndex >= sfxChannels.Count)
-        {
-            internalIndex = 0;
-        }
+        PlayAudioClip(effect, source);
 	}
-
-    // Overlaod of PlaySoundEffect allows calling method to specify a unique audio source
-    public static void PlaySoundEffect(AudioClip effect, AudioSource source)
-    {
-        source.clip = effect;
-        source.Play();
-    }
 
     // Randomly select an audio clip to play from a list of clips
     public void PlayRandomEffect (List<AudioClip> clips)
@@ -105,49 +85,117 @@ public class SoundPlayer : MonoBehaviour
 		PlaySoundEffect (clips [selection]);
 	}
 
+    // Overlaod of PlaySoundEffect allows calling method to specify a unique audio source
+    public static void PlayAudioClip(AudioClip effect, AudioSource source)
+    {
+        source.clip = effect;
+        source.Play();
+    }
+
     // Overload of PlayRandomEffect allows calling method to specify a unique audio source
-    public static void PlayRandomEffect (List<AudioClip> clips, AudioSource source)
+    public static void PlayRandomAudioClip (List<AudioClip> clips, AudioSource source)
     {
         int selection;  // Random selection from the list of clips
         selection = Random.Range(0, clips.Count);
-        PlaySoundEffect(clips[selection], source);
+        PlayAudioClip(clips[selection], source);
     }
 
     // Specify a sound type and specify if it should be enabled or disabled
     public void ToggleSoundType (bool enabled, SoundType type)
 	{
-		List<AudioSource> modChannels;	// List of channels to be modified
+		ObjectPool<AudioSource> modPool;	// List of channels to be modified
 
 		// Set list of channels to modify based on sound type specified
 		if (type == SoundType.Music) {
-			modChannels = musicChannels;
+			modPool = musicSources;
 		} else {
-			modChannels = sfxChannels;
+			modPool = sfxSources;
 		}
 
-		// Mute/unmute each channel in the list of channels to modify
-		foreach (AudioSource channel in modChannels) {
-			channel.mute = !enabled;
-		}
+        // Mute or unmute each audio source in the pool to modify
+		for(int index = 0; index < modPool.Count; ++index)
+        {
+            modPool[index].mute = !enabled;
+        }
 	}
 
 	// Specify a sound type and specify a new volume for it
 	public void AdjustVolumeOnSoundType (float newVolume, SoundType type)
 	{
-		List<AudioSource> modChannels;	// List of channels to be modified
+        ObjectPool<AudioSource> modPool;    // List of channels to be modified
 
-		// Set list of channels to modify based on sound type specified
-		if (type == SoundType.Music) {
-			modChannels = musicChannels;
-		} else {
-			modChannels = sfxChannels;
-		}
+        // Set list of channels to modify based on sound type specified
+        if (type == SoundType.Music)
+        {
+            modPool = musicSources;
+        }
+        else
+        {
+            modPool = sfxSources;
+        }
 
-		// Mute/unmute each channel in the list of channels to modify
-		foreach (AudioSource channel in modChannels) {
-			channel.volume = newVolume;
-		}
+        // Set volumes on each of the audio sources in the pool to modify
+        for(int index = 0; index < modPool.Count; ++index)
+        {
+            modPool[index].volume = newVolume;
+        }
 	}
+
+    /*
+     * SETUP HELPERS
+     * -------------
+     * Private functions help the audio player set itself up
+     * -------------
+     */ 
+
+    // Return an object pool of audio sources for the set sound type
+    private ObjectPool<AudioSource> SetupAudioPool(SoundType type)
+    {
+        PoolData data;  // Data used to setup the object pool
+
+        if (type == SoundType.Effects)
+        {
+            data = SetupPoolData("SFX Channel", NUM_SFX_SOURCES, type);
+        }
+        else
+        {
+            data = SetupPoolData("Music Channel", NUM_MUSIC_SOURCES, type);
+        }
+
+        // Return a constructed object pool with the specified info
+        return new ObjectPool<AudioSource>(data, gameObject);
+    }
+
+    // Setup pool data by constructing and object with the desired name
+    // with the desired number of instances
+    private PoolData SetupPoolData(string objectName, int numObjects, SoundType type)
+    {
+        // Empty object with an audio source that is instantiated by the object pool
+        GameObject audioObject = new GameObject(objectName);
+        audioObject.transform.parent = transform;
+        SetupAudioSource(audioObject, type);
+
+        // Return the pool data
+        return new PoolData(audioObject, numObjects);
+    }
+
+    // Add an audio source to the game object specified
+    // and apply the appropriate presets to it
+    private void SetupAudioSource(GameObject audioObject, SoundType type)
+    {
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+
+        // Assign the correct mixer depending on the sound type
+        if(type == SoundType.Effects)
+        {
+            audioSource.outputAudioMixerGroup = sfxMixer;
+        }
+        else
+        {
+            audioSource.outputAudioMixerGroup = musicMixer;
+        }
+    }
 }
 
 public enum MusicTheme

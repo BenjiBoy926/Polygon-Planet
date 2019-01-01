@@ -120,7 +120,7 @@ public class Monologue : MonoBehaviour
 
 			// If the character we added wasn't white space, play a sound effect
 			if (chunk.theText [currentChar] != ' ') {
-				SoundPlayer.Instance.PlayRandomEffect (voiceClips);
+				SoundPlayer.instance.PlayRandomEffect (voiceClips);
 			}
 
 			// Wait statements inside the selection
@@ -157,7 +157,7 @@ public class Monologue : MonoBehaviour
 		chunk.DisplayFullText ();
 		skipReady = false;
 		skipReadyTimer = chunkInterval + Time.time;
-		SoundPlayer.Instance.PlayRandomEffect (voiceClips);
+		SoundPlayer.instance.PlayRandomEffect (voiceClips);
 	}
 
 	// Deactivate displays of all speech chunks
