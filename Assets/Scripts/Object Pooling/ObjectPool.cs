@@ -23,10 +23,9 @@ public class ObjectPool<T> where T : Component
     private int index = 0;  // Internal index used to get the next available object in the pool
 
     // Constructor instantes all prefabs in the pool as children of the given game object
-    public ObjectPool (PoolData data, GameObject parent)
+    public ObjectPool (PoolData data, Transform parent)
     {
-        Transform parentTrans = parent.transform;   // Transform of the parent specifed
-        InstantiatePool(data, parentTrans);
+        InstantiatePool(data, parent);
     }
 
     // Constructor instantiates multiple clones of the given prefab and stores components from each

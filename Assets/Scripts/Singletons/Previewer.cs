@@ -14,7 +14,7 @@ public class Previewer : MonoBehaviour
 
     private void Start()
     {
-        previewCamera = Instantiate(previewCamera);
+        previewCamera = Instantiate(previewCamera, transform);
         mainCamera = Camera.main;
         StartPreview();
     }

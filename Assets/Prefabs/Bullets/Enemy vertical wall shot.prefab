@@ -25,13 +25,14 @@ GameObject:
   - component: {fileID: 114306607867790362}
   - component: {fileID: 114466650181105646}
   - component: {fileID: 114784556792292612}
+  - component: {fileID: 114542371757905748}
   m_Layer: 12
   m_Name: Enemy vertical wall shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4896439761511550
 Transform:
   m_ObjectHideFlags: 1
@@ -114,6 +115,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50738228064284008}
+--- !u!114 &114542371757905748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883150535444874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e092bd006ff0849bdbe9d42a70ce21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 88a547f9ab18717449fd08249836ac90, type: 3}
+  - {fileID: 8300000, guid: 7d41b7231a2b160449b3d7cf278e108c, type: 3}
+  - {fileID: 8300000, guid: b3e22d143cb59214486b71da25ca0eca, type: 3}
+  - {fileID: 8300000, guid: 073d6e1bacea7f144bed76787e08123b, type: 3}
+  - {fileID: 8300000, guid: 6f05ab733671f714b94c016bc09477a3, type: 3}
+  - {fileID: 8300000, guid: b9e74171f46d7544a9425453d91b9f8d, type: 3}
+  playOnAwake: 1
+  source: {fileID: 0}
 --- !u!114 &114784556792292612
 MonoBehaviour:
   m_ObjectHideFlags: 1

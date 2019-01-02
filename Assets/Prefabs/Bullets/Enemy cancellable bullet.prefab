@@ -24,13 +24,14 @@ GameObject:
   - component: {fileID: 58137053840818034}
   - component: {fileID: 114801104974862658}
   - component: {fileID: 114101308550417152}
+  - component: {fileID: 114151417679844344}
   m_Layer: 12
   m_Name: Enemy cancellable bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4067150231415860
 Transform:
   m_ObjectHideFlags: 1
@@ -91,6 +92,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50763411664971730}
+--- !u!114 &114151417679844344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965972268629976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e092bd006ff0849bdbe9d42a70ce21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: e2ce28c6678727f44bf80384fbdb287a, type: 3}
+  - {fileID: 8300000, guid: b0ec6b06f621f2d4b8f1a0046f778a04, type: 3}
+  - {fileID: 8300000, guid: bfe8223a43985f54eb61d350ad8cb03e, type: 3}
+  - {fileID: 8300000, guid: 073d6e1bacea7f144bed76787e08123b, type: 3}
+  - {fileID: 8300000, guid: 6da7a988e348e8549bfa8bd065964dea, type: 3}
+  playOnAwake: 1
+  source: {fileID: 0}
 --- !u!114 &114801104974862658
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -50,3 +50,6 @@ TagManager:
   - name: EnemyBody
     uniqueID: 3944783911
     locked: 0
+  - name: Particles
+    uniqueID: 2298379317
+    locked: 0

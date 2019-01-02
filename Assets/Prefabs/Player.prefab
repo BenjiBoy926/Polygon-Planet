@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4402598434879770}
   - component: {fileID: 20609601458271758}
-  - component: {fileID: 81057088227596578}
   - component: {fileID: 114270936075244406}
   - component: {fileID: 114065582762163130}
   m_Layer: 8
@@ -258,13 +257,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
---- !u!81 &81057088227596578
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423658231465066}
-  m_Enabled: 1
 --- !u!114 &114065582762163130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,9 +353,9 @@ MonoBehaviour:
   emittedObjectPoolData:
     _prefab: {fileID: 1535318268074498, guid: f0249c8474e1fb044862dbd3c5f7b243, type: 2}
     _instances: 2
-  _objectVelocity: 5
+  _objectVelocity: 10
   _emitted:
-    _duration: 1
+    _duration: 2
   objectAnchors:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}

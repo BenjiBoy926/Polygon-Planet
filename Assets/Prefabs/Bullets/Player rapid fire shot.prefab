@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114483119085332974}
   - component: {fileID: 114742198564360810}
   - component: {fileID: 114958938399812998}
+  - component: {fileID: 114880086740471086}
   m_Layer: 9
   m_Name: Player rapid fire shot
   m_TagString: Untagged
@@ -110,6 +111,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50048597196232170}
+--- !u!114 &114880086740471086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308790301459356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e092bd006ff0849bdbe9d42a70ce21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 095b582b354a27040af07f05d2535757, type: 3}
+  - {fileID: 8300000, guid: 731e9185b743c59409ebcab85dad8995, type: 3}
+  - {fileID: 8300000, guid: 556afca0c5f18ee4492d0cfe3aa82125, type: 3}
+  - {fileID: 8300000, guid: 04b9ec5306823d64d9a97aa05dd0c09d, type: 3}
+  - {fileID: 8300000, guid: 217d6caa0e0073748855480d69c40d70, type: 3}
+  - {fileID: 8300000, guid: 7db76ac3c763d2e4b81b20ec96917eb5, type: 3}
+  - {fileID: 8300000, guid: f5af3f066f1b269439c068555962e3c5, type: 3}
+  - {fileID: 8300000, guid: ce3c15abe9808034886ce2ed68f1ae8d, type: 3}
+  - {fileID: 8300000, guid: b8b50cb272b6c5f43badd1825c9e06d4, type: 3}
+  playOnAwake: 1
+  source: {fileID: 0}
 --- !u!114 &114958938399812998
 MonoBehaviour:
   m_ObjectHideFlags: 1

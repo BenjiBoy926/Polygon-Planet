@@ -163,7 +163,7 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         }
 
         // Return a constructed object pool with the specified info
-        return new ObjectPool<AudioSource>(data, gameObject);
+        return new ObjectPool<AudioSource>(data, transform);
     }
 
     // Setup pool data by constructing and object with the desired name
