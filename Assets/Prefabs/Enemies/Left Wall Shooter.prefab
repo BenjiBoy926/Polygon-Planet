@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212872983234984516}
   - component: {fileID: 61777166481387958}
   - component: {fileID: 114853881423261716}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bottom Weakness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 212729283176230168}
   - component: {fileID: 61884674100405280}
   - component: {fileID: 114148286336272190}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top Weakness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,9 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b569bd2c228a241b8fc64b6236db3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emittedObjectPoolData:
-    _prefab: {fileID: 1883150535444874, guid: cf147cfee6e03ac4fb8d8c58644711b2, type: 2}
-    _instances: 10
+  emittedObject: {fileID: 1883150535444874, guid: cf147cfee6e03ac4fb8d8c58644711b2,
+    type: 2}
   _objectVelocity: 2
   _emitted:
     _duration: 5

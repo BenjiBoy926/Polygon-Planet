@@ -28,8 +28,6 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
     private ObjectPool<AudioSource> sfxSources; // Pool of audio sources that play sound effects
 
 	private MusicTheme _theme;	// Music theme currently being played by the sound player
-    private int internalIndex = 0;  // Index used to cycle through the SFX channels
-
 	public MusicTheme theme { get { return _theme; } }
 
     [RuntimeInitializeOnLoadMethod]
@@ -41,6 +39,10 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         // Setup the two audio sources
         instance.musicSources = instance.SetupAudioPool(SoundType.Music);
         instance.sfxSources = instance.SetupAudioPool(SoundType.Effects);
+
+        // Make sure audio source are equal at the start
+        instance.musicSources.SetPoolActive(true);
+        instance.sfxSources.SetPoolActive(true);
     }
 
 	// Plays the given music clip of the specified theme
@@ -53,7 +55,7 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         // Loop through each music clip and get a music source to play it
 		foreach(AudioClip clip in newMusic)
         {
-            currentMusicSource = musicSources.getOne;
+            currentMusicSource = musicSources.getOneQuick;
             PlayAudioClip(clip, currentMusicSource);
         }
 
@@ -66,11 +68,12 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
 	// Play the audio clip specified on an audio channel local to the sound player
 	public void PlaySoundEffect (AudioClip effect)
 	{
-        AudioSource source = sfxSources.getOne;
+        AudioSource source = sfxSources.GetOne(AudioSourceIsNotPlaying);
 
-        // If the source is still playing, log a warning
-        if(source.isPlaying)
+        // If no source could be found that was not playing, log a warning
+        if(source == null)
         {
+            source = sfxSources.getOneQuick;
             Debug.LogWarning("The sound player ran out of sound effects sources to play effect " + effect.name);
         }
 
@@ -141,11 +144,17 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         }
 	}
 
+    // Returns true if the given audio source is not currently playing
+    private bool AudioSourceIsNotPlaying(AudioSource source)
+    {
+        return !source.isPlaying;
+    }
+
     /*
-     * SETUP HELPERS
-     * -------------
+     * PRIVATE HELPERS
+     * ---------------
      * Private functions help the audio player set itself up
-     * -------------
+     * ---------------
      */ 
 
     // Return an object pool of audio sources for the set sound type
@@ -166,7 +175,7 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         return new ObjectPool<AudioSource>(data, transform);
     }
 
-    // Setup pool data by constructing and object with the desired name
+    // Setup pool data by constructing an object with the desired name
     // with the desired number of instances
     private PoolData SetupPoolData(string objectName, int numObjects, SoundType type)
     {

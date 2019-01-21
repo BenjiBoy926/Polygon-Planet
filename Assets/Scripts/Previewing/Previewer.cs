@@ -2,21 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * CLASS Previewer : MonoBehaviour
+ * -------------------------------
+ * Creates a preivew of the scene by pausing the game
+ * and switching to the preview camera, then switches
+ * back and unpauses when the specified input buttons are pressed
+ * -------------------------------
+ */ 
+
 public class Previewer : MonoBehaviour
 {
     private Camera mainCamera;  // Reference to the main camera
     [SerializeField]
-    private Camera previewCamera;   // Prefab of the camera used to preview the stage
+    private Camera previewCamera;   // Reference to the camera used to preview the scene
     [SerializeField]
     private float previewTime;
     [SerializeField]
     private List<string> inputButtons;  // If any button with this name is pressed, the preview ends and the game begins
 
-    private void Start()
+    protected virtual void Start()
     {
-        previewCamera = Instantiate(previewCamera, transform);
         mainCamera = Camera.main;
-        StartPreview();
     }
 
     public void StartPreview()

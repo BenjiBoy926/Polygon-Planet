@@ -14,14 +14,20 @@ public struct PoolData
     [SerializeField]
     GameObject _prefab;
     [SerializeField]
-    int _instances;
+    int _initialSize;
 
     public GameObject prefab { get { return _prefab; } }
-    public int instances { get { return _instances; } }
+    public int initialSize { get { return _initialSize; } }
 
-    public PoolData (GameObject obj, int inst)
+    public PoolData (GameObject obj)
     {
         _prefab = obj;
-        _instances = inst;
+        _initialSize = 1;
+    }
+
+    public PoolData (GameObject obj, int init)
+    {
+        _prefab = obj;
+        _initialSize = init;
     }
 }

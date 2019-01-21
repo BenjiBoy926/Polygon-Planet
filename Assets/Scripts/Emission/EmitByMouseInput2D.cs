@@ -19,13 +19,18 @@ public class EmitByMouseInput2D : Emitter2D
     protected override void Start()
     {
         base.Start();
-        mainCamera = Camera.main;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Debug.Log("Called start in emitter on " + gameObject.name);
     }
 
     private void Update()
     {
         if(!emitted && Input.GetButton(emitButtonName))
         {
+            if(mainCamera == null)
+            {
+                Debug.Log("Main Camera is null");
+            }
             mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             ForceEmit(mousePosition - (Vector2)transform.position);
         }

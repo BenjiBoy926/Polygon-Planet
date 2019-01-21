@@ -280,9 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1cd60cd7e7f33429744932a8879fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emittedObjectPoolData:
-    _prefab: {fileID: 1308790301459356, guid: 68eb8ae65b273d244a2098d02940014d, type: 2}
-    _instances: 20
+  emittedObject: {fileID: 1308790301459356, guid: 68eb8ae65b273d244a2098d02940014d,
+    type: 2}
   _objectVelocity: 20
   _emitted:
     _duration: 0.2
@@ -350,9 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1cd60cd7e7f33429744932a8879fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emittedObjectPoolData:
-    _prefab: {fileID: 1535318268074498, guid: f0249c8474e1fb044862dbd3c5f7b243, type: 2}
-    _instances: 2
+  emittedObject: {fileID: 1535318268074498, guid: f0249c8474e1fb044862dbd3c5f7b243,
+    type: 2}
   _objectVelocity: 10
   _emitted:
     _duration: 2

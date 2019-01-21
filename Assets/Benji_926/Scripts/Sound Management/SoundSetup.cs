@@ -11,6 +11,14 @@ using UnityEngine;
  * ---------------------------------
  */
 
+/*
+ * DEPRECIATED
+ * -----------
+ * The SoundPlayer inherits from the MonoSingleton class and automatically
+ * instantiates an instance of itself when the game loads up
+ * -----------
+ */ 
+
 public class SoundSetup : MonoBehaviour 
 {
 	[SerializeField]
@@ -19,14 +27,14 @@ public class SoundSetup : MonoBehaviour
 	private List<AudioClip> musicClips;	// Clips for the music in this scene
 	[SerializeField]
 	private MusicTheme theme;	// Theme of the music in this scene
-	private SoundPlayer sound;	// Reference to sound player instantiated by this loader
+	//private SoundPlayer sound;	// Reference to sound player instantiated by this loader
 
 	void Awake ()
 	{
 		// If SoundPlayer doesn't have a reference to itself yet,
 		// we know we need to instantiate a copy of it 
 		if (SoundPlayer.instance == null) {
-			sound = Instantiate (soundPrefab).GetComponent <SoundPlayer> ();
+			//sound = Instantiate (soundPrefab).GetComponent <SoundPlayer> ();
 			//sound.Initialize ();
 		}
 

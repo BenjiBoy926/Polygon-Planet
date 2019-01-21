@@ -5,64 +5,112 @@ using UnityEngine;
 /*
  * CLASS ObjectPool<T>
  * -------------------
- * Constructing an object of this class causes multiple copies of a game object
- * (or each game object in a list, depending on the constructor used) to be instantiated
- * into the scene.  
+ * Gives client code access to a recyclable list of components on
+ * the GameObject prefab specified
+ * 
+ * Client code can use quick properties to get an object 
+ * that is NOT currently active in the scene 
+ * 
+ * The object pool dynamically grows if a request is made for an inactive object
+ * that cannot be satisfied
+ * 
+ * For additional control, client code can request an object that 
+ * satisfies a given condition other than that the object is inactive
+ * This does not cause the pool to grow, since there is no guarantee
+ * that the new object would itself satisfy the condition
  * 
  * The generic parameter T represents the components on the objects
  * that will be stored in the local member variable list.  
- * 
- * Provides additional functionality, such as a gettable property that gives the
- * calling method a component on an inactive game object in the object pool
  * -------------------
  */ 
 
 public class ObjectPool<T> where T : Component
 {
+    // Game object instantiated into the pool. It MUST have a component of type T either on it or one of the child GameObjects
+    private GameObject prefab;
+    private Transform poolParent;   // Transform under which all objects are instantiated as children
+
     private List<T> pool = new List<T>();   // List of components attached to game objects intantiated
     private int index = 0;  // Internal index used to get the next available object in the pool
 
-    // Constructor instantes all prefabs in the pool as children of the given game object
+    /*
+     * CONSTRUCTORS
+     * ------------
+     */ 
+
+    // Constructors start the pool with only one object in the pool
+    // Focused on dynamically growing at runtime to decrease overhead at the startup
+    public ObjectPool(GameObject obj, Transform parent)
+    {
+        InitializeData(obj, parent);
+        AddOne();
+    }
+    public ObjectPool(GameObject obj, string parentName = "Object Pool")
+    {
+        InitializeData(obj, parentName);
+        AddOne();
+    }
+
+
+    // Constructors start the pool off with the number of copies specified by the pool data
+    // Focused on statically sized pools that decrease overhead at runtime
     public ObjectPool (PoolData data, Transform parent)
     {
-        InstantiatePool(data, parent);
+        InitializeData(data.prefab, parent);
+        InitializePool(data);
+    }
+    public ObjectPool(PoolData data, string parentName = "Object Pool")
+    {
+        InitializeData(data.prefab, parentName);
+        InitializePool(data);
     }
 
-    // Constructor instantiates multiple clones of the given prefab and stores components from each
-    public ObjectPool (PoolData data, string parentName = "Object Pool")
-    {
-        Transform parentTrans = new GameObject(parentName).transform;  // Transform component containing the object pool
-        InstantiatePool(data, parentTrans);
-    }
+    /*
+     * PUBLIC FUNCITONS
+     * ----------------
+     */ 
 
-    // Override of the method above that instantiates each object in a list,
-    // rather than multiple of the same object
-    public ObjectPool (List<GameObject> prefabPool, string newParentName = "Object Pool")
-    {
-        // Make a parent transform by creating a new game object
-        Transform parentTrans = new GameObject(newParentName).transform;
-        InstantiatePool(prefabPool, parentTrans);
-    } // END method
-
-    // Quick property is efficient but won't check any conditions about the object returned
-    public T getOne
+    // Request an object from the pool using quick indexing
+    // This should be used if the objects being used are expected to be active
+    // for roughly the same amount of time. Large disparities in lifetimes
+    // could result in unnecessarily large object pools being allocated
+    public T getOneQuick
     {
         get
         {
             // Update current index
-            ++index;
-            index %= pool.Count;
+            index = (index + 1) % pool.Count;
+
+            // If the next object is still active, add another one to the object pool and return its component
+            if(pool[index].gameObject.activeInHierarchy)
+            {
+                index = (index + 1) % pool.Count;
+                return AddOne();
+            }
+
             return pool[index];
         }
     }
 
-    // Indexer allows calling method to grab a specific object in the pool
-    public T this[int index]
+    // Request an object from the pool using absolute finding
+    // This guarantees that the object pool only dynamically grows with the needs of the client,
+    // at the potential cost of efficiency in using the "Find" algorithm whenever the property is invoked
+    public T getOne
     {
-        get { return pool[index]; }
-    }
+        get
+        {
+            // Try to get an inactive object
+            T got = pool.Find(InactiveObject);
 
-    public int Count { get { return pool.Count; } }
+            // If no inactive objects exist in the pool, add one and return it
+            if(got == null)
+            {
+                return AddOne();
+            }
+
+            return got;
+        }
+    }
 
     // Allows calling method to get an object that satisfies a condition
     public T GetOne(Predicate<T> predicate)
@@ -79,8 +127,49 @@ public class ObjectPool<T> where T : Component
         return objectGotten;
     }
 
+    // Indexer allows calling method to grab a specific object in the pool
+    public T this[int index]
+    {
+        get { return pool[index]; }
+    }
+
+    public int Count { get { return pool.Count; } }
+
+
+    /*
+     * PRIVATE HELPERS
+     * ---------------
+     */
+
+    // Instantiate a copy of the locally defined object into the object pool 
+    // and keep a reference to the specified component
+    // Return the component grabbed
+    private T AddOne()
+    {
+        GameObject instance;    // Instance of the game object being instantiated
+        instance = UnityEngine.Object.Instantiate(prefab, poolParent);
+        pool.Add(instance.GetComponentInChildren<T>());
+        instance.SetActive(false);
+
+        // Return that last object that was just added
+        return pool[pool.Count - 1];
+    }
+
+    // Helper function makes writing unique constructors easier
+    private void InitializePool(PoolData data)
+    {
+        // Loop from 1 up to "instances", instantiating prefabs and putting instances into the local list
+        for (int count = 1; count <= data.initialSize; count++)
+        {
+            AddOne();
+        } // END for
+
+        // Pool is initially inactive
+        SetPoolActive(false);
+    }
+
     // Enable/disable all objects in the pool
-    public void SetPoolActive (bool active)
+    public void SetPoolActive(bool active)
     {
         foreach (T component in pool)
         {
@@ -88,30 +177,23 @@ public class ObjectPool<T> where T : Component
         }
     }
 
-    // Helper function makes writing unique constructors easier
-    private void InstantiatePool(PoolData data, Transform parentTrans)
+    // Intitialize local variables
+    private void InitializeData(GameObject obj, Transform parent)
     {
-        GameObject instance;
-
-        // Loop from 1 up to "instances", instantiating prefabs and putting instances into the local list
-        for (int count = 1; count <= data.instances; count++)
-        {
-            instance = UnityEngine.Object.Instantiate(data.prefab, parentTrans);
-            instance.name += ("_" + count);
-            pool.Add(instance.GetComponent<T>());
-        } // END for
+        prefab = obj;
+        poolParent = parent;
+    }
+    private void InitializeData(GameObject obj, string parentName)
+    {
+        // Construct a parent transform and assign local variables
+        Transform parent = new GameObject(parentName).transform;
+        prefab = obj;
+        poolParent = parent;
     }
 
-    // Helper function for instantiating each object in the list of prefabs
-    private void InstantiatePool(List<GameObject> prefabPool, Transform parentTrans)
+    // Returns true if the component specified is no active in the scene
+    private bool InactiveObject(T obj)
     {
-        GameObject instance;    // Instance of the game object being instantiated
-
-        // Instantiate a copy of every prefab in the list
-        foreach (GameObject prefab in prefabPool)
-        {
-            instance = UnityEngine.Object.Instantiate(prefab, parentTrans);
-            pool.Add(instance.GetComponent<T>());
-        } // END foreach
+        return !obj.gameObject.activeInHierarchy;
     }
 }

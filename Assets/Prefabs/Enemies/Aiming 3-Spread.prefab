@@ -264,9 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c451633fa1ae9140a9a5f03cbea62c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emittedObjectPoolData:
-    _prefab: {fileID: 1965972268629976, guid: df8cd86aee956044bb6c2b01de24f8a6, type: 2}
-    _instances: 30
+  emittedObject: {fileID: 1965972268629976, guid: df8cd86aee956044bb6c2b01de24f8a6,
+    type: 2}
   _objectVelocity: 3
   _emitted:
     _duration: 3

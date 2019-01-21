@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 /*
@@ -24,16 +25,41 @@ public class PublicObjectPool : MonoBehaviour
             Transform poolParent = new GameObject(data.tag).transform;
             poolParent.parent = transform;
             objectPools.Add(data.tag, new ObjectPool<Transform>(data.data, poolParent));
-            objectPools[data.tag].SetPoolActive(false);
         }
     }
 
-    // Get a transform with the specified tag
-    public Transform GetOne(string tag)
+    // Get a transform with the specified tag with quick property
+    public Transform GetOneQuick(string tag)
     {
         if(objectPools.ContainsKey(tag))
         {
+            return objectPools[tag].getOneQuick;
+        }
+        else
+        {
+            Debug.Log("Public object pool on " + gameObject.name + " does not have an object pool tagged " + tag);
+            return null;
+        }
+    }
+    // Get a transform with the specified tag with thorough property
+    public Transform GetOne(string tag)
+    {
+        if (objectPools.ContainsKey(tag))
+        {
             return objectPools[tag].getOne;
+        }
+        else
+        {
+            Debug.Log("Public object pool on " + gameObject.name + " does not have an object pool tagged " + tag);
+            return null;
+        }
+    }
+    // Get a transform with the specified tag with custom predicate function
+    public Transform GetOne(string tag, Predicate<Transform> condition)
+    {
+        if (objectPools.ContainsKey(tag))
+        {
+            return objectPools[tag].GetOne(condition);
         }
         else
         {

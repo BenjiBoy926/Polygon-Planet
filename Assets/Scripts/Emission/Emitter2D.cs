@@ -16,7 +16,7 @@ using UnityEngine;
 public class Emitter2D : MonoBehaviour
 {
     [SerializeField]
-    private PoolData emittedObjectPoolData;
+    private GameObject emittedObject;
     [SerializeField]
     private ObjectPool<KinematicMover2D> pool;   // Emitter2D's object pool
     [SerializeField]
@@ -31,8 +31,7 @@ public class Emitter2D : MonoBehaviour
 
     protected virtual void Start()
     {
-        pool = new ObjectPool<KinematicMover2D>(emittedObjectPoolData, gameObject.name + "'s Pool");
-        pool.SetPoolActive(false);
+        pool = new ObjectPool<KinematicMover2D>(emittedObject, gameObject.name + "'s Pool");
     }
 
     // Emit the objects using the local information
@@ -59,7 +58,7 @@ public class Emitter2D : MonoBehaviour
         {
             rotatedOrigin = anchor.origin.RotatedVector(tiltAngle);
             rotatedDirection = anchor.direction.RotatedVector(tiltAngle);
-            pool.getOne.Launch(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
+            pool.getOneQuick.Launch(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
         }
 
         _emitted.Activate();
