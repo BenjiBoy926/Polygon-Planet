@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212757044869923962}
   - component: {fileID: 61317030480112134}
   - component: {fileID: 114979819694205314}
+  - component: {fileID: 114459459914026880}
   m_Layer: 11
   m_Name: Bottom Right Weakness
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 212345503140055836}
   - component: {fileID: 61463029955362082}
   - component: {fileID: 114040377689483052}
+  - component: {fileID: 114856990767527632}
   m_Layer: 11
   m_Name: Top Left Weakness
   m_TagString: Untagged
@@ -131,7 +133,7 @@ GameObject:
   - component: {fileID: 114233509942326848}
   m_Layer: 11
   m_Name: Diagonal Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,6 +149,7 @@ GameObject:
   - component: {fileID: 212211738936467638}
   - component: {fileID: 61669755326278432}
   - component: {fileID: 114239196476437248}
+  - component: {fileID: 114417420282842586}
   m_Layer: 11
   m_Name: Bottom Left Weakness
   m_TagString: Untagged
@@ -165,6 +168,7 @@ GameObject:
   - component: {fileID: 212772837161259512}
   - component: {fileID: 61431591043599662}
   - component: {fileID: 114788698524719126}
+  - component: {fileID: 114019986573165726}
   m_Layer: 11
   m_Name: Top Right Weakness
   m_TagString: Untagged
@@ -502,6 +506,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114019986573165726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920251527914034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4094266113010680}
 --- !u!114 &114040377689483052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,6 +588,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50053414092095140}
+--- !u!114 &114417420282842586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756393229647528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4113461109707278}
+--- !u!114 &114459459914026880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038620758389314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4524041190420090}
 --- !u!114 &114499329602381502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,6 +702,20 @@ MonoBehaviour:
     direction: {x: -1, y: -1}
   fireRateDifference: 4
   aimVector: {x: 1, y: 0}
+--- !u!114 &114856990767527632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043455442141682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4718090989411690}
 --- !u!114 &114979819694205314
 MonoBehaviour:
   m_ObjectHideFlags: 1

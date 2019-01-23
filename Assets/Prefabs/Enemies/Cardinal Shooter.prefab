@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212723789733598454}
   - component: {fileID: 61173382152845768}
   - component: {fileID: 114151143298766958}
+  - component: {fileID: 114672958690735026}
   m_Layer: 11
   m_Name: Top Right Weakness
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 212813638204198408}
   - component: {fileID: 61419047355014442}
   - component: {fileID: 114019292690477112}
+  - component: {fileID: 114462468517203284}
   m_Layer: 11
   m_Name: Bottom Right Weakness
   m_TagString: Untagged
@@ -74,6 +76,7 @@ GameObject:
   - component: {fileID: 212997264676934854}
   - component: {fileID: 61952525455450332}
   - component: {fileID: 114094170421487202}
+  - component: {fileID: 114430289103130268}
   m_Layer: 11
   m_Name: Top Left Weakness
   m_TagString: Untagged
@@ -92,6 +95,7 @@ GameObject:
   - component: {fileID: 212353848893238306}
   - component: {fileID: 61185274772742606}
   - component: {fileID: 114862585766748206}
+  - component: {fileID: 114020036563569970}
   m_Layer: 11
   m_Name: Bottom Left Weakness
   m_TagString: Untagged
@@ -135,7 +139,7 @@ GameObject:
   - component: {fileID: 114264989730020156}
   m_Layer: 11
   m_Name: Cardinal Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,6 +520,20 @@ MonoBehaviour:
   complex: {fileID: 114395021285670938}
   _hitBox: {fileID: 0}
   weakness: 4
+--- !u!114 &114020036563569970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317862703784414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4721522032957654}
 --- !u!114 &114094170421487202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,6 +600,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+--- !u!114 &114430289103130268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307766346162764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4745086873306868}
+--- !u!114 &114462468517203284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260327759227736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4008764136172048}
+--- !u!114 &114672958690735026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241391829269782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4651900630397962}
 --- !u!114 &114795390228120512
 MonoBehaviour:
   m_ObjectHideFlags: 1

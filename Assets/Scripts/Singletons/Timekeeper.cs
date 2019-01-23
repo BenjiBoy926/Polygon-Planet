@@ -65,7 +65,7 @@ public class Timekeeper : MonoSingleton<Timekeeper>
 	}
 
     // Causes the game to run at the given timescale for the given amount of time in realtime
-    public void ScaledMoment(float realtime, float newScale)
+    public void ScaledMoment(float newScale, float realtime)
     {
         timeScale = newScale;
         StopAllCoroutines();

@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _info:
-    _strength: 1
+    _strength: 10
     _hitBox: {fileID: 58385716215178116}
   maxPersistence: 1
   projectileCancelImmune: 1

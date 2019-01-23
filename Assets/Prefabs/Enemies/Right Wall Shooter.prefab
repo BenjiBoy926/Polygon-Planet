@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 114758704854618500}
   m_Layer: 11
   m_Name: Right Wall Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 212744855938723820}
   - component: {fileID: 61591328687304422}
   - component: {fileID: 114734960315267862}
+  - component: {fileID: 114820801707298436}
   m_Layer: 11
   m_Name: Bottom Weakness
   m_TagString: Untagged
@@ -97,6 +98,7 @@ GameObject:
   - component: {fileID: 212380772605032554}
   - component: {fileID: 61481035971076514}
   - component: {fileID: 114148081478522180}
+  - component: {fileID: 114149602513324832}
   m_Layer: 11
   m_Name: Top Weakness
   m_TagString: Untagged
@@ -326,6 +328,20 @@ MonoBehaviour:
   complex: {fileID: 114461031298616060}
   _hitBox: {fileID: 61481035971076514}
   weakness: 4
+--- !u!114 &114149602513324832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927182220027810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4010777634811498}
 --- !u!114 &114393663260202870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,6 +446,20 @@ MonoBehaviour:
   wanderTimes:
     min: 1
     max: 6
+--- !u!114 &114820801707298436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536690691986542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4755511759986956}
 --- !u!212 &212100750598979638
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114030697766297248}
   m_Layer: 11
   m_Name: Aiming Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 212117530974537588}
   - component: {fileID: 58290157017905362}
   - component: {fileID: 114695311874490588}
+  - component: {fileID: 114362805790328944}
   m_Layer: 11
   m_Name: Weak Spot
   m_TagString: Untagged
@@ -227,6 +228,20 @@ MonoBehaviour:
   complex: {fileID: 114599874164172062}
   _hitBox: {fileID: 61349343991997604}
   weakness: 1
+--- !u!114 &114362805790328944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600763594209958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4460850701756900}
 --- !u!114 &114599874164172062
 MonoBehaviour:
   m_ObjectHideFlags: 1

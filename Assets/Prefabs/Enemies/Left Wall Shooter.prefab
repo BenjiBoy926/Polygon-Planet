@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212872983234984516}
   - component: {fileID: 61777166481387958}
   - component: {fileID: 114853881423261716}
+  - component: {fileID: 114252377580335602}
   m_Layer: 11
   m_Name: Bottom Weakness
   m_TagString: Untagged
@@ -72,6 +73,7 @@ GameObject:
   - component: {fileID: 212729283176230168}
   - component: {fileID: 61884674100405280}
   - component: {fileID: 114148286336272190}
+  - component: {fileID: 114649210638733618}
   m_Layer: 11
   m_Name: Top Weakness
   m_TagString: Untagged
@@ -99,7 +101,7 @@ GameObject:
   - component: {fileID: 114864450636763864}
   m_Layer: 11
   m_Name: Left Wall Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,6 +347,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50178628498459634}
+--- !u!114 &114252377580335602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202574978081846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4303647463364248}
 --- !u!114 &114323452349976480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,6 +406,20 @@ MonoBehaviour:
   wanderTimes:
     min: 1
     max: 6
+--- !u!114 &114649210638733618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780106004999168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4092007834054806}
 --- !u!114 &114852545574074992
 MonoBehaviour:
   m_ObjectHideFlags: 1

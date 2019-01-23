@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mover: {fileID: 114065582762163130}
-  defaultShakeTime: 3
+  defaultShakeTime: 0.3
   defaultShakeMagnitude: 5
   defaultShakeInterval: 0.03
 --- !u!114 &114351791894561636
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+  particlePrefab: {fileID: 1584655011353468, guid: 1a9ddac11651cd8458811bd51df24858,
     type: 2}
   eventObject: {fileID: 4218169339852444}
 --- !u!114 &114749743716291358

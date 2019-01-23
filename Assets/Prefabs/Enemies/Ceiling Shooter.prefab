@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212961742392636390}
   - component: {fileID: 61929629513114010}
   - component: {fileID: 114800726403161450}
+  - component: {fileID: 114901690251018178}
   m_Layer: 11
   m_Name: Top Weakness
   m_TagString: Untagged
@@ -65,7 +66,7 @@ GameObject:
   - component: {fileID: 114510423078877824}
   m_Layer: 11
   m_Name: Ceiling Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,6 +82,7 @@ GameObject:
   - component: {fileID: 212112877540230814}
   - component: {fileID: 61775243309087092}
   - component: {fileID: 114237209483474082}
+  - component: {fileID: 114229290644888290}
   m_Layer: 11
   m_Name: Bottom Weakness
   m_TagString: Untagged
@@ -336,6 +338,20 @@ MonoBehaviour:
     direction: {x: 0, y: -1}
   fireRateDifference: 4
   aimVector: {x: 1, y: 0}
+--- !u!114 &114229290644888290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472045339947416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4363101518866526}
 --- !u!114 &114237209483474082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,6 +446,20 @@ MonoBehaviour:
   complex: {fileID: 114714641282046200}
   _hitBox: {fileID: 61929629513114010}
   weakness: 4
+--- !u!114 &114901690251018178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290408946376516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
+    type: 2}
+  eventObject: {fileID: 4280222328885238}
 --- !u!212 &212112877540230814
 SpriteRenderer:
   m_ObjectHideFlags: 1
