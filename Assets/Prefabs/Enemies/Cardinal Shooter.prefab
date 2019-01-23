@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 114395021285670938}
   - component: {fileID: 114795390228120512}
   - component: {fileID: 114104288919028972}
+  - component: {fileID: 114264989730020156}
   m_Layer: 11
   m_Name: Cardinal Shooter
   m_TagString: Untagged
@@ -555,6 +556,20 @@ MonoBehaviour:
   complex: {fileID: 114395021285670938}
   _hitBox: {fileID: 0}
   weakness: 4
+--- !u!114 &114264989730020156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692138981872808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4964967023553678}
 --- !u!114 &114395021285670938
 MonoBehaviour:
   m_ObjectHideFlags: 1

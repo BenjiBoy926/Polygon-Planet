@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114599874164172062}
   - component: {fileID: 114961586088418730}
   - component: {fileID: 114359239391302792}
+  - component: {fileID: 114030697766297248}
   m_Layer: 11
   m_Name: Aiming Shooter
   m_TagString: Untagged
@@ -185,6 +186,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114030697766297248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080746735717934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4063797778279858}
 --- !u!114 &114267735354363110
 MonoBehaviour:
   m_ObjectHideFlags: 1

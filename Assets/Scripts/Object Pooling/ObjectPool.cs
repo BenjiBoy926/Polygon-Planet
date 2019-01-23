@@ -71,21 +71,30 @@ public class ObjectPool<T> where T : Component
      */ 
 
     // Request an object from the pool using quick indexing
-    // This should be used if the objects being used are expected to be active
+    // This should be used if the objects are expected to be active
     // for roughly the same amount of time. Large disparities in lifetimes
     // could result in unnecessarily large object pools being allocated
     public T getOneQuick
     {
         get
         {
-            // Update current index
+            // Advance the index
             index = (index + 1) % pool.Count;
 
-            // If the next object is still active, add another one to the object pool and return its component
+            // If the next object is still active...
             if(pool[index].gameObject.activeInHierarchy)
             {
-                index = (index + 1) % pool.Count;
-                return AddOne();
+                //...add and store a new object
+                T newObject = AddOne();
+
+                // If the index is at the last object,
+                // advance the index again to skip over the object recently added
+                if(index == pool.Count - 2)
+                {
+                    index++;
+                }
+                
+                return newObject;
             }
 
             return pool[index];
@@ -134,7 +143,6 @@ public class ObjectPool<T> where T : Component
     }
 
     public int Count { get { return pool.Count; } }
-
 
     /*
      * PRIVATE HELPERS

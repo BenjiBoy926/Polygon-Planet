@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114735659192003066}
   - component: {fileID: 114326112725799234}
   - component: {fileID: 114155257967784752}
+  - component: {fileID: 114510423078877824}
   m_Layer: 11
   m_Name: Ceiling Shooter
   m_TagString: Untagged
@@ -375,6 +376,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50842588226052344}
+--- !u!114 &114510423078877824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463547813824066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4786132202180904}
 --- !u!114 &114714641282046200
 MonoBehaviour:
   m_ObjectHideFlags: 1

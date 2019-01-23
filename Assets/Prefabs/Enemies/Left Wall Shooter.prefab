@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 114323452349976480}
   - component: {fileID: 114226808305124490}
   - component: {fileID: 114207567730182200}
+  - component: {fileID: 114864450636763864}
   m_Layer: 11
   m_Name: Left Wall Shooter
   m_TagString: Untagged
@@ -415,6 +416,20 @@ MonoBehaviour:
   complex: {fileID: 114852545574074992}
   _hitBox: {fileID: 61777166481387958}
   weakness: 4
+--- !u!114 &114864450636763864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972560961854408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4128151960323752}
 --- !u!212 &212105846230481006
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 58769192320476478}
   - component: {fileID: 114749743716291358}
   - component: {fileID: 114495379169631212}
+  - component: {fileID: 114745188884404522}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -358,6 +359,20 @@ MonoBehaviour:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
   emitButtonName: Fire1
+--- !u!114 &114745188884404522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052630230981314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4218169339852444}
 --- !u!114 &114749743716291358
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114776853830958916}
   - component: {fileID: 114973724443954086}
   - component: {fileID: 114774644297187622}
+  - component: {fileID: 114588547750637472}
   m_Layer: 11
   m_Name: Aiming 5-Spread
   m_TagString: Untagged
@@ -227,6 +228,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitter: {fileID: 114051968297441512}
   objectForward: {x: 0, y: 1}
+--- !u!114 &114588547750637472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106880116995546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4010548952277810}
 --- !u!114 &114628111403192630
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114673647540335700}
   - component: {fileID: 114111526664301950}
   - component: {fileID: 114262460822163622}
+  - component: {fileID: 114533710060345984}
   m_Layer: 11
   m_Name: Floor Shooter
   m_TagString: Untagged
@@ -387,6 +388,20 @@ MonoBehaviour:
   wanderTimes:
     min: 1
     max: 6
+--- !u!114 &114533710060345984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641920901920272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
+    type: 2}
+  eventObject: {fileID: 4221515465400632}
 --- !u!114 &114673647540335700
 MonoBehaviour:
   m_ObjectHideFlags: 1
