@@ -56,7 +56,6 @@ public class PolyPlanetPlayer : MonoBehaviour
     private void OnChargeGunReady()
     {
         rapidFireGun.emitted.Lock(true);
-        Debug.Log("Charge gun ready!");
     }
     // When charge shot is fired, blowback away from the aim
     // Activate state on the rapid fire gun to prevent it shooting simultaneously

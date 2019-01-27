@@ -166,16 +166,12 @@ public class HealthComplex2D : MonoBehaviour, IDeathHandler, IHealable2D
         // If the collider is being ignored...
         if(muted)
         {
-            Debug.Log("Disabling collisions with " + col.gameObject.name);
-
             //...add it to the list of offenders to check later
             offenders.Add(col);
         }
         // If this collider's collisions are being re-enabled...
         else
         {
-            Debug.Log("Enabling collisions with " + col.gameObject.name);
-
             //...remove it from the list
             offenders.Remove(col);
         }

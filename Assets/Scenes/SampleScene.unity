@@ -242,6 +242,18 @@ MonoBehaviour:
   - _prefab: {fileID: 1080746735717934, guid: 9c9d2a414d372ee4c8a98e77e5dde722, type: 2}
     _positionType: 1
     _fixedPos: {x: 0, y: 0}
+  - _prefab: {fileID: 1080746735717934, guid: 9c9d2a414d372ee4c8a98e77e5dde722, type: 2}
+    _positionType: 1
+    _fixedPos: {x: 0, y: 0}
+  - _prefab: {fileID: 1080746735717934, guid: 9c9d2a414d372ee4c8a98e77e5dde722, type: 2}
+    _positionType: 1
+    _fixedPos: {x: 0, y: 0}
+  - _prefab: {fileID: 1080746735717934, guid: 9c9d2a414d372ee4c8a98e77e5dde722, type: 2}
+    _positionType: 1
+    _fixedPos: {x: 0, y: 0}
+  - _prefab: {fileID: 1080746735717934, guid: 9c9d2a414d372ee4c8a98e77e5dde722, type: 2}
+    _positionType: 1
+    _fixedPos: {x: 0, y: 0}
 --- !u!1001 &1801609021
 Prefab:
   m_ObjectHideFlags: 0

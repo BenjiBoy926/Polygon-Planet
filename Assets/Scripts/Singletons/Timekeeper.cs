@@ -12,23 +12,6 @@ public class Timekeeper : MonoSingleton<Timekeeper>
 	private bool _paused = false;	// True if the game is currently paused
 	public bool paused { get { return _paused; } }
 
-    private float _timeScale;
-
-    // Member variable gives threads other than the main thread access to the current time scale
-    // as long as any modifications of the time scale go through this property
-    public float timeScale
-    {
-        get
-        {
-            return _timeScale;
-        }
-        set
-        {
-            _timeScale = value;
-            Time.timeScale = value;
-        }
-    }
-
     // Create an instance of the singleton as soon as the program starts running
     [RuntimeInitializeOnLoadMethod]
     private static void CreateInstance()
@@ -36,17 +19,12 @@ public class Timekeeper : MonoSingleton<Timekeeper>
         BaseCreateInstance("Timekeeper");
     }
 
-    private void Start()
-    {
-        _timeScale = Time.timeScale;
-    }
-
     // Restores the normal timescale
     // Additionally stops any coroutines or invokes
     public void RestoreNormalTimescale()
     {
         StopAllCoroutines();
-        timeScale = 1f;
+        Time.timeScale = 1f;
     }
 
     // Pause the game by setting the timescale to zero,
@@ -55,9 +33,9 @@ public class Timekeeper : MonoSingleton<Timekeeper>
 	{
 		// Set timescale to zero or one, depending on whether we're pausing
 		if (isPausing) {
-			timeScale = 0f;
+			Time.timeScale = 0f;
 		} else {
-			timeScale = 1f;
+			Time.timeScale = 1f;
 		}
 
 		// Set local variable
@@ -67,7 +45,7 @@ public class Timekeeper : MonoSingleton<Timekeeper>
     // Causes the game to run at the given timescale for the given amount of time in realtime
     public void ScaledMoment(float newScale, float realtime)
     {
-        timeScale = newScale;
+        Time.timeScale = newScale;
         StopAllCoroutines();
         StartCoroutine("RestoreTimescaleAfterRealtime", realtime);
     }

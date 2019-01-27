@@ -20,7 +20,6 @@ public class EmitByMouseInput2D : Emitter2D
     {
         base.Start();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        Debug.Log("Called start in emitter on " + gameObject.name);
     }
 
     private void Update()
