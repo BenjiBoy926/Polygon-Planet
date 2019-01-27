@@ -340,12 +340,11 @@ MonoBehaviour:
   emittedObject: {fileID: 1883150535444874, guid: 9cc226af9d5389849841ae983c83b19c,
     type: 2}
   _objectVelocity: 2
-  _emitted:
-    _duration: 5
+  emitRate: 5
   objectAnchors:
   - origin: {x: 0, y: 1}
     direction: {x: 0, y: 1}
-  fireRateDifference: 4
+  fireRateDifference: 2
   aimVector: {x: 1, y: 0}
 --- !u!114 &114329381200555100
 MonoBehaviour:
@@ -384,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
-    type: 2}
+  particle: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852, type: 2}
+  particleParent: {fileID: 0}
   eventObject: {fileID: 4871902660709730}
 --- !u!114 &114446171237579982
 MonoBehaviour:
@@ -415,8 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc,
-    type: 2}
+  particle: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc, type: 2}
+  particleParent: {fileID: 0}
   eventObject: {fileID: 4221515465400632}
 --- !u!114 &114673647540335700
 MonoBehaviour:
@@ -457,8 +456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226152d80d38c5c47a1ad6d571b9788c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852,
-    type: 2}
+  particle: {fileID: 1477293406687530, guid: 0628810792bf4ed4b94085fe2ec20852, type: 2}
+  particleParent: {fileID: 0}
   eventObject: {fileID: 4953420735357034}
 --- !u!212 &212021796996905134
 SpriteRenderer:

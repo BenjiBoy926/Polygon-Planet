@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 /*
@@ -14,50 +11,48 @@ using UnityEngine.Events;
  * -----------
  */ 
 
-[System.Serializable]
-public class State
+public class State : MonoBehaviour
 {
     public const float LOCKED_ACTIVATION_DURATION = -1f;    // This floating-point value is sent to the activated event if the state is locked into the activated state
-    private const int THREAD_SLEEP_INTERVAL = 10;   // Interval in milliseconds that the disable thread sleeps
 
-    [SerializeField]
     private float _duration; // Default duration the state lasts when activated
     private float timer;    // Timer used to determine if the state is active in time
 
-    private bool isLocked;  // True if the state has been locked into true or false
+    private bool _isLocked;  // True if the state has been locked into true or false
     private bool lockedState;   // The state if it is being locked
 
     // Event handling: class has an activated and deactivated event
-    // Uses threading to call the deactivate event
     private UnityAction<float> onStateActivated;   // Multicast function pointer is called whenever the state activates
     private UnityAction onStateDeactivated; // Multicast funciton pointer is called as soon as the state is deactivated
-    private Thread deactivateThread;    // Thread used to execute the disable method as soon as the state deactivates
 
     public float duration { get { return _duration; } }
+    public bool isLocked { get { return _isLocked; } }
 
-    public State()
+    public static State Construct(float duration = 1f, GameObject obj = null)
     {
-        _duration = 1f;
-    }
-    public State (float d)
-    {
-        _duration = d;
-    }
+        // If no object was specified for the state object, create one
+        if(obj == null)
+        {
+            obj = new GameObject("State Object");
+        }
 
-    // When destroyed, interrupt any threads that are sleeping
-    ~State() { deactivateThread.Interrupt(); }
+        // Add a state component to the object specified and return it
+        State state = obj.AddComponent<State>();
+        state._duration = duration;
+        return state;
+    }
 
     // State's implicitly converted to bool return true while active and false while inactive
     public static implicit operator bool(State state)
     {
         // If not locked, choose time comparison. If locked, choosed locked state
-        return (Time.time < state.timer && !state.isLocked) || (state.lockedState && state.isLocked);
+        return (Time.time < state.timer && !state._isLocked) || (state.lockedState && state._isLocked);
     }
 
     // Activate the state by setting the timer to current time plus local duration
     public void Activate ()
     {
-        if(!isLocked)
+        if(!_isLocked)
         {
             timer = Time.time + duration;
             DeactivateAfterTime(duration);
@@ -72,7 +67,7 @@ public class State
     // Overload of the Activate () method allows calling method to specify a custom duration for the state
     public void Activate (float customDuration)
     {
-        if(!isLocked)
+        if(!_isLocked)
         {
             timer = Time.time + customDuration;
             DeactivateAfterTime(customDuration);
@@ -87,15 +82,9 @@ public class State
     // Disable the state by setting the timer to an invalid number
     public void Deactivate()
     {
-        if(!isLocked)
+        if(!_isLocked)
         {
             timer = -1f;
-
-            // Interrupt any deactivation threads that might currently be running
-            if(deactivateThread != null)
-            {
-                deactivateThread.Interrupt();
-            }
 
             // Check and invoke the event
             if (onStateDeactivated != null)
@@ -110,12 +99,12 @@ public class State
     public void Lock (bool state)
     {
         // Set locked to true and locked state to the state specified
-        isLocked = true;
+        _isLocked = true;
         lockedState = state;
 
-        // Make sure any deactivate thread still sleeping is interrupted
+        // Reset timer and stop any invokes
         timer = -1f;
-        deactivateThread.Interrupt();
+        CancelInvoke();
 
         // Call state activated event if it was locked to true
         if(onStateActivated != null && state)
@@ -130,7 +119,7 @@ public class State
     }
     public void Unlock()
     {
-        isLocked = false;
+        _isLocked = false;
     }
 
     // Add/remove the method specified to the activation event
@@ -152,32 +141,10 @@ public class State
         onStateDeactivated -= method;
     }
 
-    // Start a thread that will deactivate the state after the time specified
+    // Schedule an invoke of the deactivate event
     private void DeactivateAfterTime(float timeout)
     {
-        // Interrupt the current deactivation thread and start a new one
-        if(deactivateThread != null)
-        {
-            deactivateThread.Interrupt();
-        }
-        
-        deactivateThread = new Thread(DeactivateThread);
-        deactivateThread.Start(timeout);
-    }
-
-    // Cause the current thread to sleep for the amount of time specified, then deactivate the state
-    private void DeactivateThread(object time)
-    {
-        float totalTime = (float)time;
-        float activeTime = 0f;
-
-        // Loop until the thread has been active for the total amount of time
-        while(activeTime < totalTime)
-        {
-            Thread.Sleep(THREAD_SLEEP_INTERVAL);
-            activeTime += THREAD_SLEEP_INTERVAL * 0.001f * Timekeeper.instance.timeScale;
-        }
-
-        Deactivate();
+        CancelInvoke();
+        Invoke("Deactivate", timeout);
     }
 }

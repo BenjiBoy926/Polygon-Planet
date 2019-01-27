@@ -22,7 +22,8 @@ public class Emitter2D : MonoBehaviour
     [SerializeField]
     private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
-    private State _emitted;    // State returns true if the emitter emitted within #duration seconds of the current moment
+    private float emitRate; // Rate at which the emitter is allowed to emit 
+    private State _emitted; // State returns true if the emitter emitted within #duration seconds of the current moment
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
     private UnityAction<Vector2> onEmittedEvent;    // Event called whenever the the emitter emits
@@ -31,6 +32,7 @@ public class Emitter2D : MonoBehaviour
 
     protected virtual void Start()
     {
+        _emitted = State.Construct(emitRate, gameObject);
         pool = new ObjectPool<KinematicMover2D>(emittedObject, gameObject.name + "'s Pool");
     }
 

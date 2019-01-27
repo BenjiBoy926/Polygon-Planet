@@ -9,7 +9,7 @@ using System;
  * Defines a health object capable of recieving damage inputs through an
  * aggregation of multiple damageable objects.  The script strictly
  * enforces a "one hazard, one hit" rule that prevents a single hazard
- * from dealing its damage to multiple damageable parts
+ * from dealing its damage to multiple damageable parts.
  * -------------------------------------
  */ 
 
@@ -21,6 +21,7 @@ public class HealthComplex2D : MonoBehaviour, IDeathHandler, IHealable2D
     private UnityAction deathEvent; // Multi-cast delegate to functions that call when health is depleted
     private List<IDamageable2D> damageables = new List<IDamageable2D>();    
     private List<DamageInfo> scheduledDamage = new List<DamageInfo>();   // List of damage info scheduled to be taken by the health complex when the next frame is resolved
+    private List<Collider2D> offenders = new List<Collider2D>();    // List of colliders belonging to each object that has hurt this complex in its lifetime
 
     public bool isDead { get { return health <= 0; } }
 
@@ -28,32 +29,55 @@ public class HealthComplex2D : MonoBehaviour, IDeathHandler, IHealable2D
     {
         health = maxHealth;
     }
-    // Check each frame to see if any damage has been scheduled,
-    // and if so, take the damage scheduled
     private void Update()
     {
+        // Take the damage scheduled
         if(scheduledDamage.Count == 1)
         {
-            TakeDamage(scheduledDamage[0].strength);
-
-            // If the hazard persists, prevent it from hitting this object again until it is deactivated
-            if(scheduledDamage[0].hitBox.gameObject.activeInHierarchy)
-            {
-                MuteCollider(scheduledDamage[0].hitBox);
-            }
-
+            TakeDamage(scheduledDamage[0]);
             scheduledDamage.RemoveAt(0);
         }
+        // If there are many damages scheduled, 
+        // we need the more performance-intensive function to sort out the damage
         else if(scheduledDamage.Count > 1)
         {
             ResolveDamage();
         }
+
+        if(offenders.Count == 1)
+        {
+            // If the offender is no longer active, re-enable collisions with it
+            if(!offenders[0].gameObject.activeInHierarchy)
+            {
+                MuteCollider(offenders[0], false);
+            }
+        }
+        else if(offenders.Count > 1)
+        {
+            int index = 0;
+
+            // Loop through the list of offenders
+            while(index < offenders.Count)
+            {
+                // If the current offender is no longer active, re-enable collisions with it
+                if(!offenders[index].gameObject.activeInHierarchy)
+                {
+                    MuteCollider(offenders[index], false);
+                }
+                else
+                {
+                    index++;
+                }
+            }
+        }
     }
 
     // Deplete health. Invoke death event if health is depleted
-    protected void TakeDamage(int damage)
+    protected void TakeDamage(DamageInfo info)
     {
-        health -= damage;
+        health -= info.strength;
+        MuteCollider(info.hitBox, true);
+
         if (health <= 0)
         {
             Die();
@@ -100,14 +124,7 @@ public class HealthComplex2D : MonoBehaviour, IDeathHandler, IHealable2D
         // Once cleaned, take all the damage scheduled
         foreach (DamageInfo damage in scheduledDamage)
         {
-            TakeDamage(damage.strength);
-
-            // If the projectile's hitbox is still enabled, make sure it
-            // is not allowed to go on and damage anything else on this complex
-            if(damage.hitBox.gameObject.activeInHierarchy)
-            {
-                MuteCollider(damage.hitBox);
-            }
+            TakeDamage(damage);
         }
 
         // Clear all damage scheduled
@@ -139,11 +156,28 @@ public class HealthComplex2D : MonoBehaviour, IDeathHandler, IHealable2D
     }
 
     // Prevent the given collider from colliding with any damageable object associated with this script
-    private void MuteCollider (Collider2D muted)
+    private void MuteCollider (Collider2D col, bool muted)
     {
         foreach (IDamageable2D part in damageables)
         {
-            Physics2D.IgnoreCollision(part.hitBox, muted);
+            Physics2D.IgnoreCollision(part.hitBox, col, muted);
+        }
+
+        // If the collider is being ignored...
+        if(muted)
+        {
+            Debug.Log("Disabling collisions with " + col.gameObject.name);
+
+            //...add it to the list of offenders to check later
+            offenders.Add(col);
+        }
+        // If this collider's collisions are being re-enabled...
+        else
+        {
+            Debug.Log("Enabling collisions with " + col.gameObject.name);
+
+            //...remove it from the list
+            offenders.Remove(col);
         }
     }
 

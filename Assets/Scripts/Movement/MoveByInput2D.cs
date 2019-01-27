@@ -9,7 +9,7 @@ using System.Collections;
  * -----------------------
  */ 
 
-public class MoveByInput2D : BlowbackMover2D
+public class MoveByInput2D : ForceSimulatedMover2D
 {
     [SerializeField]
     protected float _speed;  // Speed at which the object will move

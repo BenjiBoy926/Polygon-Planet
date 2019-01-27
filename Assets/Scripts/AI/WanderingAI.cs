@@ -23,10 +23,12 @@ public class WanderingAI : MonoBehaviour
 
     private WaitUntil WaitUntil;    // Wait command used in all wandering coroutines
     private List<Vector2> availableDirections = new List<Vector2>();  // List of directions the ai can wander in
-    private State isWandering = new State();  // State is true if the ai is still wandering in the direction most recently selected
+    private State isWandering;  // State is true if the ai is still wandering in the direction most recently selected
 
     private void Start()
     {
+        isWandering = State.Construct(obj: gameObject);
+
         // Add correct vectors to the list
         if(directions == DirectionalType.AllDirections)
         {

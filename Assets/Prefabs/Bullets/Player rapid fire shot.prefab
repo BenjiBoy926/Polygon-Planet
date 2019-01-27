@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016525c313e559d4abbdbd7959fd3b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1359755605984908, guid: 2874233ddbb719442881d80419d05688,
-    type: 2}
+  particle: {fileID: 1359755605984908, guid: 2874233ddbb719442881d80419d05688, type: 2}
+  particleParent: {fileID: 0}
   eventObject: {fileID: 4114905415882948}
 --- !u!114 &114742198564360810
 MonoBehaviour:

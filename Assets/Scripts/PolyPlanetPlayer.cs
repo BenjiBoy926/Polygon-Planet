@@ -62,7 +62,7 @@ public class PolyPlanetPlayer : MonoBehaviour
     // Activate state on the rapid fire gun to prevent it shooting simultaneously
     private void OnChargeGunFired(Vector2 shotAim)
     {
-        mover.Blowback(-shotAim, chargeGunRecoil);
+        mover.ApplyForce(-shotAim, chargeGunRecoil);
         rapidFireGun.emitted.Unlock();
         rapidFireGun.emitted.Activate();
     }

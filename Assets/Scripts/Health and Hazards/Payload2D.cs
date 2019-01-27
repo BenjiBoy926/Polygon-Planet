@@ -21,9 +21,9 @@ public class Payload2D : Projectile2D
     }
 
     // Override of the cancelled method of projectile releases explosion when cancelled
-    protected override void OnCancelled()
+    protected override void CancelProjectile()
     {
-        base.OnCancelled();
+        base.CancelProjectile();
         explosion.ExplodeAtPoint(transform.position);
     }
 }

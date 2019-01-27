@@ -12,25 +12,48 @@ using System.Collections;
 public class ParticleEffector : MonoBehaviour
 {
     [SerializeField]
-    private GameObject particlePrefab;    // Reference to the object prefab instantiated and used as the particle effect
-    private Transform particle;    // Reference to a copy of the prefab instantiated
+    private GameObject particle;    // Reference to the object prefab instantiated and used as the particle effect
+    [SerializeField]
+    private Transform particleParent;   // Reference to a transform that the particle is instantiated as a child of
+    private Transform particleTransform;    // Reference to a copy of the prefab instantiated
 
     protected virtual void Start()
     {
-        particle = Instantiate(particlePrefab).transform;
-        particle.gameObject.SetActive(false);
+        // If a parent is specified, put the particle as a child
+        if(particleParent != null)
+        {
+            particleTransform = Instantiate(particle, particleParent).transform;
+        }
+        // Otherwise, put the particle without any parent
+        else
+        {
+            particleTransform = Instantiate(particle).transform;
+        }
+
+        particleTransform.gameObject.SetActive(false);
     }
 
+    // Re-enable the particle effect
+    public virtual void EnableEffect()
+    {
+        particleTransform.gameObject.SetActive(false);
+        particleTransform.gameObject.SetActive(true);
+    }
     // Move the particle effect to the specified global position and (re)activate it
     public virtual void EnableEffect(Vector3 position)
     {
-        particle.position = position;
-        particle.gameObject.SetActive(false);
-        particle.gameObject.SetActive(true);
+        particleTransform.position = position;
+        EnableEffect();
+    }
+    // Move the particle effect to the local position and activate it
+    public virtual void EnableEffectLocal(Vector3 localPos)
+    {
+        particleTransform.localPosition = localPos;
+        EnableEffect();
     }
     // Disable the particle effect
     public virtual void DisableEffect()
     {
-        particle.gameObject.SetActive(false);
+        particleTransform.gameObject.SetActive(false);
     }
 }

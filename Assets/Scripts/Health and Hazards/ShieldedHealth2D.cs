@@ -17,14 +17,18 @@ public class ShieldedHealth2D : InvincibleHealth2D
     [SerializeField]
     private bool fullHeal;  // If true, this script regenerates health and shields over time. If not, only regenerates the shield
     [SerializeField]
+    private float regenerationRate; // Time between each time a health point is regenerated
     private State regenerated;  // Gives duration between regenerating the shield, and returns true within #duration seconds of the shield being regenerated
     [SerializeField]
+    private float regenerationLag;  // Time after being damaged it takes to start regenerating health
     private State damaged;  // Gives duration for which object is considered to be "recently" damaged
 
     protected override void Start()
     {
         base.Start();
         shield = maxShield;
+        regenerated = State.Construct(regenerationRate, gameObject);
+        damaged = State.Construct(regenerationLag, gameObject);
     }
 
     // If shields are up, deplete them. Otherwise, take direct damage to health

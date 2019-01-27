@@ -10,7 +10,7 @@ using System.Collections;
 
 public class InvincibleHealth2D : SimpleHealth2D
 {
-    private State _invincible = new State();   // Specifies the duration for which the health object is invincible
+    private State _invincible;   // Specifies the duration for which the health object is invincible
     public State invincible { get { return _invincible; } }
 
     // Only take damage if not invincible

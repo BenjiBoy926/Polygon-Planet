@@ -19,7 +19,7 @@ public class Projectile2D : Hazard2D
     [SerializeField]
     protected bool projectileCancelImmune;    // If true, this projectile cancels other projectiles but cannot be cancelled by other projectiles
     [SerializeField]
-    protected bool damageableCancelImmune;  // If true, this projectile will not disable when it deals damage to a damageable object
+    protected bool damageableCancelImmune;  // If true, this projectile will not deplete persistence when it deals damage to a damageable object
     private Projectile2D otherProjectile; // Reference to another projectile, if any, that this projectile hit
 
     private void Start()
@@ -39,7 +39,7 @@ public class Projectile2D : Hazard2D
         // When the projectile damages an object, try to cancel it with the corresponding type
         if(recentlyDamaged != null)
         {
-            Cancel(1, ProjectileCancelType.Damageable);
+            TryCancelProjectile(1, ProjectileCancelType.Damageable);
         }
 
         // See if we struck a projectile
@@ -49,31 +49,33 @@ public class Projectile2D : Hazard2D
             // If this projectile is not immune to projectile cancelling, try to cancel the other projectile as an ordinary projectile
             if(!projectileCancelImmune)
             {
-                otherProjectile.Cancel(_info.strength, ProjectileCancelType.Projectile);
+                otherProjectile.TryCancelProjectile(_info.strength, ProjectileCancelType.Projectile);
             }
-            // If this projectil is immune to projectile cancelling, try to cancel the other projectile as an immune projectile
+            // If this projectile is immune to projectile cancelling, try to cancel the other projectile as an immune projectile
             else
             {
-                otherProjectile.Cancel(_info.strength, ProjectileCancelType.ImmuneProjectile);
+                otherProjectile.TryCancelProjectile(_info.strength, ProjectileCancelType.ImmuneProjectile);
             }
         }
     }
 
     // Enables a calling method to cancel this projectile. The calling method must specify
     // the type of object that is trying to cancel this projectile
-    public void Cancel(int otherStrength, ProjectileCancelType otherType)
+    public void TryCancelProjectile(int otherStrength, ProjectileCancelType otherType)
     {
-        if(otherType == ProjectileCancelType.Projectile && !projectileCancelImmune)
+        // If this projectile hit a damageable object or another projectile...
+        if(otherType == ProjectileCancelType.Projectile && !projectileCancelImmune ||
+            otherType == ProjectileCancelType.Damageable && !damageableCancelImmune)
         {
+            //...deplete persistence
             DepletePersistence(otherStrength);
         }
-        else if(otherType == ProjectileCancelType.ImmuneProjectile && !projectileCancelImmune)
+        // Otherwise, if this projectile hit a projectile that is immune to cancellation,
+        // and this projectile is not also immune to cancellation...
+        else if(!projectileCancelImmune)
         {
-            OnCancelled();
-        }
-        else if(otherType == ProjectileCancelType.Damageable && !damageableCancelImmune)
-        {
-            OnCancelled();
+            //...immediately cancel this projectile
+            CancelProjectile();
         }
     }
 
@@ -85,11 +87,11 @@ public class Projectile2D : Hazard2D
         // If persistence is depleted, this projectile has been cancelled
         if(persistence <= 0)
         {
-            OnCancelled();
+            CancelProjectile();
         }
     }
     // Called once the projectile has been successfully cancelled out
-    protected virtual void OnCancelled()
+    protected virtual void CancelProjectile()
     {
         gameObject.SetActive(false);
     }

@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4639065809076250}
   - component: {fileID: 114529138564404686}
+  - component: {fileID: 114257678692638520}
   m_Layer: 8
   m_Name: Charge Gun
   m_TagString: Untagged
@@ -284,12 +285,26 @@ MonoBehaviour:
   emittedObject: {fileID: 1308790301459356, guid: 68eb8ae65b273d244a2098d02940014d,
     type: 2}
   _objectVelocity: 20
-  _emitted:
-    _duration: 0.2
+  emitRate: 0.2
   objectAnchors:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
   emitButtonName: Fire1
+--- !u!114 &114257678692638520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203736360044170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c9ff83c4ca88640aea5f26a373df16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 1469416485872848, guid: 7662503fe6be230468ee20ed2198cc57, type: 2}
+  particleParent: {fileID: 4639065809076250}
+  eventObject: {fileID: 4639065809076250}
+  inverted: 1
 --- !u!114 &114270936075244406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mover: {fileID: 114065582762163130}
   defaultShakeTime: 0.3
-  defaultShakeMagnitude: 5
+  defaultShakeMagnitude: 1
   defaultShakeInterval: 0.03
 --- !u!114 &114351791894561636
 MonoBehaviour:
@@ -335,10 +350,8 @@ MonoBehaviour:
   _hitBox: {fileID: 58769192320476478}
   maxShield: 7
   fullHeal: 0
-  regenerated:
-    _duration: 0.5
-  damaged:
-    _duration: 1
+  regenerationRate: 0.5
+  regenerationLag: 1
 --- !u!114 &114529138564404686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,8 +366,7 @@ MonoBehaviour:
   emittedObject: {fileID: 1535318268074498, guid: f0249c8474e1fb044862dbd3c5f7b243,
     type: 2}
   _objectVelocity: 10
-  _emitted:
-    _duration: 2
+  emitRate: 2
   objectAnchors:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
@@ -370,8 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270ead40675d2e14582653959d715e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1584655011353468, guid: 1a9ddac11651cd8458811bd51df24858,
-    type: 2}
+  particle: {fileID: 1584655011353468, guid: dc32010ba9acb154bb7ec60b0e833acc, type: 2}
+  particleParent: {fileID: 0}
   eventObject: {fileID: 4218169339852444}
 --- !u!114 &114749743716291358
 MonoBehaviour:
@@ -422,8 +434,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1917741413
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 42a99c1a8aa200c4b895854701bd531c, type: 3}
   m_Color: {r: 0.13363297, g: 0.49748304, b: 0.8584906, a: 1}
