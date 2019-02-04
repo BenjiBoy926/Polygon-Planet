@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Events;
 
 /*
  * CLASS Projectile2D
@@ -21,6 +21,7 @@ public class Projectile2D : Hazard2D
     [SerializeField]
     protected bool damageableCancelImmune;  // If true, this projectile will not deplete persistence when it deals damage to a damageable object
     private Projectile2D otherProjectile; // Reference to another projectile, if any, that this projectile hit
+    private UnityAction projectileCancelledEvent;    // Event called when the projectile is cancelled out
 
     private void Start()
     {
@@ -94,6 +95,21 @@ public class Projectile2D : Hazard2D
     protected virtual void CancelProjectile()
     {
         gameObject.SetActive(false);
+
+        // Call the event
+        if(projectileCancelledEvent != null)
+        {
+            projectileCancelledEvent();
+        }
+    }
+
+    public void AddProjectileCancelledEvent(UnityAction method)
+    {
+        projectileCancelledEvent += method;
+    }
+    public void RemoveProjectileCancelledEvent(UnityAction method)
+    {
+        projectileCancelledEvent -= method;
     }
 }
 
