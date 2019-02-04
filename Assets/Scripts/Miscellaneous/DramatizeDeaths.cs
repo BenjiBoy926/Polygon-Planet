@@ -10,10 +10,8 @@ using System.Collections.Generic;
  * ---------------------
  */ 
 
-public class DramatizeDeaths : MonoBehaviour
+public class DramatizeDeaths : DeathEventHandler
 {
-    [SerializeField]
-    private string deathObjectTag;  // Tag of the objects with the death handlers on them
     [SerializeField]
     private string cameraTag;   // Tag of the camera that the script tries to shake
     [SerializeField]
@@ -28,26 +26,7 @@ public class DramatizeDeaths : MonoBehaviour
         GameObject cameraObj = GameObject.FindGameObjectWithTag(cameraTag);
         cameraShaker = cameraObj.GetComponent<Shaker>();
 
-        SubscribeToDeathEvents();
-    }
-
-    private void SubscribeToDeathEvents()
-    {
-        // Array of objects expected to have death handlers on them 
-        GameObject[] deathObjects = GameObject.FindGameObjectsWithTag(deathObjectTag);
-        IDeathHandler currentHandler;   // Death handler on the current object in the array
-
-        // Get death handlers on each of the objects
-        foreach(GameObject obj in deathObjects)
-        {
-            currentHandler = obj.GetComponentInChildren<IDeathHandler>();
-
-            // If the object has a death handler, add it to the list
-            if(currentHandler != null)
-            {
-                currentHandler.AddDeathEvent(DramatizeDeath);
-            }
-        }
+        SubscribeToDeathEvents(DramatizeDeath);
     }
 
     // Go slow-motion for some time and shake the camera

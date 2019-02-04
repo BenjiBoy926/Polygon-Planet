@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 50493814499053754}
   - component: {fileID: 58769192320476478}
   - component: {fileID: 114749743716291358}
-  - component: {fileID: 114495379169631212}
   - component: {fileID: 114745188884404522}
+  - component: {fileID: 721260422740466572}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -160,24 +160,6 @@ MonoBehaviour:
   chargeGunRecoil: 20
   defaultMoveSpeed: 10
   firingMoveSpeed: 7
---- !u!114 &114495379169631212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052630230981314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 949ea65e6ed6e5d419007cb2ea81c4ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 7
-  _hitBox: {fileID: 58769192320476478}
-  maxShield: 7
-  fullHeal: 0
-  regenerationRate: 0.5
-  regenerationLag: 1
 --- !u!114 &114745188884404522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +175,20 @@ MonoBehaviour:
   particle: {fileID: 1584655011353468, guid: f7d6ecc99f748f34dbf4ab0ca938dfd6, type: 3}
   particleParent: {fileID: 0}
   eventObject: {fileID: 4218169339852444}
+--- !u!114 &721260422740466572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052630230981314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c41b0a651dc154591c7733d39cc5ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  _hitBox: {fileID: 58769192320476478}
 --- !u!1 &1194978465102852
 GameObject:
   m_ObjectHideFlags: 0

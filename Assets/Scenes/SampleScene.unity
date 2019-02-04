@@ -204,6 +204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1553721266}
   - component: {fileID: 1553721267}
+  - component: {fileID: 1553721268}
+  - component: {fileID: 1553721265}
   m_Layer: 0
   m_Name: Level x Preloader
   m_TagString: Untagged
@@ -211,6 +213,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1553721265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553721264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e04173e1593787408ae1fcda62a9b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathObjectTags:
+  - Player
+  sceneName: SampleScene
+  loadDelay: 3
 --- !u!4 &1553721266
 Transform:
   m_ObjectHideFlags: 0
@@ -254,6 +272,22 @@ MonoBehaviour:
   - _prefab: {fileID: 1080746735717934, guid: 9c9d2a414d372ee4c8a98e77e5dde722, type: 3}
     _positionType: 1
     _fixedPos: {x: 0, y: 0}
+--- !u!114 &1553721268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553721264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e04173e1593787408ae1fcda62a9b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathObjectTags:
+  - Enemy
+  sceneName: SampleScene
+  loadDelay: 3
 --- !u!1001 &1801609021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,6 +295,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1390994946278962, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
     - target: {fileID: 4441001371935612, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -292,6 +330,18 @@ PrefabInstance:
     - target: {fileID: 4441001371935612, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4441001371935612, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4441001371935612, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4441001371935612, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9240b3ab9e563e4ca9975179f2e214f, type: 3}

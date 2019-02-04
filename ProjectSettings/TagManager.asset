@@ -8,6 +8,7 @@ TagManager:
   - PreviewCamera
   - MainBoundary
   - Enemy
+  - BackupCamera
   layers:
   - Default
   - TransparentFX

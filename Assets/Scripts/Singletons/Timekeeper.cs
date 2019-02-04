@@ -47,13 +47,13 @@ public class Timekeeper : MonoSingleton<Timekeeper>
     {
         Time.timeScale = newScale;
         StopAllCoroutines();
-        StartCoroutine("RestoreTimescaleAfterRealtime", realtime);
+        StartCoroutine("RestoreTimescaleAfterRealtime", newScale * realtime);
     }
 
     // Waits the given time in realtime, then restores the normal timescale
-    private IEnumerator RestoreTimescaleAfterRealtime(float realtime)
+    private IEnumerator RestoreTimescaleAfterRealtime(float scaledTime)
     {
-        yield return new WaitForSecondsRealtime(realtime);
+        yield return new WaitForSeconds(scaledTime);
         RestoreNormalTimescale();
     }
 }
