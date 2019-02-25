@@ -18,7 +18,7 @@ public class RotateToEmission2D : MonoBehaviour
 
     private void Start()
     {
-        emitter.AddEmittedEvent(LookTowardsEmission);
+        emitter.onEmittedEvent += LookTowardsEmission;
     }
 
     private void LookTowardsEmission(Vector2 direction)

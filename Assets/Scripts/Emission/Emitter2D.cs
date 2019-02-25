@@ -26,7 +26,7 @@ public class Emitter2D : MonoBehaviour
     private State _emitted; // State returns true if the emitter emitted within #duration seconds of the current moment
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
-    private UnityAction<Vector2> onEmittedEvent;    // Event called whenever the the emitter emits
+    public event UnityAction<Vector2> onEmittedEvent;    // Event called whenever the the emitter emits
 
     public State emitted { get { return _emitted; } }
 
@@ -70,15 +70,5 @@ public class Emitter2D : MonoBehaviour
         {
             onEmittedEvent(aimVector);
         }
-    }
-
-    // Add or remove an event from the emitted event
-    public void AddEmittedEvent(UnityAction<Vector2> method)
-    {
-        onEmittedEvent += method;
-    }
-    public void RemoveEmittedEvent(UnityAction<Vector2> method)
-    {
-        onEmittedEvent -= method;
     }
 }

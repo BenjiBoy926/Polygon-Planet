@@ -145,7 +145,7 @@ public class HealthComplex2D : MonoBehaviour, IDeathHandler, IHealable2D
         {
             // Sort the list from greatest to least damage, and remove the greatest damage
             matches.Sort();
-            matches.RemoveAt(0);
+            matches.RemoveAt(0);    // WARNING: can't remember if we're supposed to remove this one or the one at the END of the list...
 
             // Remove all but the highest damage info from scheduled damage
             foreach(DamageInfo info in matches)

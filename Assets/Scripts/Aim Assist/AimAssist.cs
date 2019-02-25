@@ -14,7 +14,6 @@ public class AimAssist : MonoBehaviour
     private const float ASSIST_STRENGTH = 20f;  // A number between 0 and 1, where zero means no assistance and one means perfect aim
     private const float MAX_VIABLE_TARGET = 90f;    // If the trajectory angle is greater than or equal to this number, the bullet will not auto-assist towards it
 
-    //private List<TargetingData> targetData = new List<TargetingData>();    // List of targets the bullet may try to assist aiming towards
     [SerializeField]
     private Rigidbody2D rb2D;   // Rigidbody on this object
     [SerializeField]

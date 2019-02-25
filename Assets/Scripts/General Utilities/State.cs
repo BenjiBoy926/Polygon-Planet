@@ -22,8 +22,8 @@ public class State : MonoBehaviour
     private bool lockedState;   // The state if it is being locked
 
     // Event handling: class has an activated and deactivated event
-    private UnityAction<float> onStateActivated;   // Multicast function pointer is called whenever the state activates
-    private UnityAction onStateDeactivated; // Multicast funciton pointer is called as soon as the state is deactivated
+    public event UnityAction<float> onStateActivated;   // Multicast function pointer is called whenever the state activates
+    public event UnityAction onStateDeactivated; // Multicast funciton pointer is called as soon as the state is deactivated
 
     public float duration { get { return _duration; } }
     public bool isLocked { get { return _isLocked; } }
@@ -120,25 +120,6 @@ public class State : MonoBehaviour
     public void Unlock()
     {
         _isLocked = false;
-    }
-
-    // Add/remove the method specified to the activation event
-    public void AddActivatedEvent(UnityAction<float> method)
-    {
-        onStateActivated += method;
-    }
-    public void RemoveActivatedEvent(UnityAction<float> method)
-    {
-        onStateActivated -= method;
-    }
-    // Add/remove the method specified to the deactivation event
-    public void AddDeactivatedEvent(UnityAction method)
-    {
-        onStateDeactivated += method;
-    }
-    public void RemoveDeactivatedEvent(UnityAction method)
-    {
-        onStateDeactivated -= method;
     }
 
     // Schedule an invoke of the deactivate event

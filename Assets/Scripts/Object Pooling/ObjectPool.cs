@@ -156,7 +156,7 @@ public class ObjectPool<T> where T : Component
     {
         GameObject instance;    // Instance of the game object being instantiated
         instance = UnityEngine.Object.Instantiate(prefab, poolParent);
-        pool.Add(instance.GetComponentInChildren<T>());
+        pool.Add(instance.GetComponent<T>());
         instance.SetActive(false);
 
         // Return that last object that was just added

@@ -29,12 +29,12 @@ public class PolyPlanetPlayer : MonoBehaviour
     private void Start()
     {
         // Add local methods to rapid fire gun's events
-        rapidFireGun.emitted.AddDeactivatedEvent(OnRapidFireGunReady);
-        rapidFireGun.AddEmittedEvent(OnRapidFireGunFired);
+        rapidFireGun.emitted.onStateDeactivated += OnRapidFireGunReady;
+        rapidFireGun.onEmittedEvent += OnRapidFireGunFired;
 
         // Add local methods to charge gun events
-        chargeGun.emitted.AddDeactivatedEvent(OnChargeGunReady);
-        chargeGun.AddEmittedEvent(OnChargeGunFired);
+        chargeGun.emitted.onStateDeactivated += OnChargeGunReady;
+        chargeGun.onEmittedEvent += OnChargeGunFired;
 
         // Prevent charge gun from being charged at the start
         chargeGun.emitted.Activate();

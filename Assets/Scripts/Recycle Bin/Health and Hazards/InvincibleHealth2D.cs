@@ -13,12 +13,18 @@ public class InvincibleHealth2D : SimpleHealth2D
     private State _invincible;   // Specifies the duration for which the health object is invincible
     public State invincible { get { return _invincible; } }
 
+    protected override void Start()
+    {
+        base.Start();
+        _invincible = State.Construct(obj : gameObject);
+    }
+
     // Only take damage if not invincible
-    public override void TakeDamage(DamageInfo info, DamageType type)
+    public /*override*/ void TakeDamage(DamageInfo info, DamageType type)
     {
         if(!_invincible)
         {
-            base.TakeDamage(info, type);
+            //base.TakeDamage(info, type);
         }
     }
 }

@@ -32,7 +32,7 @@ public class ShieldedHealth2D : InvincibleHealth2D
     }
 
     // If shields are up, deplete them. Otherwise, take direct damage to health
-    public override void TakeDamage(DamageInfo info, DamageType type)
+    new public /*override*/ void TakeDamage(DamageInfo info, DamageType type)
     {
         if (shield > 0)
         {
@@ -67,11 +67,5 @@ public class ShieldedHealth2D : InvincibleHealth2D
             // Set recently regenerated to active
             regenerated.Activate();
         }
-    }
-
-    public override void FullRestore()
-    {
-        base.FullRestore();
-        shield = maxShield;
     }
 }

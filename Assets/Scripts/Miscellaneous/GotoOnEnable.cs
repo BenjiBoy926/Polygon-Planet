@@ -5,7 +5,7 @@ using System.Collections;
  * CLASS GotoOnEnable
  * ------------------
  * Move this object to the transform position of the desired 
- * with the desired offset every frame
+ * with the desired offset
  * ------------------
  */ 
 
