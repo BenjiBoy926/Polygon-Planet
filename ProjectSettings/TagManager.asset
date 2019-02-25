@@ -9,6 +9,8 @@ TagManager:
   - MainBoundary
   - Enemy
   - BackupCamera
+  - PlayerHazard
+  - EnemyHazard
   layers:
   - Default
   - TransparentFX

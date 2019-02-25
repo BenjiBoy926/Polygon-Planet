@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info:
     _power: 1
-    _type: 0
+    _type: 1
     _tag: 3
 --- !u!1 &513686793533292857
 GameObject:

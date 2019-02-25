@@ -20,8 +20,8 @@ public class EnergyBottleneck : MonoBehaviour
     private List<EnergySocket> sockets;
 
     // Stock changes scheduled to take place
-    private List<int> scheduledStockIncreases;
-    private List<int> scheduledStockDecreases;
+    private List<int> scheduledStockIncreases = new List<int>();
+    private List<int> scheduledStockDecreases = new List<int>();
 
     private void Start()
     {
@@ -76,6 +76,8 @@ public class EnergyBottleneck : MonoBehaviour
         }
         // Change the stock by the amount grabbed
         stock.ChangeStock(stockChange);
+        // Clear out the schedule so the damage is not taken again
+        schedule.Clear();
     }
     // Setup the energy sockets to schedule stock changes on the local list of stock changes
     private void SetupEnergySockets()

@@ -53,7 +53,7 @@ public class EnergySocket : MonoBehaviour
             }
             // Raise the event with the calculated power absorbed
             energyAbsorbedEvent(adjustedPower);
-            Debug.Log(transform.root.gameObject.name + " absorbs " + adjustedPower + " energy");
+            Debug.Log(gameObject.name + " absorbs " + adjustedPower + " energy");
         }
     }
 }

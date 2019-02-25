@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4441001371935612}
-  - component: {fileID: 114432063707047908}
-  - component: {fileID: 734709955723003436}
+  - component: {fileID: 7044958842884316451}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -33,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114432063707047908
+--- !u!114 &7044958842884316451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,24 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1390994946278962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6f206f335b6114c80c11bf514316dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathObjectTags:
-  - Enemy
-  cameraTag: MainCamera
-  slowMotionScale: 0.1
-  slowMotionTime: 0.2
---- !u!114 &734709955723003436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390994946278962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba6ef549c4edfd449cbaf86fb3877bb, type: 3}
+  m_Script: {fileID: 11500000, guid: af132e92a9b3b094eb6e6c3c06823f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCameraTag: MainCamera
@@ -74,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2309155506021292025}
   - component: {fileID: 1117893484708548755}
-  - component: {fileID: 7644500749374266569}
+  - component: {fileID: 9121947457756320698}
   m_Layer: 8
   m_Name: Backup Camera
   m_TagString: BackupCamera
@@ -138,7 +120,7 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &7644500749374266569
+--- !u!114 &9121947457756320698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3999028504671033665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bad3b5cbacd2c64ca47b147041f9f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f67b0ea8cd16b244867d8ae5d5ad0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player

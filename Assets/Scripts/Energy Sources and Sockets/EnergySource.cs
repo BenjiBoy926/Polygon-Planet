@@ -37,6 +37,6 @@ public class EnergySource : MonoBehaviour
         {
             energyTransferredEvent(socket);
         }
-        Debug.Log(transform.root.gameObject.name + " transfers its energy to socket on " + socket.transform.root.gameObject.name);
+        Debug.Log(gameObject.name + " transfers its energy to socket on " + socket.gameObject.name);
     }
 }

@@ -63,6 +63,6 @@ public class Stockpile : MonoBehaviour
         {
             stockEmptiedEvent();
         }
-        Debug.Log("Stock on " + transform.root.gameObject.name + " changed by " + delta + ". Current stock: " + currentStock);
+        Debug.Log("Stock on " + gameObject.name + " changed by " + delta + ". Current stock: " + currentStock);
     }
 }
