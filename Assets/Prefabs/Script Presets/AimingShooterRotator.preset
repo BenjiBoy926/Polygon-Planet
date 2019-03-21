@@ -6,10 +6,10 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerChargedBulletEnergy
+  m_Name: AimingShooterRotator
   m_TargetType:
     m_NativeTypeID: 114
-    m_ManagedTypePPtr: {fileID: 11500000, guid: 21da93d33f2f2fc4d93a642425fd63f0,
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 4827fc4c7cbbb3349a6b9ee962a2c6f6,
       type: 3}
     m_ManagedTypeFallback: 
   m_Properties:
@@ -26,14 +26,14 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _info._power
-    value: 10
+    propertyPath: emitter
+    value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _info._type
+    propertyPath: objectForward.x
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _info._tag
-    value: 0
+    propertyPath: objectForward.y
+    value: 1
     objectReference: {fileID: 0}

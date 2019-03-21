@@ -15,6 +15,8 @@ using System.Collections.Generic;
 
 public class Stockpile : MonoBehaviour
 {
+    //[SerializeField]
+    private string label;   // Explanatory label describing what the stock represents
     [SerializeField]
     private int maxStock;  // Max energy that can be stored in the stockpile
     [SerializeField]
@@ -27,10 +29,10 @@ public class Stockpile : MonoBehaviour
     public event UnityAction stockEmptiedEvent;
 
     // Setting the current energy also forces it into min-max range
-    private int currentStock
+    public int currentStock
     {
         get { return _currentStock; }
-        set
+        protected set
         {
             _currentStock = value;
             _currentStock = (int)Mathf.Clamp(_currentStock, 0f, maxStock);

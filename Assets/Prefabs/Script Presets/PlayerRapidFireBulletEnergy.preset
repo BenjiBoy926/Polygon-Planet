@@ -26,18 +26,14 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _info._energy
+    propertyPath: _info._power
     value: 1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: _info._hitbox
-    value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _info._type
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _info._id
-    value: 3
+    propertyPath: _info._tag
+    value: 0
     objectReference: {fileID: 0}
