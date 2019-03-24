@@ -9,29 +9,29 @@ using System.Collections;
  * ----------------------------
  */ 
 
-public class TargetingAutoEmitter2D : AutoEmitter2D
+public class TargetingAutoEmitter2D : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Used to emit the objects towards the target")]
+    private AutoEmitter2D emitter;
+    [SerializeField]
+    [Tooltip("Emitter targets the game object with this tag")]
     private string targetTag;   // Tag of the game object to target with the emitter
     private Transform targetTransform;  // Reference to the transform component on the targetted object
-
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-
         // Find the object with the tag and try to store the transform
         GameObject target = GameObject.FindGameObjectWithTag(targetTag);
         if(target != null)
         {
             targetTransform = target.transform;
-            StartAutoEmitting(ToTarget);
+            emitter.StartAutoEmitting(ToTarget);
         }
         else
         {
             Debug.Log(gameObject.name + " could not find any gameobject tagged " + targetTag);
         }
     }
-
     // Returns a vector with its tail at this object and the tip at the target
     private Vector2 ToTarget()
     {

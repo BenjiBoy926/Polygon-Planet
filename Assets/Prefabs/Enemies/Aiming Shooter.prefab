@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _label: 
   maxStock: 10
   startingStock: 10
 --- !u!114 &4623756932192321678
@@ -370,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4827fc4c7cbbb3349a6b9ee962a2c6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 6672770046717476629}
+  emitter: {fileID: 0}
   objectForward: {x: 0, y: 1}
 --- !u!114 &1770948918222193347
 MonoBehaviour:
@@ -446,6 +447,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1896980220257714245}
   - component: {fileID: 6672770046717476629}
+  - component: {fileID: 5256348045377701051}
+  - component: {fileID: 607733200507852789}
   m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
@@ -479,15 +482,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ba1d5706b8a1549befa397760aaca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitter: {fileID: 5256348045377701051}
+  targetTag: Player
+--- !u!114 &5256348045377701051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192877124615861149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b713075bbbb7bf94d86c832c3bfc95e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 0}
+  emissionDelays:
+    min: 3
+    max: 6
+--- !u!114 &607733200507852789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192877124615861149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de00e2662654fb45b7cccaee876491c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   emittedObject: {fileID: 1965972268629976, guid: a0dd2297078ff6842869c4a39bd4fda6,
     type: 3}
-  _objectVelocity: 3
-  emitRate: 6
-  objectAnchors:
-  - origin: {x: 1, y: 0}
-    direction: {x: 1, y: 0}
-  fireRateDifference: 3
-  targetTag: Player
+  _objectVelocity: 2
+  objectAnchors: []
 --- !u!1 &7879084220230460269
 GameObject:
   m_ObjectHideFlags: 0

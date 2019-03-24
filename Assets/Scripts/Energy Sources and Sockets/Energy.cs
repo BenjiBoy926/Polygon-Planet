@@ -24,7 +24,7 @@ public class Energy : IComparable<Energy>
     public EnergyType type { get { return _type; } }
     public Tag tag { get { return _tag; } }
 
-    public Energy (int e, Collider2D h, EnergyType t, Tag i)
+    public Energy (int e, EnergyType t, Tag i)
     {
         _power = e;
         _type = t;

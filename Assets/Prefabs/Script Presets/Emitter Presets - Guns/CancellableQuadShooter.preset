@@ -6,10 +6,10 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorShooterGun
+  m_Name: CancellableQuadShooter
   m_TargetType:
     m_NativeTypeID: 114
-    m_ManagedTypePPtr: {fileID: 11500000, guid: 3a42bba64b140f54db883e2f8e3d8456,
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 5de00e2662654fb45b7cccaee876491c,
       type: 3}
     m_ManagedTypeFallback: 
   m_Properties:
@@ -28,19 +28,15 @@ Preset:
   - target: {fileID: 0}
     propertyPath: emittedObject
     value: 
-    objectReference: {fileID: 1883150535444874, guid: b09a908541a859246ac11183ea73807a,
+    objectReference: {fileID: 1965972268629976, guid: a0dd2297078ff6842869c4a39bd4fda6,
       type: 3}
   - target: {fileID: 0}
     propertyPath: _objectVelocity
     value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: emitRate
-    value: 6
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
     propertyPath: objectAnchors.Array.size
-    value: 1
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: objectAnchors.Array.data[0].origin.x
@@ -48,25 +44,61 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: objectAnchors.Array.data[0].origin.y
-    value: 1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: objectAnchors.Array.data[0].direction.x
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[0].direction.x
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: objectAnchors.Array.data[0].direction.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[1].origin.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[1].origin.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[1].direction.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[1].direction.y
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: fireRateDifference
-    value: 3
+    propertyPath: objectAnchors.Array.data[2].origin.x
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: aimVector.x
-    value: 1
+    propertyPath: objectAnchors.Array.data[2].origin.y
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: aimVector.y
+    propertyPath: objectAnchors.Array.data[2].direction.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[2].direction.y
+    value: -1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[3].origin.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[3].origin.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[3].direction.x
+    value: -1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectAnchors.Array.data[3].direction.y
     value: 0
     objectReference: {fileID: 0}

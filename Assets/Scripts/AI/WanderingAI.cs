@@ -27,7 +27,7 @@ public class WanderingAI : MonoBehaviour
 
     private void Start()
     {
-        isWandering = State.Construct(obj: gameObject);
+        isWandering = State.Construct(theLabel: "Wandering", obj: gameObject);
 
         // Add correct vectors to the list
         if(directions == DirectionalType.AllDirections)

@@ -28,7 +28,6 @@ public class EnergySource : MonoBehaviour
             TransferEnergy(socket);
         }
     }
-
     // Transfer energy to the given energy socket and call the event if it exists
     protected virtual void TransferEnergy(EnergySocket socket)
     {
@@ -37,6 +36,11 @@ public class EnergySource : MonoBehaviour
         {
             energyTransferredEvent(socket);
         }
-        Debug.Log(gameObject.name + " transfers its energy to socket on " + socket.gameObject.name);
+    }
+    // Scale up or scale down the current energy level of the energy source
+    public void ScalePowerLevel(float multiplier)
+    {
+        int newPower = Mathf.RoundToInt(_info.power * multiplier);
+        _info = new Energy(newPower, _info.type, _info.tag);
     }
 }

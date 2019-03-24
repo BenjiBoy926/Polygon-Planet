@@ -853,6 +853,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3956191690933830662}
   - component: {fileID: 7023167973919328417}
+  - component: {fileID: 625040193}
+  - component: {fileID: 625040194}
   m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
@@ -886,21 +888,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a42bba64b140f54db883e2f8e3d8456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitter: {fileID: 625040193}
+  aimVector: {x: 1, y: 1}
+--- !u!114 &625040193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674484705564267339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b713075bbbb7bf94d86c832c3bfc95e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 625040194}
+  emissionDelays:
+    min: 3
+    max: 6
+--- !u!114 &625040194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674484705564267339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de00e2662654fb45b7cccaee876491c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   emittedObject: {fileID: 1965972268629976, guid: a0dd2297078ff6842869c4a39bd4fda6,
     type: 3}
   _objectVelocity: 2
-  emitRate: 6
   objectAnchors:
   - origin: {x: 0, y: 0}
-    direction: {x: 1, y: 1}
+    direction: {x: 1, y: 0}
   - origin: {x: 0, y: 0}
-    direction: {x: 1, y: -1}
+    direction: {x: 0, y: 1}
   - origin: {x: 0, y: 0}
-    direction: {x: -1, y: -1}
+    direction: {x: 0, y: -1}
   - origin: {x: 0, y: 0}
-    direction: {x: -1, y: 1}
-  fireRateDifference: 3
-  aimVector: {x: 1, y: 0}
+    direction: {x: -1, y: 0}
 --- !u!1 &6914916969586997528
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _label: 
   maxStock: 10
   startingStock: 10
 --- !u!114 &1765771086843638361

@@ -1543,6 +1543,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4574573864845959215}
   - component: {fileID: 8242303010042033893}
+  - component: {fileID: 9006008034655219268}
+  - component: {fileID: 3171919950846624542}
   m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
@@ -1576,29 +1578,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a42bba64b140f54db883e2f8e3d8456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitter: {fileID: 3171919950846624542}
+  aimVector: {x: 1, y: 0}
+--- !u!114 &9006008034655219268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523169123655136852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de00e2662654fb45b7cccaee876491c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   emittedObject: {fileID: 1965972268629976, guid: a0dd2297078ff6842869c4a39bd4fda6,
     type: 3}
   _objectVelocity: 2
-  emitRate: 6
   objectAnchors:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
   - origin: {x: 0, y: 0}
-    direction: {x: 0, y: -1}
+    direction: {x: 0, y: 1}
   - origin: {x: 0, y: 0}
     direction: {x: -1, y: 0}
   - origin: {x: 0, y: 0}
-    direction: {x: 0, y: 1}
+    direction: {x: 0, y: -1}
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 1}
   - origin: {x: 0, y: 0}
-    direction: {x: -1, y: 1}
+    direction: {x: -1, y: -1}
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: -1}
   - origin: {x: 0, y: 0}
-    direction: {x: -1, y: -1}
-  fireRateDifference: 3
-  aimVector: {x: 1, y: 0}
+    direction: {x: -1, y: 1}
+--- !u!114 &3171919950846624542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523169123655136852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b713075bbbb7bf94d86c832c3bfc95e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 9006008034655219268}
+  emissionDelays:
+    min: 3
+    max: 6
 --- !u!1 &6384053542818963562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _label: 
   maxStock: 10
   startingStock: 10
 --- !u!114 &4076355799259495831

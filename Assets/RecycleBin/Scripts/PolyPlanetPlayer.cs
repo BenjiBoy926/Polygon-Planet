@@ -29,15 +29,15 @@ public class PolyPlanetPlayer : MonoBehaviour
     private void Start()
     {
         // Add local methods to rapid fire gun's events
-        rapidFireGun.emitted.onStateDeactivated += OnRapidFireGunReady;
-        rapidFireGun.onEmittedEvent += OnRapidFireGunFired;
+        //rapidFireGun.emitted.onStateDeactivated += OnRapidFireGunReady;
+        //rapidFireGun.onEmittedEvent += OnRapidFireGunFired;
 
         // Add local methods to charge gun events
-        chargeGun.emitted.onStateDeactivated += OnChargeGunReady;
-        chargeGun.onEmittedEvent += OnChargeGunFired;
+        //chargeGun.emitted.onStateDeactivated += OnChargeGunReady;
+        //chargeGun.onEmittedEvent += OnChargeGunFired;
 
         // Prevent charge gun from being charged at the start
-        chargeGun.emitted.Activate();
+        //chargeGun.emitted.Activate();
         mover.speed = defaultMoveSpeed;
     }
 
@@ -49,20 +49,20 @@ public class PolyPlanetPlayer : MonoBehaviour
     // Event called when the rapid fire gun is fired
     private void OnRapidFireGunFired(Vector2 shotAim)
     {
-        chargeGun.emitted.Activate();
+        //chargeGun.emitted.Activate();
         mover.speed = firingMoveSpeed;
     }
     // Lock the rapid fire gun when the charge gun is at full charge
     private void OnChargeGunReady()
     {
-        rapidFireGun.emitted.Lock(true);
+        //rapidFireGun.emitted.Lock(true);
     }
     // When charge shot is fired, blowback away from the aim
     // Activate state on the rapid fire gun to prevent it shooting simultaneously
     private void OnChargeGunFired(Vector2 shotAim)
     {
-        mover.ApplyForce(-shotAim, chargeGunRecoil);
-        rapidFireGun.emitted.Unlock();
-        rapidFireGun.emitted.Activate();
+        //mover.ApplyForce(-shotAim, chargeGunRecoil);
+        //rapidFireGun.emitted.Unlock();
+        //rapidFireGun.emitted.Activate();
     }
 }

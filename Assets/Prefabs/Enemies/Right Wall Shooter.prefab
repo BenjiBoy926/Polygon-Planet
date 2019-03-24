@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _label: 
   maxStock: 10
   startingStock: 10
 --- !u!114 &5372676782526669724
@@ -669,6 +670,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2174845089394644458}
   - component: {fileID: 4754072069518758555}
+  - component: {fileID: 7672192810242638782}
+  - component: {fileID: 1007677136021813095}
   m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
@@ -702,15 +705,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a42bba64b140f54db883e2f8e3d8456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitter: {fileID: 7672192810242638782}
+  aimVector: {x: 1, y: 0}
+--- !u!114 &7672192810242638782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625313915504699567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b713075bbbb7bf94d86c832c3bfc95e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 0}
+  emissionDelays:
+    min: 3
+    max: 6
+--- !u!114 &1007677136021813095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625313915504699567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de00e2662654fb45b7cccaee876491c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   emittedObject: {fileID: 1883150535444874, guid: 87ccbc84e4e059842b7923a51080826a,
     type: 3}
   _objectVelocity: 2
-  emitRate: 6
-  objectAnchors:
-  - origin: {x: -1, y: 0}
-    direction: {x: -1, y: 0}
-  fireRateDifference: 3
-  aimVector: {x: 1, y: 0}
+  objectAnchors: []
 --- !u!1 &5261356647637652266
 GameObject:
   m_ObjectHideFlags: 0

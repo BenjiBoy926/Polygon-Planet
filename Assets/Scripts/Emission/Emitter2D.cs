@@ -22,33 +22,18 @@ public class Emitter2D : MonoBehaviour
     [SerializeField]
     private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
-    private float emitRate; // Rate at which the emitter is allowed to emit 
-    private State _emitted; // State returns true if the emitter emitted within #duration seconds of the current moment
-    [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
-    public event UnityAction<Vector2> onEmittedEvent;    // Event called whenever the the emitter emits
-
-    public State emitted { get { return _emitted; } }
+    public event UnityAction<Vector2> emittedEvent;    // Event called whenever the the emitter emits
 
     protected virtual void Start()
     {
-        _emitted = State.Construct(emitRate, gameObject);
         pool = new ObjectPool<KinematicMover2D>(emittedObject, gameObject.name + "'s Pool");
     }
 
     // Emit the objects using the local information
     // Aim vector is used such that objects going straight to the right go along the aim vector
     // Emits only if there has not been a recent emission
-    public void Emit (Vector2 aimVector)
-    {
-        if(!_emitted)
-        {
-            ForceEmit(aimVector);
-        }
-    }
-
-    // Force the emitter to emit, whether or not it emitted recently
-    public void ForceEmit (Vector2 aimVector)
+    public virtual void Emit (Vector2 aimVector)
     {
         Vector2 rotatedOrigin;  // Origin of the current bullet, rotated by the aim vector
         Vector2 rotatedDirection;   // Direction of the current bullet, rotated by the aim vector
@@ -56,6 +41,8 @@ public class Emitter2D : MonoBehaviour
 
         tiltAngle = Vector2.SignedAngle(Vector2.right, aimVector);
 
+        // Rotate all origins and directions in the anchors by the tilt angle,
+        // and launch an object in the pool using rotated vectors
         foreach (Anchor anchor in objectAnchors)
         {
             rotatedOrigin = anchor.origin.RotatedVector(tiltAngle);
@@ -63,12 +50,10 @@ public class Emitter2D : MonoBehaviour
             pool.getOneQuick.Launch(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
         }
 
-        _emitted.Activate();
-
         // Call emitted event
-        if(onEmittedEvent != null)
+        if (emittedEvent != null)
         {
-            onEmittedEvent(aimVector);
+            emittedEvent(aimVector);
         }
     }
 }

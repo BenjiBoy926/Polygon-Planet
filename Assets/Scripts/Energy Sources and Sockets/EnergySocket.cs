@@ -22,14 +22,26 @@ public class EnergySocket : MonoBehaviour
 
     // Raised when energy is absorbed, passing in amount absorbed
     public event UnityAction<int> energyAbsorbedEvent;
+    private State hazardsImmunized; // If true, the energy socket cannot absorb negative energy
+    private State healersImmunized; // If true, the energy socket cannot absorb positive energy
+
+    private void Start()
+    {
+        hazardsImmunized = State.Construct(theLabel: "HazardsImmunized", obj: gameObject);
+        healersImmunized = State.Construct(theLabel: "HealersImmunized", obj: gameObject);
+    }
 
     public void AbsorbEnergy(Energy energy)
     {
         int adjustedPower;  // Power of the energy actually absorbed
         bool hazardous = hazards.Contains(energy.tag);
         bool healing = healers.Contains(energy.tag);
-
-        if((hazardous || healing) && energyAbsorbedEvent != null)
+        // If the energy is hazardous and isn't immunized...
+        // The energy is healing and isn't immunized...
+        // and some event has been specified when the socket absorbs energy
+        if(((hazardous && !hazardsImmunized) || 
+            (healing && !healersImmunized)) && 
+            energyAbsorbedEvent != null)
         {
             // Find an intake info whose type matches the source type
             EnergyIntakeInfo matchedInfo = intakeInfo.Find(x => x.type == energy.type);
@@ -53,7 +65,50 @@ public class EnergySocket : MonoBehaviour
             }
             // Raise the event with the calculated power absorbed
             energyAbsorbedEvent(adjustedPower);
-            Debug.Log(gameObject.name + " absorbs " + adjustedPower + " energy");
         }
+    }
+    // Cause the energy socket not to respond to hazards
+    public void ImmunizeHazards()
+    {
+        hazardsImmunized.Lock(true);
+    }
+    public void ImmunizeHazards(float time)
+    {
+        hazardsImmunized.Activate(time);
+    }
+    public void ClearHazardImmunization()
+    {
+        hazardsImmunized.Unlock();
+        hazardsImmunized.Deactivate();
+    }
+    // Cause the energy socket not to respond to healers
+    public void ImmunizeHealers()
+    {
+        healersImmunized.Lock(true);
+    }
+    public void ImmunizeHealers(float time)
+    {
+        healersImmunized.Activate(time);
+    }
+    public void ClearHealerImmunization()
+    {
+        healersImmunized.Unlock();
+        healersImmunized.Deactivate();
+    }
+    // Cause the energy socket not to respond to hazards or healers
+    public void Immunize()
+    {
+        ImmunizeHazards();
+        ImmunizeHealers();
+    }
+    public void Immunize(float time)
+    {
+        ImmunizeHazards(time);
+        ImmunizeHealers(time);
+    }
+    public void ClearImmunization()
+    {
+        ClearHazardImmunization();
+        ClearHealerImmunization();
     }
 }

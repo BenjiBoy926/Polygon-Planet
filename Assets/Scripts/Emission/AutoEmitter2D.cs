@@ -11,17 +11,19 @@ using UnityEngine;
  * -------------------------------
  */ 
 
-public class AutoEmitter2D : Emitter2D
+public class AutoEmitter2D : MonoBehaviour
 {
     [SerializeField]
-    private float fireRateDifference;
-    private WaitUntil autoEmitWait;
+    [Tooltip("Script used to emit the objects")]
+    private Emitter2D emitter;
+    [SerializeField]
+    [Tooltip("Min-max time between each emission")]
+    private FloatConstraint emissionDelays;
     private Func<Vector2> aimGenerator;    // Function used to get the aim vector of the auto-emitter
 
     public void StartAutoEmitting (Func<Vector2> coordinates)
     {
         aimGenerator = coordinates;
-        autoEmitWait = new WaitUntil(ReadyEmitNext);
         StopAllCoroutines();
         StartCoroutine("AutoEmitIterator");
     }
@@ -45,22 +47,11 @@ public class AutoEmitter2D : Emitter2D
     IEnumerator AutoEmitIterator ()
     {
         float delay;    // Delay between each emission
-
-        // Store min-max times for how long it takes the emitter to emit
-        float minTime = emitted.duration - fireRateDifference;
-        float maxTime = emitted.duration + fireRateDifference;
-
         while (true)
         {
-            delay = UnityEngine.Random.Range(minTime, maxTime);
-            emitted.Activate(delay);
-            yield return autoEmitWait;
-            ForceEmit(aimGenerator());
+            delay = UnityEngine.Random.Range(emissionDelays.min, emissionDelays.max);
+            yield return new WaitForSeconds(delay);
+            emitter.Emit(aimGenerator());
         }
-    }
-
-    private bool ReadyEmitNext()
-    {
-        return !emitted;
     }
 }

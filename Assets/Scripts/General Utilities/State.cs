@@ -11,24 +11,28 @@ using UnityEngine.Events;
  * -----------
  */ 
 
-public class State : MonoBehaviour
+public class State : MonoBehaviour, ILabelledComponent
 {
     public const float LOCKED_ACTIVATION_DURATION = -1f;    // This floating-point value is sent to the activated event if the state is locked into the activated state
 
+    [SerializeField]
+    private string _label;   // Label to describe this state
+    public string label { get { return _label; } }
+    [SerializeField]
     private float _duration; // Default duration the state lasts when activated
-    private float timer;    // Timer used to determine if the state is active in time
+    private bool mainState; // Current state
 
     private bool _isLocked;  // True if the state has been locked into true or false
     private bool lockedState;   // The state if it is being locked
 
     // Event handling: class has an activated and deactivated event
-    public event UnityAction<float> onStateActivated;   // Multicast function pointer is called whenever the state activates
-    public event UnityAction onStateDeactivated; // Multicast funciton pointer is called as soon as the state is deactivated
+    public event UnityAction<float> stateActivatedEvent;   // Multicast function pointer is called whenever the state activates
+    public event UnityAction stateDeactivatedEvent; // Multicast funciton pointer is called as soon as the state is deactivated
 
     public float duration { get { return _duration; } }
     public bool isLocked { get { return _isLocked; } }
 
-    public static State Construct(float duration = 1f, GameObject obj = null)
+    public static State Construct(float duration = 1f, string theLabel = "DefaultState", GameObject obj = null)
     {
         // If no object was specified for the state object, create one
         if(obj == null)
@@ -39,43 +43,31 @@ public class State : MonoBehaviour
         // Add a state component to the object specified and return it
         State state = obj.AddComponent<State>();
         state._duration = duration;
+        state._label = theLabel;
         return state;
     }
-
     // State's implicitly converted to bool return true while active and false while inactive
     public static implicit operator bool(State state)
     {
         // If not locked, choose time comparison. If locked, choosed locked state
-        return (Time.time < state.timer && !state._isLocked) || (state.lockedState && state._isLocked);
+        return (state.mainState && !state._isLocked) || (state.lockedState && state._isLocked);
     }
-
-    // Activate the state by setting the timer to current time plus local duration
+    // Activate the state for the default amount of time
     public void Activate ()
     {
-        if(!_isLocked)
-        {
-            timer = Time.time + duration;
-            DeactivateAfterTime(duration);
-
-            // Check before invoking the event
-            if (onStateActivated != null)
-            {
-                onStateActivated(duration);
-            } // endif not null
-        } // endif not locked
+        Activate(duration);
     }
     // Overload of the Activate () method allows calling method to specify a custom duration for the state
     public void Activate (float customDuration)
     {
         if(!_isLocked)
         {
-            timer = Time.time + customDuration;
+            mainState = true;
             DeactivateAfterTime(customDuration);
-
             // Check before invoking the event
-            if (onStateActivated != null)
+            if (stateActivatedEvent != null)
             {
-                onStateActivated(customDuration);
+                stateActivatedEvent(customDuration);
             } // endif not null
         } // endif not locked
     }
@@ -84,16 +76,14 @@ public class State : MonoBehaviour
     {
         if(!_isLocked)
         {
-            timer = -1f;
-
+            mainState = false;
             // Check and invoke the event
-            if (onStateDeactivated != null)
+            if (stateDeactivatedEvent != null)
             {
-                onStateDeactivated();
+                stateDeactivatedEvent();
             } // endif not null
         } // endif not locked
     }
-
     // Lock the state to the bool specified
     // It cannot change states again until "Unlock" is called
     public void Lock (bool state)
@@ -102,30 +92,48 @@ public class State : MonoBehaviour
         _isLocked = true;
         lockedState = state;
 
-        // Reset timer and stop any invokes
-        timer = -1f;
+        // Reset timer and stop any invoked
         CancelInvoke();
 
         // Call state activated event if it was locked to true
-        if(onStateActivated != null && state)
+        if(stateActivatedEvent != null && state)
         {
-            onStateActivated(LOCKED_ACTIVATION_DURATION);
+            stateActivatedEvent(LOCKED_ACTIVATION_DURATION);
         }
         // Call state deactivated event if it was locked to false
-        else if(onStateDeactivated != null && !state)
+        else if(stateDeactivatedEvent != null && state)
         {
-            onStateDeactivated();
+            stateDeactivatedEvent();
         }
     }
     public void Unlock()
     {
         _isLocked = false;
     }
-
     // Schedule an invoke of the deactivate event
     private void DeactivateAfterTime(float timeout)
     {
         CancelInvoke();
         Invoke("Deactivate", timeout);
+    }
+    // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
+    public static State[] FindStatesWithLabel(string gObjectTag, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentsWithLabel<State>(gObjectTag, stockpileLabel);
+    }
+    // Try to find a stockpile on each of the game objects given
+    public static State[] FindStatesWithLabel(GameObject[] gObjects, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentsWithLabel<State>(gObjects, stockpileLabel);
+    }
+    // Find a game object with the given tag, then find a stockpile on that game object with the given tag
+    public static State FindStateWithLabel(string gObjectTag, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentWithLabel<State>(gObjectTag, stockpileLabel);
+    }
+    // Find a stockpile on the given game object with the given tag
+    public static State FindStateWithLabel(GameObject gObject, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentWithLabel<State>(gObject, stockpileLabel);
     }
 }

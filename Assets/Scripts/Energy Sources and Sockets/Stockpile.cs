@@ -8,15 +8,18 @@ using System.Collections.Generic;
  * ---------------
  * Generic stockpile. Change the amount in the stockpile
  * using whatever mechanism you want. Robust event systems
- * allow proper reactions. Stockpiles are great for health,
- * energy levels, and just about anything else along the same lines
+ * allow proper reactions to stock changing, become full of
+ * being depleted. Stockpiles are great for health,
+ * energy levels, and just about anything else 
+ * along the same lines
  * ---------------
  */ 
 
-public class Stockpile : MonoBehaviour
+public class Stockpile : MonoBehaviour, ILabelledComponent
 {
-    //[SerializeField]
-    private string label;   // Explanatory label describing what the stock represents
+    [SerializeField]
+    private string _label;   // Explanatory label describing what the stock represents
+    public string label { get { return _label; } }
     [SerializeField]
     private int maxStock;  // Max energy that can be stored in the stockpile
     [SerializeField]
@@ -65,6 +68,25 @@ public class Stockpile : MonoBehaviour
         {
             stockEmptiedEvent();
         }
-        Debug.Log("Stock on " + gameObject.name + " changed by " + delta + ". Current stock: " + currentStock);
+    }
+    // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
+    public static Stockpile[] FindStockpilesWithLabel(string gObjectTag, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentsWithLabel<Stockpile>(gObjectTag, stockpileLabel);
+    }
+    // Try to find a stockpile on each of the game objects given
+    public static Stockpile[] FindStockpilesWithLabel(GameObject[] gObjects, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentsWithLabel<Stockpile>(gObjects, stockpileLabel);
+    }
+    // Find a game object with the given tag, then find a stockpile on that game object with the given tag
+    public static Stockpile FindStockpileWithLabel(string gObjectTag, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentWithLabel<Stockpile>(gObjectTag, stockpileLabel);
+    }
+    // Find a stockpile on the given game object with the given tag
+    public static Stockpile FindStockpileWithLabel(GameObject gObject, string stockpileLabel)
+    {
+        return ComponentUtility.FindComponentWithLabel<Stockpile>(gObject, stockpileLabel);   
     }
 }

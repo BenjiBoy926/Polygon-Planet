@@ -4,21 +4,23 @@ using System.Collections;
 /*
  * CLASS FixedAutoEmitter2D
  * ------------------------
- * A type of auto emitter that automatically emits based on a fixed aiming vector
+ * Causes an auto emitter to immediately start emitting at the start of a scene
+ * fixed in the specified direction
  * ------------------------
  */ 
 
-public class FixedAutoEmitter2D : AutoEmitter2D
+public class FixedAutoEmitter2D : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 aimVector;  // Fixed aiming vector of the auto emitter
-
-    protected override void Start()
+    [Tooltip("Script used to automatically emit the objects")]
+    private AutoEmitter2D emitter;
+    [SerializeField]
+    [Tooltip("Fixed aiming vector of the auto emitter")]
+    private Vector2 aimVector;
+    private void Start()
     {
-        base.Start();
-        StartAutoEmitting(AimVector);
+        emitter.StartAutoEmitting(AimVector);
     }
-
     private Vector2 AimVector()
     {
         return aimVector;
