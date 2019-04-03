@@ -31,7 +31,7 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     public event UnityAction stockFilledEvent;
     public event UnityAction stockEmptiedEvent;
 
-    // Setting the current energy also forces it into min-max range
+    // Setting the current stock also forces it into min-max range
     public int currentStock
     {
         get { return _currentStock; }

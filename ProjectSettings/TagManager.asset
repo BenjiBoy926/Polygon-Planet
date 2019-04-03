@@ -26,8 +26,8 @@ TagManager:
   - EnemyBody
   - EnemyHazard
   - EnemyAutoAimRadius
-  - 
-  - 
+  - PlayerShield
+  - EnemyUnblockableHazard
   - 
   - 
   - 

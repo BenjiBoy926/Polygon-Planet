@@ -293,7 +293,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.5
 --- !u!1 &1949046025463843054
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4827fc4c7cbbb3349a6b9ee962a2c6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 0}
+  emitter: {fileID: 4748259410932929489}
   objectForward: {x: 0, y: 1}
 --- !u!114 &6640942249832843305
 MonoBehaviour:
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b713075bbbb7bf94d86c832c3bfc95e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 0}
+  emitter: {fileID: 4748259410932929489}
   emissionDelays:
     min: 3
     max: 6
@@ -681,4 +681,14 @@ MonoBehaviour:
   emittedObject: {fileID: 1965972268629976, guid: a0dd2297078ff6842869c4a39bd4fda6,
     type: 3}
   _objectVelocity: 2
-  objectAnchors: []
+  objectAnchors:
+  - origin: {x: 0, y: 0}
+    direction: {x: 1, y: 0}
+  - origin: {x: 0, y: 0}
+    direction: {x: 0.7, y: 1.4}
+  - origin: {x: 0, y: 0}
+    direction: {x: 0.7, y: -1.4}
+  - origin: {x: 0, y: 0}
+    direction: {x: 1.4, y: 0.7}
+  - origin: {x: 0, y: 0}
+    direction: {x: 1.4, y: -0.7}

@@ -21,7 +21,7 @@ public class EnergySocket : MonoBehaviour
     private List<EnergyIntakeInfo> intakeInfo;  // Pairs multiplier constant with energy type
 
     // Raised when energy is absorbed, passing in amount absorbed
-    public event UnityAction<int> energyAbsorbedEvent;
+    public event UnityAction<EnergyAbsorbedEventData> energyAbsorbedEvent;
     private State hazardsImmunized; // If true, the energy socket cannot absorb negative energy
     private State healersImmunized; // If true, the energy socket cannot absorb positive energy
 
@@ -64,7 +64,7 @@ public class EnergySocket : MonoBehaviour
                 adjustedPower *= -1;
             }
             // Raise the event with the calculated power absorbed
-            energyAbsorbedEvent(adjustedPower);
+            energyAbsorbedEvent(new EnergyAbsorbedEventData(this, energy, adjustedPower));
         }
     }
     // Cause the energy socket not to respond to hazards

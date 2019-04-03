@@ -16,8 +16,8 @@ public class EnergySource : MonoBehaviour
     [SerializeField]
     private Energy _info;
     public Energy info { get { return _info; } }
-
-    public event UnityAction<EnergySocket> energyTransferredEvent;
+    // Event called when the energy source transfers its energy to an energy socket
+    public event UnityAction<EnergyTransferredEventData> energyTransferredEvent;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,7 +34,7 @@ public class EnergySource : MonoBehaviour
         socket.AbsorbEnergy(_info);
         if(energyTransferredEvent != null)
         {
-            energyTransferredEvent(socket);
+            energyTransferredEvent(new EnergyTransferredEventData(socket, this));
         }
     }
     // Scale up or scale down the current energy level of the energy source

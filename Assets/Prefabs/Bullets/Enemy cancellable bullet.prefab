@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7166334589677411071}
   m_Layer: 12
   m_Name: Enemy cancellable bullet
-  m_TagString: Untagged
+  m_TagString: EnemyHazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: Persistence
+  _label: 
   maxStock: 1
   startingStock: 1
 --- !u!114 &7612737366623486698

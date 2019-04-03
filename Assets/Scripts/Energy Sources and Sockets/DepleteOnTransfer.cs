@@ -19,7 +19,7 @@ public class DepleteOnTransfer : MonoBehaviour
     {
         source.energyTransferredEvent += DepleteStock;
     }
-    private void DepleteStock(EnergySocket socket)
+    private void DepleteStock(EnergyTransferredEventData data)
     {
         stock.ChangeStock(-1);
     }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5803323348633219148}
   m_Layer: 12
   m_Name: Enemy vertical wall shot
-  m_TagString: Untagged
+  m_TagString: EnemyHazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

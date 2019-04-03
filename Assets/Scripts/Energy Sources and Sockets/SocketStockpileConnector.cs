@@ -5,7 +5,7 @@ using System.Collections.Generic;
  * CLASS SocketStockpileConnector
  * ------------------------------
  * Simple class allows references to sockets and stockpiles to be set,
- * the connects each pair specified
+ * then connects each pair specified
  * ------------------------------
  */ 
 

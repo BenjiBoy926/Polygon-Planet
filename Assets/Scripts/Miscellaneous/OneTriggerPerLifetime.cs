@@ -21,29 +21,27 @@ public class OneTriggerPerLifetime : MonoBehaviour
     // List of colliders that have enetered this trigger and that have not yet been disabled
     // The list is continually checked for disabled/destroyed triggers and unmutes any that are disabled/destroyed
     private List<Collider2D> collidersToCheck = new List<Collider2D>();    
-    private List<Collider2D> collidersToMute = new List<Collider2D>();  // Colliders that will be muted at the end of the next frame
+
+    // Events for when a collider is muted/unmuted
+    public event UnityAction<Collider2D> colliderMutedEvent;
+    public event UnityAction<Collider2D> colliderUnmutedEvent;
 
     private void Start()
     {
         foreach(TriggerEvent trigger in callingTriggers)
         {
-            // Add the collider of each trigger event to th list
+            // Add the collider of each trigger event to the list
             Collider2D currentTrigger = trigger.GetComponent<Collider2D>();
             if(currentTrigger != null)
             {
                 callingColliders.Add(currentTrigger);
+                trigger.triggerEnteredEvent += CheckAddColliderToMute;
             }
-            // Check any collider entering the trigger event handler's trigger
-            trigger.triggerEnteredEvent += CheckAddColliderToMute;
         }
     }
     private void Update()
     {
         CheckUnmuteColliders();
-    }
-    private void LateUpdate()
-    {
-        CheckMuteColliders();
     }
     // Check to see if the tag of the collider is being tracked,
     // and add it to the list if it is
@@ -51,7 +49,7 @@ public class OneTriggerPerLifetime : MonoBehaviour
     {
         if (trackedTags.Contains(collision.tag))
         {
-            collidersToMute.Add(collision);
+            MuteCollider(collision, true);
         }
     }
     private void CheckUnmuteColliders()
@@ -74,19 +72,6 @@ public class OneTriggerPerLifetime : MonoBehaviour
             }
         }
     }
-    // Check the list of colliders to mute, and mute any that need muting
-    private void CheckMuteColliders()
-    {
-        if(collidersToMute.Count > 0)
-        {
-            // Mute colliders and clear out the list
-            foreach(Collider2D col in collidersToMute)
-            {
-                MuteCollider(col, true);
-            }
-            collidersToMute.Clear();
-        }
-    }
     private void MuteCollider(Collider2D otherCollider, bool mute)
     {
         // Cause the collider to be ignored (or not ignored) by all child colliders
@@ -98,11 +83,21 @@ public class OneTriggerPerLifetime : MonoBehaviour
         if(mute)
         {
             collidersToCheck.Add(otherCollider);
+            // Invoke the collider muted event
+            if(colliderMutedEvent != null)
+            {
+                colliderMutedEvent(otherCollider);
+            }
         }
         // If collider is being un-ignored, remove it from the list
         else
         {
             collidersToCheck.Remove(otherCollider);
+            // Invoke collider unmuted event
+            if(colliderUnmutedEvent != null)
+            {
+                colliderUnmutedEvent(otherCollider);
+            }
         }
     }
 }

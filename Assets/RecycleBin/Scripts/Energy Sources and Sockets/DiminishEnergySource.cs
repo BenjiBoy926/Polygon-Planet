@@ -25,7 +25,7 @@ public class DiminishEnergySource : MonoBehaviour
     }
 
     // Decrease persistence. Subscribed to energy transferred event on the energy source given
-    private void DecreasePersistence(EnergySocket socket)
+    private void DecreasePersistence(EnergyTransferredEventData data)
     {
         currentPersistence--;
     }

@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b713075bbbb7bf94d86c832c3bfc95e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 0}
+  emitter: {fileID: 4016833332006648055}
   emissionDelays:
     min: 3
     max: 6
@@ -701,7 +701,9 @@ MonoBehaviour:
   emittedObject: {fileID: 1883150535444874, guid: 87ccbc84e4e059842b7923a51080826a,
     type: 3}
   _objectVelocity: 2
-  objectAnchors: []
+  objectAnchors:
+  - origin: {x: 1, y: 0}
+    direction: {x: 1, y: 0}
 --- !u!1 &5961192233715174167
 GameObject:
   m_ObjectHideFlags: 0

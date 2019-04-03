@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emitter: {fileID: 3330181691563741734}
-  aimVector: {x: 1, y: 0}
+  aimVector: {x: 0, y: 1}
 --- !u!114 &3330181691563741734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,7 +734,9 @@ MonoBehaviour:
   emittedObject: {fileID: 1883150535444874, guid: b09a908541a859246ac11183ea73807a,
     type: 3}
   _objectVelocity: 2
-  objectAnchors: []
+  objectAnchors:
+  - origin: {x: 1, y: 0}
+    direction: {x: 1, y: 0}
 --- !u!1 &8490666965769542657
 GameObject:
   m_ObjectHideFlags: 0

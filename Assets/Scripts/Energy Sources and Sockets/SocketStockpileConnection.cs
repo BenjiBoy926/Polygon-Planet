@@ -11,17 +11,25 @@
 public class SocketStockpileConnection
 {
     [SerializeField]
-    private Stockpile stock;
+    private Stockpile _stock;
     [SerializeField]
-    private EnergySocket socket;
+    private EnergySocket _socket;
+
+    public Stockpile stock { get { return _stock; } }
+    public EnergySocket socket { get { return _socket; } }
+
     private bool connected = false;
     public void Connect()
     {
         // Prevent client code from creating multiple connections
         if(!connected)
         {
-            socket.energyAbsorbedEvent += stock.ChangeStock;
+            _socket.energyAbsorbedEvent += ChangeStockByAmountAbsorbed;
             connected = true;
         }
+    }
+    private void ChangeStockByAmountAbsorbed(EnergyAbsorbedEventData data)
+    {
+        _stock.ChangeStock(data.amountAbsorbed);
     }
 }
