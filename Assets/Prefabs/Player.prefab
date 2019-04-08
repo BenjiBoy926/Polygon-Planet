@@ -1198,6 +1198,8 @@ GameObject:
   - component: {fileID: 6024478397295334704}
   - component: {fileID: 5232893731045581862}
   - component: {fileID: 1747144923626109231}
+  - component: {fileID: 4964674820151631692}
+  - component: {fileID: 300128885357413187}
   m_Layer: 8
   m_Name: Shield Controller
   m_TagString: Untagged
@@ -1261,6 +1263,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 4773950426421154284}
   mover: {fileID: 8839255270783456881}
+--- !u!114 &4964674820151631692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105748160475514547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9858d421f0d050042bc98a4496852e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 4526628970471191085}
+  stockChanger: {fileID: 300128885357413187}
+  pushbackTime: 2
+--- !u!114 &300128885357413187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105748160475514547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e9c87d42a786b4eb70e78ca6901ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stock: {fileID: 2784457073355320656}
+  timeBetweenChanges: 1
+  change: 1
 --- !u!1 &4563059427905850588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1304,7 @@ GameObject:
   - component: {fileID: 7315971941110843257}
   - component: {fileID: 2784457073355320656}
   - component: {fileID: 4907051197952235045}
+  - component: {fileID: 8294892051617449628}
   m_Layer: 8
   m_Name: Shield Durability
   m_TagString: Untagged
@@ -1306,8 +1339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: ShieldDurability
-  maxStock: 5
-  startingStock: 5
+  maxStock: 4
+  startingStock: 4
 --- !u!114 &4907051197952235045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,6 +1351,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5010dc8df3b7f440a2f94219207cff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 2702217155713727837}
+  stock: {fileID: 2784457073355320656}
+--- !u!114 &8294892051617449628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563059427905850588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc78c8dd01444c94987f22a3ea77e4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 2702217155713727837}
