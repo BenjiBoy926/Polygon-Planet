@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: 
+  _label: Persistence
   maxStock: 1
   startingStock: 1
 --- !u!114 &7612737366623486698
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connections:
-  - stock: {fileID: 533703095646221782}
-    socket: {fileID: 1349808922}
+  - _stock: {fileID: 533703095646221782}
+    _socket: {fileID: 1349808922}
 --- !u!114 &947006762
 MonoBehaviour:
   m_ObjectHideFlags: 0

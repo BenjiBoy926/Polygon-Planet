@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 61777166481387958}
   - component: {fileID: 799413879187831480}
   - component: {fileID: 2180000726547228582}
+  - component: {fileID: 1611436604773185797}
   m_Layer: 11
   m_Name: Bottom Weakness
   m_TagString: Untagged
@@ -137,6 +138,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae21b35a21f67d84da41fce23b12ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1611436604773185797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202574978081846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5027a10ccc36c5e49a1bef21b13aea34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 4092626633582616880}
 --- !u!1 &1246431455576824
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +211,7 @@ GameObject:
   - component: {fileID: 61884674100405280}
   - component: {fileID: 8969680419187039773}
   - component: {fileID: 1288265693584548368}
+  - component: {fileID: 790679359704407720}
   m_Layer: 11
   m_Name: Top Weakness
   m_TagString: Untagged
@@ -321,6 +336,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae21b35a21f67d84da41fce23b12ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &790679359704407720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780106004999168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5027a10ccc36c5e49a1bef21b13aea34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 4092626633582616880}
 --- !u!1 &1972560961854408
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +466,7 @@ GameObject:
   - component: {fileID: 7801717075757952409}
   - component: {fileID: 4247217373305880111}
   - component: {fileID: 3598714535481128053}
+  - component: {fileID: 2873058557877478020}
   m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
@@ -560,6 +589,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae21b35a21f67d84da41fce23b12ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2873058557877478020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771839892490595182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5027a10ccc36c5e49a1bef21b13aea34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 4092626633582616880}
 --- !u!1 &5502754555555756482
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3622877716891653815}
   - component: {fileID: 1535150730197337654}
-  - component: {fileID: 1456226593906083456}
+  - component: {fileID: 4092626633582616880}
   m_Layer: 11
   m_Name: Movement
   m_TagString: Untagged
@@ -604,13 +646,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae399bec10a0784ca57b69f187b53e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1456226593906083456}
+  agent: {fileID: 4092626633582616880}
   speed: 1
   directions: 2
   wanderTimes:
     min: 3
     max: 6
---- !u!114 &1456226593906083456
+--- !u!114 &4092626633582616880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -619,7 +661,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5502754555555756482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552e4130427c7534289c997cb461b4a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5036608d4778a7f41a6d616db1126cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50178628498459634}

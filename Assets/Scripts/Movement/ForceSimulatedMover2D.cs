@@ -13,7 +13,7 @@ using System.Collections;
 
 public class ForceSimulatedMover2D : KinematicMover2D
 {
-    const float DEFAULT_BLOWBACK_TIME = 0.2f;    // Time for which all blowback movers are blown back
+    public const float DEFAULT_BLOWBACK_TIME = 0.2f;    // Time for which all blowback movers are blown back
     private State _isForced;    // State is true if the mover is being forced in a direction
     private Vector2 fromPointToHere = new Vector2();    // Points from the point of blowback to the position of this mover
 

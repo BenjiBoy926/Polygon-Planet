@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 58476920031160426}
   - component: {fileID: 3240539706659111165}
   - component: {fileID: 8426368669138717008}
+  - component: {fileID: 1417185902290011233}
   m_Layer: 11
   m_Name: Weak Spot
   m_TagString: Untagged
@@ -174,6 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae21b35a21f67d84da41fce23b12ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1417185902290011233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730684658947430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5027a10ccc36c5e49a1bef21b13aea34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 8858166054214648311}
 --- !u!1 &1865599716111910
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +517,7 @@ GameObject:
   - component: {fileID: 2224744270589467993}
   - component: {fileID: 5721521862176621807}
   - component: {fileID: 4079249831221576324}
+  - component: {fileID: 95111918973688747}
   m_Layer: 11
   m_Name: Main Body
   m_TagString: Untagged
@@ -625,6 +640,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae21b35a21f67d84da41fce23b12ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &95111918973688747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246069821458970245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5027a10ccc36c5e49a1bef21b13aea34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover: {fileID: 8858166054214648311}
 --- !u!1 &7348628848731134293
 GameObject:
   m_ObjectHideFlags: 0
