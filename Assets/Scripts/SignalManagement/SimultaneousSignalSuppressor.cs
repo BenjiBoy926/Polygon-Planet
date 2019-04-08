@@ -23,7 +23,6 @@ public class SimultaneousSignalSuppressor<TSignal>
     public void AddSignal(TSignal signal)
     {
         pendingSignals.Add(new PriorityWrapper<TSignal>(signal, priorityGenerator(signal)));
-        Debug.Log("Added signal " + signal + " with priority " + priorityGenerator(signal));
     }
     // Transmit the signal with the highest priority and 
     // delete all other pending signals
@@ -38,7 +37,6 @@ public class SimultaneousSignalSuppressor<TSignal>
         {
             pendingSignals.Sort();
             signalTransmissionEvent(pendingSignals[pendingSignals.Count - 1].data);
-            Debug.Log("Transmitting signal " + pendingSignals[pendingSignals.Count - 1]);
             pendingSignals.Clear();
         }
     }

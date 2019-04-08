@@ -19,12 +19,12 @@ public class RotateToMouse2D : MonoBehaviour
     // Camera that the mouse's position is measured from
     private Camera mainCamera;
 
-    private void Start()
+    protected virtual void Start()
     {
         mainCamera = Camera.main;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         toMouse = mousePosition - (Vector2)transform.position;

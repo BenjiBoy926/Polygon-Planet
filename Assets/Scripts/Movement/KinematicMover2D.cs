@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * CLASS KinematicMover2D
@@ -17,11 +18,14 @@ public class KinematicMover2D : MonoBehaviour
 	private Rigidbody2D _rb2D;
     public Rigidbody2D rb2D { get { return _rb2D; } }
 
+    // Event called when the mover is stopped
+    public event UnityAction stopEvent;
+
 	// Set the velocity of the object in the direction specified with the speed specified
 	public virtual void MoveTowards (Vector2 direction, float speed)
 	{
 		Vector2 velocity;
-		velocity = direction.ScaledVector (speed);
+		velocity = direction.ScaledVector(speed);
 		_rb2D.velocity = velocity;
 	}
 
@@ -35,7 +39,7 @@ public class KinematicMover2D : MonoBehaviour
 
     // Uses local coroutine to move the object to the point specified,
     // set to arrive at the given time
-    public virtual void MoveToPoint (Vector2 point, float time)
+    public virtual void MoveToPoint(Vector2 point, float time)
 	{
 		float speed;	// The speed the object needs to go to make it to the point in the time specified
 		float dist;	// Distance between this object and its destination
@@ -46,18 +50,18 @@ public class KinematicMover2D : MonoBehaviour
 
 		// Use calculated speed in the coroutine
 		StopCoroutine ("SmoothMove");
-		StartCoroutine ("SmoothMove", new Waypoint (point, speed));
+		StartCoroutine ("SmoothMove", new Waypoint(point, speed));
 	}
 
 	// Smoothly moves the object to the point, then stops
     // Please note that the algorithm breaks if something gets in the way of the object trying to move
-	private IEnumerator SmoothMove (Waypoint point)
+	private IEnumerator SmoothMove(Waypoint point)
 	{
 		Func<bool> IsSufficientlyClose;	// Delegate returns true when the object is sufficiently close to the target
         WaitUntil waitUntil;    // Wait command used in the coroutine
 
 		// Set velocity towards the direction
-		MoveTowards (point.point - (Vector2)transform.localPosition, point.speed);
+		MoveTowards(point.point - (Vector2)transform.localPosition, point.speed);
 
 		// Set delegate to return true when the difference between
 		// destination and current position is negligibly small
@@ -76,6 +80,10 @@ public class KinematicMover2D : MonoBehaviour
 	{
 		StopAllCoroutines ();
 		_rb2D.velocity = Vector2.zero;
+        if(stopEvent != null)
+        {
+            stopEvent();
+        }
 	}
 }
 

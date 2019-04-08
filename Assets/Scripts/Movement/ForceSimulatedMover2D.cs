@@ -29,7 +29,10 @@ public class ForceSimulatedMover2D : KinematicMover2D
     public void ApplyForce(Vector2 direction, float speed, float time = DEFAULT_BLOWBACK_TIME)
     {
         // Disable the blownback state and move according to the move towards method
-        Stop();
+        if(_isForced)
+        {
+            Stop();
+        }
         MoveTowards(direction, speed);
 
         // Activate the blowback state and schedule the object to stop moving when finished

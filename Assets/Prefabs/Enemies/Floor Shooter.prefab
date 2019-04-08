@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: 
+  _label: Health
   maxStock: 10
   startingStock: 10
 --- !u!114 &680739219448437852
