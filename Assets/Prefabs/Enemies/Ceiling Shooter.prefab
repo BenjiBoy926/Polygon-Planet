@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2245b2fa066b5994d9078b596af9e102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards: 03000000
+  hazards: 0300000004000000
   healers: 
   intakeInfo:
   - _multiplier: 4
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2245b2fa066b5994d9078b596af9e102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards: 03000000
+  hazards: 0300000004000000
   healers: 
   intakeInfo:
   - _multiplier: 4
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2245b2fa066b5994d9078b596af9e102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards: 03000000
+  hazards: 0300000004000000
   healers: 
   intakeInfo: []
 --- !u!114 &5232619084000389722

@@ -14,8 +14,8 @@ using UnityEngine;
 public class EnergySource : MonoBehaviour
 {
     [SerializeField]
-    private Energy _info;
-    public Energy info { get { return _info; } }
+    private Energy _energy;
+    public Energy energy { get { return _energy; } }
     // Event called when the energy source transfers its energy to an energy socket
     public event UnityAction<EnergyTransferredEventData> energyTransferredEvent;
 
@@ -31,7 +31,7 @@ public class EnergySource : MonoBehaviour
     // Transfer energy to the given energy socket and call the event if it exists
     protected virtual void TransferEnergy(EnergySocket socket)
     {
-        socket.AbsorbEnergy(_info);
+        socket.AbsorbEnergy(_energy);
         if(energyTransferredEvent != null)
         {
             energyTransferredEvent(new EnergyTransferredEventData(socket, this));
@@ -40,7 +40,7 @@ public class EnergySource : MonoBehaviour
     // Scale up or scale down the current energy level of the energy source
     public void ScalePowerLevel(float multiplier)
     {
-        int newPower = Mathf.RoundToInt(_info.power * multiplier);
-        _info = new Energy(newPower, _info.type, _info.tag);
+        int newPower = Mathf.RoundToInt(_energy.power * multiplier);
+        _energy = new Energy(newPower, _energy.type, _energy.tag);
     }
 }

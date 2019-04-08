@@ -31,17 +31,26 @@ public class EnergySocket : MonoBehaviour
         healersImmunized = State.Construct(theLabel: "HealersImmunized", obj: gameObject);
     }
 
+    // Process the energy and raise the event
     public void AbsorbEnergy(Energy energy)
     {
-        int adjustedPower;  // Power of the energy actually absorbed
+        int energyAbsorbed = ProcessEnergy(energy);
+        if(energyAbsorbedEvent != null)
+        {
+            energyAbsorbedEvent(new EnergyAbsorbedEventData(this, energy, energyAbsorbed));
+        }
+    }
+    // Determine how much energy is absorbed by the socket
+    // based on its local fields
+    public int ProcessEnergy(Energy energy)
+    {
+        int processedPower = 0; // Power of the energy when processed by the socket's fields
+
+        // Check to see if the energy is hazardous or healthy
         bool hazardous = hazards.Contains(energy.tag);
         bool healing = healers.Contains(energy.tag);
-        // If the energy is hazardous and isn't immunized...
-        // The energy is healing and isn't immunized...
-        // and some event has been specified when the socket absorbs energy
-        if(((hazardous && !hazardsImmunized) || 
-            (healing && !healersImmunized)) && 
-            energyAbsorbedEvent != null)
+
+        if ((hazardous && !hazardsImmunized) || (healing && !healersImmunized))
         {
             // Find an intake info whose type matches the source type
             EnergyIntakeInfo matchedInfo = intakeInfo.Find(x => x.type == energy.type);
@@ -49,23 +58,23 @@ public class EnergySocket : MonoBehaviour
             if (matchedInfo == null)
             {
                 //...assign unmodified energy power
-                adjustedPower = energy.power;
+                processedPower = energy.power;
             }
             // If the socket has intake info specified for energy of this type...
             else
             {
                 //...multiply energy power by intake info multiplier
-                adjustedPower = Mathf.RoundToInt(energy.power * matchedInfo.multiplier);
+                processedPower = Mathf.RoundToInt(energy.power * matchedInfo.multiplier);
             }
             // Force power to negative if the energy is classified as hazardous
-            adjustedPower = Mathf.Abs(adjustedPower);
-            if(hazardous)
+            processedPower = Mathf.Abs(processedPower);
+            if (hazardous)
             {
-                adjustedPower *= -1;
+                processedPower *= -1;
             }
-            // Raise the event with the calculated power absorbed
-            energyAbsorbedEvent(new EnergyAbsorbedEventData(this, energy, adjustedPower));
         }
+
+        return processedPower;
     }
     // Cause the energy socket not to respond to hazards
     public void ImmunizeHazards()
