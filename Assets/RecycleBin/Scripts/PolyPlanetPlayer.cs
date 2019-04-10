@@ -38,19 +38,19 @@ public class PolyPlanetPlayer : MonoBehaviour
 
         // Prevent charge gun from being charged at the start
         //chargeGun.emitted.Activate();
-        mover.speed = defaultMoveSpeed;
+        //mover.baseSpeed = defaultMoveSpeed;
     }
 
     // Event called when the rapid fire gun is ready to fire
     private void OnRapidFireGunReady()
     {
-        mover.speed = defaultMoveSpeed;
+        //mover.baseSpeed = defaultMoveSpeed;
     }
     // Event called when the rapid fire gun is fired
     private void OnRapidFireGunFired(Vector2 shotAim)
     {
         //chargeGun.emitted.Activate();
-        mover.speed = firingMoveSpeed;
+        //mover.baseSpeed = firingMoveSpeed;
     }
     // Lock the rapid fire gun when the charge gun is at full charge
     private void OnChargeGunReady()

@@ -21,6 +21,6 @@ public class MoveByInput2D : KinematicMoverController
     {
         moveVector.x = Input.GetAxisRaw(horizontalButtonName);
         moveVector.y = Input.GetAxisRaw(verticalButtonName);
-        mover.MoveTowards(moveVector, _speed);
+        mover.MoveTowards(moveVector, speed);
     }
 }

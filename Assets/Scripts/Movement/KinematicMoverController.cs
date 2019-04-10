@@ -15,12 +15,33 @@ public class KinematicMoverController : MonoBehaviour
     [Tooltip("Script the controller uses to move the object around")]
     protected KinematicMover2D mover;
     [SerializeField]
-    [Tooltip("Speed at which the controller moves the object around")]
-    protected float _speed;
-    // Make speed variable public to all
+    [Tooltip("Base speed at which the controller moves the object around")]
+    private float baseSpeed;
+    private float speedScalar = 1f;  // Current scalar applied to the speed
+
+    // Get the base speed times the current speed scalar
     public float speed
     {
-        get { return _speed; }
-        set { _speed = value; }
+        get
+        {
+            return baseSpeed * speedScalar;
+        }
+    }
+
+    // Multiply the given scalar by the speed scalar
+    public void AddSpeedScalar(float scalar)
+    {
+        if(scalar >= 0f)
+        {
+            speedScalar *= scalar;
+        }
+    }
+    // Remove a scalar constant by dividing it out of the current scalar
+    public void RemoveSpeedScalar(float scalar)
+    {
+        if(scalar > 0f)
+        {
+            speedScalar /= scalar;
+        }
     }
 }

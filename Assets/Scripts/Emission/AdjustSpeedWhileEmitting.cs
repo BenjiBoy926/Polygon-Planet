@@ -19,22 +19,36 @@ public class AdjustSpeedWhileEmitting : MonoBehaviour
     [Tooltip("Script that controls the speed of this object")]
     private KinematicMoverController controller;
     [SerializeField]
-    [Tooltip("Speed of the object while the emitter is emitting")]
-    private float emittingSpeed;
-    [SerializeField]
-    [Tooltip("Speed of the object while the emitter is not emitting")]
-    private float idleSpeed;
+    [Tooltip("Speed of the mover controller is scaled by this amount while the emitter is emitting")]
+    private float emittingSpeedScalar;
+    // True while the scalar is applied
+    private bool scalarApplied;
+    
     private void Start()
     {
-        emitter.recentlyEmitted.stateActivatedEvent += SetEmittingSpeed;
-        emitter.recentlyEmitted.stateDeactivatedEvent += SetIdleSpeed;
+        scalarApplied = false;
+        emitter.emittedEvent += ScaleSpeed;
+        emitter.recentlyEmitted.stateDeactivatedEvent += UnscaleSpeed;
     }
-    private void SetEmittingSpeed(float activeDuration)
+    
+    // If a scalar has not been applied yet, apply it
+    // Called whenever the emitter emits
+    private void ScaleSpeed(Vector2 emissionDir)
     {
-        controller.speed = emittingSpeed;
+        if(!scalarApplied)
+        {
+            controller.AddSpeedScalar(emittingSpeedScalar);
+            scalarApplied = true;
+        }
     }
-    private void SetIdleSpeed()
+    // If a scalar is till applied, remove it
+    // Called when the emitted event deactivates
+    private void UnscaleSpeed()
     {
-        controller.speed = idleSpeed;
+        if(scalarApplied)
+        {
+            controller.RemoveSpeedScalar(emittingSpeedScalar);
+            scalarApplied = false;
+        }
     }
 }

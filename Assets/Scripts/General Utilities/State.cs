@@ -13,7 +13,8 @@ using UnityEngine.Events;
 
 public class State : MonoBehaviour, ILabelledComponent
 {
-    public const float LOCKED_ACTIVATION_DURATION = -1f;    // This floating-point value is sent to the activated event if the state is locked into the activated state
+    // This floating-point value is sent to the activated event if the state is locked into the activated state
+    public const float LOCKED_ACTIVATION_DURATION = -1f;
 
     [SerializeField]
     private string _label;   // Label to describe this state
@@ -25,9 +26,11 @@ public class State : MonoBehaviour, ILabelledComponent
     private bool _isLocked;  // True if the state has been locked into true or false
     private bool lockedState;   // The state if it is being locked
 
-    // Event handling: class has an activated and deactivated event
-    public event UnityAction<float> stateActivatedEvent;   // Multicast function pointer is called whenever the state activates
-    public event UnityAction stateDeactivatedEvent; // Multicast funciton pointer is called as soon as the state is deactivated
+    // Event handling
+    // Event called whenever the state Activate() method is called
+    public event UnityAction<float> stateActivatedEvent;
+    // Event called whenever the state Deactivate() method is called
+    public event UnityAction stateDeactivatedEvent;
 
     public float duration { get { return _duration; } }
     public bool isLocked { get { return _isLocked; } }
@@ -62,8 +65,10 @@ public class State : MonoBehaviour, ILabelledComponent
     {
         if(!_isLocked)
         {
+            // Set main state and schedule deactivation
             mainState = true;
             DeactivateAfterTime(customDuration);
+
             // Check before invoking the event
             if (stateActivatedEvent != null)
             {
@@ -76,7 +81,9 @@ public class State : MonoBehaviour, ILabelledComponent
     {
         if(!_isLocked)
         {
+            // Set state to false
             mainState = false;
+
             // Check and invoke the event
             if (stateDeactivatedEvent != null)
             {
@@ -116,6 +123,7 @@ public class State : MonoBehaviour, ILabelledComponent
         CancelInvoke();
         Invoke("Deactivate", timeout);
     }
+
     // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
     public static State[] FindStatesWithLabel(string gObjectTag, string stockpileLabel)
     {
