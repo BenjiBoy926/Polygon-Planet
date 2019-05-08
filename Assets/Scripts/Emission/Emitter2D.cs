@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -11,14 +10,14 @@ using UnityEngine;
  * emitter highly customizable and capable of producing complex emission
  * patterns, such as bullet spreads and parallel bullet shots
  * -------------------------------
- */ 
+ */
 
 public class Emitter2D : MonoBehaviour
 {
     [SerializeField]
     private GameObject emittedObject;
     [SerializeField]
-    private ObjectPool<KinematicMover2D> pool;   // Emitter2D's object pool
+    private ObjectPool<Rigidbody2D> pool;   // Emitter2D's object pool
     [SerializeField]
     private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
@@ -27,7 +26,7 @@ public class Emitter2D : MonoBehaviour
 
     protected virtual void Start()
     {
-        pool = new ObjectPool<KinematicMover2D>(emittedObject, gameObject.name + "'s Pool");
+        pool = new ObjectPool<Rigidbody2D>(emittedObject, gameObject.name + "'s Pool");
     }
 
     // Emit the objects using the local information
@@ -35,19 +34,19 @@ public class Emitter2D : MonoBehaviour
     // Emits only if there has not been a recent emission
     public virtual void Emit (Vector2 aimVector)
     {
-        Vector2 rotatedOrigin;  // Origin of the current bullet, rotated by the aim vector
-        Vector2 rotatedDirection;   // Direction of the current bullet, rotated by the aim vector
+        Vector2 localOrigin;  // Origin of the current bullet, rotated by the aim vector
+        Vector2 force;   // Direction of the current bullet, rotated by the aim vector
         float tiltAngle;    // Angle of the aim vector from the right
 
         tiltAngle = Vector2.SignedAngle(Vector2.right, aimVector);
 
         // Rotate all origins and directions in the anchors by the tilt angle,
-        // and launch an object in the pool using rotated vectors
+        // and add an impulse force to an object in the pool using rotated vectors
         foreach (Anchor anchor in objectAnchors)
         {
-            rotatedOrigin = anchor.origin.RotatedVector(tiltAngle);
-            rotatedDirection = anchor.direction.RotatedVector(tiltAngle);
-            pool.getOneQuick.Launch(rotatedOrigin + (Vector2)transform.position, rotatedDirection, _objectVelocity);
+            localOrigin = anchor.origin.RotatedVector(tiltAngle);
+            force = anchor.direction.RotatedVector(tiltAngle).ScaledVector(_objectVelocity);
+            LaunchBody(pool.getOneQuick, localOrigin, force);
         }
 
         // Call emitted event
@@ -55,5 +54,14 @@ public class Emitter2D : MonoBehaviour
         {
             emittedEvent(aimVector);
         }
+    }
+
+    // Simple helper moves the body to the position relative to this object 
+    // and sets it off with an initial velocity
+    private void LaunchBody(Rigidbody2D body, Vector2 localOrigin, Vector2 force)
+    {
+        body.gameObject.SetActive(true);
+        body.transform.position = transform.position + (Vector3)localOrigin;
+        body.velocity = force;
     }
 }

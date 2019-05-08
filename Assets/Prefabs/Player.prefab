@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emittedObject: {fileID: 1535318268074498, guid: 590e4894e268a4647917054dbcbdbfa6,
     type: 3}
-  _objectVelocity: 10
+  _objectVelocity: 15
   objectAnchors:
   - origin: {x: 1, y: 0}
     direction: {x: 1, y: 0}
