@@ -35,4 +35,6 @@ The Player's shield faces *opposite* the mouse pointer.  The shield *automatical
 
 ![Player shield orientation](mdresources/shield-orientation.png)
 
+---
+
 ![Player shield block](mdresources/shield-block.png)
