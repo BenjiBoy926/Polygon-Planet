@@ -13,7 +13,7 @@ using UnityEngine;
  * -------------------------------
  */ 
 
-public class Emitter2D : MonoBehaviour
+public class Emitter2D : MonoBehaviour, IEmitter
 {
     [SerializeField]
     private GameObject emittedObject;

@@ -10,24 +10,24 @@ using System.Collections;
  * -----------------------------------------
  */
 
-public class PushbackStockChangeOnEnergyAbsorbed : MonoBehaviour
+public class DelayStockChangeOnEnergyAbsorbed : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Stock change is pushed back each time this socket absorbs energy")]
+    [Tooltip("Stock change is delayed each time this socket absorbs energy")]
     private EnergySocket socket;
     [SerializeField]
     [Tooltip("This script controls the changes on the stockpile of interest")]
     private ChangeStockOverTime stockChanger;
     [SerializeField]
-    [Tooltip("Stock change is pushed back for this amount of time each time the energy socket absorbs energy")]
-    private float pushbackTime;
+    [Tooltip("Stock change is delayed for this amount of time each time the energy socket absorbs energy")]
+    private float delayTime;
 
     void Start()
     {
-        socket.energyAbsorbedEvent += PushbackStockChange;
+        socket.energyAbsorbedEvent += DelayStockChange;
     }
-    private void PushbackStockChange(EnergyAbsorbedEventData eventData)
+    private void DelayStockChange(EnergyAbsorbedEventData eventData)
     {
-        stockChanger.stockChangeNotReady.Activate(pushbackTime);
+        stockChanger.DelayStockChange(delayTime);
     }
 }

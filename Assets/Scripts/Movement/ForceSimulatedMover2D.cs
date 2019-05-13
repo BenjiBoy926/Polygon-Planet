@@ -21,7 +21,7 @@ public class ForceSimulatedMover2D : KinematicMover2D
 
     private void Start()
     {
-        _isForced = State.Construct(DEFAULT_BLOWBACK_TIME, "Forced", gameObject);
+        _isForced = State.Construct("Forced", gameObject);
     }
 
     // Move in the direction, speed, and for the time specifed

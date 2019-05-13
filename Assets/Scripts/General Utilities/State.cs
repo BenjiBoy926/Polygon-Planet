@@ -19,8 +19,6 @@ public class State : MonoBehaviour, ILabelledComponent
     [SerializeField]
     private string _label;   // Label to describe this state
     public string label { get { return _label; } }
-    [SerializeField]
-    private float _duration; // Default duration the state lasts when activated
     private bool mainState; // Current state
 
     private bool _isLocked;  // True if the state has been locked into true or false
@@ -32,10 +30,9 @@ public class State : MonoBehaviour, ILabelledComponent
     // Event called whenever the state Deactivate() method is called
     public event UnityAction stateDeactivatedEvent;
 
-    public float duration { get { return _duration; } }
     public bool isLocked { get { return _isLocked; } }
 
-    public static State Construct(float duration = 1f, string theLabel = "DefaultState", GameObject obj = null)
+    public static State Construct(string theLabel = "DefaultState", GameObject obj = null)
     {
         // If no object was specified for the state object, create one
         if(obj == null)
@@ -45,7 +42,6 @@ public class State : MonoBehaviour, ILabelledComponent
 
         // Add a state component to the object specified and return it
         State state = obj.AddComponent<State>();
-        state._duration = duration;
         state._label = theLabel;
         return state;
     }
@@ -54,11 +50,6 @@ public class State : MonoBehaviour, ILabelledComponent
     {
         // If not locked, choose time comparison. If locked, choosed locked state
         return (state.mainState && !state._isLocked) || (state.lockedState && state._isLocked);
-    }
-    // Activate the state for the default amount of time
-    public void Activate ()
-    {
-        Activate(duration);
     }
     // Overload of the Activate () method allows calling method to specify a custom duration for the state
     public void Activate (float customDuration)

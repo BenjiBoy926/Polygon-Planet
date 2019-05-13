@@ -28,7 +28,7 @@ public class IdlyChargeableEmitter : MonoBehaviour
     // Activate recently emitted on the charged emitter each time the rapid fire emitter emits
     private void OnRapidFireEmitted(Vector2 aim)
     {
-        chargedUpEmitter.recentlyEmitted.Activate();
+        chargedUpEmitter.recentlyEmitted.Activate(chargedUpEmitter.emissionRate);
     }
     // Lock the rapid fire emitter so it can't emit while the charged emitter is ready
     private void OnChargedUpReady()
@@ -39,6 +39,6 @@ public class IdlyChargeableEmitter : MonoBehaviour
     private void OnChargedUpEmitted(Vector2 aim)
     {
         rapidFireEmitter.recentlyEmitted.Unlock();
-        rapidFireEmitter.recentlyEmitted.Activate();
+        rapidFireEmitter.recentlyEmitted.Activate(rapidFireEmitter.emissionRate);
     }
 }
