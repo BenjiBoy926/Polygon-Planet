@@ -32,13 +32,30 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     public event UnityAction stockEmptiedEvent;
 
     // Setting the current stock also forces it into min-max range
+    // and invokes the stock changed event
     public int currentStock
     {
         get { return _currentStock; }
         protected set
         {
-            _currentStock = value;
-            _currentStock = (int)Mathf.Clamp(_currentStock, 0f, maxStock);
+            int previousStock = _currentStock;
+            _currentStock = Mathf.Clamp(value, 0, maxStock);
+
+            // Invoke stock changed event
+            if(stockChangedEvent != null)
+            {
+                stockChangedEvent(_currentStock - previousStock);
+            }
+            // If stock is now full, invoke event
+            if (full && stockFilledEvent != null)
+            {
+                stockFilledEvent();
+            }
+            // If stock is now empty, invoke event
+            if (empty && stockEmptiedEvent != null)
+            {
+                stockEmptiedEvent();
+            }
         }
     }
     // Properties tell if stock is full or empty
@@ -47,27 +64,17 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
 
     protected virtual void Start()
     {
-        currentStock = startingStock;
+        _currentStock = startingStock;
     }
     // Change stock by amount specified
     public void ChangeStock(int delta)
     {
         currentStock += delta;
-        // If stock changed event exists, invoke it
-        if(stockChangedEvent != null)
-        {
-            stockChangedEvent(delta);
-        }
-        // If stock is now full, invoke event
-        if(full && stockFilledEvent != null)
-        {
-            stockFilledEvent();
-        }
-        // If stock is now empty, invoke event
-        if(empty && stockEmptiedEvent != null)
-        {
-            stockEmptiedEvent();
-        }
+    }
+    // Empty out the stock by setting it to zero
+    public void EmptyStock()
+    {
+        currentStock = 0;
     }
     // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
     public static Stockpile[] FindStockpilesWithLabel(string gObjectTag, string stockpileLabel)
