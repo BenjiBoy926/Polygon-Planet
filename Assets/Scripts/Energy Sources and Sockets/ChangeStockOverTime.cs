@@ -11,6 +11,10 @@ using System.Collections;
 
 public class ChangeStockOverTime : MonoBehaviour
 {
+    /*
+     * PUBLIC DATA
+     */ 
+
     [SerializeField]
     [Tooltip("Stock is changed over time on this stockpile")]
     private Stockpile stock;
@@ -21,24 +25,51 @@ public class ChangeStockOverTime : MonoBehaviour
     [Tooltip("Amount of change delivered to the stockpile at each interval")]
     private int change;
 
-    // True while the stock is not ready to change
-    // Once false, the stock is changed and immediately re-enabled
-    private State _stockChangeNotReady;
-    public State stockChangeNotReady { get { return _stockChangeNotReady; } }
+    /*
+     * HELPER DATA
+     */ 
 
-    // Use this for initialization
-    void Start()
+    private State stockChangeNotReady;  // True while the stock change is not ready
+    private bool changingStock; // True if the stock is currently changing
+
+    /*
+     * PUBLIC INTERFACE
+     */ 
+
+    public void StartStockChange()
     {
-        _stockChangeNotReady = State.Construct(timeBetweenChanges, "StockChangeNotReady", gameObject);
-        _stockChangeNotReady.Activate();
-
-        // Change stock each time the state deactivates
-        _stockChangeNotReady.stateDeactivatedEvent += ChangeStock;
+        changingStock = true;
+        stockChangeNotReady.Activate(timeBetweenChanges);
     }
 
-    private void ChangeStock()
+    public void StopStockChange()
     {
-        stock.ChangeStock(change);
-        _stockChangeNotReady.Activate();
+        changingStock = false;
+    }
+
+    public void DelayStockChange(float delayTime)
+    {
+        stockChangeNotReady.Activate(delayTime);
+    }
+
+    /*
+     * PRIVATE HELPERS
+     */
+
+    private void Start()
+    {
+        stockChangeNotReady = State.Construct("StockChangeNotReady", gameObject);
+
+        // Each time the state disables, change stock and update the state
+        stockChangeNotReady.stateDeactivatedEvent += ChangeStockAndUpdateState;
+    }
+
+    private void ChangeStockAndUpdateState()
+    {
+        if(changingStock)
+        {
+            stock.ChangeStock(change);
+            stockChangeNotReady.Activate(timeBetweenChanges);
+        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 // Pause the game view as soon as the the given stockpile changes stock
 public class BreakOnStockChanged : MonoBehaviour
 {
