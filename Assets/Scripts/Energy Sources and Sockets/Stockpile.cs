@@ -21,7 +21,8 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     private string _label;   // Explanatory label describing what the stock represents
     public string label { get { return _label; } }
     [SerializeField]
-    private int maxStock;  // Max energy that can be stored in the stockpile
+    private int _maxStock;  // Max energy that can be stored in the stockpile
+    public int maxStock { get { return _maxStock; } }
     [SerializeField]
     private int startingStock; // Starting energy of the stockpile
     private int _currentStock; // Current energy of the stockpile
@@ -39,7 +40,7 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
         protected set
         {
             int previousStock = _currentStock;
-            _currentStock = Mathf.Clamp(value, 0, maxStock);
+            _currentStock = Mathf.Clamp(value, 0, _maxStock);
 
             // Invoke stock changed event
             if(stockChangedEvent != null)
@@ -59,7 +60,7 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
         }
     }
     // Properties tell if stock is full or empty
-    public bool full { get { return _currentStock >= maxStock; } }
+    public bool full { get { return _currentStock >= _maxStock; } }
     public bool empty { get { return _currentStock <= 0f; } }
 
     protected virtual void Start()
