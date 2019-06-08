@@ -13,7 +13,7 @@ public class EnableOnEmit : MonoBehaviour
 
     private void Start()
     {
-        emitter.emittedEvent += Enable;
+        emitter.emissionEvent += Enable;
     }
 
     private void Enable(Vector2 emitDir)

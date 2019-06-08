@@ -14,7 +14,7 @@ public class AdjustSpeedWhileEmitting : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Emitter that causes a speed adjustment on the given movement controller")]
-    private ConstrainedEmitter2D emitter;
+    private TimeEmissionConstraint constraint;
     [SerializeField]
     [Tooltip("Script that controls the speed of this object")]
     private KinematicMoverController controller;
@@ -27,13 +27,13 @@ public class AdjustSpeedWhileEmitting : MonoBehaviour
     private void Start()
     {
         scalarApplied = false;
-        emitter.emittedEvent += ScaleSpeed;
-        emitter.recentlyEmitted.stateDeactivatedEvent += UnscaleSpeed;
+        constraint.recentlyEmitted.stateActivatedEvent += ScaleSpeed;
+        constraint.recentlyEmitted.stateDeactivatedEvent += UnscaleSpeed;
     }
     
     // If a scalar has not been applied yet, apply it
     // Called whenever the emitter emits
-    private void ScaleSpeed(Vector2 emissionDir)
+    private void ScaleSpeed(float duration)
     {
         if(!scalarApplied)
         {

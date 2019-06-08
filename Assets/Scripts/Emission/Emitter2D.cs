@@ -22,7 +22,7 @@ public class Emitter2D : MonoBehaviour, IEmitter
     private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
-    public event UnityAction<Vector2> emittedEvent;    // Event called whenever the the emitter emits
+    public event UnityAction<Vector2> emissionEvent;    // Event called whenever the the emitter emits
 
     protected virtual void Start()
     {
@@ -50,9 +50,9 @@ public class Emitter2D : MonoBehaviour, IEmitter
         }
 
         // Call emitted event
-        if (emittedEvent != null)
+        if (emissionEvent != null)
         {
-            emittedEvent(aimVector);
+            emissionEvent(aimVector);
         }
     }
 

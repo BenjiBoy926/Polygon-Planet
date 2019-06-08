@@ -1,51 +1,56 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
+using System.Collections.Generic;
 
 /*
  * CLASS ConstrainedEmitter2D
  * --------------------------
- * A type of emitter that holds an internal state indicator
- * of whether or not the emitter is ready to emit or not
+ * A type of emitter with a function pointer that returns true
+ * if the emitter can emit and false if it cannot. Also has
+ * useful public methods for "and"-ing and "or"-ing other
+ * functions with the constraint to create an emitter with
+ * multiple constraints
  * --------------------------
  */ 
 
 public class ConstrainedEmitter2D : Emitter2D
 {
-    [SerializeField]
-    [Tooltip("Minimum time between each emission")]
-    private float _emissionRate;
-    [SerializeField]
-    [Tooltip("If true, the emitter is ready to emit as soon as the scene loads")]
-    private bool startReady;
-    private State _recentlyEmitted;  // True if the emitter emitted within #emissionRate seconds
+    private List<Func<bool>> funcs = new List<Func<bool>>();
 
-    public State recentlyEmitted { get { return _recentlyEmitted; } }
-    public float emissionRate { get { return _emissionRate; } }
-
-    // Construct the state object
-    protected override void Start()
+    // Emission is ready if all functions return true
+    public bool emissionReady
     {
-        base.Start();
-        _recentlyEmitted = State.Construct("RecentlyEmitted", gameObject);
-        // If the emitter is not ready initially, activate recently emitted state
-        if (!startReady)
+        get
         {
-            _recentlyEmitted.Activate(_emissionRate);
+            bool ready = true;
+            foreach(Func<bool> f in funcs)
+            {
+                ready &= f();
+            }
+            return ready;
         }
     }
-    // Override prevents emissions if the emitter recently emitted 
+
+    /*
+     * PUBLIC INTERFACE
+     */ 
+
+    public void AddConstraint(Func<bool> constraint)
+    {
+        funcs.Add(constraint);
+    }
+        
+    // Override prevents emissions based on the constraint
     public override void Emit(Vector2 aimVector)
     {
-        if(!_recentlyEmitted)
+        if(emissionReady)
         {
             ForceEmit(aimVector);
         }
     }
-    // Optionally force the emitter to emit regardless of
-    // whether or not the emitter recently emitted
+    // Optionally force the emitter to emit, ignoring the constraint
     public void ForceEmit(Vector2 aimVector)
     {
         base.Emit(aimVector);
-        _recentlyEmitted.Activate(_emissionRate);
     }
 }

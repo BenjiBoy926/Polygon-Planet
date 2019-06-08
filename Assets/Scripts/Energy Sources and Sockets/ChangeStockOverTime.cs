@@ -24,6 +24,9 @@ public class ChangeStockOverTime : MonoBehaviour
     [SerializeField]
     [Tooltip("Amount of change delivered to the stockpile at each interval")]
     private int change;
+    [SerializeField]
+    [Tooltip("If true, the stock changing starts as soon as the scene starts")]
+    private bool changeOnStart;
 
     /*
      * HELPER DATA
@@ -62,6 +65,11 @@ public class ChangeStockOverTime : MonoBehaviour
 
         // Each time the state disables, change stock and update the state
         stockChangeNotReady.stateDeactivatedEvent += ChangeStockAndUpdateState;
+
+        if (changeOnStart)
+        {
+            StartStockChange();
+        }
     }
 
     private void ChangeStockAndUpdateState()

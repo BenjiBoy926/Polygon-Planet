@@ -20,6 +20,9 @@ public class EmitByMouseInput2D : MonoBehaviour
     private GameObject emitterObj;
     [SerializeField]
     private string emitButtonName;  // Name of the button in the input manager that the user presses to emit an object
+    [SerializeField]
+    [Tooltip("Defines how the input is triggerd: once when the button is pressed, once when released, or once each frame held")]
+    private InputButtonType buttonType;
 
     /*
      * PRIVATE DATA
@@ -35,17 +38,17 @@ public class EmitByMouseInput2D : MonoBehaviour
 
     private void Start()
     { 
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mainCamera = Camera.main;
         emitter = emitterObj.GetComponent<IEmitter>();
     }
 
     private void Update()
     {
-        // If the emitter is ready to emit and input is currently queued, fire the emitter
-        if(!_emitter.recentlyEmitted && InputExt.GetButton(emitButtonName, buttonType))
+        // If input button is registered, emit
+        if(InputExt.GetButton(emitButtonName, buttonType))
         {
             mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            _emitter.ForceEmit(mousePosition - (Vector2)transform.position);
+            emitter.Emit(mousePosition - (Vector2)transform.position);
         }
     }
 }

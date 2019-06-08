@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 /*
  * CLASS PowerLevelEmitter2D
@@ -25,7 +26,7 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
 
         [SerializeField]
         [Tooltip("Reference to the GameObject with an IEmitter component on it")]
-        private GameObject emitterObj;       
+        private EmitterComponent _emitter;
         [SerializeField]
         [Tooltip("Power level of this emitter")]
         private int _powerLevel;
@@ -34,8 +35,8 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
          * GETTERS/SETTERS
          */
 
+        public IEmitter emitter { get { return _emitter.script; } }
         public int powerLevel { get { return _powerLevel; } }
-        public IEmitter emitter { get; private set; }
 
         /*
          * PUBLIC INTERFACE
@@ -43,7 +44,7 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
 
         public void Initialize()
         {
-            emitter = emitterObj.GetComponent<IEmitter>();
+            _emitter.Setup();
         }
 
         // Implement compare to by comparing by power levels
@@ -75,6 +76,8 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
     [Tooltip("Stockpile that represents the power level of the emitter")]
     private Stockpile powerLevel;
 
+    public event UnityAction<Vector2> emissionEvent;
+
     /*
      * PUBLIC INTERFACE
      */
@@ -102,12 +105,15 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
             {
                 emitterPairSelected = emitters[index];
             }
+
+            index++;
         }
 
         // If an emitter pair was found, emit it
         if(emitterPairSelected != null)
         {
             emitterPairSelected.emitter.Emit(aimVector);
+            emissionEvent(aimVector);
         }
     }
 

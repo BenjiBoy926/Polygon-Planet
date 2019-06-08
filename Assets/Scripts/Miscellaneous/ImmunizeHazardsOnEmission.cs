@@ -22,7 +22,7 @@ public class ImmunizeHazardsOnEmission : MonoBehaviour
 
     private void Start()
     {
-        emitter.emittedEvent += ImmunizeOnEmit;
+        emitter.emissionEvent += ImmunizeOnEmit;
     }
     private void ImmunizeOnEmit(Vector2 emissionDir)
     {

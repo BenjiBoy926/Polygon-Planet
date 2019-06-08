@@ -8,7 +8,7 @@ public class BreakOnEmit : MonoBehaviour
     private Emitter2D emitter;
     private void Start()
     {
-        emitter.emittedEvent += Break;
+        emitter.emissionEvent += Break;
     }
     private void Break(Vector2 emissionDir)
     {

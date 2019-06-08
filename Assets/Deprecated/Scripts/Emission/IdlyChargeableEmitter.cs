@@ -21,24 +21,24 @@ public class IdlyChargeableEmitter : MonoBehaviour
     private ConstrainedEmitter2D chargedUpEmitter;
     private void Start()
     {
-        rapidFireEmitter.emittedEvent += OnRapidFireEmitted;
-        chargedUpEmitter.emittedEvent += OnChargedUpEmitted;
-        chargedUpEmitter.recentlyEmitted.stateDeactivatedEvent += OnChargedUpReady;
+        rapidFireEmitter.emissionEvent += OnRapidFireEmitted;
+        chargedUpEmitter.emissionEvent += OnChargedUpEmitted;
+        //chargedUpEmitter.recentlyEmitted.stateDeactivatedEvent += OnChargedUpReady;
     }
     // Activate recently emitted on the charged emitter each time the rapid fire emitter emits
     private void OnRapidFireEmitted(Vector2 aim)
     {
-        chargedUpEmitter.recentlyEmitted.Activate(chargedUpEmitter.emissionRate);
+        //chargedUpEmitter.recentlyEmitted.Activate(chargedUpEmitter.emissionRate);
     }
     // Lock the rapid fire emitter so it can't emit while the charged emitter is ready
     private void OnChargedUpReady()
     {
-        rapidFireEmitter.recentlyEmitted.Lock(true);
+        //rapidFireEmitter.recentlyEmitted.Lock(true);
     }
     // Once the charge gun is fired, unlock the rapid fire emitter
     private void OnChargedUpEmitted(Vector2 aim)
     {
-        rapidFireEmitter.recentlyEmitted.Unlock();
-        rapidFireEmitter.recentlyEmitted.Activate(rapidFireEmitter.emissionRate);
+        //rapidFireEmitter.recentlyEmitted.Unlock();
+        //rapidFireEmitter.recentlyEmitted.Activate(rapidFireEmitter.emissionRate);
     }
 }
