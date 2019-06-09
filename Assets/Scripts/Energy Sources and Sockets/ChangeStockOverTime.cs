@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 /*
@@ -30,6 +31,12 @@ public class ChangeStockOverTime : MonoBehaviour
     [SerializeField]
     [Tooltip("Script used to check if stock change is not yet ready")]
     private State stockChangeNotReady;  // True while the stock change is not ready
+    [SerializeField]
+    [Tooltip("Invoked when the stock starts changing")]
+    private UnityEvent changeStartedEvent;   // Invoked when the stock starts changing
+    [SerializeField]
+    [Tooltip("Invoked when the stock stops changing")]
+    public UnityEvent changeStoppedEvent;   // Invoked when the stock stops changing
 
     /*
      * HELPER DATA
@@ -45,11 +52,13 @@ public class ChangeStockOverTime : MonoBehaviour
     {
         changingStock = true;
         stockChangeNotReady.Activate(timeBetweenChanges);
+        changeStartedEvent.Invoke();
     }
 
     public void StopStockChange()
     {
         changingStock = false;
+        changeStoppedEvent.Invoke();
     }
 
     public void DelayStockChange(float delayTime)

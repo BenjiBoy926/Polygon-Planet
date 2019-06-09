@@ -11,8 +11,12 @@ using System;
  * --------------------
  */ 
 
-public class ParticleEffect : MonoBehaviour
+public class ParticleEffect : MonoBehaviour, ILabelledComponent
 {
+    [SerializeField]
+    [Tooltip("Public label describing the effect")]
+    private string _label;
+    public string label { get { return _label; } }
     [SerializeField]
     [Tooltip("Game object used as the particle effect")]
     private GameObject particlePrefab;
@@ -20,9 +24,6 @@ public class ParticleEffect : MonoBehaviour
     [Tooltip("Parent transform of the particle effect")]
     private Transform particleParent;
     private Transform particle; // Reference to the transform of the particle instantiated
-
-    [SerializeField]
-    private UnityEvent test;
 
     // Function that modifies the particle effect before enabling it
     public event Action<Transform> particleTransformer;
@@ -34,12 +35,12 @@ public class ParticleEffect : MonoBehaviour
             // If a parent is specified, put the particle as a child
             if (particleParent != null)
             {
-                particle = Instantiate(particle, particleParent).transform;
+                particle = Instantiate(particlePrefab, particleParent).transform;
             }
             // Otherwise, put the particle without any parent
             else
             {
-                particle = Instantiate(particle).transform;
+                particle = Instantiate(particlePrefab).transform;
             }
             particle.gameObject.SetActive(false);
         }

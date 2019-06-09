@@ -34,7 +34,6 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1470675271098653162}
-  - {fileID: 4447819807044784715}
   - {fileID: 5366359511010752044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -140,6 +139,34 @@ MonoBehaviour:
     _power: 1
     _type: 0
     _tag: 3
+  _energyTransferredEvent:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3680719703273790743}
+          m_MethodName: ChangeStock
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: -1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6929663889455922032}
+          m_MethodName: EnableEffect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &1308790301459358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1470675271098653162}
   - component: {fileID: 7055225183810823629}
+  - component: {fileID: 6929663889455922032}
+  - component: {fileID: 5933459839806980227}
   m_Layer: 9
   m_Name: Effects
   m_TagString: Untagged
@@ -219,6 +248,36 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca78f6c63e6ae47e89e13ce08c8b0f30, type: 3}
   playOnAwake: 1
   source: {fileID: 0}
+--- !u!114 &6929663889455922032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451432468062012632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb2bc677dd7a442ae1e5d3de1c8b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1359755605984908, guid: 5b8f044a49702f1408f313bf982e6c7b,
+    type: 3}
+  particleParent: {fileID: 0}
+--- !u!114 &5933459839806980227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451432468062012632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c1c2c931c95c347a3d48528742c161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 6929663889455922032}
+  target: {fileID: 4114905415882948}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &6358441858909155942
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,8 +288,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5366359511010752044}
   - component: {fileID: 3680719703273790743}
-  - component: {fileID: 2057107136756048225}
-  - component: {fileID: 2348830185523501946}
   m_Layer: 9
   m_Name: Stock
   m_TagString: Untagged
@@ -250,7 +307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4114905415882948}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3680719703273790743
 MonoBehaviour:
@@ -264,64 +321,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: 
-  maxStock: 1
+  _label: PlayerBulletPersistence
+  _maxStock: 0
   startingStock: 1
---- !u!114 &2057107136756048225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6358441858909155942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5010dc8df3b7f440a2f94219207cff8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 1308790301459356}
-  stock: {fileID: 3680719703273790743}
---- !u!114 &2348830185523501946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6358441858909155942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b30826bab7c0b44888ca001307bb65c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1308790301459357}
-  stock: {fileID: 3680719703273790743}
---- !u!1 &7205710966556200566
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4447819807044784715}
-  m_Layer: 9
-  m_Name: Body
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4447819807044784715
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7205710966556200566}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4114905415882948}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  _stockChangedEvent:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  _stockFilledEvent:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  _stockEmptiedEvent:
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1308790301459356}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
