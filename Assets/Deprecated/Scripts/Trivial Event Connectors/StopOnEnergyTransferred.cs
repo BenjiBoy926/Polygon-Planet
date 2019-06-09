@@ -13,7 +13,7 @@ public class StopOnEnergyTransferred : MonoBehaviour
 
     protected virtual void Start()
     {
-        source.energyTransferredEvent += Stop;
+        source.energyTransferredEvent.action += Stop;
     }
 
     protected virtual void Stop(EnergyTransferredEventData eventData)

@@ -13,11 +13,18 @@ using UnityEngine;
 
 public class EnergySource : MonoBehaviour
 {
+    /*
+     * PUBLIC TYPEDEFS
+     */
+    [System.Serializable] public class EnergyTransferredEvent : Event<EnergyTransferredEventData> { };
+
     [SerializeField]
     private Energy _energy;
     public Energy energy { get { return _energy; } }
-    // Event called when the energy source transfers its energy to an energy socket
-    public event UnityAction<EnergyTransferredEventData> energyTransferredEvent;
+    [SerializeField]
+    [Tooltip("Set of events invoked when the source transfers its energy to a socket")]
+    private EnergyTransferredEvent _energyTransferredEvent;
+    public Event<EnergyTransferredEventData> energyTransferredEvent { get { return _energyTransferredEvent; } }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,7 +41,7 @@ public class EnergySource : MonoBehaviour
         socket.AbsorbEnergy(_energy);
         if(energyTransferredEvent != null)
         {
-            energyTransferredEvent(new EnergyTransferredEventData(socket, this));
+            energyTransferredEvent.Invoke(new EnergyTransferredEventData(socket, this));
         }
     }
     // Scale up or scale down the current energy level of the energy source

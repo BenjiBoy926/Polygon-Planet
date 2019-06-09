@@ -11,14 +11,10 @@ using System.Collections;
 
 public class LockableRotateToMouse2D : RotateToMouse2D
 {
-    // True while the rotator is locked
+    [SerializeField]
+    [Tooltip("True while the rotation is locked")]
     private State rotationLocked;
 
-    protected override void Start()
-    {
-        base.Start();
-        rotationLocked = State.Construct(theLabel: "RotationLock", obj: gameObject);
-    }
     // Only update rotation if it isn't locked
     protected override void Update()
     {

@@ -22,7 +22,10 @@ public class Emitter2D : MonoBehaviour, IEmitter
     private float _objectVelocity;   // Speed at which objects travel
     [SerializeField]
     private List<Anchor> objectAnchors; // Used to determine the local origin the objects start at and the direction they are fired off in relative to the emitter's aim 
-    public event UnityAction<Vector2> emissionEvent;    // Event called whenever the the emitter emits
+    [SerializeField]
+    [Tooltip("Set of events invoked when the emitter emits")]
+    private EmissionEvent _emissionEvent;    // Event called whenever the the emitter emits
+    public Event<Vector2> emissionEvent { get { return _emissionEvent; } }
 
     protected virtual void Start()
     {
@@ -49,11 +52,7 @@ public class Emitter2D : MonoBehaviour, IEmitter
             LaunchBody(pool.getOneQuick, localOrigin, force);
         }
 
-        // Call emitted event
-        if (emissionEvent != null)
-        {
-            emissionEvent(aimVector);
-        }
+        _emissionEvent.Invoke(aimVector);
     }
 
     // Simple helper moves the body to the position relative to this object 

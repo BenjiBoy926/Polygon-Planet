@@ -14,7 +14,7 @@ public class LockRotationOnEmission : MonoBehaviour
 
     private void Start()
     {
-        emitter.emissionEvent += Lock;
+        emitter.emissionEvent.action += Lock;
     }
 
     private void Lock(Vector2 emissionDir)

@@ -27,8 +27,8 @@ public class ShieldedHealth2D : InvincibleHealth2D
     {
         base.Start();
         shield = maxShield;
-        regenerated = State.Construct("Regenerated", gameObject);
-        damaged = State.Construct("Damaged", gameObject);
+        //regenerated = State.Construct("Regenerated", gameObject);
+        //damaged = State.Construct("Damaged", gameObject);
     }
 
     // If shields are up, deplete them. Otherwise, take direct damage to health

@@ -17,6 +17,16 @@ using System.Collections.Generic;
 
 public class Stockpile : MonoBehaviour, ILabelledComponent
 {
+    /*
+     * PUBLIC TYPEDEFS
+     */
+
+    [Serializable] public class IntEvent : Event<int> { };
+
+    /*
+     * PUBLIC DATA
+     */ 
+
     [SerializeField]
     private string _label;   // Explanatory label describing what the stock represents
     public string label { get { return _label; } }
@@ -27,10 +37,18 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     private int startingStock; // Starting energy of the stockpile
     private int _currentStock; // Current energy of the stockpile
 
-    // Events
-    public event UnityAction<int> stockChangedEvent;
-    public event UnityAction stockFilledEvent;
-    public event UnityAction stockEmptiedEvent;
+    [SerializeField]
+    [Tooltip("Set of events invoked when the stock on the stockpile changes")]
+    private IntEvent _stockChangedEvent;
+    public Event<int> stockChangedEvent { get { return _stockChangedEvent; } }
+    [SerializeField]
+    [Tooltip("Set of events invoked when the stock on the stockpile is maxed out")]
+    private Event _stockFilledEvent;
+    public Event stockFilledEvent { get { return _stockFilledEvent; } }
+    [SerializeField]
+    [Tooltip("Set of events invoked when the stock on the stockpile is emptied out")]
+    private Event _stockEmptiedEvent;
+    public Event stockEmptiedEvent { get { return _stockEmptiedEvent; } }
 
     // Setting the current stock also forces it into min-max range
     // and invokes the stock changed event
@@ -42,20 +60,17 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
             int previousStock = _currentStock;
             _currentStock = Mathf.Clamp(value, 0, _maxStock);
 
-            // Invoke stock changed event
-            if(stockChangedEvent != null)
-            {
-                stockChangedEvent(_currentStock - previousStock);
-            }
+            _stockChangedEvent.Invoke(_currentStock - previousStock);
+
             // If stock is now full, invoke event
-            if (full && stockFilledEvent != null)
+            if (full)
             {
-                stockFilledEvent();
+                _stockFilledEvent.Invoke();
             }
             // If stock is now empty, invoke event
-            if (empty && stockEmptiedEvent != null)
+            if (empty)
             {
-                stockEmptiedEvent();
+                _stockEmptiedEvent.Invoke();
             }
         }
     }

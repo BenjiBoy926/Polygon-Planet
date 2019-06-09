@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /*
  * CLASS EventEffector
@@ -19,6 +18,6 @@ public class EventEffector<EventHandle> : ParticleEffector
     protected override void Start()
     {
         base.Start();
-        eventHandle = eventObject.GetComponentInChildren<EventHandle>();
+        eventHandle = eventObject.GetComponent<EventHandle>();
     }
 }

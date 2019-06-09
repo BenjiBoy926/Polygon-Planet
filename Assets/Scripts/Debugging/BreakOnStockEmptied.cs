@@ -8,7 +8,7 @@ public class BreakOnStockEmptied : MonoBehaviour
 
     private void Start()
     {
-        stock.stockEmptiedEvent += Break;
+        stock.stockEmptiedEvent.action += Break;
     }
 
     private void Break()

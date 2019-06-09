@@ -21,8 +21,8 @@ public class IdlyChargeableEmitter : MonoBehaviour
     private ConstrainedEmitter2D chargedUpEmitter;
     private void Start()
     {
-        rapidFireEmitter.emissionEvent += OnRapidFireEmitted;
-        chargedUpEmitter.emissionEvent += OnChargedUpEmitted;
+        rapidFireEmitter.emissionEvent.action += OnRapidFireEmitted;
+        chargedUpEmitter.emissionEvent.action += OnChargedUpEmitted;
         //chargedUpEmitter.recentlyEmitted.stateDeactivatedEvent += OnChargedUpReady;
     }
     // Activate recently emitted on the charged emitter each time the rapid fire emitter emits

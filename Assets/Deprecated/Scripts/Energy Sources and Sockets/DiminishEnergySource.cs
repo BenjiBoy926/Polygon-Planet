@@ -21,7 +21,7 @@ public class DiminishEnergySource : MonoBehaviour
     void Start()
     {
         currentPersistence = maxPersistence;
-        source.energyTransferredEvent += DecreasePersistence;
+        source.energyTransferredEvent.action += DecreasePersistence;
     }
 
     // Decrease persistence. Subscribed to energy transferred event on the energy source given

@@ -29,10 +29,10 @@ public class AmmoEmissionConstraint : EmitterConstraint
     protected override void Start()
     {
         base.Start();
-        emitter.emissionEvent += ConsumeOnEmit;
+        emitter.emissionEvent.unityEvent.AddListener(ConsumeOnEmit);
     }
 
-    void ConsumeOnEmit(Vector2 aimVector)
+    void ConsumeOnEmit()
     {
         ammo.ChangeStock(-consumptionPerEmission);
     }

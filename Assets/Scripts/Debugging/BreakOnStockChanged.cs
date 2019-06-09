@@ -8,7 +8,7 @@ public class BreakOnStockChanged : MonoBehaviour
     private Stockpile stockpile;
     private void Start()
     {
-        stockpile.stockChangedEvent += Break;
+        stockpile.stockChangedEvent.action += Break;
     }
     private void Break(int stockChange)
     {

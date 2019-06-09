@@ -11,7 +11,7 @@ public class ReportStockChange : MonoBehaviour
     {
         foreach(Stockpile stock in stockpiles)
         {
-            stock.stockChangedEvent += Report;
+            stock.stockChangedEvent.action += Report;
         }
     }
     // Update is called once per frame

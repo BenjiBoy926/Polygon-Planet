@@ -11,8 +11,10 @@ public class TimeEmissionConstraint : EmitterConstraint
     [SerializeField]
     [Tooltip("Minimum time between each emission of the emitter")]
     private float emissionRate;
-
-    public State recentlyEmitted { get; private set; }  // True if the emitter recently emitted
+    [SerializeField]
+    [Tooltip("Script helps manage timing for when the emitter recently emitted")]
+    private State _recentlyEmitted;
+    public State recentlyEmitted { get { return _recentlyEmitted; } }  // True if the emitter recently emitted
 
     /*
      * PRIVATE HELPERS
@@ -22,11 +24,10 @@ public class TimeEmissionConstraint : EmitterConstraint
     protected override void Start()
     {
         base.Start();
-        recentlyEmitted = State.Construct("EmitterTimeConstraint", gameObject);
-        emitter.emissionEvent += ActivateOnEmit;
+        emitter.emissionEvent.unityEvent.AddListener(ActivateOnEmit);
     }
 
-    void ActivateOnEmit(Vector2 aimVector)
+    void ActivateOnEmit()
     {
         recentlyEmitted.Activate(emissionRate);
     }

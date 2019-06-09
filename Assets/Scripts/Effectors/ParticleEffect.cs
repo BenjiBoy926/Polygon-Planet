@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor;
+using UnityEngine.Events;
 using System;
 
 /*
@@ -11,51 +11,62 @@ using System;
  * --------------------
  */ 
 
-[Serializable]
-public class ParticleEffect
+public class ParticleEffect : MonoBehaviour
 {
     [SerializeField]
-    private GameObject particlePrefab;  // Game object used as the particle effect
+    [Tooltip("Game object used as the particle effect")]
+    private GameObject particlePrefab;
     [SerializeField]
-    private Transform particleParent;   // Parent transform of the particle effect
+    [Tooltip("Parent transform of the particle effect")]
+    private Transform particleParent;
     private Transform particle; // Reference to the transform of the particle instantiated
 
-    public void Initialize()
+    [SerializeField]
+    private UnityEvent test;
+
+    // Function that modifies the particle effect before enabling it
+    public event Action<Transform> particleTransformer;
+
+    private void Start()
     {
-        // If a parent is specified, put the particle as a child
-        if (particleParent != null)
+        if(particlePrefab != null)
         {
-            particle = UnityEngine.Object.Instantiate(particle, particleParent).transform;
+            // If a parent is specified, put the particle as a child
+            if (particleParent != null)
+            {
+                particle = Instantiate(particle, particleParent).transform;
+            }
+            // Otherwise, put the particle without any parent
+            else
+            {
+                particle = Instantiate(particle).transform;
+            }
+            particle.gameObject.SetActive(false);
         }
-        // Otherwise, put the particle without any parent
         else
         {
-            particle = UnityEngine.Object.Instantiate(particle).transform;
+            particle = null;
         }
-        particle.gameObject.SetActive(false);
     }
     // Disable and enable the effect
     public void EnableEffect()
     {
-        particle.gameObject.SetActive(false);
-        particle.gameObject.SetActive(true);
-    }
-    // Enable the effect at the given position, either in world space or local space
-    public void EnableEffect(Vector3 position, Space transformSpace = Space.World)
-    {
-        if(transformSpace == Space.World)
+        if(particle != null)
         {
-            particle.position = position;
+            if(particleTransformer != null)
+            {
+                particleTransformer(particle);
+            }
+            particle.gameObject.SetActive(false);
+            particle.gameObject.SetActive(true);
         }
-        else
-        {
-            particle.localPosition = position;
-        }
-        EnableEffect();
     }
     // Disable the particle effect
     public void DisableEffect()
     {
-        particle.gameObject.SetActive(false);
+        if (particle != null)
+        {
+            particle.gameObject.SetActive(false);
+        }
     }
 }

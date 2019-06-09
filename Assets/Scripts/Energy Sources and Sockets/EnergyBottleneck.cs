@@ -84,7 +84,7 @@ public class EnergyBottleneck : MonoBehaviour
     {
         foreach(EnergySocket socket in sockets)
         {
-            socket.energyAbsorbedEvent += ScheduleStockChange;
+            socket.energyAbsorbedEvent.action += ScheduleStockChange;
         }
     }
 }

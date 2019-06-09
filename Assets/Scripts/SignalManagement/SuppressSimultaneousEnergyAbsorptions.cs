@@ -14,7 +14,7 @@ using System.Collections.Generic;
  * If an object has a socket on their shield and their body, the socket
  * on the shield should be given priority over the body, since things that
  * hit the shield should not be allowed to transmit energy to the body
- * under any circumstances
+ * at the same time under any circumstances
  * ------------------------------------------
  */
 
@@ -37,7 +37,7 @@ public class SuppressSimultaneousEnergyAbsorptions : MonoBehaviour
         // Have each energy socket add the event data to the signal suppressor when it absorbs energy
         foreach (PrioritizedSocketStockpilePair pair in prioritizedPairs)
         {
-            pair.socket.energyAbsorbedEvent += energyAbsorbedSuppressor.AddSignal;
+            pair.socket.energyAbsorbedEvent.action += energyAbsorbedSuppressor.AddSignal;
         }
     }
 

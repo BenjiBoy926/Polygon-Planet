@@ -29,7 +29,7 @@ public class StockpileObjectUI : MonoBehaviour
         SetupIndicators();
         RefreshIndicators();
 
-        stockpile.stockChangedEvent += (arg) => RefreshIndicators();
+        stockpile.stockChangedEvent.unityEvent.AddListener(RefreshIndicators);
     }
 
     private void SetupIndicators()

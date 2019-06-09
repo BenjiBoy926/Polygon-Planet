@@ -16,7 +16,7 @@ public class InvincibleHealth2D : SimpleHealth2D
     protected override void Start()
     {
         base.Start();
-        _invincible = State.Construct(obj : gameObject);
+        //_invincible = State.Construct(obj : gameObject);
     }
 
     // Only take damage if not invincible

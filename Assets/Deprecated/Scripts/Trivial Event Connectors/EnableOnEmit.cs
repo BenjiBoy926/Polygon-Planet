@@ -13,10 +13,10 @@ public class EnableOnEmit : MonoBehaviour
 
     private void Start()
     {
-        emitter.emissionEvent += Enable;
+        emitter.emissionEvent.unityEvent.AddListener(Enable);
     }
 
-    private void Enable(Vector2 emitDir)
+    private void Enable()
     {
         obj.SetActive(true);
     }

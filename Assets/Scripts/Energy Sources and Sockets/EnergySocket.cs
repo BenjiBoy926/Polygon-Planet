@@ -13,32 +13,33 @@ using System.Collections.Generic;
 
 public class EnergySocket : MonoBehaviour
 {
+    /*
+     * PUBLIC TYPEDEFS
+     */
+    [System.Serializable] public class EnergyAbsorbedEvent : Event<EnergyAbsorbedEventData> { };
+
     [SerializeField]
     private List<Tag> hazards;  // Energy sources with this tag decrease energy
     [SerializeField]
     private List<Tag> healers;  // Energy sources with this tag increase energy
     [SerializeField]
     private List<EnergyIntakeInfo> intakeInfo;  // Pairs multiplier constant with energy type
-
-    // Raised when energy is absorbed, passing in amount absorbed
-    public event UnityAction<EnergyAbsorbedEventData> energyAbsorbedEvent;
+    [SerializeField]
+    [Tooltip("Set of events invoked when the socket absorbs energy")]
+    private EnergyAbsorbedEvent _energyAbsorbedEvent;
+    public Event<EnergyAbsorbedEventData> energyAbsorbedEvent { get { return _energyAbsorbedEvent; } }
+    [SerializeField]
+    [Tooltip("State determines if the socket can absorb negative energy")]
     private State hazardsImmunized; // If true, the energy socket cannot absorb negative energy
+    [SerializeField]
+    [Tooltip("State determines if the socket can absorb positive energy")]
     private State healersImmunized; // If true, the energy socket cannot absorb positive energy
-
-    private void Start()
-    {
-        hazardsImmunized = State.Construct(theLabel: "HazardsImmunized", obj: gameObject);
-        healersImmunized = State.Construct(theLabel: "HealersImmunized", obj: gameObject);
-    }
 
     // Process the energy and raise the event
     public void AbsorbEnergy(Energy energy)
     {
         int energyAbsorbed = ProcessEnergy(energy);
-        if(energyAbsorbedEvent != null)
-        {
-            energyAbsorbedEvent(new EnergyAbsorbedEventData(this, energy, energyAbsorbed));
-        }
+        _energyAbsorbedEvent.Invoke(new EnergyAbsorbedEventData(this, energy, energyAbsorbed));
     }
     // Determine how much energy is absorbed by the socket
     // based on its local fields

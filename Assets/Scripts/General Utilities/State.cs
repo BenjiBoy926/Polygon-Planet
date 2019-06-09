@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 /*
  * CLASS State
@@ -13,6 +12,11 @@ using UnityEngine.Events;
 
 public class State : MonoBehaviour, ILabelledComponent
 {
+    /*
+     * PUBLIC TYPEDEFS
+     */
+    [System.Serializable] public class FloatEvent : Event<float> { };
+
     // This floating-point value is sent to the activated event if the state is locked into the activated state
     public const float LOCKED_ACTIVATION_DURATION = -1f;
 
@@ -21,65 +25,43 @@ public class State : MonoBehaviour, ILabelledComponent
     public string label { get { return _label; } }
     private bool mainState; // Current state
 
-    private bool _isLocked;  // True if the state has been locked into true or false
+    private bool isLocked { get; set; }  // True if the state has been locked into true or false
     private bool lockedState;   // The state if it is being locked
 
-    // Event handling
-    // Event called whenever the state Activate() method is called
-    public event UnityAction<float> stateActivatedEvent;
-    // Event called whenever the state Deactivate() method is called
-    public event UnityAction stateDeactivatedEvent;
+    [SerializeField]
+    [Tooltip("Set of events invoked when the state is activated")]
+    private FloatEvent _stateActivatedEvent;
+    public Event<float> stateActivatedEvent { get { return _stateActivatedEvent; } } 
+    [SerializeField]
+    [Tooltip("Set of events invoked when the state is deactivated")]
+    private Event _stateDeactivatedEvent;
+    public Event stateDeactivatedEvent { get { return _stateDeactivatedEvent; } }
 
-    public bool isLocked { get { return _isLocked; } }
-
-    public static State Construct(string theLabel = "DefaultState", GameObject obj = null)
-    {
-        // If no object was specified for the state object, create one
-        if(obj == null)
-        {
-            obj = new GameObject("State Object");
-        }
-
-        // Add a state component to the object specified and return it
-        State state = obj.AddComponent<State>();
-        state._label = theLabel;
-        return state;
-    }
     // State's implicitly converted to bool return true while active and false while inactive
     public static implicit operator bool(State state)
     {
         // If not locked, choose time comparison. If locked, choosed locked state
-        return (state.mainState && !state._isLocked) || (state.lockedState && state._isLocked);
+        return (state.mainState && !state.isLocked) || (state.lockedState && state.isLocked);
     }
     // Overload of the Activate () method allows calling method to specify a custom duration for the state
     public void Activate (float customDuration)
     {
-        if(!_isLocked)
+        if(!isLocked)
         {
             // Set main state and schedule deactivation
             mainState = true;
             DeactivateAfterTime(customDuration);
-
-            // Check before invoking the event
-            if (stateActivatedEvent != null)
-            {
-                stateActivatedEvent(customDuration);
-            } // endif not null
+            _stateActivatedEvent.Invoke(customDuration);
         } // endif not locked
     }
     // Disable the state by setting the timer to an invalid number
     public void Deactivate()
     {
-        if(!_isLocked)
+        if(!isLocked)
         {
             // Set state to false
             mainState = false;
-
-            // Check and invoke the event
-            if (stateDeactivatedEvent != null)
-            {
-                stateDeactivatedEvent();
-            } // endif not null
+            _stateDeactivatedEvent.Invoke();
         } // endif not locked
     }
     // Lock the state to the bool specified
@@ -87,26 +69,26 @@ public class State : MonoBehaviour, ILabelledComponent
     public void Lock (bool state)
     {
         // Set locked to true and locked state to the state specified
-        _isLocked = true;
+        isLocked = true;
         lockedState = state;
 
         // Reset timer and stop any invoked
         CancelInvoke();
 
         // Call state activated event if it was locked to true
-        if(stateActivatedEvent != null && state)
+        if(state)
         {
-            stateActivatedEvent(LOCKED_ACTIVATION_DURATION);
+            _stateActivatedEvent.Invoke(LOCKED_ACTIVATION_DURATION);
         }
         // Call state deactivated event if it was locked to false
-        else if(stateDeactivatedEvent != null && state)
+        else
         {
-            stateDeactivatedEvent();
+            _stateDeactivatedEvent.Invoke();
         }
     }
     public void Unlock()
     {
-        _isLocked = false;
+        isLocked = false;
     }
     // Schedule an invoke of the deactivate event
     private void DeactivateAfterTime(float timeout)

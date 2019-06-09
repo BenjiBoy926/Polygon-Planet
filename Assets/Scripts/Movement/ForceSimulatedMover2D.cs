@@ -14,15 +14,12 @@ using System.Collections;
 public class ForceSimulatedMover2D : KinematicMover2D
 {
     public const float DEFAULT_BLOWBACK_TIME = 0.2f;    // Time for which all blowback movers are blown back
-    private State _isForced;    // State is true if the mover is being forced in a direction
-    private Vector2 fromPointToHere = new Vector2();    // Points from the point of blowback to the position of this mover
 
+    [SerializeField]
+    [Tooltip("State script helps manage when the mover is being forced to move in a direction")]
+    private State _isForced;
     public State isForced { get { return _isForced; } }
-
-    private void Start()
-    {
-        _isForced = State.Construct("Forced", gameObject);
-    }
+    private Vector2 fromPointToHere = new Vector2();    // Points from the point of blowback to the position of this mover
 
     // Move in the direction, speed, and for the time specifed
     // Additional functionality locks movement of the mover until blowback is finished

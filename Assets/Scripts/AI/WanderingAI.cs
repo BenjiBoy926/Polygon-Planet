@@ -20,15 +20,15 @@ public class WanderingAI : MonoBehaviour
     private DirectionalType directions; // Determines what directions the ai is allowed to wander in
     [SerializeField]
     private IntConstraint wanderTimes;    // Min-max times for which the ai can wander in one direction before changing directions
+    [SerializeField]
+    [Tooltip("Reference to the script that helps manage the wandering state")]
+    private State isWandering;
 
     private WaitUntil WaitUntil;    // Wait command used in all wandering coroutines
     private List<Vector2> availableDirections = new List<Vector2>();  // List of directions the ai can wander in
-    private State isWandering;  // State is true if the ai is still wandering in the direction most recently selected
 
     private void Start()
     {
-        isWandering = State.Construct(theLabel: "Wandering", obj: gameObject);
-
         // Add correct vectors to the list
         if(directions == DirectionalType.AllDirections)
         {

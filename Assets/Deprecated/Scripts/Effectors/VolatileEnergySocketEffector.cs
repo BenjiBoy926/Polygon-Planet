@@ -29,16 +29,16 @@ public class VolatileEnergySocketEffector : MonoBehaviour
             //socket.energyDecreasedEvent += EnergyDecreasedEffect;
         }
         // Initialize the particle effects
-        energyIncreasedEffect.Initialize();
-        energyDecreasedEffect.Initialize();
+        //energyIncreasedEffect.Initialize();
+        //energyDecreasedEffect.Initialize();
     }
     // Enable effect at the position of the energy socket
-    private void EnergyIncreasedEffect(Energy info)
+    private void EnergyIncreasedEffect(EnergyIntakeInfo info)
     {
-        energyIncreasedEffect.EnableEffect(energySocket.position);
+        energyIncreasedEffect.EnableEffect();
     }
-    private void EnergyDecreasedEffect(Energy info)
+    private void EnergyDecreasedEffect(EnergyIntakeInfo info)
     {
-        energyDecreasedEffect.EnableEffect(energySocket.position);
+        energyDecreasedEffect.EnableEffect();
     }
 }

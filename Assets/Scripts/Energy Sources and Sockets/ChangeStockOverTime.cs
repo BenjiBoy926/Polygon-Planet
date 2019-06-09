@@ -27,12 +27,14 @@ public class ChangeStockOverTime : MonoBehaviour
     [SerializeField]
     [Tooltip("If true, the stock changing starts as soon as the scene starts")]
     private bool changeOnStart;
+    [SerializeField]
+    [Tooltip("Script used to check if stock change is not yet ready")]
+    private State stockChangeNotReady;  // True while the stock change is not ready
 
     /*
      * HELPER DATA
-     */ 
+     */
 
-    private State stockChangeNotReady;  // True while the stock change is not ready
     private bool changingStock; // True if the stock is currently changing
 
     /*
@@ -61,10 +63,8 @@ public class ChangeStockOverTime : MonoBehaviour
 
     private void Start()
     {
-        stockChangeNotReady = State.Construct("StockChangeNotReady", gameObject);
-
         // Each time the state disables, change stock and update the state
-        stockChangeNotReady.stateDeactivatedEvent += ChangeStockAndUpdateState;
+        stockChangeNotReady.stateDeactivatedEvent.action += ChangeStockAndUpdateState;
 
         if (changeOnStart)
         {

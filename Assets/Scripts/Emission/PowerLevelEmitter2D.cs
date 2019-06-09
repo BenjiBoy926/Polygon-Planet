@@ -75,8 +75,10 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
     [SerializeField]
     [Tooltip("Stockpile that represents the power level of the emitter")]
     private Stockpile powerLevel;
-
-    public event UnityAction<Vector2> emissionEvent;
+    [SerializeField]
+    [Tooltip("List of events invoked when the emitter emits")]
+    private EmissionEvent _emissionEvent;
+    public Event<Vector2> emissionEvent { get { return _emissionEvent; } }
 
     /*
      * PUBLIC INTERFACE
@@ -113,7 +115,7 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
         if(emitterPairSelected != null)
         {
             emitterPairSelected.emitter.Emit(aimVector);
-            emissionEvent(aimVector);
+            _emissionEvent.Invoke(aimVector);
         }
     }
 
