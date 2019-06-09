@@ -9,11 +9,8 @@
  * ----------------------------
  */ 
 
-public class AmmoEmissionConstraint : MonoBehaviour
+public class AmmoEmissionConstraint : EmitterConstraint
 {
-    [SerializeField]
-    [Tooltip("Reference to the emitter to constrain")]
-    private ConstrainedEmitter2D emitter;
     [SerializeField]
     [Tooltip("Reference to a script with the ammo level")]
     private Stockpile ammo;
@@ -29,22 +26,25 @@ public class AmmoEmissionConstraint : MonoBehaviour
      */ 
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         emitter.emissionEvent += ConsumeOnEmit;
-
-        if (allowOverflow)
-        {
-            emitter.AddConstraint(() => !ammo.empty);
-        }
-        else
-        {
-            emitter.AddConstraint(() => ammo.currentStock >= consumptionPerEmission);
-        }
     }
 
     void ConsumeOnEmit(Vector2 aimVector)
     {
         ammo.ChangeStock(-consumptionPerEmission);
+    }
+    protected override bool Constraint()
+    {
+        if(allowOverflow)
+        {
+            return !ammo.empty;
+        }
+        else
+        {
+            return ammo.currentStock >= consumptionPerEmission;
+        }
     }
 }

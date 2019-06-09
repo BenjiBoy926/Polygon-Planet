@@ -13,7 +13,7 @@ public class KinematicMoverController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Script the controller uses to move the object around")]
-    protected KinematicMover2D mover;
+    private KinematicMover2D mover;
     [SerializeField]
     [Tooltip("Base speed at which the controller moves the object around")]
     private float baseSpeed;
@@ -26,6 +26,11 @@ public class KinematicMoverController : MonoBehaviour
         {
             return baseSpeed * speedScalar;
         }
+    }
+
+    public void Move(Vector2 dir)
+    {
+        mover.MoveTowards(dir, speed);
     }
 
     // Multiply the given scalar by the speed scalar

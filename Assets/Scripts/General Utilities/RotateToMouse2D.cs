@@ -11,6 +11,9 @@ using System.Collections;
 public class RotateToMouse2D : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Reference to the transform that will rotate")]
+    private Transform trans;
+    [SerializeField]
     private Vector2 objectForward;  // Definition of the object's "forward" direction
     // Vector with the tail at this object and the tip at mouse position
     private Vector2 toMouse = new Vector2();
@@ -27,7 +30,7 @@ public class RotateToMouse2D : MonoBehaviour
     protected virtual void Update()
     {
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        toMouse = mousePosition - (Vector2)transform.position;
-        transform.LookInDirection2D(toMouse, objectForward);
+        toMouse = mousePosition - (Vector2)trans.position;
+        trans.LookInDirection2D(toMouse, objectForward);
     }
 }

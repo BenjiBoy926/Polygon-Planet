@@ -6,11 +6,8 @@
  * Prevent the constrained emitter from emitting too frequently
  * ----------------------------
  */ 
-public class TimeEmissionConstraint : MonoBehaviour
+public class TimeEmissionConstraint : EmitterConstraint
 {
-    [SerializeField]
-    [Tooltip("Reference to the emitter to constrain")]
-    private ConstrainedEmitter2D emitter;
     [SerializeField]
     [Tooltip("Minimum time between each emission of the emitter")]
     private float emissionRate;
@@ -22,15 +19,19 @@ public class TimeEmissionConstraint : MonoBehaviour
      */
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         recentlyEmitted = State.Construct("EmitterTimeConstraint", gameObject);
         emitter.emissionEvent += ActivateOnEmit;
-        emitter.AddConstraint(() => !recentlyEmitted);
     }
 
     void ActivateOnEmit(Vector2 aimVector)
     {
         recentlyEmitted.Activate(emissionRate);
+    }
+    protected override bool Constraint()
+    {
+        return !recentlyEmitted;
     }
 }
