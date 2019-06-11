@@ -42,6 +42,3 @@ Assets/StreamingAssets/crashlytics-build.properties
 # Additional ignores
 GlobalSuppressions.cs
 Packages/
-
-# TEMP: dunno how important it is to at the meta files
-*.meta
