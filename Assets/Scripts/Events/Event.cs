@@ -40,3 +40,23 @@ public class Event<T>
         }
     }
 }
+
+[Serializable]
+public class Event<T1, T2>
+{
+    public event Action<T1, T2> action;
+    public UnityEvent unityEvent;
+
+    public void Invoke(T1 arg1, T2 arg2)
+    {
+        if (action != null)
+        {
+            action.Invoke(arg1, arg2);
+        }
+
+        if (unityEvent != null)
+        {
+            unityEvent.Invoke();
+        }
+    }
+}

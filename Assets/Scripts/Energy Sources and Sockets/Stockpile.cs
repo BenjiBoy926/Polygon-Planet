@@ -58,17 +58,22 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
         protected set
         {
             int previousStock = _currentStock;
+            bool previousFull = full;
+            bool previousEmpty = empty;
+
+            // Change the current stock to the valuegiven
             _currentStock = Mathf.Clamp(value, 0, _maxStock);
 
+            // Invoke stock change event
             _stockChangedEvent.Invoke(_currentStock - previousStock);
 
             // If stock is now full, invoke event
-            if (full)
+            if (full && !previousFull)
             {
                 _stockFilledEvent.Invoke();
             }
             // If stock is now empty, invoke event
-            if (empty)
+            if (empty && !previousEmpty)
             {
                 _stockEmptiedEvent.Invoke();
             }

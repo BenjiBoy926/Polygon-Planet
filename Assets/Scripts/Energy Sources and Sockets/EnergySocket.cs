@@ -18,16 +18,24 @@ public class EnergySocket : MonoBehaviour
      */
     [System.Serializable] public class EnergyAbsorbedEvent : Event<EnergyAbsorbedEventData> { };
 
+    /*
+     * PUBLIC DATA
+     */ 
+
     [SerializeField]
-    private List<Tag> hazards;  // Energy sources with this tag decrease energy
+    [Tooltip("Energy sources with any of these tags cause the socket to absorb negative energy")]
+    private List<Tag> hazards;
     [SerializeField]
-    private List<Tag> healers;  // Energy sources with this tag increase energy
+    [Tooltip("Energy sources with any of these tags cause the socket to absorb positive energy")]
+    private List<Tag> healers;
     [SerializeField]
-    private List<EnergyIntakeInfo> intakeInfo;  // Pairs multiplier constant with energy type
+    [Tooltip("Applies a multiplier to the energy absorbed by the given energy type")]
+    private List<EnergyIntakeInfo> intakeInfo;
     [SerializeField]
     [Tooltip("Set of events invoked when the socket absorbs energy")]
     private EnergyAbsorbedEvent _energyAbsorbedEvent;
     public Event<EnergyAbsorbedEventData> energyAbsorbedEvent { get { return _energyAbsorbedEvent; } }
+
     [SerializeField]
     [Tooltip("State determines if the socket can absorb negative energy")]
     private State hazardsImmunized; // If true, the energy socket cannot absorb negative energy
@@ -77,6 +85,22 @@ public class EnergySocket : MonoBehaviour
 
         return processedPower;
     }
+
+    // Set the multiplier for the given energy type
+    // If no intake info exists with the given type, add one to the list
+    public void SetIntakeMultiplier(EnergyType energyType, float multiplier)
+    {
+        EnergyIntakeInfo info = intakeInfo.Find(x => x.type == energyType);
+        if (info != null)
+        {
+            info.multiplier = multiplier;
+        }
+        else
+        {
+            intakeInfo.Add(new EnergyIntakeInfo(energyType, multiplier));
+        }
+    }
+
     // Cause the energy socket not to respond to hazards
     public void ImmunizeHazards()
     {

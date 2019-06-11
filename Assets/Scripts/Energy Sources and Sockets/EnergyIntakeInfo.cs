@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /*
  * CLASS EnergyIntakeInfo
@@ -14,8 +13,18 @@ public class EnergyIntakeInfo
 {
     [SerializeField]
     private float _multiplier;
-    public float multiplier { get { return _multiplier; } }
+    public float multiplier
+    {
+        get { return _multiplier; }
+        set { _multiplier = value; }
+    }
     [SerializeField]
     private EnergyType _type;
     public EnergyType type { get { return _type; } }
+
+    public EnergyIntakeInfo(EnergyType t, float m)
+    {
+        _type = t;
+        _multiplier = m;
+    }
 }

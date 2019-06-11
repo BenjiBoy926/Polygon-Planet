@@ -8,7 +8,7 @@ public class ScaleSpeedOnObjectDisabled : MonoBehaviour
     private KinematicMoverController controller;
     [SerializeField]
     [Tooltip("Script that raises events when the object is enabled and disabled")]
-    private EnableEvents objectEvents;
+    private MonoBehaviourEvents objectEvents;
     [SerializeField]
     [Tooltip("Scalar applied to the speed while the object is disabled")]
     private float objectDisabledSpeedScalar;
@@ -18,8 +18,8 @@ public class ScaleSpeedOnObjectDisabled : MonoBehaviour
     void Start()
     {
         scalarApplied = false;
-        objectEvents.enableEvent += ObjectEnabledSpeed;
-        objectEvents.disableEvent += ObjectDisabledSpeed;
+        objectEvents.onEnable.action += ObjectEnabledSpeed;
+        objectEvents.onDisable.action += ObjectDisabledSpeed;
     }
 
     // Apply speed scalar while the object is disabled

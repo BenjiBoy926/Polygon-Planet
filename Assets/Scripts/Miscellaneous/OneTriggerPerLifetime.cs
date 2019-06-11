@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public class OneTriggerPerLifetime : MonoBehaviour
 {
     [SerializeField]
-    private List<TriggerEvent> callingTriggers; // List of triggers relevant to the script
+    private List<MonoBehaviourEvents> callingBehaviours; // List of triggers relevant to the script
     [SerializeField]
     private List<string> trackedTags;  // Only colliders with one of these tags will have the one trigger rule enforced on them 
     private List<Collider2D> callingColliders = new List<Collider2D>(); // List of colliders that can only be hit once in the lifetime of any other collider
@@ -28,14 +28,14 @@ public class OneTriggerPerLifetime : MonoBehaviour
 
     private void Start()
     {
-        foreach(TriggerEvent trigger in callingTriggers)
+        foreach(MonoBehaviourEvents behaviour in callingBehaviours)
         {
             // Add the collider of each trigger event to the list
-            Collider2D currentTrigger = trigger.GetComponent<Collider2D>();
+            Collider2D currentTrigger = behaviour.GetComponent<Collider2D>();
             if(currentTrigger != null)
             {
                 callingColliders.Add(currentTrigger);
-                trigger.triggerEnteredEvent += CheckAddColliderToMute;
+                behaviour.onTriggerEnter2D.action += CheckAddColliderToMute;
             }
         }
     }
