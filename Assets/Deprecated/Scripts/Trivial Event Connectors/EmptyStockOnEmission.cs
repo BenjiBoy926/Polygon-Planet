@@ -13,6 +13,6 @@ public class EmptyStockOnEmission : MonoBehaviour
     void Start()
     {
         emitter.Setup();
-        emitter.script.emissionEvent.unityEvent.AddListener(stockpile.EmptyStock); 
+        emitter.script.emissionEvent.AddListener(x => stockpile.EmptyStock()); 
     }
 }

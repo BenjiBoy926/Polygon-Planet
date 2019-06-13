@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable] public class EmissionEvent : UnityEvent<Vector2> { };
 
 public interface IEmitter
 {
     void Emit(Vector2 aim);
-    Event<Vector2> emissionEvent { get; }
+    EmissionEvent emissionEvent { get; }
 }
-
-[System.Serializable] public class EmissionEvent : Event<Vector2> { };

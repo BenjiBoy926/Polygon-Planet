@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * CLASS State
@@ -15,7 +16,7 @@ public class State : MonoBehaviour, ILabelledComponent
     /*
      * PUBLIC TYPEDEFS
      */
-    [System.Serializable] public class FloatEvent : Event<float> { };
+    [System.Serializable] public class FloatEvent : UnityEvent<float> { };
 
     // This floating-point value is sent to the activated event if the state is locked into the activated state
     public const float LOCKED_ACTIVATION_DURATION = -1f;
@@ -31,11 +32,11 @@ public class State : MonoBehaviour, ILabelledComponent
     [SerializeField]
     [Tooltip("Set of events invoked when the state is activated")]
     private FloatEvent _stateActivatedEvent;
-    public Event<float> stateActivatedEvent { get { return _stateActivatedEvent; } } 
+    public FloatEvent stateActivatedEvent { get { return _stateActivatedEvent; } } 
     [SerializeField]
     [Tooltip("Set of events invoked when the state is deactivated")]
-    private Event _stateDeactivatedEvent;
-    public Event stateDeactivatedEvent { get { return _stateDeactivatedEvent; } }
+    private UnityEvent _stateDeactivatedEvent;
+    public UnityEvent stateDeactivatedEvent { get { return _stateDeactivatedEvent; } }
 
     // State's implicitly converted to bool return true while active and false while inactive
     public static implicit operator bool(State state)

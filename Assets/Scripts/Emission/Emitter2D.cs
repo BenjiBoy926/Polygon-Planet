@@ -25,7 +25,7 @@ public class Emitter2D : MonoBehaviour, IEmitter
     [SerializeField]
     [Tooltip("Set of events invoked when the emitter emits")]
     private EmissionEvent _emissionEvent;    // Event called whenever the the emitter emits
-    public Event<Vector2> emissionEvent { get { return _emissionEvent; } }
+    public EmissionEvent emissionEvent { get { return _emissionEvent; } }
 
     protected virtual void Start()
     {

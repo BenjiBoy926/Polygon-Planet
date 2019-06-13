@@ -35,7 +35,7 @@ public class OneTriggerPerLifetime : MonoBehaviour
             if(currentTrigger != null)
             {
                 callingColliders.Add(currentTrigger);
-                behaviour.onTriggerEnter2D.action += CheckAddColliderToMute;
+                behaviour.onTriggerEnter2D.AddListener(CheckAddColliderToMute);
             }
         }
     }

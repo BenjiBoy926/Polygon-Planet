@@ -24,7 +24,7 @@ public class SocketStockpileConnection
         // Prevent client code from creating multiple connections
         if(!connected)
         {
-            _socket.energyAbsorbedEvent.action += ChangeStockByAmountAbsorbed;
+            _socket.energyAbsorbedEvent.AddListener(ChangeStockByAmountAbsorbed);
             connected = true;
         }
     }

@@ -8,7 +8,7 @@ public class BreakOnEnergyTransferred : MonoBehaviour
 
     private void Start()
     {
-        source.energyTransferredEvent.action += Break;
+        source.energyTransferredEvent.AddListener(Break);
     }
 
     private void Break(EnergyTransferredEventData eventData)

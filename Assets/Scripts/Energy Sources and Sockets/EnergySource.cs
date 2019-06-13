@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * CLASS EnergySource
@@ -16,7 +17,7 @@ public class EnergySource : MonoBehaviour
     /*
      * PUBLIC TYPEDEFS
      */
-    [System.Serializable] public class EnergyTransferredEvent : Event<EnergyTransferredEventData> { };
+    [System.Serializable] public class EnergyTransferredEvent : UnityEvent<EnergyTransferredEventData> { };
 
     [SerializeField]
     private Energy _energy;
@@ -24,7 +25,7 @@ public class EnergySource : MonoBehaviour
     [SerializeField]
     [Tooltip("Set of events invoked when the source transfers its energy to a socket")]
     private EnergyTransferredEvent _energyTransferredEvent;
-    public Event<EnergyTransferredEventData> energyTransferredEvent { get { return _energyTransferredEvent; } }
+    public EnergyTransferredEvent energyTransferredEvent { get { return _energyTransferredEvent; } }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

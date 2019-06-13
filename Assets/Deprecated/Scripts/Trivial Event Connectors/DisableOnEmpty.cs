@@ -15,7 +15,7 @@ public class DisableOnEmpty : MonoBehaviour
     private Stockpile stock;
     private void Start()
     {
-        stock.stockEmptiedEvent.action += DisableObject;
+        stock.stockEmptiedEvent.AddListener(DisableObject);
     }
     private void DisableObject()
     {

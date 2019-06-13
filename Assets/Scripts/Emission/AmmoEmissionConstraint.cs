@@ -29,7 +29,7 @@ public class AmmoEmissionConstraint : EmitterConstraint
     protected override void Start()
     {
         base.Start();
-        emitter.emissionEvent.unityEvent.AddListener(ConsumeOnEmit);
+        emitter.emissionEvent.AddListener(x => ConsumeOnEmit());
     }
 
     void ConsumeOnEmit()

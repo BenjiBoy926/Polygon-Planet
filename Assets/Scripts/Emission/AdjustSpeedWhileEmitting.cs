@@ -27,8 +27,8 @@ public class AdjustSpeedWhileEmitting : MonoBehaviour
     private void Start()
     {
         scalarApplied = false;
-        constraint.recentlyEmitted.stateActivatedEvent.action += ScaleSpeed;
-        constraint.recentlyEmitted.stateDeactivatedEvent.action += UnscaleSpeed;
+        constraint.recentlyEmitted.stateActivatedEvent.AddListener(ScaleSpeed);
+        constraint.recentlyEmitted.stateDeactivatedEvent.AddListener(UnscaleSpeed);
     }
     
     // If a scalar has not been applied yet, apply it

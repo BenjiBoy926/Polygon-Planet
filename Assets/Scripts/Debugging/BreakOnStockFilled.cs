@@ -7,7 +7,7 @@ public class BreakOnStockFilled : MonoBehaviour
 
     private void Start()
     {
-        stock.stockFilledEvent.action += Break;
+        stock.stockFilledEvent.AddListener(Break);
     }
 
     private void Break()

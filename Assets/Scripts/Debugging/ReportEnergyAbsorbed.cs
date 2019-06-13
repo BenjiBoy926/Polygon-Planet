@@ -10,7 +10,7 @@ public class ReportEnergyAbsorbed : MonoBehaviour
     {
         foreach(EnergySocket socket in energySockets)
         {
-            socket.energyAbsorbedEvent.action += Report;
+            socket.energyAbsorbedEvent.AddListener(Report);
         }
     }
 

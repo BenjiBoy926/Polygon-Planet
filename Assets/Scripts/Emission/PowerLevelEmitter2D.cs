@@ -78,7 +78,7 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
     [SerializeField]
     [Tooltip("List of events invoked when the emitter emits")]
     private EmissionEvent _emissionEvent;
-    public Event<Vector2> emissionEvent { get { return _emissionEvent; } }
+    public EmissionEvent emissionEvent { get { return _emissionEvent; } }
 
     /*
      * PUBLIC INTERFACE

@@ -73,7 +73,7 @@ public class ChangeStockOverTime : MonoBehaviour
     private void Start()
     {
         // Each time the state disables, change stock and update the state
-        stockChangeNotReady.stateDeactivatedEvent.action += ChangeStockAndUpdateState;
+        stockChangeNotReady.stateDeactivatedEvent.AddListener(ChangeStockAndUpdateState);
 
         if (changeOnStart)
         {

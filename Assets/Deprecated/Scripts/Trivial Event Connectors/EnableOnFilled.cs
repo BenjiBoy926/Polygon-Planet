@@ -13,7 +13,7 @@ public class EnableOnFilled : MonoBehaviour
 
     private void Start()
     {
-        stock.stockFilledEvent.action += Enable;
+        stock.stockFilledEvent.AddListener(Enable);
     }
 
     private void Enable()

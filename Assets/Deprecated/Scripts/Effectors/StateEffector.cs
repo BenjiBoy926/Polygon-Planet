@@ -18,15 +18,15 @@ public class StateEffector : EventEffector<State>
     protected override void Start()
     {
         base.Start();
-        eventHandle.stateActivatedEvent.action += OnStateActivated;
+        eventHandle.stateActivatedEvent.AddListener(OnStateActivated);
 
         if(!inverted)
         {
-            eventHandle.stateDeactivatedEvent.action += DisableEffect;
+            eventHandle.stateDeactivatedEvent.AddListener(DisableEffect);
         }
         else
         {
-            eventHandle.stateDeactivatedEvent.action += EnableEffect;
+            eventHandle.stateDeactivatedEvent.AddListener(EnableEffect);
         }
     }
     // Added to the state activated event

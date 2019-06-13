@@ -18,8 +18,8 @@ public class ScaleSpeedOnObjectDisabled : MonoBehaviour
     void Start()
     {
         scalarApplied = false;
-        objectEvents.onEnable.action += ObjectEnabledSpeed;
-        objectEvents.onDisable.action += ObjectDisabledSpeed;
+        objectEvents.onEnable.AddListener(ObjectEnabledSpeed);
+        objectEvents.onDisable.AddListener(ObjectDisabledSpeed);
     }
 
     // Apply speed scalar while the object is disabled

@@ -13,7 +13,7 @@ public class StopIfNonzeroEnergyTransferred : MonoBehaviour
 
     private void Start()
     {
-        source.energyTransferredEvent.action += Stop;
+        source.energyTransferredEvent.AddListener(Stop);
     }
 
     // Simulate the energy absorption on the energy source in the energy transfer event,

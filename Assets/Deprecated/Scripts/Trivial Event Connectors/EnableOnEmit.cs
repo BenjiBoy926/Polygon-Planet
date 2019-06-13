@@ -13,7 +13,7 @@ public class EnableOnEmit : MonoBehaviour
 
     private void Start()
     {
-        emitter.emissionEvent.unityEvent.AddListener(Enable);
+        emitter.emissionEvent.AddListener(x => Enable());
     }
 
     private void Enable()

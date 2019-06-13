@@ -21,7 +21,7 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
      * PUBLIC TYPEDEFS
      */
 
-    [Serializable] public class IntEvent : Event<int> { };
+    [Serializable] public class IntEvent : UnityEvent<int> { };
 
     /*
      * PUBLIC DATA
@@ -40,15 +40,15 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     [SerializeField]
     [Tooltip("Set of events invoked when the stock on the stockpile changes")]
     private IntEvent _stockChangedEvent;
-    public Event<int> stockChangedEvent { get { return _stockChangedEvent; } }
+    public IntEvent stockChangedEvent { get { return _stockChangedEvent; } }
     [SerializeField]
     [Tooltip("Set of events invoked when the stock on the stockpile is maxed out")]
-    private Event _stockFilledEvent;
-    public Event stockFilledEvent { get { return _stockFilledEvent; } }
+    private UnityEvent _stockFilledEvent;
+    public UnityEvent stockFilledEvent { get { return _stockFilledEvent; } }
     [SerializeField]
     [Tooltip("Set of events invoked when the stock on the stockpile is emptied out")]
-    private Event _stockEmptiedEvent;
-    public Event stockEmptiedEvent { get { return _stockEmptiedEvent; } }
+    private UnityEvent _stockEmptiedEvent;
+    public UnityEvent stockEmptiedEvent { get { return _stockEmptiedEvent; } }
 
     // Setting the current stock also forces it into min-max range
     // and invokes the stock changed event

@@ -23,9 +23,9 @@ public class StockpileDebugger : MonoBehaviour
 
     private void Start()
     {
-        stockpile.stockChangedEvent.action += DebugStockChange;
-        stockpile.stockFilledEvent.action += DebugStockFilled;
-        stockpile.stockEmptiedEvent.action += DebugStockEmpted;
+        stockpile.stockChangedEvent.AddListener(DebugStockChange);
+        stockpile.stockFilledEvent.AddListener(DebugStockFilled);
+        stockpile.stockEmptiedEvent.AddListener(DebugStockEmpted);
     }
     private void DebugStockChange(int change)
     {

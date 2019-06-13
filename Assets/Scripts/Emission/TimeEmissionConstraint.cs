@@ -24,7 +24,7 @@ public class TimeEmissionConstraint : EmitterConstraint
     protected override void Start()
     {
         base.Start();
-        emitter.emissionEvent.unityEvent.AddListener(ActivateOnEmit);
+        emitter.emissionEvent.AddListener(x => ActivateOnEmit());
     }
 
     void ActivateOnEmit()

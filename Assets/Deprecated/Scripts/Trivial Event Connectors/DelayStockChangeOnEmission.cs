@@ -16,6 +16,6 @@ public class DelayStockChangeOnEmission : MonoBehaviour
     void Start()
     {
         emitter.Setup();
-        emitter.script.emissionEvent.action += (arg) => stockChanger.DelayStockChange(delay);
+        emitter.script.emissionEvent.AddListener((arg) => stockChanger.DelayStockChange(delay));
     }
 }

@@ -37,7 +37,7 @@ public class SuppressSimultaneousEnergyAbsorptions : MonoBehaviour
         // Have each energy socket add the event data to the signal suppressor when it absorbs energy
         foreach (PrioritizedSocketStockpilePair pair in prioritizedPairs)
         {
-            pair.socket.energyAbsorbedEvent.action += energyAbsorbedSuppressor.AddSignal;
+            pair.socket.energyAbsorbedEvent.AddListener(energyAbsorbedSuppressor.AddSignal);
         }
     }
 

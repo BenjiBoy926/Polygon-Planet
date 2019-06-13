@@ -8,7 +8,7 @@ public class BreakOnEnergyAbsobed : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        socket.energyAbsorbedEvent.action += Break;
+        socket.energyAbsorbedEvent.AddListener(Break);
     }
 
     // Update is called once per frame

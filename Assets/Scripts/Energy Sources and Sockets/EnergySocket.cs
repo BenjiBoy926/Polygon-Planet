@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
 
 /*
@@ -7,7 +8,7 @@ using System.Collections.Generic;
  * An object that can absorb energy. Adds an interpretive layer
  * on top of the energy and decides how much energy is actually absorbed.
  * This allows energies to only identify themselves, while sockets
- * decide how they will respond to what types of energies
+ * decide how they will respond to different types of energies
  * ------------------
  */ 
 
@@ -16,7 +17,7 @@ public class EnergySocket : MonoBehaviour
     /*
      * PUBLIC TYPEDEFS
      */
-    [System.Serializable] public class EnergyAbsorbedEvent : Event<EnergyAbsorbedEventData> { };
+    [System.Serializable] public class EnergyAbsorbedEvent : UnityEvent<EnergyAbsorbedEventData> { };
 
     /*
      * PUBLIC DATA
@@ -34,7 +35,7 @@ public class EnergySocket : MonoBehaviour
     [SerializeField]
     [Tooltip("Set of events invoked when the socket absorbs energy")]
     private EnergyAbsorbedEvent _energyAbsorbedEvent;
-    public Event<EnergyAbsorbedEventData> energyAbsorbedEvent { get { return _energyAbsorbedEvent; } }
+    public EnergyAbsorbedEvent energyAbsorbedEvent { get { return _energyAbsorbedEvent; } }
 
     [SerializeField]
     [Tooltip("State determines if the socket can absorb negative energy")]
