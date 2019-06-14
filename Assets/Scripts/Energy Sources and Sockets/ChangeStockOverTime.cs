@@ -48,17 +48,31 @@ public class ChangeStockOverTime : MonoBehaviour
      * PUBLIC INTERFACE
      */ 
 
-    public void StartStockChange()
+    public virtual void StartStockChange()
     {
+        bool alreadyChangingStock = changingStock;
+
         changingStock = true;
         stockChangeNotReady.Activate(timeBetweenChanges);
-        changeStartedEvent.Invoke();
+
+        // If the stock was not already chaning, invoke change started event
+        if (!alreadyChangingStock)
+        {
+            changeStartedEvent.Invoke();
+        }
     }
 
     public void StopStockChange()
     {
+        bool alreadyChangingStock = changingStock;
+
         changingStock = false;
-        changeStoppedEvent.Invoke();
+
+        // If the stock was currently changing, invoke the event
+        if (alreadyChangingStock)
+        {
+            changeStoppedEvent.Invoke();
+        }
     }
 
     public void DelayStockChange(float delayTime)
@@ -81,7 +95,7 @@ public class ChangeStockOverTime : MonoBehaviour
         }
     }
 
-    private void ChangeStockAndUpdateState()
+    protected virtual void ChangeStockAndUpdateState()
     {
         if(changingStock)
         {

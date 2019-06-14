@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections.Generic;
 
 /*
  * CLASS ConstrainedEmitter2D
@@ -13,23 +12,10 @@ using System.Collections.Generic;
  * --------------------------
  */ 
 
-public class ConstrainedEmitter2D : Emitter2D
+public class ConstrainedEmitter2D : Emitter2D, IConstrainable
 {
-    private List<Func<bool>> funcs = new List<Func<bool>>();
-
-    // Emission is ready if all functions return true
-    public bool emissionReady
-    {
-        get
-        {
-            bool ready = true;
-            foreach(Func<bool> f in funcs)
-            {
-                ready &= f();
-            }
-            return ready;
-        }
-    }
+    private BooleanFunctorList _constraints = new BooleanFunctorList();
+    public BooleanFunctorList constraints { get { return _constraints; } }
 
     /*
      * PUBLIC INTERFACE
@@ -37,13 +23,13 @@ public class ConstrainedEmitter2D : Emitter2D
 
     public void AddConstraint(Func<bool> constraint)
     {
-        funcs.Add(constraint);
+        _constraints.Add(constraint);
     }
         
     // Override prevents emissions based on the constraint
     public override void Emit(Vector2 aimVector)
     {
-        if(emissionReady)
+        if(_constraints.result)
         {
             ForceEmit(aimVector);
         }

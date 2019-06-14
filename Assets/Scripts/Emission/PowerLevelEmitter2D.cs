@@ -35,7 +35,7 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
          * GETTERS/SETTERS
          */
 
-        public IEmitter emitter { get { return _emitter.script; } }
+        public IEmitter emitter { get { return _emitter.component; } }
         public int powerLevel { get { return _powerLevel; } }
 
         /*
@@ -44,7 +44,7 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
 
         public void Initialize()
         {
-            _emitter.Setup();
+            _emitter.Initialize();
         }
 
         // Implement compare to by comparing by power levels

@@ -116,8 +116,9 @@ GameObject:
   m_Component:
   - component: {fileID: 609637273}
   - component: {fileID: 609637274}
-  - component: {fileID: 2505102289754431142}
   - component: {fileID: 6465144428356243713}
+  - component: {fileID: 463788464}
+  - component: {fileID: 463788460}
   m_Layer: 0
   m_Name: Charge Level
   m_TagString: Untagged
@@ -202,7 +203,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &2505102289754431142
+--- !u!114 &6465144428356243713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +212,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 609637272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e9c87d42a786b4eb70e78ca6901ef2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7698b858ef39d2145b4883a52e5f79b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: ChargeLevelChangeState
+  _stateActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: State+FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stateDeactivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &463788464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609637272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92b079c3ba475042ad33aca0bded40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stock: {fileID: 609637274}
@@ -249,17 +273,6 @@ MonoBehaviour:
   changeStoppedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2755260037237548132}
-        m_MethodName: StartStockChange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7175282841319413037}
         m_MethodName: DisableEffect
         m_Mode: 1
@@ -271,9 +284,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2755260037237548132}
+        m_MethodName: StartStockChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6465144428356243713
+--- !u!114 &463788460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,20 +306,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 609637272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7698b858ef39d2145b4883a52e5f79b7, type: 3}
+  m_Script: {fileID: 11500000, guid: fb5d7b990ae01f442b8f469a25058bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: ChargeLevelChangeState
-  _stateActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: State+FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _stateDeactivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  constrainable:
+    obj: {fileID: 609637272}
+  stock: {fileID: 1881373756}
+  constraint:
+    constraint:
+      _primaryConstraint:
+        operand: 0
+        comparison: 0
+      _secondaryConstraint:
+        operand: 0
+        comparison: 0
+      operation: 0
+    type: 0
 --- !u!1 &1881373754
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +551,7 @@ GameObject:
   - component: {fileID: 4639065809076250}
   - component: {fileID: 1709136064950033971}
   - component: {fileID: 9196897467989116816}
-  - component: {fileID: 6761353581975397916}
+  - component: {fileID: 1486746628}
   m_Layer: 8
   m_Name: Charge Gun
   m_TagString: Untagged
@@ -601,6 +627,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1881373756}
+        m_MethodName: EmptyStock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2755260037237548132}
+        m_MethodName: DelayStockChange
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &9196897467989116816
@@ -618,7 +666,7 @@ MonoBehaviour:
   emitter: {fileID: 1709136064950033971}
   mover: {fileID: 8839255270783456881}
   recoilStrength: 30
---- !u!114 &6761353581975397916
+--- !u!114 &1486746628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -627,13 +675,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203736360044170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c47b029cdfafb3419fbc3778a70c781, type: 3}
+  m_Script: {fileID: 11500000, guid: fb5d7b990ae01f442b8f469a25058bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 1709136064950033971}
-  ammo: {fileID: 1881373756}
-  consumptionPerEmission: 6
-  allowOverflow: 1
+  constrainable:
+    obj: {fileID: 1203736360044170}
+  stock: {fileID: 1881373756}
+  constraint:
+    constraint:
+      _primaryConstraint:
+        operand: 0
+        comparison: 0
+      _secondaryConstraint:
+        operand: 0
+        comparison: 0
+      operation: 0
+    type: 0
 --- !u!1 &1355209524948690
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,10 +701,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4959220887939834}
   - component: {fileID: 3584952654784270762}
-  - component: {fileID: 443776698662471964}
-  - component: {fileID: 1676637594460114032}
-  - component: {fileID: 599653067047885558}
   - component: {fileID: 5274697250246849356}
+  - component: {fileID: 1199244655}
+  - component: {fileID: 1199244656}
   m_Layer: 8
   m_Name: Rapid Fire Gun
   m_TagString: Untagged
@@ -712,54 +768,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1881373756}
+        m_MethodName: ChangeStock
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5274697250246849356}
+        m_MethodName: Activate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &443776698662471964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355209524948690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c85d5e221e112346a519467347fb8e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  constraint: {fileID: 1676637594460114032}
-  controller: {fileID: 3576342911721807257}
-  emittingSpeedScalar: 0.7
---- !u!114 &1676637594460114032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355209524948690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b910181a7dcc6f47b0a389f8820f856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitter: {fileID: 3584952654784270762}
-  emissionRate: 0.2
-  _recentlyEmitted: {fileID: 5274697250246849356}
---- !u!114 &599653067047885558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355209524948690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c47b029cdfafb3419fbc3778a70c781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitter: {fileID: 3584952654784270762}
-  ammo: {fileID: 1881373756}
-  consumptionPerEmission: 1
-  allowOverflow: 1
 --- !u!114 &5274697250246849356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,17 +804,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7698b858ef39d2145b4883a52e5f79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: GunReady
+  _label: GunNotReady
   _stateActivatedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3576342911721807257}
+        m_MethodName: AddSpeedScalar
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.7
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: State+FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _stateDeactivatedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3576342911721807257}
+        m_MethodName: RemoveSpeedScalar
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.7
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1199244655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355209524948690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5d7b990ae01f442b8f469a25058bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constrainable:
+    obj: {fileID: 1355209524948690}
+  stock: {fileID: 1881373756}
+  constraint:
+    constraint:
+      _primaryConstraint:
+        operand: 0
+        comparison: 0
+      _secondaryConstraint:
+        operand: 0
+        comparison: 0
+      operation: 0
+    type: 0
+--- !u!114 &1199244656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355209524948690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db4ed64b3162874383e579f333ae278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constrainable:
+    obj: {fileID: 1355209524948690}
+  state: {fileID: 5274697250246849356}
+  inverted: 1
 --- !u!1 &1423658231465066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1181,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2505102289754431142}
+        - m_Target: {fileID: 463788464}
           m_MethodName: StartStockChange
           m_Mode: 1
           m_Arguments:
@@ -1104,7 +1199,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2505102289754431142}
+        - m_Target: {fileID: 463788464}
           m_MethodName: StopStockChange
           m_Mode: 1
           m_Arguments:
@@ -1346,10 +1441,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitters:
   - _emitter:
-      emitterObject: {fileID: 1355209524948690}
+      obj: {fileID: 1355209524948690}
     _powerLevel: 0
   - _emitter:
-      emitterObject: {fileID: 1203736360044170}
+      obj: {fileID: 1203736360044170}
     _powerLevel: 1
   powerLevel: {fileID: 609637274}
   _emissionEvent:
