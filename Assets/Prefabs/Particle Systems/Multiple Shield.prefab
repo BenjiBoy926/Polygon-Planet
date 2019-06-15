@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5983926568298941299}
   - component: {fileID: 3620865384392087789}
   - component: {fileID: 6968695609200654312}
+  - component: {fileID: 7240199912489655607}
   m_Layer: 0
-  m_Name: Shield Expand 1
+  m_Name: Multiple Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4756,3 +4757,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &7240199912489655607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958868205591183976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a1f36c8bb6ef44fbca7489daabd53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 03e873d7b39174750ac766510f9e503f, type: 3}
+  - {fileID: 8300000, guid: 257ad41856c414a4fa83c51d7778725c, type: 3}
+  playOnAwake: 1
+  source: {fileID: 0}
