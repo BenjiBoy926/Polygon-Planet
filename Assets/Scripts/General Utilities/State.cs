@@ -101,21 +101,21 @@ public class State : MonoBehaviour, ILabelledComponent
     // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
     public static State[] FindStatesWithLabel(string gObjectTag, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentsWithLabel<State>(gObjectTag, stockpileLabel);
+        return LabelledComponentUtility.FindComponentsWithLabel<State>(gObjectTag, stockpileLabel);
     }
     // Try to find a stockpile on each of the game objects given
     public static State[] FindStatesWithLabel(GameObject[] gObjects, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentsWithLabel<State>(gObjects, stockpileLabel);
+        return LabelledComponentUtility.FindComponentsWithLabel<State>(gObjects, stockpileLabel);
     }
     // Find a game object with the given tag, then find a stockpile on that game object with the given tag
     public static State FindStateWithLabel(string gObjectTag, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentWithLabel<State>(gObjectTag, stockpileLabel);
+        return LabelledComponentUtility.FindComponentWithLabel<State>(gObjectTag, stockpileLabel);
     }
     // Find a stockpile on the given game object with the given tag
     public static State FindStateWithLabel(GameObject gObject, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentWithLabel<State>(gObject, stockpileLabel);
+        return LabelledComponentUtility.FindComponentWithLabel<State>(gObject, stockpileLabel);
     }
 }

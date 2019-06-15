@@ -100,21 +100,21 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
     public static Stockpile[] FindStockpilesWithLabel(string gObjectTag, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentsWithLabel<Stockpile>(gObjectTag, stockpileLabel);
+        return LabelledComponentUtility.FindComponentsWithLabel<Stockpile>(gObjectTag, stockpileLabel);
     }
     // Try to find a stockpile on each of the game objects given
     public static Stockpile[] FindStockpilesWithLabel(GameObject[] gObjects, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentsWithLabel<Stockpile>(gObjects, stockpileLabel);
+        return LabelledComponentUtility.FindComponentsWithLabel<Stockpile>(gObjects, stockpileLabel);
     }
     // Find a game object with the given tag, then find a stockpile on that game object with the given tag
     public static Stockpile FindStockpileWithLabel(string gObjectTag, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentWithLabel<Stockpile>(gObjectTag, stockpileLabel);
+        return LabelledComponentUtility.FindComponentWithLabel<Stockpile>(gObjectTag, stockpileLabel);
     }
     // Find a stockpile on the given game object with the given tag
     public static Stockpile FindStockpileWithLabel(GameObject gObject, string stockpileLabel)
     {
-        return ComponentUtility.FindComponentWithLabel<Stockpile>(gObject, stockpileLabel);   
+        return LabelledComponentUtility.FindComponentWithLabel<Stockpile>(gObject, stockpileLabel);   
     }
 }
