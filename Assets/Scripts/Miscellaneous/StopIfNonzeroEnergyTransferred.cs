@@ -20,8 +20,7 @@ public class StopIfNonzeroEnergyTransferred : MonoBehaviour
     // only call the stop method if the amount absorbed is non-zero
     private void Stop(EnergyTransferredEventData eventData)
     {
-        int energyTransferred = eventData.socket.ProcessEnergy(eventData.source.energy);
-        if(energyTransferred != 0)
+        if(eventData.amountTransferred != 0)
         {
             mover.Stop();
         }

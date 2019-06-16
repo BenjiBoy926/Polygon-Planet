@@ -37,10 +37,10 @@ public class EnergySource : MonoBehaviour
     // Transfer energy to the given energy socket and call the event if it exists
     protected virtual void TransferEnergy(EnergySocket socket)
     {
-        socket.AbsorbEnergy(_energy);
+        int amountAbsorbed = socket.AbsorbEnergy(_energy);
         if(energyTransferredEvent != null)
         {
-            energyTransferredEvent.Invoke(new EnergyTransferredEventData(socket, this));
+            energyTransferredEvent.Invoke(new EnergyTransferredEventData(socket, this, amountAbsorbed));
         }
     }
     // Scale up or scale down the current energy level of the energy source

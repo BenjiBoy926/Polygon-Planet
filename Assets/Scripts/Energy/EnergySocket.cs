@@ -45,14 +45,15 @@ public class EnergySocket : MonoBehaviour
     private State healersImmunized; // If true, the energy socket cannot absorb positive energy
 
     // Process the energy and raise the event
-    public void AbsorbEnergy(Energy energy)
+    public int AbsorbEnergy(Energy energy)
     {
         int energyAbsorbed = ProcessEnergy(energy);
         _energyAbsorbedEvent.Invoke(new EnergyAbsorbedEventData(this, energy, energyAbsorbed));
+        return energyAbsorbed;
     }
     // Determine how much energy is absorbed by the socket
     // based on its local fields
-    public int ProcessEnergy(Energy energy)
+    private int ProcessEnergy(Energy energy)
     {
         int processedPower = 0; // Power of the energy when processed by the socket's fields
 

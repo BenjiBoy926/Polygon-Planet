@@ -9,13 +9,17 @@ public class EnergyTransferredEventData
     private EnergySocket _socket;
     [SerializeField]
     private EnergySource _source;
+    [SerializeField]
+    private int _amountTransferred;
 
     public EnergySocket socket { get { return _socket; } }
     public EnergySource source { get { return _source; } }
+    public int amountTransferred { get { return _amountTransferred; } }
 
-    public EnergyTransferredEventData(EnergySocket energySocket, EnergySource energySource)
+    public EnergyTransferredEventData(EnergySocket energySocket, EnergySource energySource, int energyTransferred)
     {
         _socket = energySocket;
         _source = energySource;
+        _amountTransferred = energyTransferred;
     }
 }
