@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 6465144428356243713}
   - component: {fileID: 463788464}
   - component: {fileID: 463788460}
+  - component: {fileID: 1380906629184304544}
   m_Layer: 0
   m_Name: Charge Level
   m_TagString: Untagged
@@ -313,15 +314,21 @@ MonoBehaviour:
     obj: {fileID: 609637272}
   stock: {fileID: 1881373756}
   constraint:
-    constraint:
-      _primaryConstraint:
-        operand: 0
-        comparison: 0
-      _secondaryConstraint:
-        operand: 0
-        comparison: 0
-      operation: 0
-    type: 0
+    obj: {fileID: 609637272}
+--- !u!114 &1380906629184304544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609637272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab504ff4c0a15d842a1c19cdbad490ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  operand: 0
+  comparison: 0
 --- !u!1 &1881373754
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +559,7 @@ GameObject:
   - component: {fileID: 1709136064950033971}
   - component: {fileID: 9196897467989116816}
   - component: {fileID: 1486746628}
+  - component: {fileID: 7748850438503964070}
   m_Layer: 8
   m_Name: Charge Gun
   m_TagString: Untagged
@@ -682,15 +690,21 @@ MonoBehaviour:
     obj: {fileID: 1203736360044170}
   stock: {fileID: 1881373756}
   constraint:
-    constraint:
-      _primaryConstraint:
-        operand: 0
-        comparison: 0
-      _secondaryConstraint:
-        operand: 0
-        comparison: 0
-      operation: 0
-    type: 0
+    obj: {fileID: 1203736360044170}
+--- !u!114 &7748850438503964070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203736360044170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab504ff4c0a15d842a1c19cdbad490ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  operand: 0
+  comparison: 0
 --- !u!1 &1355209524948690
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +718,7 @@ GameObject:
   - component: {fileID: 5274697250246849356}
   - component: {fileID: 1199244655}
   - component: {fileID: 1199244656}
+  - component: {fileID: 2138793111879298575}
   m_Layer: 8
   m_Name: Rapid Fire Gun
   m_TagString: Untagged
@@ -853,15 +868,7 @@ MonoBehaviour:
     obj: {fileID: 1355209524948690}
   stock: {fileID: 1881373756}
   constraint:
-    constraint:
-      _primaryConstraint:
-        operand: 0
-        comparison: 0
-      _secondaryConstraint:
-        operand: 0
-        comparison: 0
-      operation: 0
-    type: 0
+    obj: {fileID: 1355209524948690}
 --- !u!114 &1199244656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +885,20 @@ MonoBehaviour:
     obj: {fileID: 1355209524948690}
   state: {fileID: 5274697250246849356}
   inverted: 1
+--- !u!114 &2138793111879298575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355209524948690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab504ff4c0a15d842a1c19cdbad490ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  operand: 0
+  comparison: 0
 --- !u!1 &1423658231465066
 GameObject:
   m_ObjectHideFlags: 0

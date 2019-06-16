@@ -28,7 +28,8 @@ public class UnaryOrBinaryNumericConstraint
         switch (type)
         {
             case UnaryOrBinary.Unary:
-                return constraint.primaryConstraint.Test(number);
+                //return constraint.primaryConstraint.Test(number);
+                return false;
             case UnaryOrBinary.Binary:
                 return constraint.Test(number);
             default:

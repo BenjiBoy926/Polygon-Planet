@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System;
 
-[Serializable]
-public class UnaryNumericConstraint
+/*
+ *  CLASS UnaryNumericConstraint
+ *  ----------------------------
+ *  Define rules for comparing a given number with another number
+ *  ----------------------------
+ */
+ 
+public class UnaryNumericConstraint : MonoBehaviour, INumericConstraint
 {
     [SerializeField]
     [Tooltip("The number to test agains the given number with the given comparison")]
