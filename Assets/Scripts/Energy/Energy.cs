@@ -4,7 +4,7 @@ using System;
 /*
  * CLASS Energy
  * ------------
- * A unit of artificial energy. Energy as a power level,
+ * A unit of artificial energy. Energy has a power level,
  * a type, and a tag identifying the energy
  * ------------
  */ 
@@ -22,7 +22,11 @@ public class Energy : IComparable<Energy>
     // Getters allow read-only access to local vars
     public int power { get { return _power; } }
     public EnergyType type { get { return _type; } }
-    public Tag tag { get { return _tag; } }
+    public Tag tag
+    {
+        get { return _tag; }
+        set { _tag = value; }
+    }
 
     public Energy (int e, EnergyType t, Tag i)
     {

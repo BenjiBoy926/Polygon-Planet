@@ -17,7 +17,7 @@ public class DepleteOnTransfer : MonoBehaviour
     private Stockpile stock;
     private void Start()
     {
-        source.energyTransferredEvent.AddListener(DepleteStock);
+        //source.energyTransferredEvent.AddListener(DepleteStock);
     }
     private void DepleteStock(EnergyTransferredEventData data)
     {

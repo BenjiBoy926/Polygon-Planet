@@ -24,7 +24,7 @@ public class DelayStockChangeOnEnergyAbsorbed : MonoBehaviour
 
     void Start()
     {
-        socket.energyAbsorbedEvent.AddListener(DelayStockChange);
+        //socket.energyAbsorbedEvent.AddListener(DelayStockChange);
     }
     private void DelayStockChange(EnergyAbsorbedEventData eventData)
     {

@@ -18,9 +18,9 @@ public class StopIfNonzeroEnergyTransferred : MonoBehaviour
 
     // Simulate the energy absorption on the energy source in the energy transfer event,
     // only call the stop method if the amount absorbed is non-zero
-    private void Stop(EnergyTransferredEventData eventData)
+    private void Stop(EnergyEventData eventData)
     {
-        if(eventData.amountTransferred != 0)
+        if(eventData.energy != 0)
         {
             mover.Stop();
         }

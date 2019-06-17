@@ -1,20 +1,11 @@
 ﻿using UnityEngine;
 
 // Simple attribute that disables any energy source it comes into contact with
-public class EnergySourceNullifier : MonoBehaviour
+public class EnergySourceNullifier : CollisionComponentProcessor<EnergySource>
 {
     public event UnityAction<EnergyNullifiedEventData> energyNullifiedEvent;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        EnergySource source = collision.GetComponent<EnergySource>();
-        if(source != null)
-        {
-            Nullify(source);
-        }
-    }
-
-    private void Nullify(EnergySource source)
+    protected override void ProcessComponent(EnergySource source)
     {
         source.gameObject.SetActive(false);
         if(energyNullifiedEvent != null)

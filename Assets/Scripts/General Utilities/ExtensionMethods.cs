@@ -8,13 +8,17 @@ public static class ExtensionMethods
 	// as baseVector but with the specified magnitude
 	public static Vector2 ScaledVector (this Vector2 baseVector, float magnitude)
 	{
-		float newX, newY;	// X/Y-component of vector to be returned
-        newX = newY = 0;    // Start by setting components to zero
+        // X/Y-component of vector to be returned
+        float newX = 0;
+        float newY = 0;
+        float baseSqrMagnitude = baseVector.sqrMagnitude;
 
 		// Check if base vector is negligibly small to prevent divide by zero error
-		if (baseVector.sqrMagnitude > Mathf.Epsilon) {
+		if (baseSqrMagnitude < -Mathf.Epsilon || baseSqrMagnitude > Mathf.Epsilon)
+        {
 			// Inverse of the magnitude; stored for efficiency
 			float inverseBaseMagnitude = 1f / baseVector.magnitude;
+
 			// Calculate the components to be returned using ratio of corresponding parts
 			// (given vector and desired vector form similar triangles, remember?)
 			newX = magnitude * baseVector.x * inverseBaseMagnitude;
@@ -29,9 +33,10 @@ public static class ExtensionMethods
         // Declare x/y/z of new vector and set them to zero
         float newX, newY, newZ;
         newX = newY = newZ = 0;
+        float baseSqrMagnitude = baseVector.sqrMagnitude;
 
         // Check to make sure base vector is not too small - prevent divide by zero
-        if (baseVector.sqrMagnitude > Mathf.Epsilon)
+        if (baseSqrMagnitude < -Mathf.Epsilon || baseSqrMagnitude > Mathf.Epsilon)
         {
             // Store invers of magnitude for efficiency
             float inverseBaseMagnitude = 1f / baseVector.magnitude;

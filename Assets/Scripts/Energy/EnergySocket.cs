@@ -17,7 +17,7 @@ public class EnergySocket : MonoBehaviour
     /*
      * PUBLIC TYPEDEFS
      */
-    [System.Serializable] public class EnergyAbsorbedEvent : UnityEvent<EnergyAbsorbedEventData> { };
+    [System.Serializable] public class EnergyEvent : UnityEvent<EnergyEventData> { };
 
     /*
      * PUBLIC DATA
@@ -34,8 +34,8 @@ public class EnergySocket : MonoBehaviour
     private List<EnergyIntakeInfo> intakeInfo;
     [SerializeField]
     [Tooltip("Set of events invoked when the socket absorbs energy")]
-    private EnergyAbsorbedEvent _energyAbsorbedEvent;
-    public EnergyAbsorbedEvent energyAbsorbedEvent { get { return _energyAbsorbedEvent; } }
+    private EnergyEvent _energyAbsorbedEvent;
+    public EnergyEvent energyAbsorbedEvent { get { return _energyAbsorbedEvent; } }
 
     [SerializeField]
     [Tooltip("State determines if the socket can absorb negative energy")]
@@ -45,10 +45,10 @@ public class EnergySocket : MonoBehaviour
     private State healersImmunized; // If true, the energy socket cannot absorb positive energy
 
     // Process the energy and raise the event
-    public int AbsorbEnergy(Energy energy)
+    public int AbsorbEnergy(EnergySource source)
     {
-        int energyAbsorbed = ProcessEnergy(energy);
-        _energyAbsorbedEvent.Invoke(new EnergyAbsorbedEventData(this, energy, energyAbsorbed));
+        int energyAbsorbed = ProcessEnergy(source.energy);
+        _energyAbsorbedEvent.Invoke(new EnergyEventData(source, this, energyAbsorbed));
         return energyAbsorbed;
     }
     // Determine how much energy is absorbed by the socket

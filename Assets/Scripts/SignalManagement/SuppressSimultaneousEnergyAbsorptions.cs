@@ -28,12 +28,12 @@ public class SuppressSimultaneousEnergyAbsorptions : MonoBehaviour
     private List<PrioritizedSocketStockpilePair> prioritizedPairs;
     // Helper class greatly eases the task of letting only one energy
     // absorption be registered each frame
-    private SimultaneousSignalSuppressor<EnergyAbsorbedEventData> energyAbsorbedSuppressor;
+    private SimultaneousSignalSuppressor<EnergyEventData> energyAbsorbedSuppressor;
 
     private void Start()
     {
         // Initialize the suppressor
-        energyAbsorbedSuppressor = new SimultaneousSignalSuppressor<EnergyAbsorbedEventData>(GetLocalPriority, ChangeAllStock);
+        energyAbsorbedSuppressor = new SimultaneousSignalSuppressor<EnergyEventData>(GetLocalPriority, ChangeAllStock);
         // Have each energy socket add the event data to the signal suppressor when it absorbs energy
         foreach (PrioritizedSocketStockpilePair pair in prioritizedPairs)
         {
@@ -50,24 +50,24 @@ public class SuppressSimultaneousEnergyAbsorptions : MonoBehaviour
     // When the signal suppressor transmits the signal, this method is called
     // Find all local pairs whose energy sockets match the one that sent the signal,
     // then change stock on each stockpile in each pair
-    private void ChangeAllStock(EnergyAbsorbedEventData eventData)
+    private void ChangeAllStock(EnergyEventData eventData)
     {
         List<SocketStockpilePair> pairs = ConnectionsInEvent(eventData);
         foreach(SocketStockpilePair pair in pairs)
         {
-            pair.stockpile.ChangeStock(eventData.amountAbsorbed);
+            pair.stockpile.ChangeStock(eventData.energy);
         }
     }
 
     // Find the priority wrapper whose energy socket matches the one in the event data and return its priority
-    private int GetLocalPriority(EnergyAbsorbedEventData eventData)
+    private int GetLocalPriority(EnergyEventData eventData)
     {
         PrioritizedSocketStockpilePair matchedPair = prioritizedPairs.Find(x => x.socket == eventData.socket);
         return matchedPair.priority;
     }
 
     // Given the data in an event, find all local pairs with the same energy socket and return the pairs
-    private List<SocketStockpilePair> ConnectionsInEvent(EnergyAbsorbedEventData eventData)
+    private List<SocketStockpilePair> ConnectionsInEvent(EnergyEventData eventData)
     {
         List<SocketStockpilePair> pairs = prioritizedPairs.ConvertAll(x => x.pair);
         pairs.RemoveAll(x => x.socket != eventData.socket);

@@ -375,8 +375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: Ammo
-  _maxStock: 6
-  startingStock: 6
+  _maxStock: 4
+  startingStock: 4
   _stockChangedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1959,8 +1959,9 @@ GameObject:
   - component: {fileID: 743876053689950678}
   - component: {fileID: 1765415924424291110}
   - component: {fileID: 4526628970471191085}
-  - component: {fileID: 5006569128044959580}
   - component: {fileID: 115924148}
+  - component: {fileID: 888230147175687974}
+  - component: {fileID: 5123455384820014290}
   m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
@@ -2102,22 +2103,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EnergySocket+EnergyAbsorbedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   hazardsImmunized: {fileID: 155543315554207962}
   healersImmunized: {fileID: 1728442884477616730}
---- !u!114 &5006569128044959580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2702217155713727837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 894790e6857bdb7499609e06227f0ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &115924148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2421,6 +2410,34 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &888230147175687974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702217155713727837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ea1c0421278454493781d7aba04f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinationTag: 3
+  socket: {fileID: 4526628970471191085}
+--- !u!114 &5123455384820014290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702217155713727837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dbb7b39b1620a4bb0328f04cc8e53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -15
+  type: 0
 --- !u!1 &2983454302646605522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,8 +2558,8 @@ MonoBehaviour:
   _energyAbsorbedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: EnergySocket+EnergyAbsorbedEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   hazardsImmunized: {fileID: 3939672067881233148}
   healersImmunized: {fileID: 6452646269289140184}
 --- !u!114 &352316783358455219
@@ -2963,7 +2980,6 @@ GameObject:
   - component: {fileID: 1815572858428704630}
   - component: {fileID: 6535863766102568300}
   - component: {fileID: 8872612001732402977}
-  - component: {fileID: 7605743308277586676}
   m_Layer: 8
   m_Name: Meteor Effect
   m_TagString: Untagged
@@ -3048,22 +3064,7 @@ MonoBehaviour:
   _label: ShieldBashHit
   particlePrefab: {fileID: 3995206658754009470, guid: 10e672ac1967724418856108ff6a8d0a,
     type: 3}
-  particleParent: {fileID: 0}
---- !u!114 &7605743308277586676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3763464114638233669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c1c2c931c95c347a3d48528742c161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effect: {fileID: 8872612001732402977}
-  target: {fileID: 8519413725161566189}
-  offset: {x: 0, y: 0, z: 0}
+  particleParent: {fileID: 8519413725161566189}
 --- !u!1 &3791519936367827663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,8 +3556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: ShieldDurability
-  _maxStock: 4
-  startingStock: 4
+  _maxStock: 3
+  startingStock: 3
   _stockChangedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3958,8 +3959,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EnergySource+EnergyTransferredEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: EnergySource+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &8422069896762024361
 MonoBehaviour:
   m_ObjectHideFlags: 0

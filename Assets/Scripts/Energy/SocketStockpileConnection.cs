@@ -28,8 +28,8 @@ public class SocketStockpileConnection
             connected = true;
         }
     }
-    private void ChangeStockByAmountAbsorbed(EnergyAbsorbedEventData data)
+    private void ChangeStockByAmountAbsorbed(EnergyEventData data)
     {
-        _stock.ChangeStock(data.amountAbsorbed);
+        _stock.ChangeStock(data.energy);
     }
 }

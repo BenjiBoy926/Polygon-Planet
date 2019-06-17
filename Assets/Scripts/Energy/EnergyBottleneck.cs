@@ -33,15 +33,15 @@ public class EnergyBottleneck : MonoBehaviour
         CheckStockChanges(scheduledStockDecreases, true);
     }
     // Add the stock change to the list of stock changes
-    private void ScheduleStockChange(EnergyAbsorbedEventData data)
+    private void ScheduleStockChange(EnergyEventData data)
     {
-        if(data.amountAbsorbed < 0)
+        if(data.energy < 0)
         {
-            scheduledStockDecreases.Add(data.amountAbsorbed);
+            scheduledStockDecreases.Add(data.energy);
         }
         else
         {
-            scheduledStockIncreases.Add(data.amountAbsorbed);
+            scheduledStockIncreases.Add(data.energy);
         }
     }
     // Check to see if the schedule has elements in it. If it does,
