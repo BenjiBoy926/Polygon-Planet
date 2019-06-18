@@ -55,6 +55,11 @@ public class Emitter2D : MonoBehaviour, IEmitter
         _emissionEvent.Invoke(aimVector);
     }
 
+    public void Consume(Vector2 aimVector)
+    {
+        Emit(aimVector);
+    }
+
     // Simple helper moves the body to the position relative to this object 
     // and sets it off with an initial velocity
     private void LaunchBody(Rigidbody2D body, Vector2 localOrigin, Vector2 force)

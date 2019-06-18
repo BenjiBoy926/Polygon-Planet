@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class DebugScript : MonoBehaviour
 {
-    [System.Serializable] public class IntEvent : UnityEvent<int> { };
-    public IntEvent unityEvent;
+    public Object functor;
+    public string methodName;
+
+    public void Test()
+    {
+        System.Delegate.CreateDelegate(typeof(GameObject), functor, methodName);
+    }
 }

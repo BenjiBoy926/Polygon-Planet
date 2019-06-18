@@ -119,6 +119,11 @@ public class PowerLevelEmitter2D : MonoBehaviour, IEmitter
         }
     }
 
+    public void Consume(Vector2 aimVector)
+    {
+        Emit(aimVector);
+    }
+
     /*
      * PRIVATE HELPERS
      */

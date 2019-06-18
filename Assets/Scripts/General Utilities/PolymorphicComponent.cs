@@ -19,4 +19,9 @@ public class PolymorphicComponent<ComponentType>
             throw new NullReferenceException("The game object with name " + obj.name + " must have a component of type " + component.GetType().ToString());
         }
     }
+
+    public bool Initialized()
+    {
+        return component != null;
+    }
 }
