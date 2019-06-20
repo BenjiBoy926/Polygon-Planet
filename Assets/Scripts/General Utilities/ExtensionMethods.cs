@@ -101,4 +101,13 @@ public static class ExtensionMethods
         float angle = Vector2.SignedAngle(forward, direction);
         trans.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
+
+    public static Vector2 ToTarget2D(this Transform me, Transform target)
+    {
+        return target.position - me.position;
+    }
+    public static Vector3 ToTarget(this Transform me, Transform target)
+    {
+        return target.position - me.position;
+    }
 }
