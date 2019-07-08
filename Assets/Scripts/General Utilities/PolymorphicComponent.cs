@@ -7,12 +7,26 @@ public class PolymorphicComponent<ComponentType>
     [SerializeField]
     [Tooltip("The game object that the given component will be attached to")]
     private GameObject obj;
-    // The component attached to the game object given
-    public ComponentType component { get; private set; }
+
+    // Reference to the component on this game object
+    private ComponentType _component;
+
+    // Component property
+    public ComponentType component
+    {
+        get
+        {
+            if (!Initialized())
+            {
+                Initialize();
+            }
+            return _component;
+        }
+    }
 
     public void Initialize()
     {
-        component = obj.GetComponent<ComponentType>();
+        _component = obj.GetComponent<ComponentType>();
 
         if (component == null)
         {
@@ -22,6 +36,6 @@ public class PolymorphicComponent<ComponentType>
 
     public bool Initialized()
     {
-        return component != null;
+        return _component != null;
     }
 }

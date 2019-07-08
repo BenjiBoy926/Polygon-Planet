@@ -31,7 +31,11 @@ public abstract class CollisionComponentProcessor<TComponent> : MonoBehaviour
         TComponent component = obj.GetComponent<TComponent>();
         if (component != null)
         {
-            ProcessComponent(component);
+            try
+            {
+                ProcessComponent(component);
+            }
+            catch (MissingComponentException) { }
         }
     }
 

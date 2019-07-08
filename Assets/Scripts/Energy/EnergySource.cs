@@ -25,6 +25,32 @@ public class EnergySource : CollisionComponentProcessor<EnergySocket>
     private EnergyEvent _energyTransferredEvent;
     public EnergyEvent energyTransferredEvent { get { return _energyTransferredEvent; } }
 
+    // A set of energy that has the original values of the energy
+    // at the start of the scene
+    private Energy _defaultEnergy;
+    private Energy defaultEnergy
+    {
+        get
+        {
+            if (_defaultEnergy == null)
+            {
+                _defaultEnergy = new Energy(_energy);
+            }
+            return _defaultEnergy;
+        }
+    }
+
+    private void Start()
+    {
+        _defaultEnergy = new Energy(_energy);   
+    }
+
+    // Default energy whenever the source is enabled
+    private void OnEnable()
+    {
+        _energy = new Energy(defaultEnergy);
+    }
+
     // Transfer energy to the given energy socket and call the event if it exists
     protected override void ProcessComponent(EnergySocket socket)
     {
