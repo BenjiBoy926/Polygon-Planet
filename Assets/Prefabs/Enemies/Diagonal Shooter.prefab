@@ -126,6 +126,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &8582078520291957033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +284,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &1923548782555093572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +499,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &8524362228731280447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +657,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &4869029384956322620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,6 +825,13 @@ MonoBehaviour:
   hazards: 0300000004000000
   healers: 
   intakeInfo: []
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &634192409665343228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,12 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb10cde1967fb24e94345f34b63719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callingTriggers:
-  - {fileID: 4869029384956322620}
-  - {fileID: 1923548782555093572}
-  - {fileID: 8524362228731280447}
-  - {fileID: 8582078520291957033}
-  - {fileID: 7764441243244413255}
+  callingBehaviours: []
   trackedTags:
   - PlayerHazard
 --- !u!1 &5674484705564267339
@@ -1000,6 +1030,11 @@ MonoBehaviour:
     direction: {x: 0, y: -1}
   - origin: {x: 0, y: 0}
     direction: {x: -1, y: 0}
+  _emissionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &6914916969586997528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,9 +1080,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: 
-  maxStock: 10
+  _label: Health
+  _maxStock: 10
   startingStock: 10
+  _stockChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Stockpile+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stockFilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _stockEmptiedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1765771086843638361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,6 +1181,7 @@ MonoBehaviour:
   wanderTimes:
     min: 3
     max: 6
+  isWandering: {fileID: 0}
 --- !u!114 &3362799868343114455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50053414092095140}
+  _isForced: {fileID: 0}
 --- !u!1 &7618097290226910034
 GameObject:
   m_ObjectHideFlags: 0

@@ -138,6 +138,13 @@ MonoBehaviour:
   hazards: 03000000
   healers: 
   intakeInfo: []
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &4225995935838062412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +161,11 @@ MonoBehaviour:
     _power: 1
     _type: 0
     _tag: 0
+  _energyTransferredEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySource+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &7166334589677411071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +220,6 @@ GameObject:
   - component: {fileID: 8341353259927028734}
   - component: {fileID: 533703095646221782}
   - component: {fileID: 7612737366623486698}
-  - component: {fileID: 947006762}
   - component: {fileID: 947006764}
   m_Layer: 12
   m_Name: Stock
@@ -244,8 +255,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: Persistence
-  maxStock: 1
+  _maxStock: 0
   startingStock: 1
+  _stockChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Stockpile+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stockFilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _stockEmptiedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1965972268629976}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &7612737366623486698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,20 +298,6 @@ MonoBehaviour:
   connections:
   - _stock: {fileID: 533703095646221782}
     _socket: {fileID: 1349808922}
---- !u!114 &947006762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7805606856279624025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5010dc8df3b7f440a2f94219207cff8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 1965972268629976}
-  stock: {fileID: 533703095646221782}
 --- !u!114 &947006764
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -136,6 +136,13 @@ MonoBehaviour:
   hazards: 0300000004000000
   healers: 
   intakeInfo: []
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &4692775608490060101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +294,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &5590416779959107796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +452,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &649224302598088065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,6 +610,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &9096436234174605004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +768,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &1519428297296591402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +981,13 @@ MonoBehaviour:
   hazards: 0300000004000000
   healers: 
   intakeInfo: []
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &8026125056470479515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,6 +1139,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &2892456813795516331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,6 +1297,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &8150476100727586307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,6 +1455,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &5077594869783530499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,6 +1613,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &2550456515372663984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,6 +1730,7 @@ MonoBehaviour:
   wanderTimes:
     min: 3
     max: 6
+  isWandering: {fileID: 0}
 --- !u!114 &7647911073421581178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1673,6 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50337146444489374}
+  _isForced: {fileID: 0}
 --- !u!1 &3523169123655136852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1824,11 @@ MonoBehaviour:
     direction: {x: 1, y: -1}
   - origin: {x: 0, y: 0}
     direction: {x: -1, y: 1}
+  _emissionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &3171919950846624542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,8 +1891,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: 
-  maxStock: 10
+  _maxStock: 0
   startingStock: 10
+  _stockChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Stockpile+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stockFilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _stockEmptiedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &4076355799259495831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,16 +2052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb10cde1967fb24e94345f34b63719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callingTriggers:
-  - {fileID: 7035668381254852961}
-  - {fileID: 4889230841700321080}
-  - {fileID: 7640730003829837386}
-  - {fileID: 8790682238198630272}
-  - {fileID: 5948775676351287395}
-  - {fileID: 2350570490301456144}
-  - {fileID: 1902643292088893501}
-  - {fileID: 6903387580999277889}
-  - {fileID: 3485974446443072530}
-  - {fileID: 8485119260743800116}
+  callingBehaviours: []
   trackedTags:
   - PlayerHazard

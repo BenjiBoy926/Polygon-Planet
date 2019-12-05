@@ -173,6 +173,13 @@ MonoBehaviour:
   intakeInfo:
   - _multiplier: 4
     _type: 0
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &3357949900982027568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,9 +266,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: 
-  maxStock: 10
+  _label: Health
+  _maxStock: 10
   startingStock: 10
+  _stockChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Stockpile+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stockFilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _stockEmptiedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &4623756932192321678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +348,7 @@ MonoBehaviour:
   wanderTimes:
     min: 3
     max: 6
+  isWandering: {fileID: 0}
 --- !u!114 &8737980805278563567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50595949710179304}
+  _isForced: {fileID: 0}
 --- !u!1 &2150677534541862242
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,9 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb10cde1967fb24e94345f34b63719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callingTriggers:
-  - {fileID: 3357949900982027568}
-  - {fileID: 5216442456349109267}
+  callingBehaviours: []
   trackedTags:
   - PlayerHazard
 --- !u!1 &3083895052886956842
@@ -532,6 +554,11 @@ MonoBehaviour:
   objectAnchors:
   - origin: {x: 0, y: 0}
     direction: {x: 1, y: 0}
+  _emissionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &7879084220230460269
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +683,13 @@ MonoBehaviour:
   hazards: 0300000004000000
   healers: 
   intakeInfo: []
+  _energyAbsorbedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  hazardsImmunized: {fileID: 0}
+  healersImmunized: {fileID: 0}
 --- !u!114 &5216442456349109267
 MonoBehaviour:
   m_ObjectHideFlags: 0

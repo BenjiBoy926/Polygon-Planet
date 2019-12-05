@@ -74,10 +74,15 @@ public class ChangeStockOverTime : MonoBehaviour
             changeStoppedEvent.Invoke();
         }
     }
-
+    // Delay the stock change with a unique delay time
     public void DelayStockChange(float delayTime)
     {
         stockChangeNotReady.Activate(delayTime);
+    }
+    // Delay stock change based on the intrinsic time between changes
+    public void DelayStockChange()
+    {
+        DelayStockChange(timeBetweenChanges);
     }
 
     /*

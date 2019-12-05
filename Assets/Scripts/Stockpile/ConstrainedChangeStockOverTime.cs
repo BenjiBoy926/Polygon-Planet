@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System;
+using System.Collections;
 
 /*
  * CLASS ConstrainedChangeStockOverTime
@@ -8,8 +8,8 @@ using System;
  * while any of the given constraints are false
  * 
  * If the constraints become false during an interval of stock
- * change, the stock change stops itself and the stock 
- * does not change
+ * change, the stock change is postponed until the constraint
+ * is lifted, then the stock change resumes as normal
  * ------------------------------------
  */ 
 
@@ -34,7 +34,21 @@ public class ConstrainedChangeStockOverTime : ChangeStockOverTime, IConstrainabl
         }
         else
         {
-            StopStockChange();
+            // Postpone the stock change until the constraint is lifted
+            StopCoroutine("PostponeStockChange");
+            StartCoroutine("PostponeStockChange");
         }
+    }
+
+    private IEnumerator PostponeStockChange()
+    {
+        // Get stuck in a loop while the constraint is not satisfied
+        while(!constraints.result)
+        {
+            yield return null;
+        }
+
+        // Once the constraint is satisfied, change the stock
+        base.ChangeStockAndUpdateState();
     }
 }
