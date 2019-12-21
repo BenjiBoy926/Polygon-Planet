@@ -49,3 +49,20 @@ Preset:
     propertyPath: intakeInfo.Array.data[0]._type
     value: 0
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _energyAbsorbedEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _energyAbsorbedEvent.m_TypeName
+    value: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: hazardsImmunized
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: healersImmunized
+    value: 
+    objectReference: {fileID: 0}

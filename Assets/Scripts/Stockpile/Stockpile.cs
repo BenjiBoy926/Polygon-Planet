@@ -97,6 +97,10 @@ public class Stockpile : MonoBehaviour, ILabelledComponent
     {
         currentStock = 0;
     }
+    public void FillStock()
+    {
+        currentStock = _maxStock;
+    }
     // Find all game objects with the given tag, then try to find a single stockpile on each game object with the tag given
     public static Stockpile[] FindStockpilesWithLabel(string gObjectTag, string stockpileLabel)
     {

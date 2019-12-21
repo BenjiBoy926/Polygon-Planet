@@ -4765,6 +4765,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984299116546118}
+  - component: {fileID: 5131556646460608590}
+  - component: {fileID: 8037040611010881294}
+  - component: {fileID: 6743754097328194178}
+  - component: {fileID: 7261400239403622976}
   m_Layer: 0
   m_Name: Collision Particle
   m_TagString: Untagged
@@ -4787,6 +4791,362 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5131556646460608590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359755605984908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a1f36c8bb6ef44fbca7489daabd53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 781c139bd11f4734da4bc1525973bbd6, type: 3}
+  - {fileID: 8300000, guid: 68b01bd409f794e408966be0d71aadeb, type: 3}
+  - {fileID: 8300000, guid: b0d7a6c836939da4db55ad4704a64874, type: 3}
+  - {fileID: 8300000, guid: bf1ab88cfea0a17429ba3970385d4b64, type: 3}
+  - {fileID: 8300000, guid: c2f1e159dd5ffd74d84481ec4437510c, type: 3}
+  - {fileID: 8300000, guid: b6b5347c6d1fb4340a0ba0e1345aa9c3, type: 3}
+  - {fileID: 8300000, guid: c54c717f09d4d5c41ad2ac116ccf26ba, type: 3}
+  - {fileID: 8300000, guid: a673dc8e3dbc13b4bb54ade30bc3de8c, type: 3}
+  - {fileID: 8300000, guid: f2a8ca9eb2b074643a38a654ef2dd877, type: 3}
+  - {fileID: 8300000, guid: e9d7d7743e6458141a7272cada7a8634, type: 3}
+  - {fileID: 8300000, guid: 0d59751eb9e70174299e3bef4c650c9e, type: 3}
+  playOnAwake: 1
+  source: {fileID: 0}
+--- !u!114 &8037040611010881294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359755605984908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41e9a988f4017f478a07f38fd0fed89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _awake:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _fixedUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _lateUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onAnimatorIK:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _onAnimatorMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onApplicationFocus:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _onApplicationPause:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _onApplicationQuit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onAudioFilterRead:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+FloatArrayAndIntEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onBecameInvisibe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onBecameVisible:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+CollisionEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionEnter2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collision2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+CollisionEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionExit2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collision2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+CollisionEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionStay2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collision2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onConnectedToServer:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onControllerColliderHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ControllerColliderHitEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDisable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDrawGizmos:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDrawGizmosSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6743754097328194178}
+        m_MethodName: ScaledMoment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onGUI:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onJointBreak:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onJointBreak2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Joint2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseDrag:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseOver:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseUpAsButton:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onParticleCollision:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+GameObjectEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onParticleSystemStopped:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onParticleTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onPostRender:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onPreCull:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onPreRender:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onRenderImage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+RenderTextureAndRenderTextureEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _onRenderObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onInitialized:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTransformChildrenChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTransformParentChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerEnter2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collider2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerExit2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collider2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerStay2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collider2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onValidate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onWillRenderObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _reset:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _start:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _update:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &6743754097328194178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359755605984908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1ebbf74e925444b9c63298abe35a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alteredTimescale: 0.7
+  timescaleAlterTime: 0.5
+--- !u!114 &7261400239403622976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359755605984908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5f426f527d371459ada9a4e3212884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
 --- !u!1 &1455083086627626
 GameObject:
   m_ObjectHideFlags: 0

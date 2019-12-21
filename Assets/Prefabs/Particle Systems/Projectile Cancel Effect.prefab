@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2996023944256528084}
   - component: {fileID: 1637293893033991951}
   - component: {fileID: 9094932817542090521}
-  - component: {fileID: 3853882355587027282}
-  - component: {fileID: 2996225412460589647}
   m_Layer: 0
   m_Name: Projectile Cancel Effect
   m_TagString: Untagged
@@ -4708,7 +4706,7 @@ ParticleSystem:
 --- !u!199 &9094932817542090521
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4723,7 +4721,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b5600540880a10042b044f16db0467de, type: 2}
+  - {fileID: 2100000, guid: 7038c77f8a55470408bb2307fae35419, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4767,35 +4765,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3853882355587027282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6833080450204282721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e092bd006ff0849bdbe9d42a70ce21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: 34b722ffc09ef4831a89b6502cd42f7e, type: 3}
-  - {fileID: 8300000, guid: 2876e7fa4419a4a7096b8bb38641daa3, type: 3}
-  - {fileID: 8300000, guid: e2ce28c6678727f44bf80384fbdb287a, type: 3}
-  - {fileID: 8300000, guid: b0ec6b06f621f2d4b8f1a0046f778a04, type: 3}
-  playOnAwake: 1
-  source: {fileID: 0}
---- !u!114 &2996225412460589647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6833080450204282721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59c52108a2a6624a9a5eb5c1928d87a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 1

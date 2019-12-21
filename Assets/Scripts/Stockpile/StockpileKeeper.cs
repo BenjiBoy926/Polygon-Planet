@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 /*
  * CLASS StockpileKeeper
@@ -13,17 +14,12 @@ using UnityEngine.Events;
 public class StockpileKeeper : MonoBehaviour
 {
     /*
-     * PUBLIC TYPEDEFS
-     */
-    [System.Serializable] public class StockpileKeep : LabelledComponentKeeper<Stockpile> { };
-
-    /*
      * PUBLIC DATA
      */
     [SerializeField]
-    [Tooltip("The list of stockpiles that this class maintains")]
-    private StockpileKeep _stockpiles;
-    public StockpileKeep stockpiles { get { return _stockpiles; } }
+    [Tooltip("The list of game object tags and the corresponding stockpile labels " +
+        "that this script maintains a list of")]
+    private List<LabelledComponentID> stockpileIDs;
 
     [SerializeField]
     [Tooltip("Invoked when all stockpiles in the list are filled up")]
@@ -34,11 +30,16 @@ public class StockpileKeeper : MonoBehaviour
     private UnityEvent _allStocksEmptiedEvent;
     public UnityEvent allStocksEmptiedEvent { get { return _allStocksEmptiedEvent; } }
 
+    /*
+     * PRIVATE DATA
+     */
+    private LabelledComponentKeeper<Stockpile> stockpiles;
+
     private void Start()
     {
-        _stockpiles = new StockpileKeep();
+        stockpiles = new LabelledComponentKeeper<Stockpile>(stockpileIDs);
 
-        foreach(Stockpile stock in _stockpiles.components)
+        foreach (Stockpile stock in stockpiles.components)
         {
             stock.stockEmptiedEvent.AddListener(CheckStocksEmptied);
             stock.stockFilledEvent.AddListener(CheckStocksFilled);
@@ -47,7 +48,7 @@ public class StockpileKeeper : MonoBehaviour
 
     private void CheckStocksEmptied()
     {
-        if (_stockpiles.components.TrueForAll(x => x.empty))
+        if (stockpiles.components.TrueForAll(x => x.empty))
         {
             _allStocksEmptiedEvent.Invoke();
         }
@@ -55,7 +56,7 @@ public class StockpileKeeper : MonoBehaviour
 
     private void CheckStocksFilled()
     {
-        if (_stockpiles.components.TrueForAll(x => x.full))
+        if (stockpiles.components.TrueForAll(x => x.full))
         {
             _allStocksFilledEvent.Invoke();
         }

@@ -23,10 +23,14 @@ public class EmissionRecoil : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        emitter.emissionEvent.AddListener(Recoil);   
+        emitter.emissionEvent.AddListener(RecoilListener);   
     }
     void Recoil(Vector2 forwardForce)
     {
         mover.ApplyForce(-forwardForce, recoilStrength);
+    }
+    void RecoilListener(object vectorObject)
+    {
+        Recoil((Vector2)vectorObject);
     }
 }

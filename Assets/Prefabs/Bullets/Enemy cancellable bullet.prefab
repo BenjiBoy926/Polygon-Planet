@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1349808922}
   - component: {fileID: 4225995935838062412}
   - component: {fileID: 7166334589677411071}
+  - component: {fileID: 6794523284022134972}
   m_Layer: 12
   m_Name: Enemy cancellable bullet
   m_TagString: EnemyHazard
@@ -35,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 8066917086334517393}
   - {fileID: 8341353259927028734}
+  - {fileID: 4084192279446461240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140,11 +142,22 @@ MonoBehaviour:
   intakeInfo: []
   _energyAbsorbedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7370774216374661190}
+        m_MethodName: EnableEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: EnergySocket+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  hazardsImmunized: {fileID: 0}
-  healersImmunized: {fileID: 0}
+  hazardsImmunized: {fileID: 3876059937616928754}
+  healersImmunized: {fileID: 3615076357015171491}
 --- !u!114 &4225995935838062412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +176,18 @@ MonoBehaviour:
     _tag: 0
   _energyTransferredEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 533703095646221782}
+        m_MethodName: ChangeStock
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: EnergySource+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &7166334589677411071
@@ -179,6 +203,363 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 50763411664971730}
+--- !u!114 &6794523284022134972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965972268629976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41e9a988f4017f478a07f38fd0fed89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _awake:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _fixedUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _lateUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onAnimatorIK:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _onAnimatorMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onApplicationFocus:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _onApplicationPause:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _onApplicationQuit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onAudioFilterRead:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+FloatArrayAndIntEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onBecameInvisibe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onBecameVisible:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+CollisionEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionEnter2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collision2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+CollisionEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionExit2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collision2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+CollisionEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onCollisionStay2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collision2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onConnectedToServer:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onControllerColliderHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ControllerColliderHitEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDisable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDrawGizmos:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onDrawGizmosSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 533703095646221782}
+        m_MethodName: FillStock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onGUI:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onJointBreak:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onJointBreak2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Joint2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseDrag:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseOver:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onMouseUpAsButton:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onParticleCollision:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+GameObjectEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onParticleSystemStopped:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onParticleTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onPostRender:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onPreCull:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onPreRender:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onRenderImage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+RenderTextureAndRenderTextureEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _onRenderObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onInitialized:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTransformChildrenChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTransformParentChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerEnter2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collider2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerExit2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collider2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onTriggerStay2D:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MonoBehaviourEvents+Collider2DEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onValidate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _onWillRenderObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _reset:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _start:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _update:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!1 &2256990461369340117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8254283678401892160}
+  - component: {fileID: 3615076357015171491}
+  m_Layer: 12
+  m_Name: HealersImmune
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8254283678401892160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256990461369340117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4084192279446461240}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3615076357015171491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256990461369340117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7698b858ef39d2145b4883a52e5f79b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: healersImmune
+  _stateActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: State+FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stateDeactivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &4453683107276564031
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +569,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8066917086334517393}
+  - component: {fileID: 7370774216374661190}
+  - component: {fileID: 6959484184640011037}
   m_Layer: 12
   m_Name: Effects
   m_TagString: Untagged
@@ -209,6 +592,69 @@ Transform:
   m_Father: {fileID: 4067150231415860}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7370774216374661190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453683107276564031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb2bc677dd7a442ae1e5d3de1c8b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: cancelEffect
+  particlePrefab: {fileID: 6833080450204282721, guid: ecd2661c85ade784db4eb2c22adc1f07,
+    type: 3}
+  particleParent: {fileID: 0}
+--- !u!114 &6959484184640011037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453683107276564031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c1c2c931c95c347a3d48528742c161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 7370774216374661190}
+  target: {fileID: 4067150231415860}
+  offset: {x: 0, y: 0, z: 0}
+--- !u!1 &5154620661272925310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4084192279446461240}
+  m_Layer: 12
+  m_Name: Immunization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4084192279446461240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154620661272925310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7496597373122023196}
+  - {fileID: 8254283678401892160}
+  m_Father: {fileID: 4067150231415860}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7805606856279624025
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +666,6 @@ GameObject:
   - component: {fileID: 8341353259927028734}
   - component: {fileID: 533703095646221782}
   - component: {fileID: 7612737366623486698}
-  - component: {fileID: 947006764}
   m_Layer: 12
   m_Name: Stock
   m_TagString: Untagged
@@ -255,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: Persistence
-  _maxStock: 0
+  _maxStock: 1
   startingStock: 1
   _stockChangedEvent:
     m_PersistentCalls:
@@ -298,17 +743,57 @@ MonoBehaviour:
   connections:
   - _stock: {fileID: 533703095646221782}
     _socket: {fileID: 1349808922}
---- !u!114 &947006764
+--- !u!1 &7845296489569706193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7496597373122023196}
+  - component: {fileID: 3876059937616928754}
+  m_Layer: 12
+  m_Name: HazardsImmune
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7496597373122023196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845296489569706193}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4084192279446461240}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3876059937616928754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7805606856279624025}
+  m_GameObject: {fileID: 7845296489569706193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b30826bab7c0b44888ca001307bb65c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7698b858ef39d2145b4883a52e5f79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 4225995935838062412}
-  stock: {fileID: 533703095646221782}
+  _label: hazardsImmune
+  _stateActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: State+FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _stateDeactivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,42 +10,76 @@ using UnityEngine.Events;
  * have no well-defined invokation order
  */ 
 
-public class OrderedUnityEvent
+public class OrderedUnityEventArg0
 {
     [SerializeField]
+    [Tooltip("A list of UnityEvents. The events are invoked in the order they appear in the list")]
     private List<UnityEvent> events;
+
+    public void AddListener(UnityAction listener)
+    {
+        events[events.Count - 1].AddListener(listener);
+    }
+    public void AddListener(UnityAction listener, int order)
+    {
+        events[order].AddListener(listener);
+    }
 
     public void Invoke()
     {
-        foreach(UnityEvent e in events)
+        foreach (UnityEvent e in events)
         {
             e.Invoke();
         }
     }
 }
 
-public class OrderedUnityEvent<T>
+public class OrderedUnityEventArg1
 {
+    [System.Serializable]
+    public class EventType : UnityEvent<object> { };
     [SerializeField]
-    private List<UnityEvent<T>> events;
+    [Tooltip("A list of UnityEvents. The events are invoked in the order they appear in the list")]
+    private List<EventType> events;
 
-    public void Invoke(T arg)
+    public void AddListener(UnityAction<object> listener)
     {
-        foreach (UnityEvent<T> e in events)
+        events[events.Count - 1].AddListener(listener);
+    }
+    public void AddListener(UnityAction<object> listener, int order)
+    {
+        events[order].AddListener(listener);
+    }
+
+    public void Invoke(object arg)
+    {
+        foreach (UnityEvent<object> e in events)
         {
             e.Invoke(arg);
         }
     }
 }
 
-public class OrderedUnityEvent<T1, T2>
+public class OrderedUnityEventArg2
 {
+    [System.Serializable]
+    public class EventType : UnityEvent<object, object> { };
     [SerializeField]
-    private List<UnityEvent<T1, T2>> events;
+    [Tooltip("A list of UnityEvents. The events are invoked in the order they appear in the list")]
+    private List<EventType> events;
 
-    public void Invoke(T1 arg1, T2 arg2)
+    public void AddListener(UnityAction<object, object> listener)
     {
-        foreach (UnityEvent<T1, T2> e in events)
+        events[events.Count - 1].AddListener(listener);
+    }
+    public void AddListener(UnityAction<object, object> listener, int order)
+    {
+        events[order].AddListener(listener);
+    }
+
+    public void Invoke(object arg1, object arg2)
+    {
+        foreach (UnityEvent<object, object> e in events)
         {
             e.Invoke(arg1, arg2);
         }

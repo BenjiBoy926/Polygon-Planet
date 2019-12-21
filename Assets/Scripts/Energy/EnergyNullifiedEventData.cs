@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 // Encapsulates data related to when an energy source is nullified
 [System.Serializable]

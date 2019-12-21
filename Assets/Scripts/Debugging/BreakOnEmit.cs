@@ -8,7 +8,7 @@ public class BreakOnEmit : MonoBehaviour
     private Emitter2D emitter;
     private void Start()
     {
-        emitter.emissionEvent.AddListener(Break);
+        //emitter.emissionEvent.AddListener(Break);
     }
     private void Break(Vector2 emissionDir)
     {

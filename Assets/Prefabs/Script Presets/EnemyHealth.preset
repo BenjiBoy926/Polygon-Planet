@@ -30,10 +30,37 @@ Preset:
     value: Health
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: maxStock
-    value: 10
+    propertyPath: _maxStock
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: startingStock
-    value: 10
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _stockChangedEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _stockChangedEvent.m_TypeName
+    value: Stockpile+IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _stockFilledEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _stockFilledEvent.m_TypeName
+    value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _stockEmptiedEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _stockEmptiedEvent.m_TypeName
+    value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     objectReference: {fileID: 0}

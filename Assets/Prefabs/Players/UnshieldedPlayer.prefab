@@ -598,21 +598,19 @@ MonoBehaviour:
     _powerLevel: 1
   powerLevel: {fileID: 3117966171115974090}
   _emissionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3117966171115974090}
-        m_MethodName: EmptyStock
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    events:
+    - m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: OrderedUnityEventArg1+EventType, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    - m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: OrderedUnityEventArg1+EventType, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    - m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: OrderedUnityEventArg1+EventType, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!1 &2790904456644905381
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,32 +900,33 @@ MonoBehaviour:
   - origin: {x: 1, y: 0}
     direction: {x: 1, y: 0}
   _emissionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4462852913780432153}
-        m_MethodName: EnableEffect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 3117966172532261484}
-        m_MethodName: EmptyStock
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3117966172532261484}
+          m_MethodName: EmptyStock
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3117966171115974090}
+          m_MethodName: EmptyStock
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: OrderedUnityEventArg1+EventType, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &6117238716251863488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,65 +1027,59 @@ MonoBehaviour:
   - origin: {x: 1, y: 0}
     direction: {x: 1, y: 0}
   _emissionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4462852913780432153}
-        m_MethodName: EnableEffect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 970978517699566132}
-        m_MethodName: DelayStockChange
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.6
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3117966172532261484}
-        m_MethodName: ChangeStock
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7094929205056130332}
-        m_MethodName: Activate
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6728064579901700961}
-        m_MethodName: DelayStockChange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: EmissionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6728064579901700961}
+          m_MethodName: DelayStockChange
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7094929205056130332}
+          m_MethodName: Activate
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.2
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 970978517699566132}
+          m_MethodName: DelayStockChange
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.6
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: OrderedUnityEventArg1+EventType, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3117966172532261484}
+          m_MethodName: ChangeStock
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: -1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: OrderedUnityEventArg1+EventType, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &7094929205056130332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,7 +1460,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1.5
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1478,7 +1471,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 3
+          m_FloatArgument: 2
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -2269,10 +2262,6 @@ PrefabInstance:
     - target: {fileID: 1676841807617116, guid: fe15894bc587bdf478eafd181e21c98e, type: 3}
       propertyPath: m_Name
       value: Charge Gun Indicator
-      objectReference: {fileID: 0}
-    - target: {fileID: 1676841807617116, guid: fe15894bc587bdf478eafd181e21c98e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989534461032318, guid: fe15894bc587bdf478eafd181e21c98e, type: 3}
       propertyPath: m_LocalPosition.x

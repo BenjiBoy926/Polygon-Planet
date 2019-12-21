@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEngine.Events;
 
 // Simple attribute that disables any energy source it comes into contact with
 public class EnergySourceNullifier : CollisionComponentProcessor<EnergySource>

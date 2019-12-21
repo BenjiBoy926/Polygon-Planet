@@ -24,7 +24,7 @@ public class Shaker : MonoBehaviour
 
     private float shakeTime;    // Time for which the object will shake
     private float shakeMagnitude;   // Distance of the shaking of the object
-    private float shakeInterval;    // Interval between shakes - smaller intervals makes mor violent shakes
+    private float shakeInterval;    // Interval between shakes - smaller intervals makes more violent shakes
 
     private Vector2 shakePos;   // Local position the object will be moved to when shaking
 

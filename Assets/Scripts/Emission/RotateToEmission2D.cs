@@ -15,14 +15,21 @@ public class RotateToEmission2D : MonoBehaviour
     private Emitter2D emitter;
     [SerializeField]
     private Vector2 objectForward;
+    [SerializeField]
+    [Tooltip("The order in which the rotation occurs in the list of emission events")]
+    private int order;
 
     private void Start()
     {
-        emitter.emissionEvent.AddListener(LookTowardsEmission);
+        emitter.emissionEvent.AddListener(LookTowardsEmissionListener);
     }
 
     private void LookTowardsEmission(Vector2 direction)
     {
         transform.LookInDirection2D(direction, objectForward);
+    }
+    private void LookTowardsEmissionListener(object directionObject)
+    {
+        LookTowardsEmission((Vector2)directionObject);
     }
 }

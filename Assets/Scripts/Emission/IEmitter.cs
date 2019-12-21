@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
-[System.Serializable] public class EmissionEvent : UnityEvent<Vector2> { };
+[System.Serializable]
+public class EmissionEvent : OrderedUnityEventArg1 { };
 
 public interface IEmitter : IConsumer<Vector2>
 {
