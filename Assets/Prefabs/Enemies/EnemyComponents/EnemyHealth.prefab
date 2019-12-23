@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5595640593315310612
+--- !u!1 &650989088949747998
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4457362196498913014}
-  - component: {fileID: 3891363278436306851}
-  - component: {fileID: 6065803548504385684}
-  - component: {fileID: 8237963195271661708}
-  m_Layer: 0
+  - component: {fileID: 8413687456164461580}
+  - component: {fileID: 5640140528299346847}
+  - component: {fileID: 2037457805502565310}
+  - component: {fileID: 1904168352065502985}
+  - component: {fileID: 7598399539996714435}
+  m_Layer: 11
   m_Name: EnemyHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4457362196498913014
+--- !u!4 &8413687456164461580
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5595640593315310612}
+  m_GameObject: {fileID: 650989088949747998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3891363278436306851
+--- !u!114 &5640140528299346847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5595640593315310612}
+  m_GameObject: {fileID: 650989088949747998}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80608440b6ea59e49871a777b238fc94, type: 3}
@@ -61,7 +62,7 @@ MonoBehaviour:
   _stockEmptiedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6065803548504385684}
+      - m_Target: {fileID: 2037457805502565310}
         m_MethodName: EnableEffect
         m_Mode: 1
         m_Arguments:
@@ -72,15 +73,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7598399539996714435}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6065803548504385684
+--- !u!114 &2037457805502565310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5595640593315310612}
+  m_GameObject: {fileID: 650989088949747998}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cbb2bc677dd7a442ae1e5d3de1c8b8b, type: 3}
@@ -90,18 +102,33 @@ MonoBehaviour:
   particlePrefab: {fileID: 1584655011353468, guid: 9056fb31334593b4faa58b82d274640b,
     type: 3}
   particleParent: {fileID: 0}
---- !u!114 &8237963195271661708
+--- !u!114 &1904168352065502985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5595640593315310612}
+  m_GameObject: {fileID: 650989088949747998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c1c2c931c95c347a3d48528742c161, type: 3}
+  m_Script: {fileID: 11500000, guid: 4272668f6e5a65c489ca0005abc8da4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 6065803548504385684}
-  target: {fileID: 4457362196498913014}
+  effect: {fileID: 2037457805502565310}
+  target: {fileID: 8413687456164461580}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &7598399539996714435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650989088949747998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16395bd2fa141de4a97ecd5a4d948e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOrChild: 0
+  parentLevel: 1
+  childIndeces: 

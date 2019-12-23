@@ -23,6 +23,7 @@ public class SuppressSimultaneousEnergyAbsorptions : MonoBehaviour
     [Tooltip("The socket-stockpile pairs are prioritized " +
         "so that the LATEST pair has the highest priority")]
     private List<SocketStockpilePair> pairs;
+
     // Helper class greatly eases the task of letting only one energy
     // absorption be registered each frame
     private SimultaneousSignalSuppressor<EnergyEventData> energyAbsorbedSuppressor;

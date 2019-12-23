@@ -15,10 +15,78 @@ using System.Collections.Generic;
 public class OneTriggerPerLifetime : MonoBehaviour
 {
     [SerializeField]
-    private List<MonoBehaviourEvents> callingBehaviours; // List of triggers relevant to the script
+    [Tooltip("If true, the script automatically uses this game object " +
+        "and all of its immediate children as the calling behaviours")]
+    private bool useChildren;
+
     [SerializeField]
-    private List<string> trackedTags;  // Only colliders with one of these tags will have the one trigger rule enforced on them 
-    private List<Collider2D> callingColliders = new List<Collider2D>(); // List of colliders that can only be hit once in the lifetime of any other collider
+    [Tooltip("The list of trigger event to track. Only one trigger can be " +
+        "triggered in the lifetime of the object that triggers any of these triggers")]
+    private List<MonoBehaviourEvents> _callingBehaviours; // List of triggers relevant to the script
+
+    [SerializeField]
+    [Tooltip("Any object with this tag will only be able to trigger " +
+        "one trigger in the list of calling triggers")]
+    private List<string> trackedTags;  
+
+    private List<MonoBehaviourEvents> callingBehaviours
+    {
+        get
+        {
+            // If we're using the children for this script,
+            // add all the scripts of the immediate children 
+            // and return the list
+            if (useChildren)
+            {
+                List<MonoBehaviourEvents> behaviours = new List<MonoBehaviourEvents>();
+
+                // Add this object
+                MonoBehaviourEvents current = GetComponent<MonoBehaviourEvents>();
+                if (current != null)
+                {
+                    behaviours.Add(current);
+                }
+
+                // Add the object's immediate children
+                for(int index = 0; index < transform.childCount; index++)
+                {
+                    current = transform.GetChild(index).GetComponent<MonoBehaviourEvents>();
+                    if (current != null)
+                    {
+                        behaviours.Add(current);
+                    }
+                }
+
+                return behaviours;
+            }
+            // If we're not using the children, use the editor list
+            else
+            {
+                return _callingBehaviours;
+            }
+        }
+    }
+
+    private List<Collider2D> callingColliders
+    {
+        get
+        {
+            List<Collider2D> colliders = new List<Collider2D>();
+            Collider2D current;
+
+            foreach(MonoBehaviourEvents behaviour in callingBehaviours)
+            {
+                current = behaviour.GetComponent<Collider2D>();
+                if(current != null)
+                {
+                    colliders.Add(current);
+                }
+            }
+
+            return colliders;
+        }
+    }
+
     // List of colliders that have enetered this trigger and that have not yet been disabled
     // The list is continually checked for disabled/destroyed triggers and unmutes any that are disabled/destroyed
     private List<Collider2D> collidersToCheck = new List<Collider2D>();    
@@ -27,19 +95,6 @@ public class OneTriggerPerLifetime : MonoBehaviour
     public event UnityAction<Collider2D> colliderMutedEvent;
     public event UnityAction<Collider2D> colliderUnmutedEvent;
 
-    private void Start()
-    {
-        foreach(MonoBehaviourEvents behaviour in callingBehaviours)
-        {
-            // Add the collider of each trigger event to the list
-            Collider2D currentTrigger = behaviour.GetComponent<Collider2D>();
-            if(currentTrigger != null)
-            {
-                callingColliders.Add(currentTrigger);
-                behaviour.onTriggerEnter2D.AddListener(CheckAddColliderToMute);
-            }
-        }
-    }
     private void Update()
     {
         CheckUnmuteColliders();

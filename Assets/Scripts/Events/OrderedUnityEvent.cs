@@ -18,11 +18,28 @@ public class OrderedUnityEventArg0
 
     public void AddListener(UnityAction listener)
     {
+        if (events.Count == 0)
+        {
+            events.Add(new UnityEvent());
+        }
         events[events.Count - 1].AddListener(listener);
     }
     public void AddListener(UnityAction listener, int order)
     {
-        events[order].AddListener(listener);
+        if (order >= 0)
+        {
+            // If the priority requested is not in the list,
+            // add empty events until it is
+            if (order >= events.Count)
+            {
+                int currentCount = events.Count;
+                for (int i = order; i <= currentCount; i++)
+                {
+                    events.Add(new UnityEvent());
+                }
+            }
+            events[order].AddListener(listener);
+        }
     }
 
     public void Invoke()
@@ -42,13 +59,32 @@ public class OrderedUnityEventArg1
     [Tooltip("A list of UnityEvents. The events are invoked in the order they appear in the list")]
     private List<EventType> events;
 
+    // Add an event listener to the lowest priority bracket
     public void AddListener(UnityAction<object> listener)
     {
+        if (events.Count == 0)
+        {
+            events.Add(new EventType());
+        }
         events[events.Count - 1].AddListener(listener);
     }
+    // Add an event listener to the specified priority bracket
     public void AddListener(UnityAction<object> listener, int order)
     {
-        events[order].AddListener(listener);
+        if (order >= 0)
+        {
+            // If the priority requested is not in the list,
+            // add empty events until it is
+            if (order >= events.Count)
+            {
+                int currentCount = events.Count;
+                for(int i = order; i <= currentCount; i++)
+                {
+                    events.Add(new EventType());
+                }
+            }
+            events[order].AddListener(listener);
+        }
     }
 
     public void Invoke(object arg)
@@ -70,11 +106,28 @@ public class OrderedUnityEventArg2
 
     public void AddListener(UnityAction<object, object> listener)
     {
+        if (events.Count == 0)
+        {
+            events.Add(new EventType());
+        }
         events[events.Count - 1].AddListener(listener);
     }
     public void AddListener(UnityAction<object, object> listener, int order)
     {
-        events[order].AddListener(listener);
+        if (order >= 0)
+        {
+            // If the priority requested is not in the list,
+            // add empty events until it is
+            if (order >= events.Count)
+            {
+                int currentCount = events.Count;
+                for (int i = order; i <= currentCount; i++)
+                {
+                    events.Add(new EventType());
+                }
+            }
+            events[order].AddListener(listener);
+        }
     }
 
     public void Invoke(object arg1, object arg2)
@@ -85,4 +138,3 @@ public class OrderedUnityEventArg2
         }
     }
 }
-

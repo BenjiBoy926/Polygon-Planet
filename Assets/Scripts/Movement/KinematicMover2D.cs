@@ -15,8 +15,22 @@ using UnityEngine.Events;
 public class KinematicMover2D : MonoBehaviour
 {
 	[SerializeField]
-	private Rigidbody2D _rb2D;
-    public Rigidbody2D rb2D { get { return _rb2D; } }
+    [Tooltip("Reference to the script that gets the game object " +
+        "that the target rigidbody is attached to")]
+	private GameObjectDelegate owningObject;
+
+    private Rigidbody2D _rb2D;
+    public Rigidbody2D rb2D
+    {
+        get
+        {
+            if(_rb2D == null)
+            {
+                _rb2D = owningObject.delegateObject.GetComponent<Rigidbody2D>();
+            }
+            return _rb2D;
+        }
+    }
 
     // Event called when the mover is stopped
     public event UnityAction stopEvent;
@@ -26,7 +40,7 @@ public class KinematicMover2D : MonoBehaviour
 	{
 		Vector2 velocity;
 		velocity = direction.ScaledVector(speed);
-		_rb2D.velocity = velocity;
+		rb2D.velocity = velocity;
 	}
 
     // Put the object at a position and set it off in a direction with a particular speed
@@ -79,7 +93,7 @@ public class KinematicMover2D : MonoBehaviour
 	public virtual void Stop ()
 	{
 		StopAllCoroutines ();
-		_rb2D.velocity = Vector2.zero;
+		rb2D.velocity = Vector2.zero;
         if(stopEvent != null)
         {
             stopEvent();

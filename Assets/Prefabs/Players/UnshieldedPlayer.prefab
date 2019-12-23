@@ -1320,6 +1320,7 @@ GameObject:
   - component: {fileID: 5903773125188200481}
   - component: {fileID: 1937820355757417417}
   - component: {fileID: 2747725381150423039}
+  - component: {fileID: 634420062035069157}
   m_Layer: 8
   m_Name: Mover
   m_TagString: Untagged
@@ -1353,7 +1354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5036608d4778a7f41a6d616db1126cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb2D: {fileID: 3167823214236217066}
+  owningObject: {fileID: 634420062035069157}
   _isForced: {fileID: 2747725381150423039}
 --- !u!114 &1937820355757417417
 MonoBehaviour:
@@ -1392,6 +1393,21 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &634420062035069157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117966171953544430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16395bd2fa141de4a97ecd5a4d948e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOrChild: 0
+  parentLevel: 1
+  childIndeces: 
 --- !u!1 &3117966172532261482
 GameObject:
   m_ObjectHideFlags: 0

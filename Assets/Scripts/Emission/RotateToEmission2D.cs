@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /*
  * CLASS RotateToEmission
@@ -21,7 +20,7 @@ public class RotateToEmission2D : MonoBehaviour
 
     private void Start()
     {
-        emitter.emissionEvent.AddListener(LookTowardsEmissionListener);
+        emitter.emissionEvent.AddListener(LookTowardsEmissionListener, order);
     }
 
     private void LookTowardsEmission(Vector2 direction)
