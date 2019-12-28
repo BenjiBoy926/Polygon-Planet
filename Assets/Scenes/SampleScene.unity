@@ -179,7 +179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 195552085}
   - component: {fileID: 195552084}
-  - component: {fileID: 195552086}
   m_Layer: 0
   m_Name: Debugger
   m_TagString: Untagged
@@ -213,22 +212,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &195552086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195552083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af61f2fede9bd7e43a656a5bdb810566, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  relative:
-    parentOrChild: 0
-    parentLevel: 0
-    childIndeces: 
 --- !u!1001 &738151559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,63 +281,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3864cd3551a85774fab361ce53048acb, type: 3}
---- !u!1001 &840206765
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1692138981872808, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_Name
-      value: Cardinal Shooter
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964967023553678, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5f6650b6c78053342bcb34554deb3037, type: 3}
 --- !u!1001 &868702722
 PrefabInstance:
   m_ObjectHideFlags: 0

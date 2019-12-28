@@ -10,4 +10,10 @@ public class SocketStockpilePair
 
     public EnergySocket socket { get { return _socket; } }
     public Stockpile stockpile { get { return _stockpile; } }
+
+    public SocketStockpilePair(EnergySocket sk, Stockpile stock)
+    {
+        _socket = sk;
+        _stockpile = stock;
+    }
 }

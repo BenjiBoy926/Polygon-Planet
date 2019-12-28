@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 159174003753368261}
   - component: {fileID: 1349808922}
   - component: {fileID: 4225995935838062412}
-  - component: {fileID: 7166334589677411071}
   - component: {fileID: 6794523284022134972}
   m_Layer: 12
   m_Name: Enemy cancellable bullet
@@ -190,19 +189,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: EnergySource+EnergyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &7166334589677411071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965972268629976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552e4130427c7534289c997cb461b4a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb2D: {fileID: 50763411664971730}
 --- !u!114 &6794523284022134972
 MonoBehaviour:
   m_ObjectHideFlags: 0

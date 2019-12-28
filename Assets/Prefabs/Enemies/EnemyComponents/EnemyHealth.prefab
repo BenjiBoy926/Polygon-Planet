@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8413687456164461580}
   - component: {fileID: 5640140528299346847}
   - component: {fileID: 2037457805502565310}
-  - component: {fileID: 1904168352065502985}
   - component: {fileID: 7598399539996714435}
+  - component: {fileID: 5143645896905147682}
   m_Layer: 11
   m_Name: EnemyHealth
   m_TagString: Untagged
@@ -102,21 +102,6 @@ MonoBehaviour:
   particlePrefab: {fileID: 1584655011353468, guid: 9056fb31334593b4faa58b82d274640b,
     type: 3}
   particleParent: {fileID: 0}
---- !u!114 &1904168352065502985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650989088949747998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4272668f6e5a65c489ca0005abc8da4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effect: {fileID: 2037457805502565310}
-  target: {fileID: 8413687456164461580}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &7598399539996714435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,5 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOrChild: 0
-  parentLevel: 1
+  parentLevel: 2
   childIndeces: 
+--- !u!114 &5143645896905147682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650989088949747998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c1c2c931c95c347a3d48528742c161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 2037457805502565310}
+  target: {fileID: 8413687456164461580}
+  offset: {x: 0, y: 0, z: 0}

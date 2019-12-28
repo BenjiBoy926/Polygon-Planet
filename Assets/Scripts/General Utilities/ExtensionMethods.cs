@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public static class ExtensionMethods 
 {	
@@ -109,5 +109,51 @@ public static class ExtensionMethods
     public static Vector3 ToTarget(this Transform me, Transform target)
     {
         return target.position - me.position;
+    }
+
+    public static void ForEachChild(this Transform ego, UnityAction<Transform> action)
+    {
+        Transform current;
+
+        for(int i = 0; i < ego.childCount; i++)
+        {
+            current = ego.GetChild(i);
+
+            // If the current child has children, run the Foreach on their children
+            if (current.childCount > 0)
+            {
+                current.ForEachChild(action);    
+            }
+
+            // Run the action on this child
+            action(current);
+        }
+    }
+
+    public static Transform FindChildMatch(this Transform ego, System.Predicate<Transform> predicate)
+    {
+        Transform current;
+
+        for(int i = 0; i < ego.childCount; i++)
+        {
+            current = ego.GetChild(i);
+
+            // If current child matches the condition, return it
+            if(predicate(current))
+            {
+                return current;
+            }
+            // If current child has children, find one that has a match
+            else if(current.childCount > 0)
+            {
+                current = current.FindChildMatch(predicate);
+                if (current != null)
+                {
+                    return current;
+                }
+            }
+        }
+
+        return null;
     }
 }

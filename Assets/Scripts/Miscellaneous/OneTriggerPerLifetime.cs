@@ -40,22 +40,11 @@ public class OneTriggerPerLifetime : MonoBehaviour
             {
                 List<MonoBehaviourEvents> behaviours = new List<MonoBehaviourEvents>();
 
-                // Add this object
-                MonoBehaviourEvents current = GetComponent<MonoBehaviourEvents>();
-                if (current != null)
+                transform.ForEachChild(child =>
                 {
-                    behaviours.Add(current);
-                }
-
-                // Add the object's immediate children
-                for(int index = 0; index < transform.childCount; index++)
-                {
-                    current = transform.GetChild(index).GetComponent<MonoBehaviourEvents>();
-                    if (current != null)
-                    {
-                        behaviours.Add(current);
-                    }
-                }
+                    MonoBehaviourEvents events = child.GetComponent<MonoBehaviourEvents>();
+                    if (events != null) behaviours.Add(events);
+                });
 
                 return behaviours;
             }
