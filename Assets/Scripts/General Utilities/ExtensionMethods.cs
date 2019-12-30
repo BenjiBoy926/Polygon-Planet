@@ -111,6 +111,10 @@ public static class ExtensionMethods
         return target.position - me.position;
     }
 
+    /*
+     *  TRANSFORM 
+     */ 
+
     public static void ForEachChild(this Transform ego, UnityAction<Transform> action)
     {
         Transform current;
@@ -156,4 +160,44 @@ public static class ExtensionMethods
 
         return null;
     }
+
+    /*
+     * STRING
+     */
+
+    // Find the first integer that occurs in the string, and return the integer
+    public static int FirstInteger(this string str)
+    {
+        return int.Parse(str.FirstIntegerString());
+    }
+
+    public static string FirstIntegerString(this string str)
+    {
+        char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '+' };
+        int firstIndex = str.IndexOfAny(numbers);
+
+        if (firstIndex >= 0)
+        {
+            List<char> numberList = new List<char>(numbers);
+            int lastIndex;
+
+            numberList.RemoveRange(10, 2);
+
+            // Loop until the end of the string,
+            // or until a character is found that is not a number
+            for (
+                lastIndex = firstIndex;
+                lastIndex < str.Length &&
+                numberList.Find(x => x == str[lastIndex]) >= 0;
+                lastIndex++) ;
+
+            return str.Substring(firstIndex, lastIndex - firstIndex + 1);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    
 }
