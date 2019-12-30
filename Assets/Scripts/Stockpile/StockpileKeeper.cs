@@ -17,6 +17,10 @@ public class StockpileKeeper : MonoBehaviour
      * PUBLIC DATA
      */
     [SerializeField]
+    [Tooltip("If true, search the children of the game objects with the given tags " +
+        "for the labelled stockpiles")]
+    private bool includeChildren;
+    [SerializeField]
     [Tooltip("The list of game object tags and the corresponding stockpile labels " +
         "that this script maintains a list of")]
     private List<LabelledComponentID> stockpileIDs;
@@ -37,7 +41,7 @@ public class StockpileKeeper : MonoBehaviour
 
     private void Start()
     {
-        stockpiles = new LabelledComponentKeeper<Stockpile>(stockpileIDs);
+        stockpiles = new LabelledComponentKeeper<Stockpile>(stockpileIDs, includeChildren);
 
         foreach (Stockpile stock in stockpiles.components)
         {

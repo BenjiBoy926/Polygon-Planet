@@ -13,14 +13,14 @@ using System.Collections.Generic;
 public static class LabelledComponentUtility
 {
     // Get a list of components with the given label on all game objects with the given tags
-    public static T[] FindComponentsWithLabel<T>(string gObjectTag, string componentLabel)
+    public static T[] FindComponentsWithLabel<T>(string gObjectTag, string componentLabel, bool includeChildren = false)
         where T : ILabelledComponent
     {
         GameObject[] gObjects = GameObject.FindGameObjectsWithTag(gObjectTag);
-        return FindComponentsWithLabel<T>(gObjects, componentLabel);
+        return FindComponentsWithLabel<T>(gObjects, componentLabel, includeChildren);
     }
     // Get a list of all the components with the given label on all the given game objects
-    public static T[] FindComponentsWithLabel<T>(GameObject[] gObjects, string componentLabel)
+    public static T[] FindComponentsWithLabel<T>(GameObject[] gObjects, string componentLabel, bool includeChildren = false)
         where T : ILabelledComponent
     {
         T[] tempComponents;    // Temporary storage for the current stockpile the algorithm is looking for
@@ -38,10 +38,10 @@ public static class LabelledComponentUtility
         return components.ToArray();
     }
     // Find all components with the given label on the single game object given
-    public static T[] FindComponentsWithLabel<T>(GameObject gObject, string componentLabel)
+    public static T[] FindComponentsWithLabel<T>(GameObject gObject, string componentLabel, bool includeChildren = false)
         where T : ILabelledComponent
     {
-        List<T> list = ListLabelledComponentsInChildren<T>(gObject, componentLabel);
+        List<T> list = ListLabelledComponents<T>(gObject, includeChildren);
         Predicate<T> matchedTag = (x) => x.label == componentLabel;
         return list.FindAll(matchedTag).ToArray();
     }
@@ -53,17 +53,35 @@ public static class LabelledComponentUtility
         return FindComponentWithLabel<T>(gObject, componentLabel);
     }
     // Find a component with the given label on the given game object
-    public static T FindComponentWithLabel<T>(GameObject gObject, string componentLabel)
+    public static T FindComponentWithLabel<T>(GameObject gObject, string componentLabel, bool includeChildren = false)
         where T : ILabelledComponent
     {
         // Get all stockpiles in this object and the objects children
-        List<T> list = ListLabelledComponentsInChildren<T>(gObject, componentLabel);
+        List<T> list = ListLabelledComponents<T>(gObject, includeChildren);
         // Find a stockpile with the same tag given
         Predicate<T> matchedTag = (x) => x.label == componentLabel;
         return list.Find(matchedTag);
     }
+    private static List<T> ListLabelledComponents<T>(GameObject gObject, bool includeChildren)
+        where T : ILabelledComponent
+    {
+        if(includeChildren)
+        {
+            return ListLabelledComponentsHere<T>(gObject);
+        }
+        else
+        {
+            return ListLabelledComponentsInChildren<T>(gObject);
+        }
+    }
+    private static List<T> ListLabelledComponentsHere<T>(GameObject gObject)
+        where T : ILabelledComponent
+    {
+        T[] components = gObject.GetComponents<T>();
+        return new List<T>(components);
+    }
     // Create a list of the labelled components in the given game object
-    private static List<T> ListLabelledComponentsInChildren<T>(GameObject gObject, string componentLabel)
+    private static List<T> ListLabelledComponentsInChildren<T>(GameObject gObject)
         where T : ILabelledComponent
     {
         T[] components = gObject.GetComponentsInChildren<T>();

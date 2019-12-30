@@ -14,9 +14,9 @@ public class RandomlyChooseGameObject : MonoBehaviour
     [SerializeField]
     private List<GameObject> objects;
 
-    void Start()
+    public void Choose()
     {
-        if(objects.Count > 0)
+        if (objects.Count > 0)
         {
             int selectedObject = Random.Range(0, objects.Count);
 

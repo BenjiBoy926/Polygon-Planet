@@ -29,11 +29,20 @@ public class MonoBehaviourEvents : MonoBehaviour
 
     /*
      * PUBLIC DATA
-     */ 
-    
+     */
+
+    [SerializeField]
+    [Tooltip("Start, Awake, Update, LateUpdate, FixedUpdate, OnEnable, OnDisable, and OnDestroy")]
+    private bool basic;
+    [SerializeField]
+    private UnityEvent _start;
+    public UnityEvent start { get { return _start; } }
     [SerializeField]
     private UnityEvent _awake;
     public UnityEvent awake { get { return _awake; } }
+    [SerializeField]
+    private UnityEvent _update;
+    public UnityEvent update { get { return _update; } }
     [SerializeField]
     private UnityEvent _fixedUpdate;
     public UnityEvent fixedUpdate { get { return _fixedUpdate; } }
@@ -41,11 +50,135 @@ public class MonoBehaviourEvents : MonoBehaviour
     private UnityEvent _lateUpdate;
     public UnityEvent lateUpdate { get { return _lateUpdate; } }
     [SerializeField]
-    private IntEvent _onAnimatorIK;
-    public IntEvent onAnimatorIK { get { return _onAnimatorIK; } }
+    private UnityEvent _onEnable;
+    public UnityEvent onEnable { get { return _onEnable; } }
     [SerializeField]
-    private UnityEvent _onAnimatorMove;
-    public UnityEvent onAnimatorMove { get { return _onAnimatorMove; } }
+    private UnityEvent _onDisable;
+    public UnityEvent onDisable { get { return _onDisable; } }
+    [SerializeField]
+    private UnityEvent _onDestroy;
+    public UnityEvent onDestroy { get { return _onDestroy; } }
+
+    [SerializeField]
+    [Tooltip("OnCollisionEnter, OnCollisionStay, OnCollisionExit, OnTriggerEnter, OnTriggerStay, OnTriggerExit, and OnControllerColliderHit")]
+    private bool collision;
+    [SerializeField]
+    private CollisionEvent _onCollisionEnter;
+    public CollisionEvent onCollisionEnter { get { return _onCollisionEnter; } }
+    [SerializeField]
+    private CollisionEvent _onCollisionStay;
+    public CollisionEvent onCollisionStay { get { return _onCollisionStay; } }
+    [SerializeField]
+    private CollisionEvent _onCollisionExit;
+    public CollisionEvent onCollisionExit { get { return _onCollisionExit; } }
+    [SerializeField]
+    private ColliderEvent _onTriggerEnter;
+    public ColliderEvent onTriggerEnter { get { return _onTriggerEnter; } }
+    [SerializeField]
+    private ColliderEvent _onTriggerStay;
+    public ColliderEvent onTriggerStay { get { return _onTriggerStay; } }
+    [SerializeField]
+    private ColliderEvent _onTriggerExit;
+    public ColliderEvent onTriggerExit { get { return _onTriggerExit; } }
+    [SerializeField]
+    private ControllerColliderHitEvent _onControllerColliderHit;
+    public ControllerColliderHitEvent onControllerColliderHit { get { return _onControllerColliderHit; } }
+
+    [SerializeField]
+    [Tooltip("OnCollisionEnter2D, OnCollisionStay2D, OnCollisionExit2D, OnTriggerEnter2D, OnTriggerStay2D, and OnTriggerExit2D")]
+    private bool collision2D;
+    [SerializeField]
+    private Collision2DEvent _onCollisionEnter2D;
+    public Collision2DEvent onCollisionEnter2D { get { return _onCollisionEnter2D; } }
+    [SerializeField]
+    private Collision2DEvent _onCollisionStay2D;
+    public Collision2DEvent onCollisionStay2D { get { return _onCollisionStay2D; } }
+    [SerializeField]
+    private Collision2DEvent _onCollisionExit2D;
+    public Collision2DEvent onCollisionExit2D { get { return _onCollisionExit2D; } }
+    [SerializeField]
+    private Collider2DEvent _onTriggerEnter2D;
+    public Collider2DEvent onTriggerEnter2D { get { return _onTriggerEnter2D; } }
+    [SerializeField]
+    private Collider2DEvent _onTriggerStay2D;
+    public Collider2DEvent onTriggerStay2D { get { return _onTriggerStay2D; } }
+    [SerializeField]
+    private Collider2DEvent _onTriggerExit2D;
+    public Collider2DEvent onTriggerExit2D { get { return _onTriggerExit2D; } }
+
+    [SerializeField]
+    [Tooltip("OnTransformChildrenChanged and OnTransformParentChanged")]
+    private bool transforms;
+    [SerializeField]
+    private UnityEvent _onTransformChildrenChanged;
+    public UnityEvent onTransformChildrenChanged { get { return _onTransformChildrenChanged; } }
+    [SerializeField]
+    private UnityEvent _onTransformParentChanged;
+    public UnityEvent onTransformParentChanged { get { return _onTransformParentChanged; } }
+
+    [SerializeField]
+    [Tooltip("OnInitialized, OnValidate, Reset, OnBecameVisible, and OnBecameInvisible")]
+    private bool editor;
+    [SerializeField]
+    private UnityEvent _onInitialized;
+    public UnityEvent onInitialized { get { return _onInitialized; } }
+    [SerializeField]
+    private UnityEvent _onValidate;
+    public UnityEvent onValidate { get { return _onValidate; } }
+    [SerializeField]
+    private UnityEvent _reset;
+    public UnityEvent reset { get { return _reset; } }
+    [SerializeField]
+    private UnityEvent _onBecameVisible;
+    public UnityEvent onBecameVisible { get { return _onBecameVisible; } }
+    [SerializeField]
+    private UnityEvent _onBecameInvisibe;
+    public UnityEvent onBecameInvisibe { get { return _onBecameInvisibe; } }
+
+    [SerializeField]
+    [Tooltip("OnGUI, OnDrawGizmos, OnDrawGizmosSelected, OnPreRender, OnPoseRender, OnPreCull, OnRenderImage, " +
+    "OnRenderObject, OnWillRenderObject, OnParticleCollision, OnParticleSystemStopped, and OnParticleTrigger")]
+    private bool gui;
+    [SerializeField]
+    private UnityEvent _onGUI;
+    public UnityEvent onGUI { get { return _onGUI; } }
+    [SerializeField]
+    private UnityEvent _onDrawGizmos;
+    public UnityEvent onDrawGizmos { get { return _onDrawGizmos; } }
+    [SerializeField]
+    private UnityEvent _onDrawGizmosSelected;
+    public UnityEvent onDrawGizmosSelected { get { return _onDrawGizmosSelected; } }
+    [SerializeField]
+    private UnityEvent _onPreRender;
+    public UnityEvent onPreRender { get { return _onPreRender; } }
+    [SerializeField]
+    private UnityEvent _onPostRender;
+    public UnityEvent onPostRender { get { return _onPostRender; } }
+    [SerializeField]
+    private UnityEvent _onPreCull;
+    public UnityEvent onPreCull { get { return _onPreCull; } }
+    [SerializeField]
+    private RenderTextureAndRenderTextureEvent _onRenderImage;
+    public RenderTextureAndRenderTextureEvent onRenderImage { get { return _onRenderImage; } }
+    [SerializeField]
+    private UnityEvent _onRenderObject;
+    public UnityEvent onRenderObject { get { return _onRenderObject; } }
+    [SerializeField]
+    private UnityEvent _onWillRenderObject;
+    public UnityEvent onWillRenderObject { get { return _onWillRenderObject; } }
+    [SerializeField]
+    private GameObjectEvent _onParticleCollision;
+    public GameObjectEvent onParticleCollision { get { return _onParticleCollision; } }
+    [SerializeField]
+    private UnityEvent _onParticleSystemStopped;
+    public UnityEvent onParticleSystemStopped { get { return _onParticleSystemStopped; } }
+    [SerializeField]
+    private UnityEvent _onParticleTrigger;
+    public UnityEvent onParticleTrigger { get { return _onParticleTrigger; } }
+
+    [SerializeField]
+    [Tooltip("OnApplicationFocus, OnApplicationPause, and OnApplicationQuit")]
+    private bool application;
     [SerializeField]
     private BoolEvent _onApplicationFocus;
     public BoolEvent onApplicationFocus { get { return _onApplicationFocus; } }
@@ -55,63 +188,10 @@ public class MonoBehaviourEvents : MonoBehaviour
     [SerializeField]
     private UnityEvent _onApplicationQuit;
     public UnityEvent onApplicationQuit { get { return _onApplicationQuit; } }
+
     [SerializeField]
-    private FloatArrayAndIntEvent _onAudioFilterRead;
-    public FloatArrayAndIntEvent onAudioFilterRead { get { return _onAudioFilterRead; } }
-    [SerializeField]
-    private UnityEvent _onBecameInvisibe;
-    public UnityEvent onBecameInvisibe { get { return _onBecameInvisibe; } }
-    [SerializeField]
-    private UnityEvent _onBecameVisible;
-    public UnityEvent onBecameVisible { get { return _onBecameVisible; } }
-    [SerializeField]
-    private CollisionEvent _onCollisionEnter;
-    public CollisionEvent onCollisionEnter { get { return _onCollisionEnter; } }
-    [SerializeField]
-    private Collision2DEvent _onCollisionEnter2D;
-    public Collision2DEvent onCollisionEnter2D { get { return _onCollisionEnter2D; } }
-    [SerializeField]
-    private CollisionEvent _onCollisionExit;
-    public CollisionEvent onCollisionExit { get { return _onCollisionExit; } }
-    [SerializeField]
-    private Collision2DEvent _onCollisionExit2D;
-    public Collision2DEvent onCollisionExit2D { get { return _onCollisionExit2D; } }
-    [SerializeField]
-    private CollisionEvent _onCollisionStay;
-    public CollisionEvent onCollisionStay { get { return _onCollisionStay; } }
-    [SerializeField]
-    private Collision2DEvent _onCollisionStay2D;
-    public Collision2DEvent onCollisionStay2D { get { return _onCollisionStay2D; } }
-    [SerializeField]
-    private UnityEvent _onConnectedToServer;
-    public UnityEvent onConnectedToServer { get { return _onConnectedToServer; } }
-    [SerializeField]
-    private ControllerColliderHitEvent _onControllerColliderHit;
-    public ControllerColliderHitEvent onControllerColliderHit { get { return _onControllerColliderHit; } }
-    [SerializeField]
-    private UnityEvent _onDestroy;
-    public UnityEvent onDestroy { get { return _onDestroy; } }
-    [SerializeField]
-    private UnityEvent _onDisable;
-    public UnityEvent onDisable { get { return _onDisable; } }
-    [SerializeField]
-    private UnityEvent _onDrawGizmos;
-    public UnityEvent onDrawGizmos { get { return _onDrawGizmos; } }
-    [SerializeField]
-    private UnityEvent _onDrawGizmosSelected;
-    public UnityEvent onDrawGizmosSelected { get { return _onDrawGizmosSelected; } }
-    [SerializeField]
-    private UnityEvent _onEnable;
-    public UnityEvent onEnable { get { return _onEnable; } }
-    [SerializeField]
-    private UnityEvent _onGUI;
-    public UnityEvent onGUI { get { return _onGUI; } }
-    [SerializeField]
-    private FloatEvent _onJointBreak;
-    public FloatEvent onJointBreak { get { return _onJointBreak; } }
-    [SerializeField]
-    private Joint2DEvent _onJointBreak2D;
-    public Joint2DEvent onJointBreak2D { get { return _onJointBreak2D; } }
+    [Tooltip("OnMouseDown, OnMouseDrag, OnMouseEnter, OnMouseExit, OnMouseOver, OnMouseUp, and OnMouseUpAsButton")]
+    private bool mouse;
     [SerializeField]
     private UnityEvent _onMouseDown;
     public UnityEvent onMouseDown { get { return _onMouseDown; } }
@@ -133,72 +213,33 @@ public class MonoBehaviourEvents : MonoBehaviour
     [SerializeField]
     private UnityEvent _onMouseUpAsButton;
     public UnityEvent onMouseUpAsButton { get { return _onMouseUpAsButton; } }
+
     [SerializeField]
-    private GameObjectEvent _onParticleCollision;
-    public GameObjectEvent onParticleCollision { get { return _onParticleCollision; } }
+    [Tooltip("OnAnimatorIK, OnAnimatorMove, OnJointBreak, and OnJointBreak2D")]
+    private bool animator;
     [SerializeField]
-    private UnityEvent _onParticleSystemStopped;
-    public UnityEvent onParticleSystemStopped { get { return _onParticleSystemStopped; } }
+    private IntEvent _onAnimatorIK;
+    public IntEvent onAnimatorIK { get { return _onAnimatorIK; } }
     [SerializeField]
-    private UnityEvent _onParticleTrigger;
-    public UnityEvent onParticleTrigger { get { return _onParticleTrigger; } }
+    private UnityEvent _onAnimatorMove;
+    public UnityEvent onAnimatorMove { get { return _onAnimatorMove; } }
     [SerializeField]
-    private UnityEvent _onPostRender;
-    public UnityEvent onPostRender { get { return _onPostRender; } }
+    private FloatEvent _onJointBreak;
+    public FloatEvent onJointBreak { get { return _onJointBreak; } }
     [SerializeField]
-    private UnityEvent _onPreCull;
-    public UnityEvent onPreCull { get { return _onPreCull; } }
+    private Joint2DEvent _onJointBreak2D;
+    public Joint2DEvent onJointBreak2D { get { return _onJointBreak2D; } }
+
     [SerializeField]
-    private UnityEvent _onPreRender;
-    public UnityEvent onPreRender { get { return _onPreRender; } }
+    [Tooltip("OnAudioFilterRead and OnConnectedToServer")]
+    private bool misc;
     [SerializeField]
-    private RenderTextureAndRenderTextureEvent _onRenderImage;
-    public RenderTextureAndRenderTextureEvent onRenderImage { get { return _onRenderImage; } }
+    private FloatArrayAndIntEvent _onAudioFilterRead;
+    public FloatArrayAndIntEvent onAudioFilterRead { get { return _onAudioFilterRead; } }
     [SerializeField]
-    private UnityEvent _onRenderObject;
-    public UnityEvent onRenderObject { get { return _onRenderObject; } }
-    [SerializeField]
-    private UnityEvent _onInitialized;
-    public UnityEvent onInitialized { get { return _onInitialized; } }
-    [SerializeField]
-    private UnityEvent _onTransformChildrenChanged;
-    public UnityEvent onTransformChildrenChanged { get { return _onTransformChildrenChanged; } }
-    [SerializeField]
-    private UnityEvent _onTransformParentChanged;
-    public UnityEvent onTransformParentChanged { get { return _onTransformParentChanged; } }
-    [SerializeField]
-    private ColliderEvent _onTriggerEnter;
-    public ColliderEvent onTriggerEnter { get { return _onTriggerEnter; } }
-    [SerializeField]
-    private Collider2DEvent _onTriggerEnter2D;
-    public Collider2DEvent onTriggerEnter2D { get { return _onTriggerEnter2D; } }
-    [SerializeField]
-    private ColliderEvent _onTriggerExit;
-    public ColliderEvent onTriggerExit { get { return _onTriggerExit; } }
-    [SerializeField]
-    private Collider2DEvent _onTriggerExit2D;
-    public Collider2DEvent onTriggerExit2D { get { return _onTriggerExit2D; } }
-    [SerializeField]
-    private ColliderEvent _onTriggerStay;
-    public ColliderEvent onTriggerStay { get { return _onTriggerStay; } }
-    [SerializeField]
-    private Collider2DEvent _onTriggerStay2D;
-    public Collider2DEvent onTriggerStay2D { get { return _onTriggerStay2D; } }
-    [SerializeField]
-    private UnityEvent _onValidate;
-    public UnityEvent onValidate { get { return _onValidate; } }
-    [SerializeField]
-    private UnityEvent _onWillRenderObject;
-    public UnityEvent onWillRenderObject { get { return _onWillRenderObject; } }
-    [SerializeField]
-    private UnityEvent _reset;
-    public UnityEvent reset { get { return _reset; } }
-    [SerializeField]
-    private UnityEvent _start;
-    public UnityEvent start { get { return _start; } }
-    [SerializeField]
-    private UnityEvent _update;
-    public UnityEvent update { get { return _update; } }
+    private UnityEvent _onConnectedToServer;
+    public UnityEvent onConnectedToServer { get { return _onConnectedToServer; } }
+
 
     private void Awake()
     {

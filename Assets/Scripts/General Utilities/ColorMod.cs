@@ -16,11 +16,27 @@ public class ColorMod : MonoBehaviour
     private Color disabledColor;  // Color when the image is "disabled"
     [SerializeField]
     private float time; // Time it takes for the color transition to occur
+    [SerializeField]
+    [Tooltip("If true, the image color starts in the enabled color. " +
+        "If false, the image color starts in the disabled color")]
+    private bool startState;
     private float inverseTime;  // The inverse of time, stored for efficiency
 
     private void Awake ()
     {
         inverseTime = 1f / time;
+    }
+
+    private void OnEnable()
+    {
+        if(startState)
+        {
+            image.color = enabledColor;
+        }
+        else
+        {
+            image.color = disabledColor;
+        }
     }
 
     // Use the correct coroutine to create the smooth transition between colors
@@ -44,14 +60,14 @@ public class ColorMod : MonoBehaviour
         
         // Set image color and difference vector
         image.color = disabledColor;
-        diff = (Vector4)(image.color - enabledColor);
+        diff = image.color - enabledColor;
 
         // While difference between current and target colors is not negligible,
         // lerp image color towards the target color
         while (diff.sqrMagnitude > 0.01f)
         {
             image.color = Color.Lerp(image.color, enabledColor, Time.deltaTime * inverseTime);
-            diff = (Vector4)(image.color - enabledColor);
+            diff = image.color - enabledColor;
             yield return null;
         }
     }
@@ -64,14 +80,14 @@ public class ColorMod : MonoBehaviour
         
         // Set image color and difference vector
         image.color = enabledColor;
-        diff = (Vector4)(image.color - disabledColor);
+        diff = image.color - disabledColor;
 
         // While difference between current and target colors is not negligible,
         // lerp image color towards the target color
         while (diff.sqrMagnitude > 0.01f)
         {
             image.color = Color.Lerp(image.color, disabledColor, Time.deltaTime * inverseTime);
-            diff = (Vector4)(image.color - disabledColor);
+            diff = image.color - disabledColor;
             yield return null;
         }
     }
