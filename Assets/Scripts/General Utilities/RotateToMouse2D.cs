@@ -19,18 +19,15 @@ public class RotateToMouse2D : MonoBehaviour
     private Vector2 toMouse = new Vector2();
     // Position of the mouse in world coordinates
     private Vector2 mousePosition;
-    // Camera that the mouse's position is measured from
-    private Camera mainCamera;
-
-    protected virtual void Start()
-    {
-        mainCamera = Camera.main;
-    }
+    private LazyLoader<Camera> mainCamera = new LazyLoader<Camera>(() => Camera.main);
 
     protected virtual void Update()
     {
-        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        toMouse = mousePosition - (Vector2)trans.position;
-        trans.LookInDirection2D(toMouse, objectForward);
+        if(mainCamera.obj != null)
+        {
+            mousePosition = mainCamera.obj.ScreenToWorldPoint(Input.mousePosition);
+            toMouse = mousePosition - (Vector2)trans.position;
+            trans.LookInDirection2D(toMouse, objectForward);
+        }
     }
 }

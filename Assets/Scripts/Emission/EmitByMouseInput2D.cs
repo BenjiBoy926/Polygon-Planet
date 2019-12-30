@@ -28,27 +28,26 @@ public class EmitByMouseInput2D : MonoBehaviour
      * PRIVATE DATA
      */
 
-    private IEmitter emitter;   // Scrit on the emitter object that implements IEmitter
-    private Camera mainCamera;  // Stored reference to the main camera
+    private LazyLoader<IEmitter> emitter;   // Scrit on the emitter object that implements IEmitter
+    private LazyLoader<Camera> mainCamera = new LazyLoader<Camera>(() => Camera.main);  // Stored reference to the main camera
     private Vector2 mousePosition;  // Position of the mouse in world space
 
     /*
      * PRIVATE HELPERS
      */ 
 
-    private void Start()
-    { 
-        mainCamera = Camera.main;
-        emitter = emitterObj.GetComponent<IEmitter>();
+    private void Awake()
+    {
+        emitter = new LazyLoader<IEmitter>(() => emitterObj.GetComponent<IEmitter>());
     }
 
     private void Update()
     {
         // If input button is registered, emit
-        if(InputExt.GetButton(emitButtonName, buttonType))
+        if(InputExt.GetButton(emitButtonName, buttonType) && mainCamera.obj != null)
         {
-            mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            emitter.Emit(mousePosition - (Vector2)transform.position);
+            mousePosition = mainCamera.obj.ScreenToWorldPoint(Input.mousePosition);
+            emitter.obj.Emit(mousePosition - (Vector2)transform.position);
         }
     }
 }
