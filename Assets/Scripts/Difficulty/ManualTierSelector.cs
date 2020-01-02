@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ManualTierSelector : MonoBehaviour, ITierSelector
 {
@@ -9,7 +8,7 @@ public class ManualTierSelector : MonoBehaviour, ITierSelector
     private TierList tierList;
     [SerializeField]
     [Tooltip("Selections made from the given tier list for each level")]
-    private List<TierSelectionLevel> tierSelections;
+    private List<TierSelection> tierSelections;
     [SerializeField]
     [Tooltip("Reference to a GameObject with a component of type IntComponent")]
     private GameObjectReference reference;
@@ -26,15 +25,14 @@ public class ManualTierSelector : MonoBehaviour, ITierSelector
         {
             // Get current level being used to select from the tier list
             List<Object> selected = new List<Object>();
-            TierSelectionLevel currentSelection = GetCurrentSelection(level);
+            TierSelection currentSelection = GetCurrentSelection(level);
 
-            // Loop through each tier selection in the list
-            foreach(TierSelection selector in currentSelection.tierSelections)
+            for(int i = 0; i < currentSelection.tierSelectionQuantities.Count; i++)
             {
                 // Add objects from the current tier to the list in the quantity specified
-                for(int i = 0; i < selector.quantity; i++)
+                for (int j = 0; j < currentSelection.tierSelectionQuantities[i]; j++)
                 {
-                    selected.Add(tierList.tiers[selector.tier].list.GetRandomItem());
+                    selected.Add(tierList.tiers[i].list.GetRandomItem());
                 }
             }
 
@@ -42,7 +40,7 @@ public class ManualTierSelector : MonoBehaviour, ITierSelector
         }
     }
 
-    private TierSelectionLevel GetCurrentSelection(int level)
+    private TierSelection GetCurrentSelection(int level)
     {
         return tierSelections[level];
     }

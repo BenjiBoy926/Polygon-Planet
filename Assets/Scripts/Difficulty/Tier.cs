@@ -16,18 +16,10 @@ public class ComponentTier<T> where T : Component
 [System.Serializable]
 public class TierSelection
 {
-    [Tooltip("Tier level to choose from")]
-    public int tier;
-    [Tooltip("Number of objects to choose from this tier")]
-    public int quantity;
-}
-
-[System.Serializable]
-public class TierSelectionLevel
-{
-    [Tooltip("List of tier selections for this level")]
-    public List<TierSelection> tierSelections;
+    [Tooltip("Quantity of objects to choose from each tier. " +
+        "Element at 0 indicates the number of selections to make from tier 0")]
+    public List<int> tierSelectionQuantities;
     [Min(1)]
-    [Tooltip("Number of times that these selections are made")]
+    [Tooltip("Number of levels for which this tier selection is made")]
     public int duration;
 }

@@ -86,9 +86,21 @@ public static class ExtensionMethods
 		return localList;
 	} // END method
 
+    /*
+     * LIST
+     */ 
+
     public static T GetRandomItem<T>(this List<T> list)
     {
         return list[Random.Range(0, list.Count)];
+    }
+
+    public static void RemoveToEnd<T>(this List<T> list, int index)
+    {
+        if(index >= 0 && index < list.Count)
+        {
+            list.RemoveRange(index, list.Count - index - 1);
+        }
     }
 
 	public static void Reset (this Transform trans)

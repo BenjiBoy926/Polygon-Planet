@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 7079424623414593368}
   - component: {fileID: 2690371713810488049}
   m_Layer: 0
-  m_Name: LevelSupplierReference
+  m_Name: LevelReference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,10 +626,18 @@ MonoBehaviour:
     - list:
       - {fileID: 8241689902879404472}
   tierSelections:
-  - tierSelections:
-    - tier: 0
-      quantity: 1
-    duration: 0
+  - tierSelectionQuantities: 030000000000000000000000000000000000000000000000
+    duration: 1
+  - tierSelectionQuantities: 060000000000000000000000000000000000000000000000
+    duration: 1
+  - tierSelectionQuantities: 060000000000000000000000000000000000000000000000
+    duration: 1
+  - tierSelectionQuantities: 030000000300000000000000000000000000000000000000
+    duration: 1
+  - tierSelectionQuantities: 060000000300000000000000000000000000000000000000
+    duration: 1
+  - tierSelectionQuantities: 060000000600000000000000000000000000000000000000
+    duration: 1
   reference: {fileID: 7079424623414593368}
   _tierSelectionEvent:
     m_PersistentCalls:
@@ -994,11 +1002,6 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5462037562514737509, guid: 246ce2244f8db4841b9c8167dc323da5,
         type: 3}
-      propertyPath: xPositionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5462037562514737509, guid: 246ce2244f8db4841b9c8167dc323da5,
-        type: 3}
       propertyPath: yPositionType
       value: 1
       objectReference: {fileID: 0}
@@ -1114,11 +1117,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: One
-      objectReference: {fileID: 0}
-    - target: {fileID: 1231872529258013502, guid: 246ce2244f8db4841b9c8167dc323da5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4509492505273180413, guid: 246ce2244f8db4841b9c8167dc323da5,
         type: 3}
@@ -1442,11 +1440,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1463547813824066, guid: 47aab329575a83d439dd72e1004adc27,
         type: 3}
-    - target: {fileID: 5462037562514737509, guid: 246ce2244f8db4841b9c8167dc323da5,
-        type: 3}
-      propertyPath: xPositionType
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5462037562514737509, guid: 246ce2244f8db4841b9c8167dc323da5,
         type: 3}
       propertyPath: yPositionType

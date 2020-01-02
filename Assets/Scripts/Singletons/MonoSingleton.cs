@@ -13,21 +13,25 @@ using System.Collections;
 
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance;
-    public static T instance { get { return _instance; } }
+    public static T instance { get; private set; }
 
-    protected static void BaseCreateInstance()
+    public static T BaseCreateInstance()
     {
-        BaseCreateInstance("MonoSingleton");
+        return BaseCreateInstance("MonoSingleton");
     }
 
-    protected static void BaseCreateInstance(string objName)
+    public static T BaseCreateInstance(string objName)
     {
         if(instance == null)
         {
             GameObject parentObj = new GameObject(objName);
-            _instance = parentObj.AddComponent<T>();
+            T component = parentObj.AddComponent<T>();
             DontDestroyOnLoad(parentObj);
+            return component;
+        }
+        else
+        {
+            return instance;
         }
     }
 }
