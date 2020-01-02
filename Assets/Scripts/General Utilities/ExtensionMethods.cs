@@ -86,6 +86,11 @@ public static class ExtensionMethods
 		return localList;
 	} // END method
 
+    public static T GetRandomItem<T>(this List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
+    }
+
 	public static void Reset (this Transform trans)
 	{
 		trans.position = Vector3.zero;
@@ -159,6 +164,38 @@ public static class ExtensionMethods
         }
 
         return null;
+    }
+
+    public static Transform GetRelative(this Transform ego, ParentOrChild parentOrChild, int level, List<int> childIndeces)
+    {
+        if(parentOrChild == ParentOrChild.Parent)
+        {
+            return ego.GetAncestor(level);
+        }
+        else
+        {
+            return ego.GetDescendent(childIndeces);
+        }
+    }
+
+    public static Transform GetAncestor(this Transform ego, int level)
+    {
+        Transform current = ego;
+        for (int i = 0; i < level; i++)
+        {
+            current = current.parent;
+        }
+        return current;
+    }
+
+    public static Transform GetDescendent(this Transform ego, List<int> childIndeces)
+    {
+        Transform current = ego;
+        foreach (int index in childIndeces)
+        {
+            current = current.GetChild(index);
+        }
+        return current;
     }
 
     /*

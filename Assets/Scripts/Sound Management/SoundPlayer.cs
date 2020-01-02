@@ -15,20 +15,25 @@ using UnityEngine.Audio;
 public class SoundPlayer : MonoSingleton<SoundPlayer> 
 {
     // Constants determine the number of audio sources for each
-    const int NUM_MUSIC_SOURCES = 2;
-    const int NUM_SFX_SOURCES = 20;
-
-    // Mixer groups that the sfx and music outputs to
     [SerializeField]
+    [Tooltip("Total number of music sources on the sound player")]
+    private int totalMusicSources = 2;
+    [SerializeField]
+    [Tooltip("Total number of sound effects sources on the sound player")]
+    private int totalSFXSources = 20;
+
+    [SerializeField]
+    [Tooltip("Mixer that background music outputs to")]
     private AudioMixerGroup musicMixer;
     [SerializeField]
+    [Tooltip("Mixer that sound effects output to")]
     private AudioMixerGroup sfxMixer;
 
     private ObjectPool<AudioSource> musicSources;   // Pool of audio sources that play music
     private ObjectPool<AudioSource> sfxSources; // Pool of audio sources that play sound effects
 
-	private MusicTheme _theme;	// Music theme currently being played by the sound player
-	public MusicTheme theme { get { return _theme; } }
+    // String descriptor of the current music theme being played
+	public string currentMusicTheme { get; private set; }
 
     [RuntimeInitializeOnLoadMethod]
 	private static void InitializeSoundPlayer()
@@ -45,25 +50,47 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         instance.sfxSources.SetPoolActive(true);
     }
 
-	// Plays the given music clip of the specified theme
-	public void PlayMusicOfTheme (MusicTheme newTheme, List<AudioClip> newMusic)
+    // Play the given music, but only if the given theme is unequal to the current theme
+    public void PlayMusic(string theme, AudioClip music)
+    {
+        AudioClip[] clips = { music };
+        PlayMusic(theme, new List<AudioClip>(clips));
+    }
+    public void PlayMusic (string theme, List<AudioClip> newMusic)
 	{
+        if(theme != currentMusicTheme)
+        {
+            ForcePlayMusic(theme, newMusic);
+        }
+	}
+
+    // Play the given music, even if the current theme is the same as the incoming new theme
+    public void ForcePlayMusic(string theme, List<AudioClip> newMusic)
+    {
         AudioSource currentMusicSource;  // Current music source having the clip set
 
-		_theme = newTheme;
+        StopMusic();
+        currentMusicTheme = theme;
+        int numSourcesToPlay = newMusic.Count < musicSources.Count ? newMusic.Count : musicSources.Count;
 
-        // Loop through each music clip and get a music source to play it
-		foreach(AudioClip clip in newMusic)
+        // Loop through and play each music clip on each audio source
+        for(int i = 0; i < numSourcesToPlay; i++)
         {
-            currentMusicSource = musicSources.getOneQuick;
-            PlayAudioClip(clip, currentMusicSource);
+            currentMusicSource = musicSources[i];
+            PlayAudioClip(newMusic[i], currentMusicSource);
         }
 
-		// Log a warning if you specified too many new music audio clips
-		if (newMusic.Count > musicSources.Count) {
-			Debug.LogWarning ("You specified " + newMusic.Count + " music clips but the sound player can only play " + musicSources.Count);
-		}
-	}
+        // Log a warning if you specified too many new music audio clips
+        if (newMusic.Count > musicSources.Count)
+        {
+            Debug.LogWarning("You specified " + newMusic.Count + " music clips but the sound player can only play " + musicSources.Count);
+        }
+    }
+
+    public void StopMusic()
+    {
+        StopAudioPool(musicSources);
+    }
 
 	// Play the audio clip specified on an audio channel local to the sound player
 	public void PlaySoundEffect (AudioClip effect)
@@ -88,6 +115,11 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
 		PlaySoundEffect (clips [selection]);
 	}
 
+    public void StopSoundEffects()
+    {
+        StopAudioPool(sfxSources);
+    }
+
     // Overlaod of PlaySoundEffect allows calling method to specify a unique audio source
     public static void PlayAudioClip(AudioClip effect, AudioSource source)
     {
@@ -109,9 +141,12 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
 		ObjectPool<AudioSource> modPool;	// List of channels to be modified
 
 		// Set list of channels to modify based on sound type specified
-		if (type == SoundType.Music) {
+		if (type == SoundType.Music)
+        {
 			modPool = musicSources;
-		} else {
+		}
+        else
+        {
 			modPool = sfxSources;
 		}
 
@@ -164,11 +199,11 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
 
         if (type == SoundType.Effects)
         {
-            data = SetupPoolData("SFX Channel", NUM_SFX_SOURCES, type);
+            data = SetupPoolData("SFX Channel", totalSFXSources, type);
         }
         else
         {
-            data = SetupPoolData("Music Channel", NUM_MUSIC_SOURCES, type);
+            data = SetupPoolData("Music Channel", totalMusicSources, type);
         }
 
         // Return a constructed object pool with the specified info
@@ -203,15 +238,17 @@ public class SoundPlayer : MonoSingleton<SoundPlayer>
         else
         {
             audioSource.outputAudioMixerGroup = musicMixer;
+            audioSource.loop = true;
         }
     }
-}
 
-public enum MusicTheme
-{
-	Unassigned,
-	Level,
-	Menu
+    private void StopAudioPool(ObjectPool<AudioSource> pool)
+    {
+        for(int i = 0; i < pool.Count; i++)
+        {
+            pool[i].Stop();
+        }
+    }
 }
 
 public enum SoundType

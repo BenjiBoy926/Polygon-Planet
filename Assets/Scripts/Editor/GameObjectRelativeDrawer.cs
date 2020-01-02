@@ -15,4 +15,9 @@ public class GameObjectRelativeDrawer : PropertyDrawer
 
         EditorGUI.EndProperty();
     }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return base.GetPropertyHeight(property, label);
+    }
 }

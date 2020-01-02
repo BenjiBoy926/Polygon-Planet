@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * CLASS Boundary : MonoBehaviour
@@ -12,12 +10,11 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour 
 {
-    private Bounds _bounds;
-    public Bounds bounds { get { return _bounds; } }
+    public Bounds bounds { get; private set; }
 
     private void Start()
     {
-        _bounds = GetComponent<Collider2D>().bounds;
+        bounds = GetComponent<Collider2D>().bounds;
     }
 
     // Disables any object exiting its trigger

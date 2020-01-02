@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -25,8 +24,8 @@ public class SoundSetup : MonoBehaviour
 	private GameObject soundPrefab;	// Prefab of the sound player
 	[SerializeField]
 	private List<AudioClip> musicClips;	// Clips for the music in this scene
-	[SerializeField]
-	private MusicTheme theme;	// Theme of the music in this scene
+	//[SerializeField]
+	//private MusicTheme theme;	// Theme of the music in this scene
 	//private SoundPlayer sound;	// Reference to sound player instantiated by this loader
 
 	void Awake ()
@@ -39,10 +38,10 @@ public class SoundSetup : MonoBehaviour
 		}
 
         // If themes are different or not currently assigned, cause this theme to be played
-        if ((SoundPlayer.instance.theme == MusicTheme.Unassigned || SoundPlayer.instance.theme != theme) && 
-            musicClips.Count > 0 && theme != MusicTheme.Unassigned)
-        {
-            SoundPlayer.instance.PlayMusicOfTheme(theme, musicClips);
-        }
+        //if ((SoundPlayer.instance.theme == MusicTheme.Unassigned || SoundPlayer.instance.theme != theme) && 
+        //    musicClips.Count > 0 && theme != MusicTheme.Unassigned)
+        //{
+        //    SoundPlayer.instance.PlayMusicOfTheme(theme, musicClips);
+        //}
 	}
 }
