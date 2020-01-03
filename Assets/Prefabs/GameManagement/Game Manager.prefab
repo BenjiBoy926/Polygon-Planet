@@ -1404,16 +1404,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoading
       objectReference: {fileID: 0}
-    - target: {fileID: 1293693872431649582, guid: e1177c54790eb734fbdd5dc361288153,
-        type: 3}
-      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReloadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293693872431649582, guid: e1177c54790eb734fbdd5dc361288153,
-        type: 3}
-      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9144897490414544009, guid: e1177c54790eb734fbdd5dc361288153,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1518,6 +1508,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 681894100289275215, guid: e1177c54790eb734fbdd5dc361288153,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneLoaderSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293693872431649582, guid: e1177c54790eb734fbdd5dc361288153,
+        type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293693872431649582, guid: e1177c54790eb734fbdd5dc361288153,
+        type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 997023107826911785, guid: e1177c54790eb734fbdd5dc361288153,
         type: 3}

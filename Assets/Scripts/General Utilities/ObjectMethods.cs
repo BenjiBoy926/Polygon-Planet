@@ -14,4 +14,8 @@ public class ObjectMethods : MonoBehaviour
     {
         Object.DontDestroyOnLoad(obj);
     }
+    new public void Instantiate(Object obj)
+    {
+        Object.Instantiate(obj);
+    }
 }
