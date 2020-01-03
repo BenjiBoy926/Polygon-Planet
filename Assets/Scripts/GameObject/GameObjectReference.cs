@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class GameObjectReference : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("How the component in question is going to be references")]
+    [Tooltip("How the game object in question is going to be references")]
     private ReferenceType referenceType;
 
     [SerializeField]

@@ -44,7 +44,7 @@ public class IntComponent : VariableComponent<int>
     {
         number *= scalar;
     }
-    public void Divid(int div)
+    public void Divide(int div)
     {
         number /= div;
     }

@@ -15,23 +15,18 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     public static T instance { get; private set; }
 
-    public static T BaseCreateInstance()
+    public static void BaseCreateInstance()
     {
-        return BaseCreateInstance("MonoSingleton");
+        BaseCreateInstance("MonoSingleton");
     }
 
-    public static T BaseCreateInstance(string objName)
+    public static void BaseCreateInstance(string objName)
     {
-        if(instance == null)
+        if (instance == null)
         {
             GameObject parentObj = new GameObject(objName);
-            T component = parentObj.AddComponent<T>();
+            instance = parentObj.AddComponent<T>();
             DontDestroyOnLoad(parentObj);
-            return component;
-        }
-        else
-        {
-            return instance;
         }
     }
 }

@@ -17,13 +17,8 @@ public class StockpileKeeper : MonoBehaviour
      * PUBLIC DATA
      */
     [SerializeField]
-    [Tooltip("If true, search the children of the game objects with the given tags " +
-        "for the labelled stockpiles")]
-    private bool includeChildren;
-    [SerializeField]
-    [Tooltip("The list of game object tags and the corresponding stockpile labels " +
-        "that this script maintains a list of")]
-    private List<LabelledComponentID> stockpileIDs;
+    [Tooltip("A reference to the script that can get the stockpile components")]
+    private LabelledComponentKeeper stockpileFinder;
 
     [SerializeField]
     [Tooltip("Invoked when all stockpiles in the list are filled up")]
@@ -37,13 +32,13 @@ public class StockpileKeeper : MonoBehaviour
     /*
      * PRIVATE DATA
      */
-    private LabelledComponentKeeper<Stockpile> stockpiles;
+    private List<Stockpile> stockpiles;
 
     private void Start()
     {
-        stockpiles = new LabelledComponentKeeper<Stockpile>(stockpileIDs, includeChildren);
+        stockpiles = stockpileFinder.LabelledComponents<Stockpile>();
 
-        foreach (Stockpile stock in stockpiles.components)
+        foreach (Stockpile stock in stockpiles)
         {
             stock.stockEmptiedEvent.AddListener(CheckStocksEmptied);
             stock.stockFilledEvent.AddListener(CheckStocksFilled);
@@ -52,7 +47,7 @@ public class StockpileKeeper : MonoBehaviour
 
     private void CheckStocksEmptied()
     {
-        if (stockpiles.components.TrueForAll(x => x.empty))
+        if (stockpiles.TrueForAll(x => x.empty))
         {
             _allStocksEmptiedEvent.Invoke();
         }
@@ -60,7 +55,7 @@ public class StockpileKeeper : MonoBehaviour
 
     private void CheckStocksFilled()
     {
-        if (stockpiles.components.TrueForAll(x => x.full))
+        if (stockpiles.TrueForAll(x => x.full))
         {
             _allStocksFilledEvent.Invoke();
         }
