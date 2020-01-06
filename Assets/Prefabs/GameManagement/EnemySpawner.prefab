@@ -609,15 +609,15 @@ MonoBehaviour:
   - tierSelectionQuantities: 030000000000000000000000000000000000000000000000
     duration: 1
   - tierSelectionQuantities: 060000000000000000000000000000000000000000000000
-    duration: 1
-  - tierSelectionQuantities: 060000000000000000000000000000000000000000000000
-    duration: 1
+    duration: 2
+  - tierSelectionQuantities: 090000000000000000000000000000000000000000000000
+    duration: 4
   - tierSelectionQuantities: 030000000300000000000000000000000000000000000000
-    duration: 1
-  - tierSelectionQuantities: 060000000300000000000000000000000000000000000000
-    duration: 1
+    duration: 4
   - tierSelectionQuantities: 060000000600000000000000000000000000000000000000
-    duration: 1
+    duration: 8
+  - tierSelectionQuantities: 080000000800000000000000000000000000000000000000
+    duration: 16
   reference: {fileID: 7079424623414593368}
   _tierSelectionEvent:
     m_PersistentCalls:

@@ -29,7 +29,7 @@ public class ManualTierSelectorEditor : Editor
         for (int i = 0; i < properties["tierSelections"].arraySize; i++)
         {
             // Setup a foldout for each level selection
-            tierSelectionFoldouts[i] = EditorGUILayout.Foldout(tierSelectionFoldouts[i], "Level " + i + " selections");
+            tierSelectionFoldouts[i] = EditorGUILayout.Foldout(tierSelectionFoldouts[i], GetLevelRange(i));
 
             // Do this editor part only if the foldout is folded out
             if(tierSelectionFoldouts[i])
@@ -63,5 +63,26 @@ public class ManualTierSelectorEditor : Editor
     private void CheckTierSelection(SerializedProperty tierSelection)
     {
         tierSelection.FindPropertyRelative("tierSelectionQuantities").arraySize = properties["tierList"].FindPropertyRelative("_tiers").arraySize;
+    }
+
+    private string GetLevelRange(int selection)
+    {
+        Pair<int, int> range = ExtensionMethods.WeightedListRange(selection, TierSelectionsAsList(), x => x.FindPropertyRelative("duration").intValue);
+
+        switch(range.object2 - range.object1)
+        {
+            case 0: return "Level " + range.object1 + " selections";
+            default: return "Level " + range.object1 + "-" + range.object2 + " selections";
+        }
+    }
+
+    private List<SerializedProperty> TierSelectionsAsList()
+    {
+        List<SerializedProperty> tierSelections = new List<SerializedProperty>();
+        for(int i = 0; i < properties["tierSelections"].arraySize; i++)
+        {
+            tierSelections.Add(properties["tierSelections"].GetArrayElementAtIndex(i));
+        }
+        return tierSelections;
     }
 }

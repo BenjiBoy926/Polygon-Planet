@@ -25,7 +25,7 @@ public class ManualTierSelector : MonoBehaviour, ITierSelector
         {
             // Get current level being used to select from the tier list
             List<Object> selected = new List<Object>();
-            TierSelection currentSelection = GetCurrentSelection(level);
+            TierSelection currentSelection = ExtensionMethods.WeightedListSelection(level, tierSelections, x => x.duration);
 
             for(int i = 0; i < currentSelection.tierSelectionQuantities.Count; i++)
             {
@@ -38,10 +38,5 @@ public class ManualTierSelector : MonoBehaviour, ITierSelector
 
             _tierSelectionEvent.Invoke(selected);
         }
-    }
-
-    private TierSelection GetCurrentSelection(int level)
-    {
-        return tierSelections[level];
     }
 }

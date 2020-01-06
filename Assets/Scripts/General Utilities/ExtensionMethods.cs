@@ -248,5 +248,41 @@ public static class ExtensionMethods
         }
     }
 
-    
+    /*
+     * MATH
+     */ 
+
+    public static int WeightedListSelector<T>(int x, List<T> weightedItems, System.Func<T, int> weightGetter)
+    {
+        int sel = 0;
+
+        while (sel < weightedItems.Count & x >= 0)
+        {
+            x -= weightGetter(weightedItems[sel]);
+
+            if (x >= 0)
+            {
+                sel++;
+            }
+        }
+
+        return sel;
+    }
+
+    public static T WeightedListSelection<T>(int x, List<T> weightedItems, System.Func<T, int> weightGetter)
+    {
+        return weightedItems[WeightedListSelector(x, weightedItems, weightGetter)];
+    }
+
+    public static Pair<int, int> WeightedListRange<T>(int x, List<T> weightedItems, System.Func<T, int> weightGetter)
+    {
+        int sumPrev = 0;
+
+        for(int i = 0; i <= x - 1; i++)
+        {
+            sumPrev += weightGetter(weightedItems[i]);
+        }
+
+        return new Pair<int, int>(sumPrev, sumPrev + weightGetter(weightedItems[x]) - 1);
+    }
 }
